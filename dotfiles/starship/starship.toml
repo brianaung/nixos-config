@@ -1,0 +1,36 @@
+# some tmp hex values
+# nord-bluegreen: #8fbcbb
+# nord-red: #BF616A
+# nord-yellow: #EBCB8B
+# zenburn-brightyellow: #F0DFAF
+# gruvbuddy blue: #8abeb7
+
+add_newline = false
+command_timeout = 2000
+# haven't figured out how to split line while also displaying 
+# literal chars '[' and ']' so bit messy
+format = '''
+[\[](cyan)$username$hostname $directory[\]](cyan)$git_branch$git_status$character'''
+
+[character]
+success_symbol = '[\$](cyan)'
+error_symbol = '[\$](cyan)'
+
+[username]
+show_always = true
+format = '[$user@](cyan)'
+
+[hostname]
+ssh_only = false
+format = '[$hostname](cyan)'
+
+[directory]
+truncation_length = 1 
+format = '[$path]()'
+
+[git_branch]
+symbol = ""
+format = " [$symbol$branch](purple)"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]](bold red))'
