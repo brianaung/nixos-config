@@ -19,4 +19,5 @@ else
   require 'plugins.completion'
   require 'plugins.telescope'
   require 'plugins.git'
+  require 'plugins.colorscheme'
 end
