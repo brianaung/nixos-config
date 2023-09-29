@@ -70,5 +70,3 @@ npm i -g typescript typescript-language-server
 
 ### Git
 Don't forget to update the `.gitconfig` using your credentials.
-
-Disclaimer: Nix with Home Manager is a very powerful tool that can be used to achieve alot more than how I am using it right now. Currently, I only use it to manage some packages that I want to use across different OS.
