@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup {
     "typescript",
     "tsx",
     "lua",
+    "rust",
   },
   highlight = {
     enable = true,

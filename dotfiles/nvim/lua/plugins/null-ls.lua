@@ -32,6 +32,7 @@ require("null-ls").setup({
     -- you can reuse a shared lspconfig on_attach callback here
     sources = {
       null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.rustfmt,
     },
     on_attach = on_attach
 })

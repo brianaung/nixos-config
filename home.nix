@@ -8,14 +8,16 @@
 
   # Install Nix packages into your environment.
   home.packages = [
-    pkgs.git
-    pkgs.zsh
     pkgs.neovim
     pkgs.tmux
+    pkgs.zsh
+    pkgs.starship
+    pkgs.git
     pkgs.eza
     pkgs.ripgrep
     pkgs.fzf
-    pkgs.starship
+    # language specific
+    pkgs.rustup
   ];
 
   # Manage dotfiles that lives in ~/

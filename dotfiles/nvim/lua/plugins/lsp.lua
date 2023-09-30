@@ -31,6 +31,11 @@ end
 local servers = {
   tsserver = {},
   lua_ls = {},
+  rust_analyzer = {
+    diagnostics = {
+      enable = true;
+    },
+  },
 }
 
 -- add additional completion capabilities supported by nvim-cmp
