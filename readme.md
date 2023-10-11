@@ -56,7 +56,13 @@ nix-shell '<home-manager>' -A install
 
 ### Updating the environment
 
-Run `home-manager switch` to update the home manager environment.
+- Move this folder inside your XDG config directory (which is usually ~/.config/).
+
+- Rename this folder from `config_manager` to `home-manager` (I will rename this repo in the future so we can omit this step).
+
+- Update your username and home path in the home.nix file.
+
+- Run `home-manager switch` to update the home manager environment.
 
 #### Changing the default shell to Zsh for Linux users
 
