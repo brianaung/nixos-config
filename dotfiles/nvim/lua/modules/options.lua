@@ -1,5 +1,8 @@
 -- Options
 local o = vim.opt
+local g = vim.g
+
+-- g.loaded_matchparen = 1
 o.tabstop = 2
 o.shiftwidth = 2
 o.softtabstop = 2
@@ -13,7 +16,7 @@ o.showbreak = string.rep(" ", 3)
 o.linebreak = true
 o.termguicolors = true
 o.scrolloff = 5
-o.cursorline = true
+o.cursorline = false
 -- indentation
 o.autoindent = true
 o.cindent = true

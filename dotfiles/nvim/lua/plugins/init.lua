@@ -72,6 +72,7 @@ require('lazy').setup({
       }
     end
   },
+  { 'rose-pine/neovim', name = 'rose-pine' },
   'olivercederborg/poimandres.nvim',
   'lewis6991/gitsigns.nvim',
   'github/copilot.vim',
