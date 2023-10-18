@@ -13,6 +13,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  -- Important!!! Contains neovim related lua functions that many plugins depends on
+  'nvim-lua/plenary.nvim',
+
   -- Highlight, edit, and navigate code
   {
     'nvim-treesitter/nvim-treesitter',
@@ -22,6 +25,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
   -- LSP Configuration & Plugins
   {
     'neovim/nvim-lspconfig',
@@ -32,6 +36,7 @@ require('lazy').setup({
       'jose-elias-alvarez/null-ls.nvim', -- archived so might break in the near future
     },
   },
+
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
@@ -45,12 +50,12 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
-      'nvim-lua/plenary.nvim',
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
       -- Only load if `make` is available. Make sure you have the system
       -- requirements installed.
@@ -64,16 +69,20 @@ require('lazy').setup({
       'nvim-telescope/telescope-file-browser.nvim',
     },
   },
-  -- Others
-  { 'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup {
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      }
-    end
-  },
+
+  -- Others (below are more of a personal uses so feel free to customize)
+  -- Commenter
+  'numToStr/Comment.nvim',
+
+  -- Colorschemes
   { 'rose-pine/neovim', name = 'rose-pine' },
   'olivercederborg/poimandres.nvim',
+
+  -- Git informations
   'lewis6991/gitsigns.nvim',
+
   'github/copilot.vim',
+
+  -- Note taking tool
+  'renerocksai/telekasten.nvim',
 }, {})
