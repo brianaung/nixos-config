@@ -3,8 +3,14 @@ require('Comment').setup {
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
 
+local home = vim.fn.expand("~/notes")
 require('telekasten').setup({
-  home = vim.fn.expand("~/notes"),
+  home = home,
+
+  templates = home .. '/' .. 'templates',
+  template_new_note = home .. '/' .. 'templates/new-note.md',
+
+  template_handling = 'prefer_new_note',
 })
 
 -- Launch panel if nothing is typed after <leader>z
