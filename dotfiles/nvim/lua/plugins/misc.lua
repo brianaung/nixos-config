@@ -90,3 +90,33 @@ require('lualine').setup {
   extensions = {}
 }
 -- /////end Lualine config
+
+
+-- /////start Nvim-Tmux navigator config
+local nvim_tmux_nav = require('nvim-tmux-navigation')
+nvim_tmux_nav.setup {
+  -- disable_when_zoomed = true, -- defaults to false
+  keybindings = {
+    left = "<C-h>",
+    down = "<C-j>",
+    up = "<C-k>",
+    right = "<C-l>",
+    last_active = "<C-\\>",
+    next = "<C-Space>",
+  }
+}
+-- /////end Nvim-Tmux navigator config
+
+
+-- /////start Harpoon config
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>a", mark.add_file)
+vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
+
+-- vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
+-- vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
+-- vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
+-- vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+-- /////end Harpoon config

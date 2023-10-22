@@ -103,6 +103,7 @@ telescope.setup {
 pcall(telescope.load_extension, 'fzf')
 pcall(telescope.load_extension, 'file_browser')
 pcall(telescope.load_extension, 'git_worktree')
+pcall(telescope.load_extension, 'harpoon')
 
 -- Key Mappings
 local map = vim.api.nvim_set_keymap
@@ -133,3 +134,4 @@ map("n", "<leader>gb", "<cmd>lua require 'telescope.builtin'.git_branches{}<cr>"
 map("n", "<leader>fw", "<cmd>lua require 'telescope'.extensions.git_worktree.git_worktrees{}<cr>", opts)
 map("n", "<leader>cw", "<cmd>lua require 'telescope'.extensions.git_worktree.create_git_worktree{}<cr>", opts)
 
+-- Harpoon

@@ -68,12 +68,17 @@ require('lazy').setup({
       },
       'nvim-telescope/telescope-file-browser.nvim',
       'nvim-tree/nvim-web-devicons',
-      -- Git Worktree (integrated with telescope)
-      'ThePrimeagen/git-worktree.nvim',
     },
   },
 
-  -- Others (below are more of a personal uses so feel free to customize)
+  -- Plugins from the one and only Primeagen
+  'ThePrimeagen/git-worktree.nvim',
+  'ThePrimeagen/harpoon',
+
+  -- Others
+  -- Nvim Tmux navigator
+  'alexghergh/nvim-tmux-navigation',
+
   -- Commenter
   'numToStr/Comment.nvim',
 
