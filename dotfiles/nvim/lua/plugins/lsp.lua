@@ -13,14 +13,16 @@ local on_attach = function(client, bufnr)
     end
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
+
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<leader>sh', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- Note: Following commands are moved to use Telescope picker
+  -- nmap('<leader>gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  -- nmap('<leader>gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  -- nmap('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  -- nmap('<leader>gt', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
   -- vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
   --   vim.lsp.buf.format()

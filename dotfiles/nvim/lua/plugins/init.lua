@@ -67,6 +67,7 @@ require('lazy').setup({
         end,
       },
       'nvim-telescope/telescope-file-browser.nvim',
+      'nvim-tree/nvim-web-devicons',
     },
   },
 
