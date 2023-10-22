@@ -1,8 +1,13 @@
 -- Configs for miscellaneous plugins
+
+-- /////start Comment config
 require('Comment').setup {
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
+-- /////end Comment config
 
+
+-- /////start Telekasten config
 local home = vim.fn.expand("~/notes")
 require('telekasten').setup({
   home = home,
@@ -28,3 +33,15 @@ vim.keymap.set("n", "<leader>zn", "<cmd>Telekasten new_note<CR>")
 
 -- Call insert link automatically when we start typing a link
 vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
+-- /////end Telekasten config
+
+
+-- /////start Git Worktree config
+--[[ local worktree = require('git-worktree')
+worktree.on_tree_change(function(op, metadata)
+  if op == worktree.Operations.Switch then
+    print("Switch from " .. metadata.prev_path .. " to " ..metadata.path)
+  end
+end) ]]
+-- /////end Git Worktree config
+
