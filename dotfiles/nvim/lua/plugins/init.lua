@@ -68,6 +68,8 @@ require('lazy').setup({
       },
       'nvim-telescope/telescope-file-browser.nvim',
       'nvim-tree/nvim-web-devicons',
+      -- Git Worktree (integrated with telescope)
+      'ThePrimeagen/git-worktree.nvim',
     },
   },
 

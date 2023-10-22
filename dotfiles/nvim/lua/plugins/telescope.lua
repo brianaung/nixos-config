@@ -102,6 +102,7 @@ telescope.setup {
 -- load extensions
 pcall(telescope.load_extension, 'fzf')
 pcall(telescope.load_extension, 'file_browser')
+pcall(telescope.load_extension, 'git_worktree')
 
 -- Key Mappings
 local map = vim.api.nvim_set_keymap
@@ -126,3 +127,15 @@ map("n", "<leader>d", "<cmd>lua require 'telescope.builtin'.diagnostics{ bufnr=0
 -- Git Pickers
 map("n", "<leader>gs", "<cmd>lua require 'telescope.builtin'.git_status{}<cr>", opts)
 map("n", "<leader>gc", "<cmd>lua require 'telescope.builtin'.git_commits{}<cr>", opts)
+
+-- Git Worktree
+map("n", "<leader>fw", "<cmd>lua require 'telescope'.extensions.git_worktree.git_worktrees{}<cr>", opts)
+map("n", "<leader>cw", "<cmd>lua require 'telescope'.extensions.git_worktree.create_git_worktree{}<cr>", opts)
+
+--[[ local worktree = require('git-worktree')
+worktree.on_tree_change(function(op, metadata)
+  if op == worktree.Operations.Switch then
+    print("Switch from " .. metadata.prev_path .. " to " ..metadata.path)
+  end
+end) ]]
+
