@@ -9,7 +9,7 @@ if vim.g.vscode then
   -- do not load plugins
 else
   -- Load more modules
-  require 'modules.statusline'
+  -- require 'modules.statusline' -- using lualine currently
 
   -- Load plugin configs
   require 'plugins'
