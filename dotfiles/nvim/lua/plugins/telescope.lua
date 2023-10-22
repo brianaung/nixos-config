@@ -121,7 +121,7 @@ map("n", "<leader>/", "<cmd>lua require 'telescope.builtin'.current_buffer_fuzzy
 map("n", "<leader>gd", "<cmd>lua require 'telescope.builtin'.lsp_definitions{}<cr>", opts)
 map("n", "<leader>gi", "<cmd>lua require 'telescope.builtin'.lsp_implementations{}<cr>", opts)
 map("n", "<leader>gr", "<cmd>lua require 'telescope.builtin'.lsp_references{}<cr>", opts)
-map("n", "<leader>gt", "<cmd>lua require 'telescope.builtin'.diagnostics{ bufnr=0}<cr>", opts)
+map("n", "<leader>gt", "<cmd>lua require 'telescope.builtin'.lsp_type_definitions{}<cr>", opts)
 map("n", "<leader>d", "<cmd>lua require 'telescope.builtin'.diagnostics{ bufnr=0}<cr>", opts)
 
 -- Git Pickers
