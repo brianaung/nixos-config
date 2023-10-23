@@ -104,34 +104,3 @@ pcall(telescope.load_extension, 'fzf')
 pcall(telescope.load_extension, 'file_browser')
 pcall(telescope.load_extension, 'git_worktree')
 pcall(telescope.load_extension, 'harpoon')
-
--- Key Mappings
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
--- File Pickers
-map("n", "<leader>fd", "<cmd>lua require 'telescope.builtin'.find_files{}<cr>", opts)
-map("n", "<leader>lg", "<cmd>lua require 'telescope.builtin'.live_grep{}<cr>", opts)
-map("n", "<leader>fe", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser{}<cr>", opts)
-
--- Vim Pickers
-map("n", "<leader>fb", "<cmd>lua require 'telescope.builtin'.buffers{}<cr>", opts)
-map("n", "<leader>/", "<cmd>lua require 'telescope.builtin'.current_buffer_fuzzy_find{}<cr>", opts)
-
--- LSP Pickers
-map("n", "<leader>gd", "<cmd>lua require 'telescope.builtin'.lsp_definitions{}<cr>", opts)
-map("n", "<leader>gi", "<cmd>lua require 'telescope.builtin'.lsp_implementations{}<cr>", opts)
-map("n", "<leader>gr", "<cmd>lua require 'telescope.builtin'.lsp_references{}<cr>", opts)
-map("n", "<leader>gt", "<cmd>lua require 'telescope.builtin'.lsp_type_definitions{}<cr>", opts)
-map("n", "<leader>d", "<cmd>lua require 'telescope.builtin'.diagnostics{ bufnr=0}<cr>", opts)
-
--- Git Pickers
-map("n", "<leader>gs", "<cmd>lua require 'telescope.builtin'.git_status{}<cr>", opts)
-map("n", "<leader>gc", "<cmd>lua require 'telescope.builtin'.git_commits{}<cr>", opts)
-map("n", "<leader>gb", "<cmd>lua require 'telescope.builtin'.git_branches{}<cr>", opts)
-
--- Git Worktree
-map("n", "<leader>fw", "<cmd>lua require 'telescope'.extensions.git_worktree.git_worktrees{}<cr>", opts)
-map("n", "<leader>cw", "<cmd>lua require 'telescope'.extensions.git_worktree.create_git_worktree{}<cr>", opts)
-
--- Harpoon

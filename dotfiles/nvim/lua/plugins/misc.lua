@@ -17,22 +17,6 @@ require('telekasten').setup({
 
   template_handling = 'prefer_new_note',
 })
-
--- Launch panel if nothing is typed after <leader>z
-vim.keymap.set("n", "<leader>z", "<cmd>Telekasten panel<CR>")
-
--- Most used functions
-vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>")
--- vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>")
--- vim.keymap.set("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>")
-vim.keymap.set("n", "<leader>zz", "<cmd>Telekasten follow_link<CR>")
-vim.keymap.set("n", "<leader>zn", "<cmd>Telekasten new_note<CR>")
--- vim.keymap.set("n", "<leader>zc", "<cmd>Telekasten show_calendar<CR>")
-vim.keymap.set("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>")
--- vim.keymap.set("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>")
-
--- Call insert link automatically when we start typing a link
-vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 -- /////end Telekasten config
 
 
@@ -106,17 +90,3 @@ nvim_tmux_nav.setup {
   }
 }
 -- /////end Nvim-Tmux navigator config
-
-
--- /////start Harpoon config
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
-
--- vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
--- vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
--- vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
--- vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
--- /////end Harpoon config
