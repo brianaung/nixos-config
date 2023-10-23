@@ -35,10 +35,14 @@ local opts = { noremap = true, silent = true }
 -- Harpoon
 map("n", "<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>", opts)
 map("n", "<leader>h", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu{}<cr>", opts)
--- map("n", "<C-h>", "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", opts)
--- map("n", "<C-t>", "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", opts)
--- map("n", "<C-n>", "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", opts)
--- map("n", "<C-s>", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)
+for i = 1,5 do
+  map(
+    "n",
+    string.format("<leader>%s", i),
+    string.format("<cmd>lua require 'harpoon.ui'.nav_file(%s)<cr>", i),
+    opts
+  )
+end
 
 -- Telekasten
 map("n", "<leader>z", "<cmd>Telekasten panel<cr>", opts)
@@ -53,7 +57,6 @@ map("n", "<leader>fe", "<cmd>lua require 'telescope'.extensions.file_browser.fil
 
 -- Vim Pickers
 map("n", "<leader>fb", "<cmd>lua require 'telescope.builtin'.buffers{}<cr>", opts)
--- map("n", "<leader>/", "<cmd>lua require 'telescope.builtin'.current_buffer_fuzzy_find{}<cr>", opts)
 
 -- Git Pickers
 map("n", "<leader>gs", "<cmd>lua require 'telescope.builtin'.git_status{}<cr>", opts)
