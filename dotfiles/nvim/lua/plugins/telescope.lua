@@ -7,8 +7,8 @@ local config = require('telescope.config')
 local entry_display = require('telescope.pickers.entry_display')
 local make_entry = require('telescope.make_entry')
 local entry_make = make_entry.gen_from_file({})
-local def_icon = require('nvim-web-devicons').get_icon('fname', { default = true })
-local icon_width = require('plenary.strings').strdisplaywidth(def_icon)
+-- local def_icon = require('nvim-web-devicons').get_icon('fname', { default = true })
+-- local icon_width = require('plenary.strings').strdisplaywidth(def_icon)
 
 -- return filename and the path given the full path
 local get_path_and_tail = function(path)
@@ -21,7 +21,7 @@ local entry_maker = function(line)
   local displayer = entry_display.create({
     separator = ' ',
     items = {
-      { width = icon_width },
+      -- { width = icon_width },
       { width = nil },
       { remaining = true },
     },
@@ -29,10 +29,10 @@ local entry_maker = function(line)
   entry.display = function(et)
     local tail_raw, path_to_display = get_path_and_tail(et.value)
     local tail = tail_raw .. ' '
-    local icon, iconhl = utils.get_devicons(tail_raw)
+    -- local icon, iconhl = utils.get_devicons(tail_raw)
 
     return displayer({
-      { icon, iconhl },
+      -- { icon, iconhl },
       tail,
       { path_to_display, 'TelescopeResultsComment' },
     })

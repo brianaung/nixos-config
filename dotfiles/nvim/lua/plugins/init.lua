@@ -67,7 +67,6 @@ require('lazy').setup({
         end,
       },
       'nvim-telescope/telescope-file-browser.nvim',
-      'nvim-tree/nvim-web-devicons',
     },
   },
 
@@ -86,9 +85,6 @@ require('lazy').setup({
   { 'rose-pine/neovim', name = 'rose-pine' },
   'olivercederborg/poimandres.nvim',
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-
-  -- Statusline
-  'nvim-lualine/lualine.nvim',
 
   -- Git
   'tpope/vim-fugitive',

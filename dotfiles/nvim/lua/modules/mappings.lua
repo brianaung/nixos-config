@@ -35,10 +35,10 @@ local opts = { noremap = true, silent = true }
 -- Harpoon
 map("n", "<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>", opts)
 map("n", "<leader>h", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu{}<cr>", opts)
-map("n", "<C-h>", "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", opts)
-map("n", "<C-t>", "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", opts)
-map("n", "<C-n>", "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", opts)
-map("n", "<C-s>", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)
+-- map("n", "<C-h>", "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", opts)
+-- map("n", "<C-t>", "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", opts)
+-- map("n", "<C-n>", "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", opts)
+-- map("n", "<C-s>", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", opts)
 
 -- Telekasten
 map("n", "<leader>z", "<cmd>Telekasten panel<cr>", opts)
