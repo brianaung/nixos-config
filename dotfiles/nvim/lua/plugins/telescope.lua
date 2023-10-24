@@ -60,19 +60,18 @@ telescope.setup {
     vimgrep_arguments = vimgrep_arguments,
 
     sorting_strategy = "ascending",
-
     results_title = false,
 
-    -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-
-    layout_strategy = "flex",
+    layout_strategy = "bottom_pane",
     layout_config = {
-      horizontal = {
-        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-      },
-      vertical = {
-        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-      },
+      height = 25,
+    },
+
+    border = true,
+    borderchars = {
+      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+      results = { " " },
+      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     },
 
     mappings = {
