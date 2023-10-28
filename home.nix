@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "brian";
-  home.homeDirectory = "/Users/brian"; # path to manage
+  home.username = "brianaung";
+  home.homeDirectory = "/home/brianaung"; # path to manage
 
   home.stateVersion = "23.05";
 
@@ -16,9 +16,9 @@
     pkgs.eza
     pkgs.ripgrep
     pkgs.fzf
+    pkgs.slides
     # language specific
     pkgs.rustup
-    pkgs.slides
   ];
 
   # Manage dotfiles that lives in ~/
@@ -26,6 +26,7 @@
     ".gitconfig".source = ./dotfiles/git/.gitconfig;
     ".zshrc".source = ./dotfiles/zsh/.zshrc;
     ".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
+    ".local/bin/tmux-sessionizer".source = ./dotfiles/bin/tmux-sessionizer;
   };
 
   # Manage dotfiles in XDG config directory

@@ -56,9 +56,9 @@ nix-shell '<home-manager>' -A install
 
 ### Updating the environment
 
-- Move this folder inside your XDG config directory (which is usually ~/.config/).
+- Clone this inside your XDG config directory (which is usually ~/.config/).
 
-- Rename this folder from `config_manager` to `home-manager` (I will rename this repo in the future so we can omit this step).
+- Then rename it from `config_manager` to `home-manager` (I will rename this repo in the future so we can omit this step).
 
 - Update your username and home path in the home.nix file.
 
@@ -102,15 +102,11 @@ Don't forget to update the `.gitconfig` using your credentials.
 
 ### Language Specific Packages
 
-Web Dev Related
+Install whatever language server packages you need. And of course update them accordingly in `lsp.lua` file.
 
-```
-npm i -g vscode-langservers-extracted
-npm i -g typescript typescript-language-server
-```
+### Local Scripts/Commands
 
-Rust Lang
+`/bin` directory stores my custom shell commands. They are automatically linked to `$HOME/.local/bin/...`.
 
-```
-rustup default stable
-```
+`$HOME/.local/bin` has already been added to the path, but you may still need to run `chmod +x <filename>` to make sure they have execution permissions.
+(Currently, whenever you rerun `home-manager switch` command, the execution permissions will need to be reset again which is a bummer. I will try to fix it soon.)

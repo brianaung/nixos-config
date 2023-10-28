@@ -30,6 +30,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
-[ -x "$(command -v tmux)" ] \
-  && [ -z "${TMUX}" ] \
-  && { tmux attach || tmux; } >/dev/null 2>&1
+# [ -x "$(command -v tmux)" ] \
+#   && [ -z "${TMUX}" ] \
+#   && { tmux attach || tmux; } >/dev/null 2>&1
+
+# to run my local script
+export PATH="$HOME/.local/bin:$PATH"
+
+bindkey -s ^f "tmux-sessionizer\n"
