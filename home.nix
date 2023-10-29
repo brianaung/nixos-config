@@ -26,6 +26,7 @@
     ".gitconfig".source = ./dotfiles/git/.gitconfig;
     ".zshrc".source = ./dotfiles/zsh/.zshrc;
     ".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
+    # Link to scripts
     ".local/bin/tmux-sessionizer".source = ./dotfiles/bin/tmux-sessionizer;
   };
 

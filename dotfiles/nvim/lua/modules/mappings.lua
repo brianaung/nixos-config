@@ -27,6 +27,9 @@ nnoremap("gk", "k")
 nnoremap("<cr>", "<cmd>nohl<cr><cr>")
 -- ////////////////////////////////////
 
+-- call tmux sessionizer from vim
+nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
+
 
 -- Plugin Specific Mappings --
 local map = v.api.nvim_set_keymap

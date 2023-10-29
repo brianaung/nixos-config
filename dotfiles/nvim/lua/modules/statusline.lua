@@ -1,29 +1,29 @@
 local v = vim
 
-local reset_group = v.api.nvim_create_augroup('reset_group', {
-  clear = false,
-})
--- ==================
---     Statusline
--- ==================
-
-v.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'FocusGained' }, {
-  desc = 'git branch and LSP errors for the statusline',
+v.api.nvim_create_autocmd({ 'BufEnter', 'DiagnosticChanged' }, {
+  desc = 'Git branch and LSP errors for the statusline',
   callback = function()
     if v.fn.isdirectory '.git' ~= 0 then
       -- always runs in the current directory, rather than in the buffer's directory
       local branch = v.fn.system "git branch --show-current | tr -d '\n'"
-      v.b.branch_name = '  ' .. branch .. ' '
+      v.b.branch_name = branch
     end
 
-    local num_errors = #v.diagnostic.get(0, { severity = v.diagnostic.severity.ERROR })
-    local num_warnings = #v.diagnostic.get(0, { severity = v.diagnostic.severity.WARN })
-    v.b.errors = 'E:' .. num_errors .. ', ' .. 'W:' .. num_warnings
+    local clients = v.lsp.get_active_clients({ buffer = 0 })
+    -- if no clients attached or only copilot is attached then show off status
+    if #clients == 0 or (#clients == 1 and clients[1].name == 'copilot') then
+      v.b.lsp_status = 'LSP: Off'
+    else
+      local num_errors = #v.diagnostic.get(0, { severity = v.diagnostic.severity.ERROR })
+      local num_warnings = #v.diagnostic.get(0, { severity = v.diagnostic.severity.WARN })
+      local num_infos = #v.diagnostic.get(0, { severity = v.diagnostic.severity.INFO })
+      local num_hints = #v.diagnostic.get(0, { severity = v.diagnostic.severity.HINT })
+      v.b.lsp_status = 'LSP: ' .. 'E' .. num_errors .. ', ' .. 'W' .. num_warnings .. ', ' .. 'I' .. num_infos .. ', ' .. 'H' .. num_hints
+    end
 
   end,
-  group = init_group,
 })
 
 v.opt.laststatus = 3 -- use global statusline
 v.opt.statusline =
-  [[%#PmenuSel# %f %#LineNr#%{get(b:,"branch_name","")} %m %= %#CursorColumn# %{get(b:, "errors", "")} %y %p%% ]]
+  [[%{get(b:,"lsp_status","")} %=%<%f [%{get(b:,"branch_name","")}] %h%m%r %=%-14.(%l,%c%V%) %P]]

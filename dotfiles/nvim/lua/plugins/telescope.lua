@@ -81,10 +81,10 @@ telescope.setup {
     },
 
     -- Simple result formatting
-    path_display = function(_, path)
-      local tail = utils.path_tail(path)
-      return string.format("%s (%s)", tail, path)
-    end,
+    -- path_display = function(_, path)
+    --   local tail = utils.path_tail(path)
+    --   return string.format("%s (%s)", tail, path)
+    -- end,
 
     -- files to ignore when fuzzy finding
     file_ignore_patterns = { "node_modules" },
