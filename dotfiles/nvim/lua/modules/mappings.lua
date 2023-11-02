@@ -25,6 +25,9 @@ nnoremap("gk", "k")
 
 -- remove search highlight
 nnoremap("<cr>", "<cmd>nohl<cr><cr>")
+
+nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<C-d>", "<C-d>zz")
 -- ////////////////////////////////////
 
 -- call tmux sessionizer from vim
