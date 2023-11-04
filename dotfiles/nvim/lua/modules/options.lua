@@ -16,7 +16,7 @@ o.showbreak = string.rep(" ", 3)
 o.linebreak = true
 o.termguicolors = true
 o.scrolloff = 5
-o.cursorline = false
+o.cursorline = true
 -- indentation
 o.autoindent = true
 o.cindent = true
@@ -42,3 +42,6 @@ o.formatoptions = o.formatoptions
   + "n" -- Indent past the formatlistpat, not underneath it.
   + "j" -- Auto-remove comments if possible.
   - "2" -- I'm not in gradeschool anymore
+
+o.list = true
+vim.cmd[[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]]

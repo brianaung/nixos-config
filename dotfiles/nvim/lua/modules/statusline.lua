@@ -26,4 +26,5 @@ v.api.nvim_create_autocmd({ 'BufEnter', 'DiagnosticChanged' }, {
 
 v.opt.laststatus = 3 -- use global statusline
 v.opt.statusline =
-  [[%{get(b:,"lsp_status","")} %=%<%f [%{get(b:,"branch_name","")}] %h%m%r %=%-14.(%l,%c%V%) %P]]
+  [[%{get(b:,"lsp_status","")} %=%<%t [%{get(b:,"branch_name","")}] %h%m%r %=%-14.(%l,%c%V%) %P]]
+v.opt.winbar = [[%=%m %f]]

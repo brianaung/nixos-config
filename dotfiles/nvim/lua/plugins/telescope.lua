@@ -62,16 +62,25 @@ telescope.setup {
     sorting_strategy = "ascending",
     results_title = false,
 
-    layout_strategy = "bottom_pane",
+    -- Ivy Theme
+    -- layout_strategy = "bottom_pane",
+    -- layout_config = {
+    --   height = 25,
+    -- },
+    -- border = true,
+    -- borderchars = {
+    --   prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+    --   results = { " " },
+    --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    -- },
+    layout_strategy = "flex",
     layout_config = {
-      height = 25,
-    },
-
-    border = true,
-    borderchars = {
-      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-      results = { " " },
-      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      horizontal = {
+        preview_cutoff = 1,
+      },
+      vertical = {
+        preview_cutoff = 1,
+      },
     },
 
     mappings = {

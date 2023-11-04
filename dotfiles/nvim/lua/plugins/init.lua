@@ -81,10 +81,13 @@ require('lazy').setup({
   -- Commenter
   'numToStr/Comment.nvim',
 
+  'tpope/vim-surround',
+
   -- Colorschemes
   { 'rose-pine/neovim', name = 'rose-pine' },
   'olivercederborg/poimandres.nvim',
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+  'tjdevries/colorbuddy.vim',
+  'tjdevries/gruvbuddy.nvim',
 
   -- Git
   'tpope/vim-fugitive',
