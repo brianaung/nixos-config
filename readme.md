@@ -2,13 +2,7 @@
 
 ## About
 
-This houses the configurations for most of the development tools that I use. I use this to quickly setup my environment whenever I need to work on a new device, so I tried to make this as minimal as I can. Feel free to copy whatever you'd like, or follow the steps below if you want to replicate my setup.
-
-My current tools:
-
-- Neovim
-- Tmux
-- Zsh with Starship
+My configuration files for easy setup. Feel free to copy whatever you'd like, or follow the steps below to replicate my setup.
 
 Always a WIP :)
 
@@ -56,13 +50,13 @@ nix-shell '<home-manager>' -A install
 
 ### Updating the environment
 
-- Clone this inside your XDG config directory (which is usually ~/.config/).
+1. Clone this inside your XDG config directory (which is usually ~/.config/).
 
-- Then rename it from `config_manager` to `home-manager` (I will rename this repo in the future so we can omit this step).
+2. Then rename it from `config_manager` to `home-manager` (I will rename this repo in the future so we can omit this step).
 
-- Update your username and home path in the home.nix file.
+3. Update your username and home path in the home.nix file.
 
-- Run `home-manager switch` to update the home manager environment.
+4. Run `home-manager switch` to update the home manager environment.
 
 #### Changing the default shell to Zsh for Linux users
 
@@ -83,30 +77,38 @@ Logout and login again for changes to take effect.
 
 ### Node
 
-Installing NVM.
+Installing NVM and node.
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
-```
-
-Installing Node and other global packages.
-
-```
 nvm install node
-npm i -g yarn
 ```
+
+### Zsh
+
+To get the fish-like autosuggestions:
+
+1. Git clone zsh-autosuggestions repository.
+
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+```
+
+2. And start a new terminal session.
 
 ### Git
 
-Don't forget to update the `.gitconfig` using your credentials.
+Don't forget to update the `.gitconfig` using your credentials (should hide them but nah who cares).
 
-### Language Specific Packages
-
-Install whatever language server packages you need. And of course update them accordingly in `lsp.lua` file.
-
-### Local Scripts/Commands
+### Local scripts/commands
 
 `/bin` directory stores my custom shell commands. They are automatically linked to `$HOME/.local/bin/...`.
 
 `$HOME/.local/bin` has already been added to the path, but you may still need to run `chmod +x <filename>` to make sure they have execution permissions.
-(Currently, whenever you rerun `home-manager switch` command, the execution permissions will need to be reset again which is a bummer. I will try to fix it soon.)
+
+### My favourite keybindings for command line
+
+- `Ctrl-f`: Opens up a fzf session searching through `work`, `projects`,and `playground` directories. It will then send the selected directory to tmux for it to either create or attach to an existing session.
+- `Ctrl-r`: Fuzzy find and paste the selected command line history.
+- `Ctrl-t`: Fuzzy find and paste the selected files and directories.
+- `Ctrl-y`: Accept suggestion.
