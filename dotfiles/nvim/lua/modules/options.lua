@@ -16,7 +16,7 @@ o.showbreak = string.rep(" ", 3)
 o.linebreak = true
 o.termguicolors = true
 o.scrolloff = 5
-o.cursorline = true
+o.cursorline = false
 -- indentation
 o.autoindent = true
 o.cindent = true

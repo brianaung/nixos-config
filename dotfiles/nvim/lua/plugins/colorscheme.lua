@@ -3,21 +3,22 @@
 --   disable_italics = false,
 -- }
 
--- require('rose-pine').setup {
---   variant = 'main',
---   disable_italics = true,
---   disable_background = true,
---   disable_float_background = true,
--- }
+require('rose-pine').setup {
+  variant = 'main',
+  disable_italics = true,
+  disable_background = true,
+  disable_float_background = true,
+}
 
 -- vim.cmd("colorscheme poimandres")
--- vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme rose-pine")
 
-require('colorbuddy').colorscheme('gruvbuddy')
+-- require('colorbuddy').colorscheme('gruvbuddy')
 
--- manually overriding gruvbuddy
+-- -- manually overriding gruvbuddy
 -- vim.cmd[[
 -- hi LineNr none
 -- hi SignColumn none
--- hi Normal guibg=#111111
+-- " hi Normal guibg=none
+-- " hi Visual gui=reverse " fun stuff
 -- ]]
