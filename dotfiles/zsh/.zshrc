@@ -7,14 +7,25 @@ bindkey -M viins kj vi-cmd-mode
 
 eval "$(starship init zsh)"
 
-# tab completion
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^y' autosuggest-accept
 autoload -Uz compinit
 compinit
-zmodload -i zsh/complist
-bindkey -M menuselect '^o' accept-and-infer-next-history
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# completion (trying zsh-autosuggestions now)
+# autoload -Uz compinit
+# compinit
+# zmodload -i zsh/complist
+# bindkey -M menuselect '^o' accept-and-infer-next-history
+# zstyle ':completion:*:*:*:*:*' menu select
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
 
 # aliases
 # use exa for prettier ls outputs

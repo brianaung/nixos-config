@@ -16,9 +16,8 @@
     pkgs.eza
     pkgs.ripgrep
     pkgs.fzf
-    pkgs.slides
     pkgs.xclip
-    # language specific
+    pkgs.slides
     pkgs.rustup
   ];
 

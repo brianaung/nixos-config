@@ -2,7 +2,7 @@ add_newline = false
 command_timeout = 2000
 
 format = '''
-$character$directory $git_branch$git_status '''
+$character$directory$git_branch$git_status'''
 
 [character]
 success_symbol = '[➜](bold green)'
@@ -11,11 +11,11 @@ vimcmd_symbol = '[V](bold green)'
 
 [directory]
 truncation_length = 1
-format = '[$path](bold cyan)'
+format = '[$path](bold cyan) '
 
 [git_branch]
 # symbol = ""
 format = '[[git:\(](bold blue)$branch](bold red)[\)](bold blue)'
 
 [git_status]
-format = '([$all_status$ahead_behind](bold red))'
+format = '([$all_status$ahead_behind](bold red)) '
