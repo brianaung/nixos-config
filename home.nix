@@ -19,6 +19,7 @@
     pkgs.xclip
     pkgs.slides
     pkgs.rustup
+    pkgs.go
   ];
 
   # Manage dotfiles that lives in ~/

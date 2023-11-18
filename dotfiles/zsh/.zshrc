@@ -2,10 +2,11 @@
 setopt AUTO_CD
 setopt NO_CASE_GLOB
 
+# vim mode
 set -o vi
 bindkey -M viins kj vi-cmd-mode
 
-eval "$(starship init zsh)"
+bindkey -s ^f "tmux-sessionizer\n"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^y' autosuggest-accept
@@ -33,6 +34,9 @@ alias ls='eza --classify'
 alias la='eza --all --classify'
 alias ll='eza --long --all --classify'
 
+# starship prompt
+eval "$(starship init zsh)"
+
 # nvm installation
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -48,4 +52,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # to run my local script
 export PATH="$HOME/.local/bin:$PATH"
 
-bindkey -s ^f "tmux-sessionizer\n"
+# add GOPATH
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+

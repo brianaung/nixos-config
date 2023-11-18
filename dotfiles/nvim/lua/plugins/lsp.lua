@@ -25,6 +25,7 @@ vim.diagnostic.config{
 local servers = {
   tsserver = {},
   lua_ls = {},
+  gopls = {},
   rust_analyzer = {
     diagnostics = {
       enable = true;

@@ -1,6 +1,9 @@
 -- Configure Treesitter
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
+    "go",
+    "gosum",
+    "gomod",
     "typescript",
     "tsx",
     "lua",

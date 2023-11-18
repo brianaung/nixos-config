@@ -43,5 +43,5 @@ o.formatoptions = o.formatoptions
   + "j" -- Auto-remove comments if possible.
   - "2" -- I'm not in gradeschool anymore
 
-o.list = true
-vim.cmd[[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]]
+-- o.list = true
+-- vim.cmd[[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]]
