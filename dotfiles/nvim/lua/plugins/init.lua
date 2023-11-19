@@ -17,13 +17,8 @@ require('lazy').setup({
   'nvim-lua/plenary.nvim',
 
   -- Highlight, edit, and navigate code
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
 
   -- LSP Configuration & Plugins
   {
