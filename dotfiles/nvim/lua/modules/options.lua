@@ -21,8 +21,6 @@ o.cursorline = false
 o.autoindent = true
 o.cindent = true
 o.wrap = true
--- sync clipboard between OS and nvim
-o.clipboard = 'unnamedplus'
 -- decrease update time
 o.updatetime = 250
 o.timeoutlen = 300

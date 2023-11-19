@@ -21,7 +21,6 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
     },
     build = ':TSUpdate',
   },
@@ -75,26 +74,20 @@ require('lazy').setup({
   'ThePrimeagen/harpoon',
 
   -- Others
-  -- Nvim Tmux navigator
-  'alexghergh/nvim-tmux-navigation',
-
-  -- Commenter
-  'numToStr/Comment.nvim',
-
   'tpope/vim-surround',
-
+  'github/copilot.vim',
+  'alexghergh/nvim-tmux-navigation',
+  'tpope/vim-fugitive',
+  'lewis6991/gitsigns.nvim',
+  {
+    'numToStr/Comment.nvim',
+    dependencies = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
+  },
   -- Colorschemes
   { 'rose-pine/neovim', name = 'rose-pine' },
   'olivercederborg/poimandres.nvim',
   'tjdevries/colorbuddy.vim',
   'tjdevries/gruvbuddy.nvim',
-
-  -- Git
-  'tpope/vim-fugitive',
-  'lewis6991/gitsigns.nvim',
-
-  'github/copilot.vim',
-
-  -- Note taking tool
-  'renerocksai/telekasten.nvim',
 }, {})
