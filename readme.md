@@ -1,10 +1,10 @@
 # config_manager
 
-## About
-
-My configuration files for easy setup. Feel free to copy whatever you'd like, or follow the steps below to replicate my setup.
+This is my configuration files and tools. Feel free to take anything you think is cool. You can also follow the steps below if you want to replicate my setup.
 
 Always a WIP :)
+
+> My nvim config keeps growing and growing despite trying to keep it as minimal as possible. So, I have since refactored everything into one `init.lua` file (currently sitting at around 300LOC) and removing everything that I am not actively using. You can still have a look at the `/old` directory or my [old repo](https://github.com/brianaung/.dotfiles) to see how I used to structure everything.
 
 ## Setup
 
@@ -52,11 +52,9 @@ nix-shell '<home-manager>' -A install
 
 1. Clone this inside your XDG config directory (which is usually ~/.config/).
 
-2. Then rename it from `config_manager` to `home-manager` (I will rename this repo in the future so we can omit this step).
+2. Update your username and home path in the home.nix file.
 
-3. Update your username and home path in the home.nix file.
-
-4. Run `home-manager switch` to update the home manager environment.
+3. Run `home-manager switch` to update the home manager environment.
 
 #### Changing the default shell to Zsh for Linux users
 
@@ -73,9 +71,11 @@ echo $(which zsh) | sudo tee -a /etc/shells
 chsh -s $(which zsh)
 ```
 
-Logout and login again for changes to take effect.
+Login again for changes to take effect.
 
-### Node
+### Others
+
+#### Node
 
 Installing NVM and node.
 
@@ -84,7 +84,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 nvm install node
 ```
 
-### Zsh
+#### Zsh
 
 To get the fish-like autosuggestions:
 
@@ -96,19 +96,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 
 2. And start a new terminal session.
 
-### Git
-
-Don't forget to update the `.gitconfig` using your credentials (should hide them but nah who cares).
-
-### Local scripts/commands
+#### Custom scripts/commands
 
 `/bin` directory stores my custom shell commands. They are automatically linked to `$HOME/.local/bin/...`.
 
 `$HOME/.local/bin` has already been added to the path, but you may still need to run `chmod +x <filename>` to make sure they have execution permissions.
-
-### My favourite keybindings for command line
-
-- `Ctrl-f`: Opens up a fzf session searching through `work`, `projects`,and `playground` directories. It will then send the selected directory to tmux for it to either create or attach to an existing session.
-- `Ctrl-r`: Fuzzy find and paste the selected command line history.
-- `Ctrl-t`: Fuzzy find and paste the selected files and directories.
-- `Ctrl-y`: Accept suggestion.
