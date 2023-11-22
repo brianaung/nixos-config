@@ -10,6 +10,7 @@ local get_mapper = function(mode)
 end
 local nmap = get_mapper("n")
 local imap = get_mapper("i")
+local vmap = get_mapper("v")
 
 g.mapleader = " "
 g.maplocalleader = " "
@@ -26,13 +27,23 @@ nmap("<C-d>", "<C-d>zz")
 
 nmap("<cr>", "<cmd>nohl<cr><cr>")
 
+nmap("<leader>fe", "<cmd>Ex<cr><cr>")
+
+vmap("<leader>y", '"+y')
+
+o.timeoutlen = 500
+
 o.number = true
 o.relativenumber = true
+o.signcolumn = "yes"
 
 o.tabstop = 2
 o.shiftwidth = 2
 o.softtabstop = 2
 o.expandtab = true
+
+o.ignorecase = true
+o.smartcase = true
 
 o.breakindent = true
 o.showbreak = string.rep(" ", 3)
@@ -83,6 +94,8 @@ require("lazy").setup {
       local servers = {
         gopls = {},
         lua_ls = {},
+        tsserver = {},
+        tailwindcss = {},
       }
       require("mason").setup()
       require("mason-lspconfig").setup {
@@ -96,13 +109,14 @@ require("lazy").setup {
           end,
         },
       }
-      nmap("[d", "<cmd>lua vim.diagnostic.goto_prev{}<cr>")
-      nmap("]d", "<cmd>lua vim.diagnostic.goto_next{}<cr>")
-      nmap("<leader>se", "<cmd>lua vim.diagnostic.open_float{}<cr>")
-      nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename{}<cr>")
+      nmap("<leader>gd", "<cmd>lua vim.lsp.buf.definition{}<cr>")
       nmap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action{}<cr>")
+      nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename{}<cr>")
       nmap("K", "<cmd>lua vim.lsp.buf.hover{}<cr>")
       nmap("<leader>sh", "<cmd>lua vim.lsp.buf.signature_help{}<cr>")
+      nmap("<leader>se", "<cmd>lua vim.diagnostic.open_float{}<cr>")
+      nmap("[d", "<cmd>lua vim.diagnostic.goto_prev{}<cr>")
+      nmap("]d", "<cmd>lua vim.diagnostic.goto_next{}<cr>")
     end,
   },
 
@@ -147,6 +161,9 @@ require("lazy").setup {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
     config = function()
       local actions = require("telescope.actions")
       require("telescope").setup {
@@ -158,8 +175,10 @@ require("lazy").setup {
           },
         },
       }
+      pcall(require("telescope").load_extension, "fzf")
       nmap("<leader>fd", "<cmd>lua require 'telescope.builtin'.find_files{}<cr>")
       nmap("<leader>lg", "<cmd>lua require 'telescope.builtin'.live_grep{}<cr>")
+      nmap("<leader>fb", "<cmd>lua require 'telescope.builtin'.buffers{}<cr>")
     end,
   },
 
@@ -175,43 +194,48 @@ require("lazy").setup {
     end,
   },
 
-  -- linting and autoformat
+  -- formatter
   {
-    "nvimdev/guard.nvim",
-    dependencies = { "nvimdev/guard-collection" },
+    "stevearc/conform.nvim",
     config = function()
-      local ft = require("guard.filetype")
-      ft("lua"):fmt("stylua")
-      ft("go"):fmt("gofmt")
-      ft("typescript,javascript,typescriptreact"):fmt("prettier")
-
-      require("guard").setup {
-        fmt_on_save = true,
-        lsp_as_default_formatter = true,
+      require("conform").setup {
+        formatters_by_ft = {
+          lua = { "stylua" },
+          go = { "gofmt" },
+          javascript = { "prettierd" },
+          typescript = { "prettierd" },
+          typescriptreact = { "prettierd" },
+        },
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
       }
     end,
   },
 
   -- colorscheme
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "rebelot/kanagawa.nvim",
     config = function()
-      require("rose-pine").setup {
-        variant = "main",
-        disable_italics = true,
-        disable_background = true,
-        disable_float_background = true,
+      require("kanagawa").setup {
+        keywordStyle = { italic = false },
+        transparent = true,
+        background = {
+          dark = "dragon",
+        },
       }
-      v.cmd("colorscheme rose-pine")
+      v.cmd([[
+        colorscheme kanagawa
+        hi LineNr guibg=none
+        hi SignColumn guibg=none
+      ]])
     end,
   },
 
   {
     "numToStr/Comment.nvim",
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
+    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     config = function()
       require("Comment").setup {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
