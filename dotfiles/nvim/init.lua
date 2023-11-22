@@ -191,6 +191,7 @@ require("lazy").setup {
       for i = 1, 5 do
         nmap(string.format("<leader>%s", i), string.format("<cmd>lua require 'harpoon.ui'.nav_file(%s)<cr>", i))
       end
+      nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
     end,
   },
 
