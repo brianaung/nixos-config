@@ -2,6 +2,12 @@ local v = vim
 local o = v.opt
 local g = v.g
 
+-- globals that i always expect to be available
+P = function(thing)
+  print(v.print(thing))
+  return thing
+end
+
 local get_mapper = function(mode)
   return function(lhs, rhs, opts)
     opts = opts or { noremap = true, silent = true }
@@ -35,7 +41,6 @@ o.timeoutlen = 500
 
 o.number = true
 o.relativenumber = true
-o.signcolumn = "yes"
 
 o.tabstop = 2
 o.shiftwidth = 2
@@ -74,11 +79,29 @@ require("lazy").setup {
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "go", "lua" },
+        ensure_installed = { "go", "lua", "typescript", "rust", "c", "zig" },
         highlight = { enable = true },
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@conditional.outer",
+              ["ic"] = "@conditional.inner",
+              ["aa"] = "@parameter.outer",
+              ["ia"] = "@parameter.inner",
+            },
+          },
+        },
       }
     end,
   },
@@ -89,6 +112,7 @@ require("lazy").setup {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      { "folke/neodev.nvim", opts = {} },
     },
     config = function()
       local servers = {
@@ -97,12 +121,23 @@ require("lazy").setup {
         tsserver = {},
         tailwindcss = {},
       }
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local handlers = {
+        ["textDocument/hover"] = v.lsp.with(v.lsp.handlers.hover, { border = "rounded" }),
+        ["textDocument/signatureHelp"] = v.lsp.with(v.lsp.handlers.signature_help, { border = "rounded" }),
+      }
+      v.diagnostic.config {
+        float = { border = "rounded" },
+      }
+      require("neodev").setup()
       require("mason").setup()
       require("mason-lspconfig").setup {
         ensure_installed = v.tbl_keys(servers),
         handlers = {
           function(server_name)
             require("lspconfig")[server_name].setup {
+              handlers = handlers,
+              capabilities = capabilities,
               settings = servers[server_name],
               filetypes = (servers[server_name] or {}).filetypes,
             }
@@ -123,7 +158,11 @@ require("lazy").setup {
   -- completion
   {
     "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+    },
     config = function()
       local cmp = require("cmp")
       cmp.setup {
@@ -152,6 +191,7 @@ require("lazy").setup {
         },
         sources = cmp.config.sources {
           { name = "nvim_lsp" },
+          { name = "luasnip" },
         },
       }
     end,
@@ -215,25 +255,6 @@ require("lazy").setup {
     end,
   },
 
-  -- colorscheme
-  {
-    "rebelot/kanagawa.nvim",
-    config = function()
-      require("kanagawa").setup {
-        keywordStyle = { italic = false },
-        transparent = true,
-        background = {
-          dark = "dragon",
-        },
-      }
-      v.cmd([[
-        colorscheme kanagawa
-        hi LineNr guibg=none
-        hi SignColumn guibg=none
-      ]])
-    end,
-  },
-
   {
     "numToStr/Comment.nvim",
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -286,9 +307,31 @@ require("lazy").setup {
     end,
   },
 
+  -- colorscheme
+  {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("kanagawa").setup {
+        keywordStyle = { italic = false },
+        transparent = true,
+        background = {
+          dark = "dragon",
+        },
+      }
+      v.cmd([[
+        colorscheme kanagawa
+        hi LineNr guibg=none
+        hi SignColumn guibg=none
+      ]])
+    end,
+  },
+
   "tpope/vim-surround",
   "tpope/vim-fugitive",
   "github/copilot.vim",
+
+  -- custom plugins
+  -- { dir = "~/playground/stackmap.nvim" },
 }
 
 -- custom statusline
