@@ -123,8 +123,14 @@ require("lazy").setup {
       }
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local handlers = {
-        ["textDocument/hover"] = v.lsp.with(v.lsp.handlers.hover, { border = "rounded" }),
-        ["textDocument/signatureHelp"] = v.lsp.with(v.lsp.handlers.signature_help, { border = "rounded" }),
+        ["textDocument/hover"] = v.lsp.with(
+          v.lsp.handlers.hover,
+          { border = "rounded" }
+        ),
+        ["textDocument/signatureHelp"] = v.lsp.with(
+          v.lsp.handlers.signature_help,
+          { border = "rounded" }
+        ),
       }
       v.diagnostic.config {
         float = { border = "rounded" },
@@ -166,6 +172,11 @@ require("lazy").setup {
     config = function()
       local cmp = require("cmp")
       cmp.setup {
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
@@ -216,7 +227,10 @@ require("lazy").setup {
         },
       }
       pcall(require("telescope").load_extension, "fzf")
-      nmap("<leader>fd", "<cmd>lua require 'telescope.builtin'.find_files{}<cr>")
+      nmap(
+        "<leader>fd",
+        "<cmd>lua require 'telescope.builtin'.find_files{}<cr>"
+      )
       nmap("<leader>lg", "<cmd>lua require 'telescope.builtin'.live_grep{}<cr>")
       nmap("<leader>fb", "<cmd>lua require 'telescope.builtin'.buffers{}<cr>")
     end,
@@ -229,7 +243,10 @@ require("lazy").setup {
       nmap("<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>")
       nmap("<leader>h", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu{}<cr>")
       for i = 1, 5 do
-        nmap(string.format("<leader>%s", i), string.format("<cmd>lua require 'harpoon.ui'.nav_file(%s)<cr>", i))
+        nmap(
+          string.format("<leader>%s", i),
+          string.format("<cmd>lua require 'harpoon.ui'.nav_file(%s)<cr>", i)
+        )
       end
       nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
     end,
@@ -260,7 +277,9 @@ require("lazy").setup {
     dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     config = function()
       require("Comment").setup {
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+        pre_hook = require(
+          "ts_context_commentstring.integrations.comment_nvim"
+        ).create_pre_hook(),
       }
       require("ts_context_commentstring").setup {
         enable_autocmd = false,
@@ -314,14 +333,30 @@ require("lazy").setup {
       require("kanagawa").setup {
         keywordStyle = { italic = false },
         transparent = true,
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none",
+                float = "none",
+              },
+            },
+          },
+        },
+        overrides = function(_)
+          return {
+            TelescopePromptBorder = { bg = "none" },
+            TelescopeResultsBorder = { bg = "none" },
+            TelescopePreviewBorder = { bg = "none" },
+          }
+        end,
+        theme = "dragon",
         background = {
           dark = "dragon",
         },
       }
       v.cmd([[
         colorscheme kanagawa
-        hi LineNr guibg=none
-        hi SignColumn guibg=none
       ]])
     end,
   },
@@ -347,10 +382,14 @@ v.api.nvim_create_autocmd({ "BufEnter", "DiagnosticChanged" }, {
     if #clients == 0 or (#clients == 1 and clients[1].name == "copilot") then
       v.b.lsp_status = "LSP: Off"
     else
-      local num_errors = #v.diagnostic.get(0, { severity = v.diagnostic.severity.ERROR })
-      local num_warnings = #v.diagnostic.get(0, { severity = v.diagnostic.severity.WARN })
-      local num_infos = #v.diagnostic.get(0, { severity = v.diagnostic.severity.INFO })
-      local num_hints = #v.diagnostic.get(0, { severity = v.diagnostic.severity.HINT })
+      local num_errors =
+        #v.diagnostic.get(0, { severity = v.diagnostic.severity.ERROR })
+      local num_warnings =
+        #v.diagnostic.get(0, { severity = v.diagnostic.severity.WARN })
+      local num_infos =
+        #v.diagnostic.get(0, { severity = v.diagnostic.severity.INFO })
+      local num_hints =
+        #v.diagnostic.get(0, { severity = v.diagnostic.severity.HINT })
       v.b.lsp_status = "LSP: "
         .. "E"
         .. num_errors
@@ -368,4 +407,5 @@ v.api.nvim_create_autocmd({ "BufEnter", "DiagnosticChanged" }, {
 })
 o.laststatus = 3
 o.winbar = [[%=%m %f]]
-o.statusline = [[%{get(b:,"lsp_status","")} %=%<%t [%{get(b:,"branch_name","")}] %h%m%r %=%-14.(%l,%c%V%) %P]]
+o.statusline =
+  [[%{get(b:,"lsp_status","")} %=%<%t [%{get(b:,"branch_name","")}] %h%m%r %=%-14.(%l,%c%V%) %P]]
