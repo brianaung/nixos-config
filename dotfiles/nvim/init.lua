@@ -1,25 +1,14 @@
-local v = vim
-local o = v.opt
-local g = v.g
+require("globals")
 
--- globals that i always expect to be available
-P = function(thing)
-  print(v.print(thing))
-  return thing
-end
+local o = vim.opt
 
-local get_mapper = function(mode)
-  return function(lhs, rhs, opts)
-    opts = opts or { noremap = true, silent = true }
-    v.api.nvim_set_keymap(mode, lhs, rhs, opts)
-  end
-end
-local nmap = get_mapper("n")
-local imap = get_mapper("i")
-local vmap = get_mapper("v")
+local nmap = require("mapper").nmap
+local imap = require("mapper").imap
+local vmap = require("mapper").vmap
 
-g.mapleader = " "
-g.maplocalleader = " "
+-- mappings
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 imap("kj", "<esc>")
 
@@ -37,6 +26,7 @@ nmap("<leader>fe", "<cmd>Ex<cr><cr>")
 
 vmap("<leader>y", '"+y')
 
+-- options
 o.timeoutlen = 500
 
 o.number = true
@@ -51,18 +41,18 @@ o.ignorecase = true
 o.smartcase = true
 
 o.breakindent = true
-o.showbreak = string.rep(" ", 3)
+o.showbreak = "   "
 o.linebreak = true
 
 o.formatoptions = o.formatoptions
   - "o" -- O and o, don't continue comments
   + "r" -- But do continue when pressing enter.
-v.cmd("au BufEnter * set fo-=o")
+vim.cmd("au BufEnter * set fo-=o")
 
 -- plugins
-local lazypath = v.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not v.loop.fs_stat(lazypath) then
-  v.fn.system {
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
     "git",
     "clone",
     "--filter=blob:none",
@@ -123,22 +113,22 @@ require("lazy").setup {
       }
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local handlers = {
-        ["textDocument/hover"] = v.lsp.with(
-          v.lsp.handlers.hover,
+        ["textDocument/hover"] = vim.lsp.with(
+          vim.lsp.handlers.hover,
           { border = "rounded" }
         ),
-        ["textDocument/signatureHelp"] = v.lsp.with(
-          v.lsp.handlers.signature_help,
+        ["textDocument/signatureHelp"] = vim.lsp.with(
+          vim.lsp.handlers.signature_help,
           { border = "rounded" }
         ),
       }
-      v.diagnostic.config {
+      vim.diagnostic.config {
         float = { border = "rounded" },
       }
-      require("neodev").setup()
+      require("neodev").setup {}
       require("mason").setup()
       require("mason-lspconfig").setup {
-        ensure_installed = v.tbl_keys(servers),
+        ensure_installed = vim.tbl_keys(servers),
         handlers = {
           function(server_name)
             require("lspconfig")[server_name].setup {
@@ -343,7 +333,7 @@ require("lazy").setup {
             },
           },
         },
-        overrides = function(_)
+        overrides = function(colors)
           return {
             TelescopePromptBorder = { bg = "none" },
             TelescopeResultsBorder = { bg = "none" },
@@ -355,7 +345,7 @@ require("lazy").setup {
           dark = "dragon",
         },
       }
-      v.cmd([[
+      vim.cmd([[
         colorscheme kanagawa
       ]])
     end,
@@ -369,43 +359,36 @@ require("lazy").setup {
   -- { dir = "~/playground/stackmap.nvim" },
 }
 
--- custom statusline
-v.api.nvim_create_autocmd({ "BufEnter", "DiagnosticChanged" }, {
-  desc = "Git branch and LSP errors for the statusline",
-  callback = function()
-    if v.fn.isdirectory(".git") ~= 0 then
-      local branch = v.fn.system("git branch --show-current | tr -d '\n'")
-      v.b.branch_name = branch
-    end
+function LspStatus()
+  local ret = ""
+  local clients = vim.lsp.get_active_clients { buffer = 0 }
 
-    local clients = v.lsp.get_active_clients { buffer = 0 }
-    if #clients == 0 or (#clients == 1 and clients[1].name == "copilot") then
-      v.b.lsp_status = "LSP: Off"
-    else
-      local num_errors =
-        #v.diagnostic.get(0, { severity = v.diagnostic.severity.ERROR })
-      local num_warnings =
-        #v.diagnostic.get(0, { severity = v.diagnostic.severity.WARN })
-      local num_infos =
-        #v.diagnostic.get(0, { severity = v.diagnostic.severity.INFO })
-      local num_hints =
-        #v.diagnostic.get(0, { severity = v.diagnostic.severity.HINT })
-      v.b.lsp_status = "LSP: "
-        .. "E"
-        .. num_errors
-        .. ", "
-        .. "W"
-        .. num_warnings
-        .. ", "
-        .. "I"
-        .. num_infos
-        .. ", "
-        .. "H"
-        .. num_hints
-    end
-  end,
-})
+  if #clients == 0 or (#clients == 1 and clients[1].name == "copilot") then
+    ret = "LSP: Off"
+  else
+    local num_errors =
+      #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+    local num_warnings =
+      #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+    local num_infos =
+      #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+    local num_hints =
+      #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+    ret = "LSP: "
+      .. "E"
+      .. num_errors
+      .. ", "
+      .. "W"
+      .. num_warnings
+      .. ", "
+      .. "I"
+      .. num_infos
+      .. ", "
+      .. "H"
+      .. num_hints
+  end
+end
+
 o.laststatus = 3
 o.winbar = [[%=%m %f]]
-o.statusline =
-  [[%{get(b:,"lsp_status","")} %=%<%t [%{get(b:,"branch_name","")}] %h%m%r %=%-14.(%l,%c%V%) %P]]
+-- o.statusline = [[%{LspStatus()} %=%<%t %h%m%r %=%-14.(%l,%c%V%) %P]]
