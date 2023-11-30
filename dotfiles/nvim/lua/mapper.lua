@@ -3,7 +3,7 @@ local M = {}
 local get_mapper = function(mode)
   return function(lhs, rhs, opts)
     opts = opts or { noremap = true, silent = true }
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+    vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
 

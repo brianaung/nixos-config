@@ -4,7 +4,7 @@ return {
   "ThePrimeagen/harpoon",
   config = function()
     nmap("<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>")
-    nmap("<leader>h", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu{}<cr>")
+    nmap("<leader>e", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu{}<cr>")
     for i = 1, 5 do
       nmap(
         string.format("<leader>%s", i),
