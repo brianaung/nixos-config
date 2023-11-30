@@ -1,3 +1,5 @@
+local nmap = require("mapper").nmap
+
 return {
   {
     "alexghergh/nvim-tmux-navigation",
@@ -16,22 +18,14 @@ return {
   },
 
   {
-    "lewis6991/gitsigns.nvim",
+    "mbbill/undotree",
     config = function()
-      require("gitsigns").setup {
-        signs = {
-          add = { text = "+" },
-          change = { text = "~" },
-          delete = { text = "_" },
-          topdelete = { text = "‾" },
-          changedelete = { text = "~" },
-        },
-      }
+      nmap("<leader>u", "<cmd>UndotreeToggle | UndotreeFocus<cr>")
     end,
   },
 
   "tpope/vim-surround",
-  "tpope/vim-fugitive",
+
   "github/copilot.vim",
 
   -- custom plugins
