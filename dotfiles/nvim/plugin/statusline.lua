@@ -19,11 +19,11 @@ function LspStatus()
 end
 
 function GitBranch()
-  local branch = vim.fn.systemlist("git branch --show-current")[1]
-  if branch == "" then
-    return ""
+  if vim.fn.isdirectory(".git") ~= 0 then
+    local branch = vim.fn.systemlist("git branch --show-current")[1]
+    return string.format("[%s]", branch)
   end
-  return string.format("[%s]", branch)
+  return ""
 end
 
 vim.opt.laststatus = 3
