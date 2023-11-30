@@ -1,10 +1,8 @@
-# config_manager
+# home-manager
 
 This is my configuration files and tools. Feel free to take anything you think is cool. You can also follow the steps below if you want to replicate my setup.
 
 Always a WIP :)
-
-> My nvim config keeps growing and growing despite trying to keep it as minimal as possible. So, I have since refactored everything into one `init.lua` file (currently sitting at around 300LOC) and removing everything that I am not actively using. You can still have a look at the `/old` directory or my [old repo](https://github.com/brianaung/.dotfiles) to see how I used to structure everything.
 
 ## Setup
 
