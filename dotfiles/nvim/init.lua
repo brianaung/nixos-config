@@ -1,4 +1,4 @@
-require("globals")
+require("utils.globals")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -18,4 +18,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: This will load the config from the dir `lua/custom/`.
-require("lazy").setup("custom")
+require("lazy").setup("plugins")

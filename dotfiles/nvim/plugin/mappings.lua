@@ -1,6 +1,6 @@
-local nmap = require("mapper").nmap
-local imap = require("mapper").imap
-local vmap = require("mapper").vmap
+local nmap = require("utils.mapper").nmap
+local imap = require("utils.mapper").imap
+local vmap = require("utils.mapper").vmap
 
 imap("kj", "<esc>")
 

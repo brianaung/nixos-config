@@ -1,4 +1,4 @@
-local nmap = require("mapper").nmap
+local nmap = require("utils.mapper").nmap
 
 return {
   "ThePrimeagen/harpoon",
