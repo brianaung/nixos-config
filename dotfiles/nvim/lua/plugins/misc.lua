@@ -24,9 +24,14 @@ return {
     end,
   },
 
-  "tpope/vim-surround",
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.g.copilot_enabled = false -- i will call you when i need you
+    end,
+  },
 
-  "github/copilot.vim",
+  "tpope/vim-surround",
 
   -- custom plugins
   -- { dir = "~/playground/stackmap.nvim" },
