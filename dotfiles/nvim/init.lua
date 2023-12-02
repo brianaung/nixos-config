@@ -1,9 +1,9 @@
-require("utils.globals")
+require("globals")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- manage lazy
+-- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -17,8 +17,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: This will load the config from the dir `lua/custom/`.
+-- NOTE: This will load the config from the dir `lua/plugins/`.
+-- Same as: `require("lazy").setup({{import = "plugins"}})`
 require("lazy").setup("plugins")
 
+-- load vim configs
+require("configs.options")
+require("configs.mappings")
+require("configs.statusline")
+
 -- load my custom snippets
-require("snippets")
+require("snippets.lua")
