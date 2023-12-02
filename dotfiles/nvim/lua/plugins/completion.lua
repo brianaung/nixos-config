@@ -7,6 +7,8 @@ return {
   },
   config = function()
     local cmp = require("cmp")
+    local ls = require("luasnip")
+
     cmp.setup {
       snippet = {
         expand = function(args)
@@ -34,12 +36,34 @@ return {
           },
           { "i", "c" }
         ),
+        -- luasnip mappings
+        ["<C-k>"] = cmp.mapping(function()
+          if ls.expand_or_jumpable() then
+            ls.expand_or_jump()
+          end
+        end, { "i", "s" }),
+        ["<C-j>"] = cmp.mapping(function()
+          if ls.jumpable(-1) then
+            ls.jump(-1)
+          end
+        end, { "i", "s" }),
+        ["<C-l>"] = cmp.mapping(function()
+          if ls.choice_active() then
+            ls.change_choice(1)
+          end
+        end),
         ["<tab>"] = cmp.config.disable,
       },
       sources = cmp.config.sources {
         { name = "nvim_lsp" },
         { name = "luasnip" },
       },
+    }
+
+    -- luasnip config
+    ls.config.set_config {
+      history = true,
+      updateevents = "TextChanged,TextChangedI",
     }
   end,
 }

@@ -19,3 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: This will load the config from the dir `lua/custom/`.
 require("lazy").setup("plugins")
+
+-- load my custom snippets
+require("snippets")
