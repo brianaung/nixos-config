@@ -28,3 +28,4 @@ require("configs.statusline")
 
 -- load my custom snippets
 require("snippets.lua")
+require("snippets.go")
