@@ -5,6 +5,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         go = { "gofmt" },
+        ocaml = { "ocamlformat" },
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },

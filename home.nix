@@ -20,6 +20,7 @@
     pkgs.slides
     pkgs.rustup
     pkgs.go
+    pkgs.opam
   ];
 
   # Manage dotfiles that lives in ~/

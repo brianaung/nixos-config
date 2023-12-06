@@ -11,6 +11,7 @@ return {
     local servers = {
       gopls = {},
       lua_ls = {},
+      ocamllsp = {},
       tsserver = {},
       tailwindcss = {},
     }
