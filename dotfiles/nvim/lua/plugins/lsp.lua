@@ -19,8 +19,10 @@ return {
     local on_attach = function(_, bufnr)
       local opts = { noremap = true, silent = true, buffer = bufnr }
       nmap("<leader>gd", "<cmd>lua vim.lsp.buf.definition{}<cr>", opts)
+      nmap("<leader>gr", "<cmd>lua vim.lsp.buf.references{}<cr>", opts)
       nmap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action{}<cr>", opts)
-      nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename{}<cr>", opts)
+      nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+      nmap("<leader>fmt", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
       nmap("K", "<cmd>lua vim.lsp.buf.hover{}<cr>", opts)
       nmap("<leader>sh", "<cmd>lua vim.lsp.buf.signature_help{}<cr>", opts)
       nmap("<leader>se", "<cmd>lua vim.diagnostic.open_float{}<cr>", opts)
