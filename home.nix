@@ -8,6 +8,7 @@
 
   # Install Nix packages into your environment.
   home.packages = [
+    pkgs.alacritty
     pkgs.neovim
     pkgs.tmux
     pkgs.zsh
@@ -19,6 +20,7 @@
     pkgs.xclip
     pkgs.slides
     pkgs.ranger
+    pkgs.zathura
     # using with i3
     pkgs.feh
     pkgs.autorandr
@@ -41,6 +43,7 @@
   xdg.configFile = {
     "i3".source = ./dotfiles/i3;
     "i3status".source = ./dotfiles/i3status;
+    "alacritty".source = ./dotfiles/alacritty;
     "nvim".source = ./dotfiles/nvim;
     "tmux".source = ./dotfiles/tmux;
     "autorandr".source = ./dotfiles/autorandr;

@@ -34,6 +34,16 @@ Run the home manager installation command.
 nix-shell '<home-manager>' -A install
 ```
 
+## Install [NixGL](https://github.com/nix-community/nixGL)
+To fix issues launching programs using OpenGL.
+```
+nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
+nix-env -iA nixgl.auto.nixGLDefault   # or replace `nixGLDefault` with your desired wrapper
+```
+Check [here](https://github.com/nix-community/nixGL?tab=readme-ov-file#nix-channel-recommended) for more info.
+
+You can then run the program using `nixGL <program>` command.
+
 ## Updating the environment
 1. Clone this inside your XDG config directory (which is usually ~/.config/).
 2. Update your username and home path in the home.nix file.
