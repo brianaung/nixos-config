@@ -18,6 +18,12 @@
     pkgs.fzf
     pkgs.xclip
     pkgs.slides
+    pkgs.ranger
+    # using with i3
+    pkgs.feh
+    pkgs.autorandr
+    pkgs.picom
+    # lang
     pkgs.rustup
     pkgs.go
     pkgs.opam
@@ -27,15 +33,21 @@
   home.file = {
     ".gitconfig".source = ./dotfiles/git/.gitconfig;
     ".zshrc".source = ./dotfiles/zsh/.zshrc;
-    ".tmux.conf".source = ./dotfiles/tmux/.tmux.conf;
     # Link to scripts
     ".local/bin/tmux-sessionizer".source = ./dotfiles/bin/tmux-sessionizer;
   };
 
   # Manage dotfiles in XDG config directory
   xdg.configFile = {
+    "i3".source = ./dotfiles/i3;
+    "i3status".source = ./dotfiles/i3status;
     "nvim".source = ./dotfiles/nvim;
+    "tmux".source = ./dotfiles/tmux;
+    "autorandr".source = ./dotfiles/autorandr;
     "starship.toml".source = ./dotfiles/starship/starship.toml;
+    # ranger needs writable access to conf dir so cannot symlink the entire dir
+    "ranger/rc.conf".source = ./dotfiles/ranger/rc.conf;
+    "ranger/rifle.conf".source = ./dotfiles/ranger/rifle.conf;
   };
 
   # Let Home Manager install and manage itself.

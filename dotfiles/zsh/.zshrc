@@ -2,6 +2,11 @@
 setopt AUTO_CD
 setopt NO_CASE_GLOB
 
+# starship prompt
+eval "$(starship init zsh)"
+
+eval $(opam env)
+
 # vim mode
 set -o vi
 bindkey -M viins kj vi-cmd-mode
@@ -34,9 +39,6 @@ alias ls='eza --classify'
 alias la='eza --all --classify'
 alias ll='eza --long --all --classify'
 
-# starship prompt
-eval "$(starship init zsh)"
-
 # nvm installation
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -56,4 +58,4 @@ export PATH="$HOME/.local/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
-eval $(opam env)
+export EDITOR="nvim"
