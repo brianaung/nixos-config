@@ -29,6 +29,8 @@
     pkgs.rustup
     pkgs.go
     pkgs.opam
+    # misc
+    pkgs.dbeaver
   ];
 
   # Manage dotfiles that lives in ~/
