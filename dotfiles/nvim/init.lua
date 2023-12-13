@@ -17,13 +17,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: This will load the config from the dir `lua/plugins/`.
--- Same as: `require("lazy").setup({{import = "plugins"}})`
-require("lazy").setup("plugins")
+-- You can just do `require("lazy").setup("plugins")`,
+-- But I want to have the ability to comment out just one line to temporarily disable them.
+require("lazy").setup {
+  { import = "plugins.treesitter" },
+  { import = "plugins.telescope" },
+  { import = "plugins.harpoon" },
+  { import = "plugins.lsp" },
+  { import = "plugins.completion" },
+  { import = "plugins.formatter" },
+  { import = "plugins.colorscheme" },
+  { import = "plugins.misc" },
+}
 
 -- load vim configs
 require("configs.options")
-require("configs.mappings")
+require("configs.keymaps")
 require("configs.statusline")
 
 -- load my custom snippets

@@ -9,19 +9,10 @@ return {
           all = {
             ui = {
               bg_gutter = "none",
-              float = "none",
             },
           },
         },
       },
-      overrides = function(_)
-        return {
-          TelescopePromptBorder = { bg = "none" },
-          TelescopeResultsBorder = { bg = "none" },
-          TelescopePreviewBorder = { bg = "none" },
-        }
-      end,
-      theme = "dragon",
       background = {
         dark = "dragon",
       },

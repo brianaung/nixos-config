@@ -5,7 +5,6 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     local servers = {
@@ -33,29 +32,12 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-    local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        { border = "rounded" }
-      ),
-      ["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        { border = "rounded" }
-      ),
-    }
-    vim.diagnostic.config {
-      float = { border = "rounded" },
-    }
-
-    require("neodev").setup {}
-
     require("mason").setup()
     require("mason-lspconfig").setup {
       ensure_installed = vim.tbl_keys(servers),
       handlers = {
         function(server_name)
           require("lspconfig")[server_name].setup {
-            handlers = handlers,
             capabilities = capabilities,
             on_attach = on_attach,
             settings = servers[server_name],

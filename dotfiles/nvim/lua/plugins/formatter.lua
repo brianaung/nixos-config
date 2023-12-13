@@ -1,3 +1,5 @@
+local nmap = require("utils.mapper").nmap
+
 return {
   "stevearc/conform.nvim",
   config = function()
@@ -10,10 +12,10 @@ return {
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
       },
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
     }
+    nmap(
+      "<leader>ff",
+      "<cmd>lua require('conform').format { async = true, lsp_fallback = true }<cr>"
+    )
   end,
 }

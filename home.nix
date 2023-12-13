@@ -25,6 +25,7 @@
     pkgs.feh
     pkgs.autorandr
     pkgs.picom
+    pkgs.flameshot
     # lang
     pkgs.rustup
     pkgs.go

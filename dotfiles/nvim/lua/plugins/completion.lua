@@ -6,19 +6,13 @@ return {
     "saadparwaiz1/cmp_luasnip",
   },
   config = function()
+    vim.opt.completeopt = { "menuone", "noselect" }
+
     local cmp = require("cmp")
     local ls = require("luasnip")
 
     cmp.setup {
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
+      completion = { autocomplete = false }, -- i wanna trigger it myself
       mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item {
           behavior = cmp.SelectBehavior.Insert,
@@ -27,7 +21,7 @@ return {
           behavior = cmp.SelectBehavior.Insert,
         },
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-y>"] = cmp.mapping(
           cmp.mapping.confirm {
@@ -36,6 +30,8 @@ return {
           },
           { "i", "c" }
         ),
+        ["<C-space>"] = cmp.mapping { i = cmp.mapping.complete() },
+        ["<tab>"] = cmp.config.disable,
         -- luasnip mappings
         ["<C-k>"] = cmp.mapping(function()
           if ls.expand_or_jumpable() then
@@ -52,11 +48,15 @@ return {
             ls.change_choice(1)
           end
         end),
-        ["<tab>"] = cmp.config.disable,
       },
       sources = cmp.config.sources {
         { name = "nvim_lsp" },
         { name = "luasnip" },
+      },
+      snippet = {
+        expand = function(args)
+          require("luasnip").lsp_expand(args.body)
+        end,
       },
     }
 
