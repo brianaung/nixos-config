@@ -6,8 +6,6 @@ return {
     "saadparwaiz1/cmp_luasnip",
   },
   config = function()
-    vim.opt.completeopt = { "menuone", "noselect" }
-
     local cmp = require("cmp")
     local ls = require("luasnip")
 

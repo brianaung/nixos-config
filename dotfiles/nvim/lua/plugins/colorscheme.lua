@@ -1,24 +1,11 @@
 return {
-  "rebelot/kanagawa.nvim",
-  config = function()
-    require("kanagawa").setup {
-      keywordStyle = { italic = false },
-      transparent = true,
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          },
-        },
-      },
-      background = {
-        dark = "dragon",
-      },
-    }
+  "echasnovski/mini.base16",
+  version = "*",
+  init = function()
     vim.cmd([[
-      colorscheme kanagawa
+    colorscheme myscheme
+    hi Pmenu guibg=#574852
+    hi NormalFloat guibg=#574852
     ]])
   end,
 }

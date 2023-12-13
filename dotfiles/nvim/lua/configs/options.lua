@@ -5,6 +5,8 @@ o.timeoutlen = 500
 o.number = true
 o.relativenumber = true
 
+o.cursorline = true
+
 o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = 4
@@ -16,6 +18,10 @@ o.smartcase = true
 o.breakindent = true
 o.showbreak = "   "
 o.linebreak = true
+
+o.termguicolors = true
+
+o.completeopt = { "menuone", "noselect" }
 
 -- i trust tj
 o.formatoptions = o.formatoptions
