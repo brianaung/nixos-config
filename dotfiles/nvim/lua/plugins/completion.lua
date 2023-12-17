@@ -10,7 +10,7 @@ return {
     local ls = require("luasnip")
 
     cmp.setup {
-      completion = { autocomplete = false }, -- i wanna trigger it myself
+      -- completion = { autocomplete = false }, -- i wanna trigger it myself
       mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item {
           behavior = cmp.SelectBehavior.Insert,
