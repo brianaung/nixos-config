@@ -3,9 +3,9 @@ return {
   version = "*",
   init = function()
     vim.cmd([[
-    colorscheme myscheme
-    hi Pmenu guibg=#574852
-    hi NormalFloat guibg=#574852
+      colorscheme myscheme
+      hi Pmenu guibg=#3B2B36
+      hi NormalFloat guibg=#3B2B36
     ]])
   end,
 }

@@ -12,7 +12,18 @@ return {
       lua_ls = {},
       ocamllsp = {},
       tsserver = {},
-      tailwindcss = {},
+      tailwindcss = {
+        filetypes = { "templ" },
+        init_options = { userLanguages = { templ = "html" } },
+      },
+      templ = {},
+    }
+
+    -- register file extensions
+    vim.filetype.add {
+      extension = {
+        templ = "templ",
+      },
     }
 
     local on_attach = function(_, bufnr)
@@ -42,6 +53,7 @@ return {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
+            init_options = (servers[server_name] or {}).init_options,
           }
         end,
       },

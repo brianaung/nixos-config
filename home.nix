@@ -20,12 +20,13 @@
     pkgs.xclip
     pkgs.slides
     pkgs.ranger
-    pkgs.zathura
+    pkgs.websocat
     # using with i3
     pkgs.feh
     pkgs.autorandr
     pkgs.picom
     pkgs.flameshot
+    pkgs.zathura
     # lang
     pkgs.rustup
     pkgs.go
