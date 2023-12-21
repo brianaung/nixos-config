@@ -14,7 +14,5 @@ nmap("<C-d>", "<C-d>zz")
 
 nmap("<cr>", "<cmd>nohl<cr><cr>")
 
-nmap("<leader>fe", "<cmd>Ex<cr><cr>")
-
 vmap("<leader>y", '"+y')
 nmap("<leader>p", '"+p')

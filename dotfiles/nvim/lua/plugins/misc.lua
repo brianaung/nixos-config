@@ -2,6 +2,20 @@ local nmap = require("utils.mapper").nmap
 
 return {
   {
+    "echasnovski/mini.files",
+    version = "*",
+    config = function()
+      require("mini.files").setup {
+        mappings = {
+          go_in = "",
+          go_out = "",
+        },
+      }
+      nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
+    end,
+  },
+
+  {
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup {
@@ -24,12 +38,12 @@ return {
     end,
   },
 
-  {
-    "github/copilot.vim",
-    config = function()
-      vim.g.copilot_enabled = false -- i will call you when i need you
-    end,
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   config = function()
+  --     vim.g.copilot_enabled = false -- i will call you when i need you
+  --   end,
+  -- },
 
   {
     "lewis6991/gitsigns.nvim",
