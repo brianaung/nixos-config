@@ -17,4 +17,5 @@ function LspStatus()
 end
 
 o.laststatus = 3
-o.statusline = [[%{luaeval("LspStatus()")} %=%<%f %h%m%r %=%-14.(%l,%c%V%) %P]]
+o.statusline =
+  [[%{luaeval("LspStatus()")} %=%<%t %{FugitiveStatusline()} %h%m%r %=%-14.(%l,%c%V%) %P]]
