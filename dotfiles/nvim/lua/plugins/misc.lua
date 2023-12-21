@@ -5,31 +5,19 @@ return {
     "echasnovski/mini.files",
     version = "*",
     config = function()
-      require("mini.files").setup {
-        mappings = {
-          go_in = "",
-          go_out = "",
-        },
-      }
+      require("mini.files").setup()
       nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
     end,
   },
 
   {
-    "alexghergh/nvim-tmux-navigation",
+    "tpope/vim-fugitive",
     config = function()
-      require("nvim-tmux-navigation").setup {
-        keybindings = {
-          left = "<C-h>",
-          down = "<C-j>",
-          up = "<C-k>",
-          right = "<C-l>",
-          last_active = "<C-\\>",
-          next = "<C-Space>",
-        },
-      }
+      nmap("<leader>gs", "<cmd>G<cr>")
     end,
   },
+
+  "tpope/vim-surround",
 
   {
     "mbbill/undotree",
@@ -37,13 +25,6 @@ return {
       nmap("<leader>u", "<cmd>UndotreeToggle | UndotreeFocus<cr>")
     end,
   },
-
-  -- {
-  --   "github/copilot.vim",
-  --   config = function()
-  --     vim.g.copilot_enabled = false -- i will call you when i need you
-  --   end,
-  -- },
 
   {
     "lewis6991/gitsigns.nvim",
@@ -61,14 +42,26 @@ return {
   },
 
   {
-    "tpope/vim-fugitive",
+    "alexghergh/nvim-tmux-navigation",
     config = function()
-      nmap("<leader>gs", "<cmd>G<cr>")
+      require("nvim-tmux-navigation").setup {
+        keybindings = {
+          left = "<C-h>",
+          down = "<C-j>",
+          up = "<C-k>",
+          right = "<C-l>",
+        },
+      }
     end,
   },
 
-  "tpope/vim-surround",
+  -- {
+  --   "github/copilot.vim",
+  --   config = function()
+  --     vim.g.copilot_enabled = false -- i will call you when i need you
+  --   end,
+  -- },
 
   -- custom plugins
-  -- { dir = "~/playground/stackmap.nvim" },
+  -- { dir = "~/projects/ugly.nvim" },
 }

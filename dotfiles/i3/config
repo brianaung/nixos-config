@@ -42,11 +42,13 @@ exec --no-startup-id ~/.fehbg
 exec --no-startup-id google-chrome
 exec --no-startup-id nixGL alacritty
 exec --no-startup-id 'Applications/./Obsidian.AppImage'
-exec_always --no-startup-id zathura
+exec --no-startup-id zathura
 assign [class="^Google-chrome$"] 1
 assign [class="^Alacritty$"] 2
 assign [class="^obsidian$"] 3
 assign [class="^Zathura$"] 4
+
+focus_follows_mouse no
 
 # compositor
 exec_always --no-startup-id picom &

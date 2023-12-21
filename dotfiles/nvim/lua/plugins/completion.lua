@@ -11,6 +11,10 @@ return {
 
     cmp.setup {
       -- completion = { autocomplete = false }, -- i wanna trigger it myself
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item {
           behavior = cmp.SelectBehavior.Insert,

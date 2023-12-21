@@ -33,6 +33,7 @@
     pkgs.opam
     # misc
     pkgs.dbeaver
+    pkgs.brave
   ];
 
   # Manage dotfiles that lives in ~/

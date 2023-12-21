@@ -43,6 +43,20 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+    local handlers = {
+      ["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        { border = "rounded" }
+      ),
+      ["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        { border = "rounded" }
+      ),
+    }
+    vim.diagnostic.config {
+      float = { border = "rounded" },
+    }
+
     require("mason").setup()
     require("mason-lspconfig").setup {
       ensure_installed = vim.tbl_keys(servers),
@@ -51,6 +65,7 @@ return {
           require("lspconfig")[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
+            handlers = handlers,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
             init_options = (servers[server_name] or {}).init_options,
