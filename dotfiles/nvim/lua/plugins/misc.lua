@@ -5,7 +5,12 @@ return {
     "echasnovski/mini.files",
     version = "*",
     config = function()
-      require("mini.files").setup()
+      require("mini.files").setup {
+        mappings = {
+          go_in = "",
+          go_in_plus = "l",
+        },
+      }
       nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
     end,
   },

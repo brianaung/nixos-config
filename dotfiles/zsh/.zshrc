@@ -59,3 +59,4 @@ export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
 export EDITOR="nvim"
+export BROWSER="brave"
