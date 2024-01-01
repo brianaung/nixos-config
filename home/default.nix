@@ -28,12 +28,6 @@
 
   # Install Nix packages into your environment.
   home.packages = [
-    pkgs.alacritty
-    pkgs.neovim
-    pkgs.tmux
-    pkgs.zsh
-    pkgs.starship
-    pkgs.git
     pkgs.eza
     pkgs.ripgrep
     pkgs.fzf
@@ -59,18 +53,17 @@
   # Manage dotfiles that lives in ~/
   home.file = {
     # Link to scripts
-    ".local/bin/tmux-sessionizer".source = ./xdg_config/bin/tmux-sessionizer;
+    ".local/bin/tmux-sessionizer".source = ../xdg_config/bin/tmux-sessionizer;
   };
 
   # Manage dotfiles in XDG config directory
   xdg.configFile = {
-    "i3".source = ./xdg_config/i3;
-    "i3status".source = ./xdg_config/i3status;
-    "nvim".source = ./xdg_config/nvim;
-    "autorandr".source = ./xdg_config/autorandr;
+    "i3".source = ../xdg_config/i3;
+    "i3status".source = ../xdg_config/i3status;
+    "autorandr".source = ../xdg_config/autorandr;
     # ranger needs writable access to conf dir so cannot symlink the entire dir
-    "ranger/rc.conf".source = ./xdg_config/ranger/rc.conf;
-    "ranger/rifle.conf".source = ./xdg_config/ranger/rifle.conf;
+    "ranger/rc.conf".source = ../xdg_config/ranger/rc.conf;
+    "ranger/rifle.conf".source = ../xdg_config/ranger/rifle.conf;
   };
 
   home.sessionVariables = {
