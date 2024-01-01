@@ -37,10 +37,20 @@
     brave
     dbeaver
 
-    ripgrep
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
     fzf
+    ripgrep
+    fd
     eza
     xclip
+    unzip
+    gzip
+    gnutar
+    curl
+    wget
+    gnumake
+    gcc
     ranger
 
     feh
