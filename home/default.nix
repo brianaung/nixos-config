@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, libs, inputs, ... }:
 
 {
   imports = [
@@ -26,37 +26,32 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  # Install Nix packages into your environment.
-  home.packages = [
-    pkgs.eza
-    pkgs.ripgrep
-    pkgs.fzf
-    pkgs.xclip
-    pkgs.slides
-    pkgs.ranger
-    pkgs.websocat
-    # using with i3
-    pkgs.feh
-    pkgs.autorandr
-    pkgs.picom
-    pkgs.flameshot
-    pkgs.zathura
-    # lang
-    pkgs.rustup
-    pkgs.go
-    pkgs.opam
-    # misc
-    pkgs.dbeaver
-    pkgs.brave
-  ];
-
-  # Manage dotfiles that lives in ~/
-  home.file = {
-    # Link to scripts
-    ".local/bin/tmux-sessionizer".source = ../xdg_config/bin/tmux-sessionizer;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    TERMINAL = "alacritty";
+    BROWSER = "brave";
   };
 
-  # Manage dotfiles in XDG config directory
+  # Install Nix packages into your environment.
+  home.packages = with pkgs; [
+    brave
+    dbeaver
+
+    ripgrep
+    fzf
+    eza
+    xclip
+    ranger
+
+    feh
+    autorandr
+    picom
+    flameshot
+    zathura
+  ];
+
+  home.file = {};
+
   xdg.configFile = {
     "i3".source = ../xdg_config/i3;
     "i3status".source = ../xdg_config/i3status;
@@ -64,12 +59,6 @@
     # ranger needs writable access to conf dir so cannot symlink the entire dir
     "ranger/rc.conf".source = ../xdg_config/ranger/rc.conf;
     "ranger/rifle.conf".source = ../xdg_config/ranger/rifle.conf;
-  };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    TERMINAL = "alacritty";
-    BROWSER = "brave";
   };
 
   # Let Home Manager install and manage itself.
