@@ -67,32 +67,32 @@ o.formatoptions = o.formatoptions
 	- "2" -- I'm not in gradeschool anymore
 vim.cmd("au BufEnter * set fo-=o")
 
-o.list = true
+-- o.list = true
 vim.cmd([[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])
 
 -- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
+	vim.fn.system {
 		"git",
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
 		"--branch=stable", -- latest stable release
 		lazypath,
-	})
+	}
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- You can just do `require("lazy").setup("plugins")`,
 -- But I want to have the ability to comment out just one line to temporarily disable them.
-require("lazy").setup({
+require("lazy").setup {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter.configs").setup {
 				ensure_installed = { "go", "lua", "typescript" },
 				highlight = {
 					enable = true,
@@ -118,7 +118,7 @@ require("lazy").setup({
 						},
 					},
 				},
-			})
+			}
 		end,
 	},
 
@@ -153,36 +153,30 @@ require("lazy").setup({
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-			-- local handlers = {
-			--   ["textDocument/hover"] = vim.lsp.with(
-			--     vim.lsp.handlers.hover,
-			--     { border = "rounded" }
-			--   ),
-			--   ["textDocument/signatureHelp"] = vim.lsp.with(
-			--     vim.lsp.handlers.signature_help,
-			--     { border = "rounded" }
-			--   ),
-			-- }
-			-- vim.diagnostic.config {
-			--   float = { border = "rounded" },
-			-- }
+			local handlers = {
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+			}
+			vim.diagnostic.config {
+				float = { border = "rounded" },
+			}
 
 			require("mason").setup()
-			require("mason-lspconfig").setup({
+			require("mason-lspconfig").setup {
 				ensure_installed = vim.tbl_keys(servers),
 				handlers = {
 					function(server_name)
-						require("lspconfig")[server_name].setup({
+						require("lspconfig")[server_name].setup {
 							capabilities = capabilities,
 							on_attach = on_attach,
-							-- handlers = handlers,
+							handlers = handlers,
 							settings = servers[server_name],
 							filetypes = (servers[server_name] or {}).filetypes,
 							init_options = (servers[server_name] or {}).init_options,
-						})
+						}
 					end,
 				},
-			})
+			}
 		end,
 	},
 
@@ -197,30 +191,30 @@ require("lazy").setup({
 			local cmp = require("cmp")
 			local ls = require("luasnip")
 
-			cmp.setup({
+			cmp.setup {
 				-- completion = { autocomplete = false }, -- i wanna trigger it myself
 				window = {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = {
-					["<C-n>"] = cmp.mapping.select_next_item({
+					["<C-n>"] = cmp.mapping.select_next_item {
 						behavior = cmp.SelectBehavior.Insert,
-					}),
-					["<C-p>"] = cmp.mapping.select_prev_item({
+					},
+					["<C-p>"] = cmp.mapping.select_prev_item {
 						behavior = cmp.SelectBehavior.Insert,
-					}),
+					},
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-u>"] = cmp.mapping.scroll_docs(4),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<C-y>"] = cmp.mapping(
-						cmp.mapping.confirm({
+						cmp.mapping.confirm {
 							behavior = cmp.ConfirmBehavior.Insert,
 							select = true,
-						}),
+						},
 						{ "i", "c" }
 					),
-					["<C-space>"] = cmp.mapping({ i = cmp.mapping.complete() }),
+					["<C-space>"] = cmp.mapping { i = cmp.mapping.complete() },
 					["<tab>"] = cmp.config.disable,
 					-- luasnip mappings
 					["<C-k>"] = cmp.mapping(function()
@@ -239,29 +233,29 @@ require("lazy").setup({
 						end
 					end),
 				},
-				sources = cmp.config.sources({
+				sources = cmp.config.sources {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-				}),
+				},
 				snippet = {
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)
 					end,
 				},
-			})
+			}
 
 			-- luasnip config
-			ls.config.set_config({
+			ls.config.set_config {
 				history = true,
 				updateevents = "TextChanged,TextChangedI",
-			})
+			}
 		end,
 	},
 
 	{
 		"stevearc/conform.nvim",
 		config = function()
-			require("conform").setup({
+			require("conform").setup {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					go = { "gofmt" },
@@ -274,7 +268,7 @@ require("lazy").setup({
 					async = true,
 					-- timeout_ms = 500,
 				},
-			})
+			}
 		end,
 	},
 
@@ -287,13 +281,13 @@ require("lazy").setup({
 		},
 		config = function()
 			local actions = require("telescope.actions")
-			require("telescope").setup({
+			require("telescope").setup {
 				defaults = {
 					mappings = {
 						i = { ["<esc>"] = actions.close },
 					},
 				},
-			})
+			}
 			pcall(require("telescope").load_extension, "fzf")
 			nmap("<leader>fd", "<cmd>lua require 'telescope.builtin'.find_files()<cr>")
 			nmap("<leader>lg", "<cmd>lua require 'telescope.builtin'.live_grep()<cr>")
@@ -317,18 +311,23 @@ require("lazy").setup({
 		"echasnovski/mini.files",
 		version = "*",
 		config = function()
-			require("mini.files").setup({
+			require("mini.files").setup {
 				mappings = {
 					go_in = "",
 					go_in_plus = "l",
 				},
-			})
+			}
 			nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
 		end,
 	},
 
 	{
 		"RRethy/nvim-base16",
+		config = function()
+			require("base16-colorscheme").with_config {
+				telescope = false,
+			}
+		end,
 		init = function()
 			vim.cmd("colorscheme base16-gruvbox-material-dark-hard")
 		end,
@@ -353,7 +352,7 @@ require("lazy").setup({
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("gitsigns").setup({
+			require("gitsigns").setup {
 				signs = {
 					add = { text = "+" },
 					change = { text = "~" },
@@ -361,7 +360,7 @@ require("lazy").setup({
 					topdelete = { text = "‾" },
 					changedelete = { text = "~" },
 				},
-			})
+			}
 		end,
 	},
-})
+}
