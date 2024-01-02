@@ -16,6 +16,7 @@
   # Most programs will use colors from here, except neovim, for consistency.
   # But it is quick to update neovim as well since I will be using base16 for both.
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-hard;
+  # colorScheme = inputs.nix-colors.colorSchemes.ayu-mirage;
 
   home.username = "brianaung";
   home.homeDirectory = "/home/brianaung";
@@ -56,9 +57,20 @@
     gcc
     ranger
 
-    feh
     autorandr
+    feh
     picom
+		pavucontrol
+
+		# testing
+		# libnotify
+
+		# I don't really need this tbh. I will only call them using i3 keybinds so.
+		# dex
+		# xss-lock
+		# network-manager-applet
+		# dmenu
+		# i3status
   ];
 
   xdg.configFile = {
