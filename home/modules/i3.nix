@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, root, ... }:
 
 let
 	mod = "Mod4";
@@ -16,7 +16,9 @@ in with pkgs; {
 				{ command = "${networkmanagerapplet}/bin/nm-applet"; notification = false; }
 				{ command = "${pasystray}/bin/pasystray"; notification = false; }
 				{ command = "systemctl --user restart dunst.service"; always = true; notification = false; }
+
 				{ command = "${autorandr}/bin/autorandr --change"; always = true; notification = false; }
+				{ command = "${feh}/bin/feh --no-fehbg --bg-fill '${root}/walls/wall3.jpg'"; always = true; notification = false; }
 			];
 
 			focus.followMouse = false;
@@ -27,6 +29,11 @@ in with pkgs; {
 				names = [ "JetBrains Mono Nerd Font" ];
 				style = "Regular";
 				size = 9.0;
+			};
+
+			gaps = {
+				inner = 4;
+				outer = 4;
 			};
 
 			colors = {
