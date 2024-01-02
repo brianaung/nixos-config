@@ -1,9 +1,10 @@
-{ config, pkgs, libs, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
+    ./modules/i3.nix
     ./modules/alacritty.nix
     ./modules/tmux.nix
     ./modules/neovim.nix
@@ -36,6 +37,8 @@
   home.packages = with pkgs; [
     brave
     dbeaver
+    zathura
+    flameshot
 
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
@@ -56,15 +59,9 @@
     feh
     autorandr
     picom
-    flameshot
-    zathura
   ];
 
-  home.file = {};
-
   xdg.configFile = {
-    "i3".source = ../xdg_config/i3;
-    "i3status".source = ../xdg_config/i3status;
     "autorandr".source = ../xdg_config/autorandr;
     # ranger needs writable access to conf dir so cannot symlink the entire dir
     "ranger/rc.conf".source = ../xdg_config/ranger/rc.conf;
