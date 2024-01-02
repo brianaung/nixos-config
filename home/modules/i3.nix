@@ -11,7 +11,7 @@ in {
 			modifier = mod;
 
 			fonts = {
-				name = [ "JetBrains Mono Nerd Font" ];
+				names = [ "JetBrains Mono Nerd Font" ];
 				style = "Regular";
 				size = 9.0;
 			};
