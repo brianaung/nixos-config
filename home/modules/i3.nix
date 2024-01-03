@@ -21,6 +21,7 @@ in {
 
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 				{ command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${root}/walls/wall3.jpg"; always = true; notification = false; }
+				{ command = "${pkgs.picom}/bin/picom"; always = true; notification = false; }
 			];
 
 			focus.followMouse = false;
