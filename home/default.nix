@@ -21,7 +21,7 @@
   home.username = "brianaung";
   home.homeDirectory = "/home/brianaung";
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
   nix = {
     package = pkgs.nix;
@@ -30,8 +30,8 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "alacritty";
     BROWSER = "brave";
+    TERMINAL = "alacritty";
   };
 
   # Install Nix packages into your environment.

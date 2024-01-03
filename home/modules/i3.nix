@@ -2,23 +2,25 @@
 
 let
 	mod = "Mod4";
-in with pkgs; {
+in {
 	xsession.windowManager.i3 = {
 		enable = true;
-		package = i3;
+		package = pkgs.i3;
 
 		config = {
 			modifier = mod;
 
+			terminal = "alacritty";
+
 			startup = [
-				{ command = "${dex}/bin/dex --autostart --environment i3"; notification = false; }
-				{ command = "${xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
-				{ command = "${networkmanagerapplet}/bin/nm-applet"; notification = false; }
-				{ command = "${pasystray}/bin/pasystray"; notification = false; }
+				{ command = "${pkgs.dex}/bin/dex --autostart --environment i3"; notification = false; }
+				{ command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
+				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; notification = false; }
+				{ command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
 				{ command = "systemctl --user restart dunst.service"; always = true; notification = false; }
 
-				{ command = "${autorandr}/bin/autorandr --change"; always = true; notification = false; }
-				{ command = "${feh}/bin/feh --no-fehbg --bg-fill '${root}/walls/wall3.jpg'"; always = true; notification = false; }
+				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
+				{ command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${root}/walls/wall3.jpg"; always = true; notification = false; }
 			];
 
 			focus.followMouse = false;
@@ -55,8 +57,8 @@ in with pkgs; {
 					exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 				'';
 
-				"${mod}+d" = "exec ${dmenu}/bin/dmenu_run";
-				"${mod}+Return" = "exec nixGL ${alacritty}/bin/alacritty";
+				"${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+				"${mod}+Return" = "exec nixGL ${pkgs.alacritty}/bin/alacritty";
 
 				"${mod}+q" = "kill";
 
@@ -92,6 +94,8 @@ in with pkgs; {
 				"${mod}+s" = "layout stacking";
 				"${mod}+w" = "layout tabbed";
 				"${mod}+e" = "layout toggle split";
+				"${mod}+minus" = "split v";
+				"${mod}+equal" = "split h";
 
 				# todo: don't use amixer?
 				"XF86AudioRaiseVolume" = "exec amixer -q -D pulse sset Master 5%+";
@@ -102,7 +106,7 @@ in with pkgs; {
 			bars = [
 				{
 					position = "top";
-					statusCommand = "${i3status}/bin/i3status";
+					statusCommand = "${pkgs.i3status}/bin/i3status";
 					workspaceButtons = true;
 					fonts.size = 9.0;
 					colors = {
@@ -127,7 +131,7 @@ in with pkgs; {
 
 	programs.i3status = {
 		enable = true;
-		package = i3status;
+		package = pkgs.i3status;
 		enableDefault = false;
 
 		general = {
@@ -182,7 +186,7 @@ in with pkgs; {
 
 	services.dunst = {
 		enable = true;
-		package = dunst;
+		package = pkgs.dunst;
 
 		settings = {
 			global = {

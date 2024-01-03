@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  programs.zsh = with pkgs; {
+  programs.zsh = {
     enable = true;
-    package = zsh;
+    package = pkgs.zsh;
 
     enableAutosuggestions = true;
     enableCompletion = true;
@@ -15,16 +15,16 @@
     };
 
     shellAliases = {
-        ls="${eza}/bin/eza --classify";
-        la="${eza}/bin/eza --all --classify";
-        ll="${eza}/bin/eza --long --all --classify";
+        ls="${pkgs.eza}/bin/eza --classify";
+        la="${pkgs.eza}/bin/eza --all --classify";
+        ll="${pkgs.eza}/bin/eza --long --all --classify";
     };
 
     initExtra = ''
       bindkey '^y' autosuggest-accept
       bindkey -M viins kj vi-cmd-mode
-      source "$(${fzf}/bin/fzf-share)/key-bindings.zsh"
-      source "$(${fzf}/bin/fzf-share)/completion.zsh"
+      source "$(${pkgs.fzf}/bin/fzf-share)/key-bindings.zsh"
+      source "$(${pkgs.fzf}/bin/fzf-share)/completion.zsh"
     '';
   };
 }
