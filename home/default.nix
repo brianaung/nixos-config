@@ -65,6 +65,7 @@
 		feh
 		picom
 		pavucontrol
+		arandr
 
 		# testing
 		# libnotify
