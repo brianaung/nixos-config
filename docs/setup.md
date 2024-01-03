@@ -1,6 +1,6 @@
 # Setup Instructions
 
-## Setting up on NixOs
+## Setting up on NixOS
 `cd /etc/nixos/` and `sudoedit configuration.nix`.
 
 Then add these lines:
@@ -24,11 +24,11 @@ Rebuild the system with `sudo nixos-rebuild switch`.
 
 Clone this repository to `~/.config/` directory.
 
-Run `nix run home-manager/master -- switch --flake .#default` to .
+Run `nix run home-manager/master -- switch --flake .#default` to activate the home configurations.
 
 (Optional) Rebuild the system using my system configuration files using `make system FLAKE=default`.
 
 Finally `sudo reboot`.
 
-## Setting up on Non-NixOs
-wip
+## Setting up on Non-NixOS
+WIP
