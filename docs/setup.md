@@ -10,13 +10,6 @@ programs.git.enable = true
 
 # enable flakes
 nix.settings.experimental-features = [ "nix-command" "flakes" ]
-
-# enable i3 (not necessary if you will be rebuilding the system using my system config)
-services.xserver = {
-  enable = true;
-  desktopManager.xterm.enable = false;
-  displayManager.defaultSession = "none+i3";
-  windowManager.i3.enable = true;
 };
 ```
 
@@ -26,9 +19,16 @@ Clone this repository to `~/.config/` directory.
 
 Run `nix run home-manager/master -- switch --flake .#default` to activate the home configurations.
 
-(Optional) Rebuild the system using my system configuration files using `make system FLAKE=default`.
+Rebuild the system with the extended system configuration using `make system FLAKE=default`.
 
 Finally `sudo reboot`.
 
 ## Setting up on Non-NixOS
 WIP
+
+## Display settings
+Use `xrandr` or `arandr` (gui) to configure the display settings as you wish.
+
+Then save the currently configured config by running `autorandr -s <name>`. This will save the current display config to `~/.config/autorandr/<name>/`.
+
+This config will now be automatically executed on startup.
