@@ -20,6 +20,10 @@
         ll="${pkgs.eza}/bin/eza --long --all --classify";
     };
 
+    initExtraFirst = ''
+			eval "$(${pkgs.fnm}/bin/fnm env --use-on-cd)"
+    '';
+
     initExtra = ''
       bindkey '^y' autosuggest-accept
       bindkey -M viins kj vi-cmd-mode
