@@ -23,6 +23,7 @@
 
 	home.stateVersion = "23.11";
 
+	# if using nixos, this is quite redundant actually since I alrdy set this in system config.
 	nix = {
 		package = pkgs.nix;
 		settings.experimental-features = ["nix-command" "flakes"];
