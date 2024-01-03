@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.zathura = {
+	programs.zathura = {
 		enable = true;
 		package = pkgs.zathura;
 
@@ -9,5 +9,5 @@
 			default-bg = "#${config.colorScheme.colors.base00}";
 			default-fg = "#${config.colorScheme.colors.base05}";
 		};
-  };
+	};
 }
