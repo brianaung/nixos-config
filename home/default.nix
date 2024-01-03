@@ -14,10 +14,6 @@
 		./modules/zathura.nix
 	];
 
-	nixpkgs.config = {
-		allowUnfree = true;
-	};
-
 	# Most programs will use colors from here, except neovim, for consistency.
 	# But it is quick to update neovim as well since I will be using base16 for both.
 	colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-hard;
@@ -41,7 +37,6 @@
 	# Install Nix packages into your environment.
 	home.packages = with pkgs; [
 		brave
-		spotify
 		dbeaver
 		# zathura
 		flameshot
@@ -54,17 +49,17 @@
 		eza
 		xclip
 		unzip
-		gzip
-		gnutar
+		# gzip
+		# gnutar
 		curl
-		wget
+		# wget
 		ranger
-		fnm
 
 		# todo: i don't know if it's idiomatic to install them globally.
-		gnumake
-		gcc
-		rustup
+		# fnm
+		# gnumake
+		# gcc
+		# rustup
 
 		autorandr
 		feh

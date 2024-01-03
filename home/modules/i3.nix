@@ -22,7 +22,15 @@ in {
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 				{ command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${root}/walls/wall3.jpg"; always = true; notification = false; }
 				{ command = "${pkgs.picom}/bin/picom"; always = true; notification = false; }
+
+				{ command = "${pkgs.brave}/bin/brave"; }
+				{ command = "${pkgs.alacritty}/bin/alacritty"; }
 			];
+
+			assigns = {
+				"1" = [{ class = "^Brave-browser$"; }];
+				"2" = [{ class = "^Alacritty$"; }];
+			};
 
 			focus.followMouse = false;
 
