@@ -57,8 +57,8 @@
 
 		# todo: i don't know if it's idiomatic to install them globally.
 		# fnm
-		# gnumake
-		# gcc
+		gnumake
+		gcc
 		# rustup
 
 		autorandr

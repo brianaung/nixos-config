@@ -19,7 +19,7 @@
     in {
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
-          modules = [ ./system/default/configuration.nix ];
+          modules = [ ./system/nixos/configuration.nix ];
         };
       };
 

@@ -67,7 +67,7 @@ in {
 				'';
 
 				"${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
-				"${mod}+Return" = "exec nixGL ${pkgs.alacritty}/bin/alacritty";
+				"${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
 				"${mod}+q" = "kill";
 
