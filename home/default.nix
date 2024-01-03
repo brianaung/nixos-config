@@ -80,7 +80,7 @@
 	];
 
 	xdg.configFile = {
-		"autorandr".source = ../xdg_config/autorandr;
+		# "autorandr".source = ../xdg_config/autorandr;
 		# ranger needs writable access to conf dir so cannot symlink the entire dir
 		"ranger/rc.conf".source = ../xdg_config/ranger/rc.conf;
 		"ranger/rifle.conf".source = ../xdg_config/ranger/rifle.conf;
