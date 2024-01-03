@@ -40,6 +40,7 @@
 		dbeaver
 		# zathura
 		flameshot
+		xfce.thunar
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 

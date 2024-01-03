@@ -222,4 +222,8 @@ in {
 			};
 		};
 	};
+
+	services.udiskie = {
+		enable = true;
+	};
 }
