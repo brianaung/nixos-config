@@ -28,7 +28,6 @@
 	];
 
 	programs = {
-		git.enable = true;
 		zsh.enable = true;
 		# i need this to be able to run non-nix executables
 		nix-ld.enable = true;

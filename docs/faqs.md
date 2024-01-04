@@ -10,3 +10,6 @@ Chromium browsers fails to render webpages correctly. What is going on?
     rm -rf ~/.config/BraveSoftware/Brave-Browser/Default/GPUCache/
     rm -rf ~/.config/chromium/Default/GPUCache/
     ```
+
+When trying to rebuild, it keeps saying that files I am trying to import are missing? I am sure they exists!
+> Ensure you have staged all the files in git first before trying to rebuild.

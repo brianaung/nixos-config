@@ -11,7 +11,7 @@ let
 	ws7 = "7";
 	ws8 = "8";
 	ws9 = "9";
-	ws0 = "0";
+	ws10 = "10";
 in {
 	xsession.windowManager.i3 = {
 		enable = true;
@@ -40,9 +40,9 @@ in {
 			];
 
 			assigns = {
-				"1" = [{ class = "^Brave-browser$"; }];
-				"2" = [{ class = "^Alacritty$"; }];
-				"0" = [{ class = "^Spotify$"; }];
+				${ws1} = [{ class = "^Brave-browser$"; }];
+				${ws2} = [{ class = "^Alacritty$"; }];
+				${ws10} = [{ class = "^Spotify$"; }];
 			};
 
 			window = {
@@ -115,7 +115,7 @@ in {
 				"${mod}+7" = "workspace number ${ws7}";
 				"${mod}+8" = "workspace number ${ws8}";
 				"${mod}+9" = "workspace number ${ws9}";
-				"${mod}+0" = "workspace number ${ws0}";
+				"${mod}+0" = "workspace number ${ws10}";
 
 				# Move workspace
 				"${mod}+Shift+1" = "move container to workspace number ${ws1}";
@@ -127,7 +127,7 @@ in {
 				"${mod}+Shift+7" = "move container to workspace number ${ws7}";
 				"${mod}+Shift+8" = "move container to workspace number ${ws8}";
 				"${mod}+Shift+9" = "move container to workspace number ${ws9}";
-				"${mod}+Shift+0" = "move container to workspace number ${ws0}";
+				"${mod}+Shift+0" = "move container to workspace number ${ws10}";
 
 				"${mod}+f" = "fullscreen toggle";
 				"${mod}+Shift+space" = "floating toggle";
