@@ -1,4 +1,4 @@
-# stuff I don't want to forget
+# Stuff I don't want to forget
 
 To get the window class, use `xprop` and then grep the class property.
 ```

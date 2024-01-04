@@ -24,12 +24,3 @@ Finally `sudo reboot`.
 
 ## Setting up on Non-NixOS
 WIP
-
-## Display settings
-Use `xrandr` or `arandr` (gui) to configure the display settings as you wish.
-
-Then save the currently configured config by running `autorandr -s <name>`. This will save the current display config to `~/.config/autorandr/<name>/`.
-
-This config will now be automatically executed on startup.
-
-> Note: This only applies if you are using i3 (or other x window managers) on its own.
