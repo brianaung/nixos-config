@@ -304,7 +304,7 @@ require("lazy").setup {
 			for i = 1, 5 do
 				nmap(string.format("<leader>%s", i), string.format("<cmd>lua require 'harpoon.ui'.nav_file(%s)<cr>", i))
 			end
-			nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
+			-- nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
 		end,
 	},
 
@@ -364,4 +364,20 @@ require("lazy").setup {
 			}
 		end,
 	},
+
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+		},
+		keys = {
+			{ "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+		},
+	}
 }
