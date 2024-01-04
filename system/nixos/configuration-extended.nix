@@ -17,7 +17,7 @@
 		autorandr
 		pulseaudio
 		pavucontrol
-		xorg.xbacklight
+		brightnessctl
 
 		# I don't really need this tbh. I will only call them using i3 keybinds so.
 		# dex

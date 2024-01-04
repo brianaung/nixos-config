@@ -29,6 +29,8 @@
 		settings.experimental-features = ["nix-command" "flakes"];
 	};
 
+	nixpkgs.config.allowUnfree = true;
+
 	home.sessionVariables = {
 		EDITOR = "nvim";
 		BROWSER = "brave";
@@ -38,6 +40,7 @@
 	# Install Nix packages into your environment.
 	home.packages = with pkgs; [
 		brave
+		spotify
 		dbeaver
 		flameshot
 
