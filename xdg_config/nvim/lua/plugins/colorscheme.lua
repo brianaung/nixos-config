@@ -7,6 +7,6 @@ return
 		require("base16-colorscheme").with_config {
 			telescope = false,
 		}
-		vim.cmd("colorscheme base16-kanagawa")
+		vim.cmd("colorscheme base16-gruvbox-material-dark-hard")
 	end,
 }

@@ -22,6 +22,11 @@ return {
 	},
 
 	{
+		'stevearc/dressing.nvim',
+		opts = {},
+	},
+
+	{
 		"ThePrimeagen/harpoon",
 		config = function()
 			nmap("<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>")
