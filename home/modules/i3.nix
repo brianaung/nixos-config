@@ -2,6 +2,16 @@
 
 let
 	mod = "Mod4";
+	ws1 = "1";
+	ws2 = "2";
+	ws3 = "3";
+	ws4 = "4";
+	ws5 = "5";
+	ws6 = "6";
+	ws7 = "7";
+	ws8 = "8";
+	ws9 = "9";
+	ws0 = "0";
 in {
 	xsession.windowManager.i3 = {
 		enable = true;
@@ -13,11 +23,12 @@ in {
 			terminal = "alacritty";
 
 			startup = [
+				# { command = "systemctl --user restart dunst.service"; always = true; notification = false; }
+
 				{ command = "${pkgs.dex}/bin/dex --autostart --environment i3"; notification = false; }
 				{ command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
 				# { command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; notification = false; }
 				{ command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
-				# { command = "systemctl --user restart dunst.service"; always = true; notification = false; }
 
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 				{ command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${root}/walls/wall3.jpg"; always = true; notification = false; }
@@ -25,26 +36,32 @@ in {
 
 				{ command = "${pkgs.brave}/bin/brave"; }
 				{ command = "${pkgs.alacritty}/bin/alacritty"; }
+				{ command = "${pkgs.spotify}/bin/spotify"; }
 			];
 
 			assigns = {
 				"1" = [{ class = "^Brave-browser$"; }];
 				"2" = [{ class = "^Alacritty$"; }];
+				"0" = [{ class = "^Spotify$"; }];
+			};
+
+			window = {
+				commands = [
+					{ command = "fullscreen enable"; criteria = { class = "^Spotify$"; }; }
+				];
+			};
+
+			floating = {
+				modifier = mod;
+				criteria = [ { class = "Pavucontrol"; } ];
 			};
 
 			focus.followMouse = false;
-
-			floating.modifier = mod;
 
 			fonts = {
 				names = [ "JetBrains Mono Nerd Font" ];
 				style = "Regular";
 				size = 9.0;
-			};
-
-			gaps = {
-				inner = 4;
-				outer = 4;
 			};
 
 			colors = {
@@ -56,6 +73,11 @@ in {
 					indicator = "#${config.colorScheme.colors.base0D}";
 					text = "#${config.colorScheme.colors.base01}";
 				};
+			};
+
+			gaps = {
+				inner = 4;
+				outer = 4;
 			};
 
 			# use with `lib.mkOptionDefault` if you want to extend on default i3 keybindings
@@ -84,18 +106,28 @@ in {
 				"${mod}+Shift+l" = "move right";
 
 				# Switch workspace
-				"${mod}+1" = "workspace number 1";
-				"${mod}+2" = "workspace number 2";
-				"${mod}+3" = "workspace number 3";
-				"${mod}+4" = "workspace number 4";
-				"${mod}+5" = "workspace number 5";
+				"${mod}+1" = "workspace number ${ws1}";
+				"${mod}+2" = "workspace number ${ws2}";
+				"${mod}+3" = "workspace number ${ws3}";
+				"${mod}+4" = "workspace number ${ws4}";
+				"${mod}+5" = "workspace number ${ws5}";
+				"${mod}+6" = "workspace number ${ws6}";
+				"${mod}+7" = "workspace number ${ws7}";
+				"${mod}+8" = "workspace number ${ws8}";
+				"${mod}+9" = "workspace number ${ws9}";
+				"${mod}+0" = "workspace number ${ws0}";
 
 				# Move workspace
-				"${mod}+Shift+1" = "move container to workspace number 1";
-				"${mod}+Shift+2" = "move container to workspace number 2";
-				"${mod}+Shift+3" = "move container to workspace number 3";
-				"${mod}+Shift+4" = "move container to workspace number 4";
-				"${mod}+Shift+5" = "move container to workspace number 5";
+				"${mod}+Shift+1" = "move container to workspace number ${ws1}";
+				"${mod}+Shift+2" = "move container to workspace number ${ws2}";
+				"${mod}+Shift+3" = "move container to workspace number ${ws3}";
+				"${mod}+Shift+4" = "move container to workspace number ${ws4}";
+				"${mod}+Shift+5" = "move container to workspace number ${ws5}";
+				"${mod}+Shift+6" = "move container to workspace number ${ws6}";
+				"${mod}+Shift+7" = "move container to workspace number ${ws7}";
+				"${mod}+Shift+8" = "move container to workspace number ${ws8}";
+				"${mod}+Shift+9" = "move container to workspace number ${ws9}";
+				"${mod}+Shift+0" = "move container to workspace number ${ws0}";
 
 				"${mod}+f" = "fullscreen toggle";
 				"${mod}+Shift+space" = "floating toggle";
