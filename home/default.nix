@@ -4,16 +4,16 @@
 	imports = [
 		inputs.nix-colors.homeManagerModules.default
 
-		./modules/i3.nix
-		./modules/alacritty.nix
-		./modules/tmux.nix
-		./modules/neovim.nix
-		./modules/zsh.nix
-		./modules/starship.nix
-		./modules/git.nix
-		./modules/zathura.nix
+		./modules/programs/zsh.nix
+		./modules/programs/git.nix
+		./modules/programs/i3.nix
+		./modules/programs/alacritty.nix
+		./modules/programs/tmux.nix
+		./modules/programs/neovim.nix
+		./modules/programs/starship.nix
+		./modules/programs/zathura.nix
 
-		./modules/tmux-sessionizer.nix
+		./modules/scripts/tmux-sessionizer.nix
 	];
 
 	# Most programs will use colors from here, except neovim, for consistency.
@@ -25,7 +25,7 @@
 
 	home.stateVersion = "23.11";
 
-	# if using nixos, this is quite redundant actually since I alrdy set this in system config.
+	# if using nixos, this is quite redundant i think since I alrdy set this in system config.
 	nix = {
 		package = pkgs.nix;
 		settings.experimental-features = ["nix-command" "flakes"];
@@ -54,10 +54,7 @@
 		eza
 		xclip
 		unzip
-		# gzip
-		# gnutar
 		curl
-		# wget
 		ranger
 
 		# todo: i don't know if it's idiomatic to install them globally.
@@ -71,7 +68,6 @@
 	];
 
 	xdg.configFile = {
-		# "autorandr".source = ../xdg_config/autorandr;
 		# ranger needs writable access to conf dir so cannot symlink the entire dir
 		"ranger/rc.conf".source = root + /xdg_config/ranger/rc.conf;
 		"ranger/rifle.conf".source = root + /xdg_config/ranger/rifle.conf;
