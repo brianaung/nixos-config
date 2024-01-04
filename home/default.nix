@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, root, ... }:
 
 {
 	imports = [
@@ -12,6 +12,8 @@
 		./modules/starship.nix
 		./modules/git.nix
 		./modules/zathura.nix
+
+		./modules/tmux-sessionizer.nix
 	];
 
 	# Most programs will use colors from here, except neovim, for consistency.
@@ -71,8 +73,8 @@
 	xdg.configFile = {
 		# "autorandr".source = ../xdg_config/autorandr;
 		# ranger needs writable access to conf dir so cannot symlink the entire dir
-		"ranger/rc.conf".source = ../xdg_config/ranger/rc.conf;
-		"ranger/rifle.conf".source = ../xdg_config/ranger/rifle.conf;
+		"ranger/rc.conf".source = root + /xdg_config/ranger/rc.conf;
+		"ranger/rifle.conf".source = root + /xdg_config/ranger/rifle.conf;
 	};
 
 	# Let Home Manager install and manage itself.

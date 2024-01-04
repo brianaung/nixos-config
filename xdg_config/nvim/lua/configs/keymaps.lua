@@ -21,3 +21,5 @@ nmap("<cr>", "<cmd>nohl<cr><cr>")
 
 vmap("<leader>y", '"+y')
 nmap("<leader>p", '"+p')
+
+nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
