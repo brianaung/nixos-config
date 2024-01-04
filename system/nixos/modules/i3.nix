@@ -15,9 +15,9 @@ in {
 			startup = [
 				{ command = "${pkgs.dex}/bin/dex --autostart --environment i3"; notification = false; }
 				{ command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
-				{ command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; notification = false; }
+				# { command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; notification = false; }
 				{ command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
-				{ command = "systemctl --user restart dunst.service"; always = true; notification = false; }
+				# { command = "systemctl --user restart dunst.service"; always = true; notification = false; }
 
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 				{ command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${root}/walls/wall3.jpg"; always = true; notification = false; }
@@ -106,10 +106,12 @@ in {
 				"${mod}+minus" = "split v";
 				"${mod}+equal" = "split h";
 
-				# todo: don't use amixer?
-				"XF86AudioRaiseVolume" = "exec amixer -q -D pulse sset Master 5%+";
-				"XF86AudioLowerVolume" = "exec amixer -q -D pulse sset Master 5%-";
-				"XF86AudioMute" = "exec amixer -q -D pulse sset Master toggle";
+				"XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 0 +5%"; #increase sound volume
+				"XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume 0 -5%"; #decrease sound volume
+				"XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle"; # mute sound
+
+				"XF86MonBrightnessUp" = "exec xbacklight -inc 20"; # increase screen brightness
+				"XF86MonBrightnessDown" = "exec xbacklight -dec 20"; # decrease screen brightness
 			};
 
 			bars = [
@@ -193,37 +195,37 @@ in {
 		};
 	};
 
-	services.dunst = {
-		enable = true;
-		package = pkgs.dunst;
+	# services.dunst = {
+	# 	enable = true;
+	# 	package = pkgs.dunst;
 
-		settings = {
-			global = {
-				offset = "10x30";
-				origin = "top-right";
-				font = "JetBrains Mono Nerd Font 9";
-				frame_color = "#${config.colorScheme.colors.base03}";
-				timeout = 10;
-			};
+	# 	settings = {
+	# 		global = {
+	# 			offset = "10x30";
+	# 			origin = "top-right";
+	# 			font = "JetBrains Mono Nerd Font 9";
+	# 			frame_color = "#${config.colorScheme.colors.base03}";
+	# 			timeout = 10;
+	# 		};
 
-			urgency_low = {
-				background = "#${config.colorScheme.colors.base02}";
-				foreground = "#${config.colorScheme.colors.base05}";
-			};
+	# 		urgency_low = {
+	# 			background = "#${config.colorScheme.colors.base02}";
+	# 			foreground = "#${config.colorScheme.colors.base05}";
+	# 		};
 
-			urgency_normal = {
-				background = "#${config.colorScheme.colors.base0D}";
-				foreground = "#${config.colorScheme.colors.base01}";
-			};
+	# 		urgency_normal = {
+	# 			background = "#${config.colorScheme.colors.base0D}";
+	# 			foreground = "#${config.colorScheme.colors.base01}";
+	# 		};
 
-			urgency_critical = {
-				background = "#${config.colorScheme.colors.base08}";
-				foreground = "#${config.colorScheme.colors.base01}";
-			};
-		};
-	};
+	# 		urgency_critical = {
+	# 			background = "#${config.colorScheme.colors.base08}";
+	# 			foreground = "#${config.colorScheme.colors.base01}";
+	# 		};
+	# 	};
+	# };
 
-	services.udiskie = {
-		enable = true;
-	};
+	# services.udiskie = {
+	# 	enable = true;
+	# };
 }

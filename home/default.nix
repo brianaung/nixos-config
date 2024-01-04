@@ -39,9 +39,7 @@
 	home.packages = with pkgs; [
 		brave
 		dbeaver
-		# zathura
 		flameshot
-		xfce.thunar
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
@@ -63,21 +61,8 @@
 		gcc
 		# rustup
 
-		autorandr
-		feh
-		picom
-		pavucontrol
-		arandr
-
 		# testing
 		# libnotify
-
-		# I don't really need this tbh. I will only call them using i3 keybinds so.
-		# dex
-		# xss-lock
-		# network-manager-applet
-		# dmenu
-		# i3status
 	];
 
 	xdg.configFile = {
