@@ -1,76 +1,28 @@
-# Setting Up
+# Setup Instructions
 
-## Installing dependencies
+## Setting up on NixOS
+1. `sudoedit /etc/nixos/configuration.nix` then add these two lines:
+```nix
+# enable git (only if you are git cloning this repository)
+programs.git.enable = true
 
-Ensure that you have a working Nix (package manager not the OS) installation.
-The following examples are for multi-user installations. For more info, check [here](https://nixos.org/download#nix-install-linux).
-
-### Linux
-```
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
-
-### Macos
-```
-sh <(curl -L https://nixos.org/nix/install)
+# enable flakes
+nix.settings.experimental-features = [ "nix-command" "flakes" ]
 ```
 
-Then add this to your shell configuration.
-```
-. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-```
+2. Rebuild the system with `sudo nixos-rebuild switch`.
 
-> Note: Put this in the .profile file to enable Nix before proceeding with the rest of the steps. Since the .zshrc file already contains this, you would not need to add this again after installing zsh shell.
+3. Clone/download this repository to `~/.config/` directory.
 
-## Install [Home Manager](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
-Add the appropriate channel.
-```
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-```
+4. Run `nix run home-manager/master -- switch --flake .#default` to activate the home user configurations.
 
-Run the home manager installation command.
-```
-nix-shell '<home-manager>' -A install
-```
+5. **(Optional)** Adjust system configurations to your needs (such as configuring your desktop environment, window managers, etc.) by editing `~/.config/home-manager/system/nixos/configuration-extended.nix` before you run the make command.
 
-## Install [NixGL](https://github.com/nix-community/nixGL)
-To fix issues launching programs using OpenGL.
-```
-nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
-nix-env -iA nixgl.auto.nixGLDefault   # or replace `nixGLDefault` with your desired wrapper
-```
-Check [here](https://github.com/nix-community/nixGL?tab=readme-ov-file#nix-channel-recommended) for more info.
+6. Rebuild the system with this extended system configurations using `make system FLAKE=default`. 
 
-You can then run the program using `nixGL <program>` command.
+7. Finally `sudo reboot`.
 
-## Updating the environment
-1. Clone this inside your XDG config directory (which is usually ~/.config/).
-2. Update your username and home path in the home.nix file.
-3. Run `home-manager switch` to update the home manager environment.
+## Setting up on Non-NixOS
+**WIP**
 
-### Changing the default shell to Zsh for Linux users
-First, check that the zsh path is in valid login shells.
-```
-cat /etc/shells
-```
-
-If not, add the zsh path to /etc/shells, and change the shell.
-```
-echo $(which zsh) | sudo tee -a /etc/shells
-chsh -s $(which zsh)
-```
-Login again for changes to take effect.
-
-#### To get the fish-like autosuggestions:
-
-Git clone zsh-autosuggestions repository.
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-```
-And start a new terminal session.
-
-### Custom scripts/commands
-`/bin` directory stores my custom shell commands. They are automatically linked to `$HOME/.local/bin/...`.
-
-`$HOME/.local/bin` has already been added to the path, but you may still need to run `chmod +x <filename>` to make sure they have execution permissions.
+> Check the [faq](https://github.com/brianaung/home-manager/blob/main/docs/faqs.md), your issue may be covered =))
