@@ -1,26 +1,28 @@
 # Setup Instructions
 
 ## Setting up on NixOS
-`cd /etc/nixos/` and `sudoedit configuration.nix`.
-
-Then add these lines:
+1. `sudoedit /etc/nixos/configuration.nix` then add these two lines:
 ```nix
-# enable git
+# enable git (only if you are git cloning this repository)
 programs.git.enable = true
 
 # enable flakes
 nix.settings.experimental-features = [ "nix-command" "flakes" ]
 ```
 
-Rebuild the system with `sudo nixos-rebuild switch`.
+2. Rebuild the system with `sudo nixos-rebuild switch`.
 
-Clone this repository to `~/.config/` directory.
+3. Clone/download this repository to `~/.config/` directory.
 
-Run `nix run home-manager/master -- switch --flake .#default` to activate the home configurations.
+4. Run `nix run home-manager/master -- switch --flake .#default` to activate the home user configurations.
 
-Rebuild the system with the extended system configuration using `make system FLAKE=default`. To adjust the configurations to your needs, edit ~/.config/home-manager/system/nixos/configuration-extended.nix` before you run the make command.
+5. **(Optional)** Adjust system configurations to your needs (such as configuring your desktop environment, window managers, etc.) by editing `~/.config/home-manager/system/nixos/configuration-extended.nix` before you run the make command.
 
-Finally `sudo reboot`.
+6. Rebuild the system with this extended system configurations using `make system FLAKE=default`. 
+
+7. Finally `sudo reboot`.
 
 ## Setting up on Non-NixOS
-WIP
+**WIP**
+
+> Check the [faq](https://github.com/brianaung/home-manager/blob/main/docs/faqs.md), your issue may be covered =))
