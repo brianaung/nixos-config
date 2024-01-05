@@ -10,5 +10,6 @@ end
 M.nmap = get_mapper("n")
 M.imap = get_mapper("i")
 M.vmap = get_mapper("v")
+M.xmap = get_mapper("x")
 
 return M
