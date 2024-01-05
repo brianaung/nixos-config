@@ -36,24 +36,27 @@ in {
 
 				{ command = "${pkgs.brave}/bin/brave"; }
 				{ command = "${pkgs.alacritty}/bin/alacritty"; }
+				{ command = "${pkgs.obsidian}/bin/obsidian"; }
 				{ command = "${pkgs.spotify}/bin/spotify"; }
 			];
 
 			assigns = {
 				${ws1} = [{ class = "^Brave-browser$"; }];
 				${ws2} = [{ class = "^Alacritty$"; }];
+				${ws3} = [{ class = "^obsidian$"; }];
 				${ws10} = [{ class = "^Spotify$"; }];
 			};
 
 			window = {
 				commands = [
 					{ command = "fullscreen enable"; criteria = { class = "^Spotify$"; }; }
+					{ command = "fullscreen enable"; criteria = { class = "^obsidian$"; }; }
 				];
 			};
 
 			floating = {
 				modifier = mod;
-				criteria = [ { class = "Pavucontrol"; } ];
+				criteria = [ { class = "^Pavucontrol$"; } ];
 			};
 
 			focus.followMouse = false;

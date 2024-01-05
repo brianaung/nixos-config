@@ -31,7 +31,14 @@
 		settings.experimental-features = ["nix-command" "flakes"];
 	};
 
-	nixpkgs.config.allowUnfree = true;
+	nixpkgs = {
+		config = {
+			allowUnfree = true;
+			# temporary fix for obsidian issue: https://github.com/junegunn/fzf/issues/337
+			permittedInsecurePackages = [ "electron-25.9.0" ];
+		};
+	};
+
 
 	home.sessionVariables = {
 		EDITOR = "nvim";
@@ -45,6 +52,7 @@
 		spotify
 		dbeaver
 		flameshot
+		obsidian
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
