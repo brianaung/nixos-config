@@ -21,14 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- You can just do `require("lazy").setup("plugins")`,
 -- But I want to have the ability to comment out just one line to temporarily disable them.
-require("lazy").setup({
+require("lazy").setup {
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.completion" },
 	{ import = "plugins.telescope" },
 	{ import = "plugins.colorscheme" },
 	{ import = "plugins.misc" },
-}, {
-	-- lazy won't have permission to write to default ${XDG_HOME}/nvim/ so...
-	lockfile = os.getenv("HOME") .. "/.config/home-manager/xdg_config/nvim/lazy-lock.json",
-})
+}

@@ -9,7 +9,6 @@
 		./modules/programs/i3.nix
 		./modules/programs/alacritty.nix
 		./modules/programs/tmux.nix
-		./modules/programs/neovim.nix
 		./modules/programs/starship.nix
 		./modules/programs/zathura.nix
 
@@ -56,6 +55,7 @@
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
+		neovim
 		fzf
 		ripgrep
 		fd
@@ -76,7 +76,9 @@
 	];
 
 	xdg.configFile = {
-		# ranger needs writable access to conf dir so cannot symlink the entire dir
+		# i want to keep this out of nix store because I edit this way too often, that I hate having to keep rebuilding for changes
+		"nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/brianaung/.config/home-manager/xdg_config/nvim"; # don't use relative path, it will link to nix store
+
 		"ranger/rc.conf".source = root + /xdg_config/ranger/rc.conf;
 		"ranger/rifle.conf".source = root + /xdg_config/ranger/rifle.conf;
 	};
