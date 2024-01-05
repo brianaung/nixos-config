@@ -30,6 +30,7 @@
           extraSpecialArgs = { 
             inherit inputs; 
             root = ./.;
+						user = "brianaung";
           };
           modules = [ ./home/default.nix ];
         };

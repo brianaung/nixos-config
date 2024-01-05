@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, root, ... }:
+{ config, pkgs, lib, inputs, root, user, ... }:
 
 {
 	imports = [
@@ -19,8 +19,8 @@
 	# But it is quick to update neovim as well since I will be using base16 for both.
 	colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-hard;
 
-	home.username = "brianaung";
-	home.homeDirectory = "/home/brianaung";
+	home.username = "${user}";
+	home.homeDirectory = "/home/${user}";
 
 	home.stateVersion = "23.11";
 
@@ -70,17 +70,17 @@
 		gnumake
 		gcc
 		# rustup
-
-		# testing
-		# libnotify
 	];
 
 	xdg.configFile = {
 		# i want to keep this out of nix store because I edit this way too often, that I hate having to keep rebuilding for changes
-		"nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/brianaung/.config/home-manager/xdg_config/nvim"; # don't use relative path, it will link to nix store
+		"nvim".source = 
+			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/xdg_config/nvim"; # don't use relative path, it will link to nix store
 
-		"ranger/rc.conf".source = root + /xdg_config/ranger/rc.conf;
-		"ranger/rifle.conf".source = root + /xdg_config/ranger/rifle.conf;
+		"ranger" = {
+			source = root + "/xdg_config/ranger";
+			recursive = true;
+		};
 	};
 
 	# Let Home Manager install and manage itself.
