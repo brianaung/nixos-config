@@ -1,4 +1,4 @@
-# A quick guide for ssh generation
+# A quick guide for ssh key generation
 
 Generate a new SSH key.
 ```

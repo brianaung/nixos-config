@@ -25,4 +25,6 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ]
 ## Setting up on Non-NixOS
 **WIP**
 
+Install [NixGL](https://github.com/nix-community/nixGL) to fix issues launching programs using OpenGL. Then you can run those program using `nixGL <program>` command.
+
 > Check the [faq](https://github.com/brianaung/home-manager/blob/main/docs/faqs.md), your issue may be covered =))

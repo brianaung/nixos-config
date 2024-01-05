@@ -21,3 +21,6 @@ Use `xrandr` (cli) or `arandr` (gui), to configure the display settings.
 Then save the currently configured setup by running `autorandr -s <name>`, which will write to `~/.config/autorandr/<name>/`.
 
 The config for current active hardware setup will be executed whenever you run `autorandr --change` (which is executed at startup in my i3 config).
+
+## Some fonts are missing after installation?
+Try running `fc-cache -r` to erase and rescan font information cache.
