@@ -88,7 +88,7 @@ in {
 				"${mod}+Shift+c" = "reload";
 				"${mod}+Shift+r" = "restart";
 				"${mod}+Shift+e" = ''
-					exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+					exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'xfce4-session-logout'"
 				'';
 
 				"${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
