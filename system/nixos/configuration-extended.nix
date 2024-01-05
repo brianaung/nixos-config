@@ -36,6 +36,7 @@
 	services = {
 		xserver = {
 			enable = true;
+			xkbOptions = "ctrl:nocaps";
 			# ===== using only i3 =====
 			# desktopManager.xterm.enable = false;
 			# displayManager.defaultSession = "none+i3";
