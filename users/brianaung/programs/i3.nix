@@ -1,4 +1,4 @@
-{ config, pkgs, lib, root, ... }:
+{ config, pkgs, lib, ... }:
 
 let
 	mod = "Mod4";
@@ -31,8 +31,10 @@ in {
 				{ command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
 
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
-				{ command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${root}/walls/wall3.jpg"; always = true; notification = false; }
-				{ command = "${pkgs.picom}/bin/picom"; always = true; notification = false; }
+				{ command = "${pkgs.picom}/bin/picom"; notification = false; }
+
+				# run `feh <options> <path-to-wallpaper>` first
+				{ command = "sh ~/.fehbg &"; notification = false; }
 
 				{ command = "${pkgs.brave}/bin/brave"; }
 				{ command = "${pkgs.alacritty}/bin/alacritty"; }
@@ -78,10 +80,10 @@ in {
 				};
 			};
 
-			gaps = {
-				inner = 4;
-				outer = 4;
-			};
+			# gaps = {
+			# 	inner = 4;
+			# 	outer = 4;
+			# };
 
 			# use with `lib.mkOptionDefault` if you want to extend on default i3 keybindings
 			keybindings = {

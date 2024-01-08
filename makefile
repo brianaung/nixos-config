@@ -1,7 +1,30 @@
+NIXNAME ?= lenovo-5-amd
+
+bootstrap:
+	parted /dev/sda -- mklabel gpt; \
+	parted /dev/sda -- mkpart root ext4 512MB -8GB; \
+	parted /dev/sda -- mkpart swap linux-swap -8GB 100\%; \
+	parted /dev/sda -- mkpart ESP fat32 1MB 512MB; \
+	parted /dev/sda -- set 3 esp on; \
+	sleep 1; \
+	mkfs.ext4 -L nixos /dev/sda1; \
+	mkswap -L swap /dev/sda2; \
+	swapon /dev/sda2; \
+	mkfs.fat -F 32 -n boot /dev/sda3; \
+	sleep 1; \
+	mount /dev/disk/by-label/nixos /mnt; \
+	mkdir -p /mnt/boot; \
+	mount /dev/disk/by-label/boot /mnt/boot; \
+	nixos-generate-config --root /mnt; \
+	sed -i '/system\.stateVersion = .*/a \
+		nix.settings.experimental-features = [ "nix-command" "flakes" ]; \
+		nixpkgs.config.allowUnfree = true; \
+		nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ]; \
+		users.users.root.initialPassword = \"root\";\n \
+	' /mnt/etc/nixos/configuration.nix; \
+	nixos-install --no-root-passwd && reboot;
+
 system:
-	sudo nixos-rebuild switch --flake .#$(FLAKE) --impure
+	sudo nixos-rebuild switch --flake ".#${NIXNAME}"
 
-home:
-	home-manager switch --flake .#$(FLAKE)
-
-.PHONY: system home
+.PHONY: system

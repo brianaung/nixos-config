@@ -1,18 +1,18 @@
-{ config, pkgs, lib, inputs, root, user, ... }:
+{ config, pkgs, lib, inputs, user, ... }:
 
 {
 	imports = [
 		inputs.nix-colors.homeManagerModules.default
 
-		./modules/programs/zsh.nix
-		./modules/programs/git.nix
-		./modules/programs/i3.nix
-		./modules/programs/alacritty.nix
-		./modules/programs/tmux.nix
-		./modules/programs/starship.nix
-		./modules/programs/zathura.nix
+		./programs/zsh.nix
+		./programs/git.nix
+		./programs/i3.nix
+		./programs/alacritty.nix
+		./programs/tmux.nix
+		./programs/starship.nix
+		./programs/zathura.nix
 
-		./modules/scripts/tmux-sessionizer.nix
+		./scripts/tmux-sessionizer.nix
 	];
 
 	# Most programs will use colors from here, except neovim, for consistency.
@@ -25,19 +25,10 @@
 	home.stateVersion = "23.11";
 
 	# if using nixos, this is quite redundant i think since I alrdy set this in system config.
-	nix = {
-		package = pkgs.nix;
-		settings.experimental-features = ["nix-command" "flakes"];
-	};
-
-	nixpkgs = {
-		config = {
-			allowUnfree = true;
-			# temporary fix for obsidian issue: https://github.com/junegunn/fzf/issues/337
-			permittedInsecurePackages = [ "electron-25.9.0" ];
-		};
-	};
-
+	# nix = {
+	# 	package = pkgs.nix;
+	# 	settings.experimental-features = ["nix-command" "flakes"];
+	# };
 
 	home.sessionVariables = {
 		EDITOR = "nvim";
@@ -62,7 +53,6 @@
 		eza
 		xclip
 		unzip
-		curl
 		ranger
 
 		# todo: i don't know if it's idiomatic to install them globally.
@@ -75,10 +65,10 @@
 	xdg.configFile = {
 		# i want to keep this out of nix store because I edit this way too often, that I hate having to keep rebuilding for changes
 		"nvim".source = 
-			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/xdg_config/nvim"; # don't use relative path, it will link to nix store
+			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/nvim"; # don't use relative path, it will link to nix store
 
 		"ranger" = {
-			source = root + "/xdg_config/ranger";
+			source = ./xdg-config/ranger;
 			recursive = true;
 		};
 	};
