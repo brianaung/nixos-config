@@ -13,10 +13,23 @@
 	};
 
 	outputs = { nixpkgs, home-manager, ... }@inputs: let
+    pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
 		mkSystem = import ./lib/mksystem.nix {
 			inherit nixpkgs inputs;
 		};
 	in {
+		devShells.x86_64-linux.default = pkgs.mkShell {
+			name = "My dotfiles build environment";
+			buildInputs = with pkgs; [
+				go
+				nodejs_18
+				cargo
+			];
+			shellHook = ''
+				echo "Welcome in $name"
+			'';
+		};
+
 		nixosConfigurations = {
 			lenovo-5-amd = mkSystem "lenovo-5-amd" {
 				system = "x86_64-linux";
