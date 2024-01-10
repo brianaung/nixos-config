@@ -46,6 +46,7 @@ return {
 				mappings = {
 					go_in = "",
 					go_in_plus = "l",
+					close = "<esc>",
 				},
 			}
 			nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")

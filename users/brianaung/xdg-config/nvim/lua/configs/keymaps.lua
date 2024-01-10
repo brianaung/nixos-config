@@ -1,9 +1,9 @@
 local nmap = require("utils.mapper").nmap
 local imap = require("utils.mapper").imap
 local vmap = require("utils.mapper").vmap
-local xmap = require("utils.mapper").xmap
 
 imap("kj", "<esc>")
+-- and use ctrl-[ in other modes or to close windows, read more at :h ctrl-[
 
 nmap("j", "gj")
 nmap("k", "gk")
@@ -23,9 +23,7 @@ nmap("<cr>", "<cmd>nohl<cr><cr>")
 vmap("<leader>y", '"+y')
 nmap("<leader>p", '"+p')
 
-nmap("<M-j>", "<cmd>m+<cr>==")
-nmap("<M-k>", "<cmd>m-2<cr>==")
-xmap("<M-j>", ":'<,'>m'>+<cr>gv=gv")
-xmap("<M-k>", ":'<,'>m-2<cr>gv=gv")
+vmap("J", ":m '>+1<cr>gv=gv")
+vmap("K", ":m '<-2<cr>gv=gv")
 
 nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")

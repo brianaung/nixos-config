@@ -10,7 +10,6 @@
 		./programs/alacritty.nix
 		./programs/tmux.nix
 		./programs/starship.nix
-		./programs/zathura.nix
 
 		./scripts/tmux-sessionizer.nix
 	];
@@ -23,12 +22,6 @@
 	home.homeDirectory = "/home/${user}";
 
 	home.stateVersion = "23.11";
-
-	# if using nixos, this is quite redundant i think since I alrdy set this in system config.
-	# nix = {
-	# 	package = pkgs.nix;
-	# 	settings.experimental-features = ["nix-command" "flakes"];
-	# };
 
 	home.sessionVariables = {
 		EDITOR = "nvim";
@@ -43,6 +36,7 @@
 		dbeaver
 		flameshot
 		obsidian
+		slack
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
@@ -75,4 +69,16 @@
 
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
+
+	programs.direnv.enable = true;
+
+	programs.zathura = {
+		enable = true;
+		package = pkgs.zathura;
+
+		options = {
+			default-bg = "#${config.colorScheme.colors.base00}";
+			default-fg = "#${config.colorScheme.colors.base05}";
+		};
+	};
 }

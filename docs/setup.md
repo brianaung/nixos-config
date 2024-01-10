@@ -1,30 +1,61 @@
 # Setup Instructions
 
-## Setting up on NixOS
-1. `sudoedit /etc/nixos/configuration.nix` then add these two lines:
-```nix
-# enable git (only if you are git cloning this repository)
-programs.git.enable = true
+## NixOS Minimal Installer Guide
 
-# enable flakes
-nix.settings.experimental-features = [ "nix-command" "flakes" ]
+### Setup network
+wip (not necessary in vm)
+
+### Bootstraping
+Lauch shell as root user > `sudo -i`.
+
+Partition and format disks, then install the OS.
+- Get the makefile > `curl -O https://raw.githubusercontent.com/brianaung/home-manager/main/makefile`.
+- Enter shell environment with make installed > `nix-shell -p gnumake`.
+- **(Optional)** Check the content of the makefile to make changes to partitioning and formatting process.
+- Then run > `make bootstrap`.
+- Login again as `username: root` and `password: root`. 
+
+### Download configs
+Curl and extract config repository.
+```
+curl -LJO https://github.com/brianaung/home-manager/archive/refs/heads/main.tar.gz; && \
+tar -zxf home-manager-main.tar.gz
 ```
 
-2. Rebuild the system with `sudo nixos-rebuild switch`.
+### For new machines (skip to [rebuilding](#rebuilding) if you are setting up on old machine)
+Copy the generated system config files.
+```
+cp /etc/nixos/configuration.nix machines/<NIXNAME>.nix && \
+cp /etc/nixos/hardware-configuration.nix machines/hardwares/<NIXNAME>.nix
+```
 
-3. Clone/download this repository to `~/.config/` directory.
+Update `./machines/<NIXNAME>.nix`.
+- update path to point to correct hardware configuration.
+- add path to shared config.
+- optionally remove duplicate expressions (those that already exists in shared config), although they shouldn't cause any issues.
+    ```
+    system.stateVersion = "23.11";
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+	users.users.root.initialPassword = \"root\";
+    ```
 
-4. Run `nix run home-manager/master -- switch --flake .#default` to activate the home user configurations.
+Update `flake.nix`.
+```nix
+<NIXNAME> = mkSystem "<NIXNAME>" {
+    system = "<ARCHITECTURE>";
+    user = "<USER>"; # check `users/<USER>/nixos.nix` file to update user account details
+};
+```
 
-5. **(Optional)** Adjust system configurations to your needs (such as configuring your desktop environment, window managers, etc.) by editing `~/.config/home-manager/system/nixos/configuration-extended.nix` before you run the make command.
+> When rebooting into current user account after the [rebuilding](#rebuilding) step, you may want to copy the new system configurations from the root user directory to current user directory. After copying the configs (e.g. `sudo -i` and `cp -r ~/.config/home-manager /home/<USER>/.config/home-manager`), you will need to change the ownership of the directory and its contents using `sudo chown -R <USER> home-manager`.
 
-6. Rebuild the system with this extended system configurations using `make system FLAKE=default`. 
+### Rebuilding
+Rebuild the system > `nixos-rebuild switch --flake .#<NIXNAME>`.
 
-7. Finally `sudo reboot`.
+***(IMPORTANT)*** Generate hashed password > `mkpasswd -m sha-512 <your_password> > /etc/passwordFile`
 
-## Setting up on Non-NixOS
-**WIP**
+Finally, `reboot`.
 
-Install [NixGL](https://github.com/nix-community/nixGL) to fix issues launching programs using OpenGL. Then you can run those program using `nixGL <program>` command.
-
-> Check the [faq](https://github.com/brianaung/home-manager/blob/main/docs/faqs.md), your issue may be covered =))
+> Read the [faq](https://github.com/brianaung/home-manager/blob/main/docs/faqs.md), some of your issues may be covered =))
