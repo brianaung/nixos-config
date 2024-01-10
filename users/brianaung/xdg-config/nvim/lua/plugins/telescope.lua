@@ -20,5 +20,7 @@ return {
 		nmap("<leader>fd", "<cmd>lua require 'telescope.builtin'.find_files()<cr>")
 		nmap("<leader>lg", "<cmd>lua require 'telescope.builtin'.live_grep()<cr>")
 		nmap("<leader>fb", "<cmd>lua require 'telescope.builtin'.buffers()<cr>")
+		-- lsp pickers
+		nmap("<leader>d", "<cmd>lua require 'telescope.builtin'.diagnostics()<cr>")
 	end,
 }

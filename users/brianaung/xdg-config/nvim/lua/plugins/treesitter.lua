@@ -29,6 +29,10 @@ return {
 					},
 				},
 			},
+			-- experimental still i think?
+			indent = {
+				enable = true,
+			},
 		}
 	end,
 }

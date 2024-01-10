@@ -1,7 +1,6 @@
 local nmap = require("utils.mapper").nmap
 
-return
-{
+return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"williamboman/mason.nvim",
@@ -13,17 +12,17 @@ return
 	},
 	config = function()
 		local servers = {
-			-- gopls = {},
+			gopls = {},
 			lua_ls = {
 				Lua = {
 					diagnostics = {
 						globals = { "vim" },
-					}
-				}
-			}
-			-- nil_ls = {},
-			-- tsserver = {},
-			-- tailwindcss = {},
+					},
+				},
+			},
+			nil_ls = {},
+			tsserver = {},
+			tailwindcss = {},
 		}
 
 		local on_attach = function(_, bufnr)
@@ -45,8 +44,7 @@ return
 
 		local handlers = {
 			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help,
-				{ border = "rounded" }),
+			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 		}
 		vim.diagnostic.config {
 			float = { border = "rounded" },
