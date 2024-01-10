@@ -24,6 +24,7 @@
 				go
 				nodejs_18
 				cargo
+				stylua
 			];
 			shellHook = ''
 				echo "Welcome in $name"
