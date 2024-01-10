@@ -19,13 +19,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- You can just do `require("lazy").setup("plugins")`,
--- But I want to have the ability to comment out just one line to temporarily disable them.
-require("lazy").setup {
-	{ import = "plugins.treesitter" },
-	{ import = "plugins.lsp" },
-	{ import = "plugins.completion" },
-	{ import = "plugins.telescope" },
-	{ import = "plugins.colorscheme" },
-	{ import = "plugins.misc" },
-}
+require("lazy").setup("plugins", {
+	change_detection = {
+		notify = false,
+	},
+})

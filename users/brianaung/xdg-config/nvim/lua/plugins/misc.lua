@@ -2,6 +2,25 @@ local nmap = require("utils.mapper").nmap
 
 return {
 	{
+		"RRethy/nvim-base16",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("base16-colorscheme").with_config {
+				telescope = false,
+			}
+			vim.cmd.colorscheme("base16-gruvbox-material-dark-hard")
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+			vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+			vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+			vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none" })
+			vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none" })
+		end,
+	},
+
+	{
 		"stevearc/conform.nvim",
 		config = function()
 			require("conform").setup {
@@ -22,11 +41,6 @@ return {
 	},
 
 	{
-		'stevearc/dressing.nvim',
-		opts = {},
-	},
-
-	{
 		"ThePrimeagen/harpoon",
 		config = function()
 			nmap("<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>")
@@ -38,20 +52,20 @@ return {
 		end,
 	},
 
-	{
-		"echasnovski/mini.files",
-		version = "*",
-		config = function()
-			require("mini.files").setup {
-				mappings = {
-					go_in = "",
-					go_in_plus = "l",
-					close = "<esc>",
-				},
-			}
-			nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.files",
+	-- 	version = "*",
+	-- 	config = function()
+	-- 		require("mini.files").setup {
+	-- 			mappings = {
+	-- 				go_in = "",
+	-- 				go_in_plus = "l",
+	-- 				close = "<esc>",
+	-- 			},
+	-- 		}
+	-- 		nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
+	-- 	end,
+	-- },
 
 	{
 		"tpope/vim-fugitive",
