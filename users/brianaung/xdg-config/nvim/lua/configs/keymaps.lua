@@ -2,7 +2,7 @@ local nmap = require("utils.mapper").nmap
 local imap = require("utils.mapper").imap
 local vmap = require("utils.mapper").vmap
 
--- imap("kj", "<esc>") -- moving to ctrl-[ (will i be able to break old habits)
+imap("kj", "<esc>")
 
 nmap("j", "gj")
 nmap("k", "gk")
