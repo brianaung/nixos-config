@@ -2,6 +2,13 @@ local nmap = require("utils.mapper").nmap
 
 return {
 	{
+		dir = "~/projects/yasl.nvim",
+		config = function()
+			require("yasl").setup()
+		end,
+	},
+
+	{
 		"RRethy/nvim-base16",
 		lazy = false,
 		priority = 1000,

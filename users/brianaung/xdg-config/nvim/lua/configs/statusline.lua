@@ -1,3 +1,5 @@
+-- check out: github.com/brianaung/yasl.nvim
+
 local o = vim.opt
 
 -- custom statusline
