@@ -2,9 +2,31 @@ local nmap = require("utils.mapper").nmap
 
 return {
 	{
+		-- "brianaung/yasl.nvim",
 		dir = "~/projects/yasl.nvim",
 		config = function()
-			require("yasl").setup()
+			require("yasl").setup {
+				global = false,
+				sections = {
+					a = {
+						components = { "mode" },
+						highlight = { fg = "#202020", bg = "#7daea3" },
+					},
+					b = {
+						components = { "diagnostics" },
+						highlight = { fg = "#bdae93", bg = "#2a2827" },
+					},
+					c = { components = { "filename", "branch", "gitdiff" } },
+					d = {
+						components = { "filetype" },
+						highlight = { fg = "#bdae93", bg = "#2a2827" },
+					},
+					e = {
+						components = { "location", "progress" },
+						highlight = { fg = "#202020", bg = "#7daea3" },
+					},
+				},
+			}
 		end,
 	},
 

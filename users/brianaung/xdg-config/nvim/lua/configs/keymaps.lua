@@ -22,6 +22,9 @@ nmap("<cr>", "<cmd>nohl<cr><cr>")
 vmap("<leader>y", '"+y')
 nmap("<leader>p", '"+p')
 
+nmap("<c-u>", "<c-u>zz")
+nmap("<c-d>", "<c-d>zz")
+
 imap("<M-j>", "<esc><cmd>m .+1<cr>==gi")
 imap("<M-k>", "<esc><cmd>m .-2<cr>==gi")
 nmap("<M-j>", "<cmd>m+<cr>==")
