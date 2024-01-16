@@ -1,6 +1,17 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- some globals
+function P(v)
+	vim.print(v)
+	return v
+end
+
+function R(name)
+	package.loaded[name] = nil
+	return require(name)
+end
+
 require("configs.options")
 require("configs.keymaps")
 
