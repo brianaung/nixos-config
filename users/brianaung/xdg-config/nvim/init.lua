@@ -34,3 +34,18 @@ require("lazy").setup("plugins", {
 		notify = false,
 	},
 })
+
+-- autocmds
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"help",
+		"netrw",
+		"qf",
+		"man",
+		"checkhealth",
+	},
+	command = [[
+		nnoremap <buffer><silent> <esc> :bd<CR>
+		setl bufhidden=wipe
+	]],
+})
