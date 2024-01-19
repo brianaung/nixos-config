@@ -24,3 +24,7 @@ The config for current active hardware setup will be executed whenever you run `
 
 ## Some fonts are missing after installation?
 Try running `fc-cache -r` to erase and rescan font information cache.
+
+## How can I clean up old generations?
+- `sudo nix-collect-garbage -d`: delete all *system* generations
+- `nix-collect-garbage -d`: delete all *user* generations
