@@ -7,9 +7,9 @@ o.relativenumber = true
 
 -- o.cursorline = true
 
-o.tabstop = 2
-o.shiftwidth = 2
--- o.softtabstop = 2
+o.tabstop = 4
+o.shiftwidth = 4
+-- o.softtabstop = 4
 o.expandtab = false
 
 o.ignorecase = true
@@ -35,5 +35,5 @@ o.formatoptions = o.formatoptions
 	- "2" -- I'm not in gradeschool anymore
 vim.cmd("au BufEnter * set fo-=o")
 
--- o.list = true
-vim.cmd([[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])
+o.list = true
+vim.cmd([[set listchars=tab:\|\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])
