@@ -43,6 +43,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"qf",
 		"man",
 		"checkhealth",
+		"undotree",
 	},
 	command = [[
 		nnoremap <buffer><silent> <esc> :bd<CR>

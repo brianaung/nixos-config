@@ -5,7 +5,14 @@ return {
 		-- "brianaung/yasl.nvim",
 		dir = "~/projects/yasl.nvim",
 		config = function()
-			require("yasl").setup()
+			require("yasl").setup {
+				sections = {
+					A = { components = { "filename", "branch" } },
+					C = { components = { "diagnostics", "gitdiff" } },
+					D = { components = { "filetype" } },
+					E = { components = { "location", "progress" } },
+				},
+			}
 		end,
 	},
 
@@ -59,21 +66,6 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"echasnovski/mini.files",
-	-- 	version = "*",
-	-- 	config = function()
-	-- 		require("mini.files").setup {
-	-- 			mappings = {
-	-- 				go_in = "",
-	-- 				go_in_plus = "l",
-	-- 				close = "<esc>",
-	-- 			},
-	-- 		}
-	-- 		nmap("<leader>fe", "<cmd>lua MiniFiles.open()<cr>")
-	-- 	end,
-	-- },
-
 	{
 		"tpope/vim-fugitive",
 		config = function()
@@ -85,9 +77,13 @@ return {
 
 	{
 		"mbbill/undotree",
-		config = function()
-			nmap("<leader>u", "<cmd>UndotreeToggle | UndotreeFocus<cr>")
-		end,
+		cmd = {
+			"UndotreeToggle",
+			"UndotreeShow",
+		},
+		keys = {
+			{ "<leader>u", "<cmd>UndotreeToggle | UndotreeFocus<cr>" },
+		},
 	},
 
 	{
