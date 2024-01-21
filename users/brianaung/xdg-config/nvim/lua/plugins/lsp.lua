@@ -20,6 +20,7 @@ return {
 					},
 				},
 			},
+			pyright = {},
 			nil_ls = {},
 			tsserver = {},
 			tailwindcss = {},
