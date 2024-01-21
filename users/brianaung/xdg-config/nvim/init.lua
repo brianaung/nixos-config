@@ -35,7 +35,8 @@ require("lazy").setup("plugins", {
 	},
 })
 
--- autocmds
+-- autocmd to close on esc for certain filetypes
+-- same as defining for each ft in after/ftplugin/...
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"help",
@@ -44,9 +45,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		"man",
 		"checkhealth",
 		"undotree",
+		"fugitive",
+		"fugitiveblame",
 	},
 	command = [[
-		nnoremap <buffer><silent> <esc> :bd<CR>
+		nnoremap <buffer><silent> <esc> :bd<cr>
 		setl bufhidden=wipe
 	]],
 })
