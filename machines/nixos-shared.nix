@@ -50,6 +50,7 @@
 		pulseaudio
 		pavucontrol
 		brightnessctl
+		xcape
 
 		# dex
 		# xss-lock
@@ -82,7 +83,9 @@
 
 		layout = "au";
 		xkbVariant = "";
-		xkbOptions = "ctrl:nocaps";
+		# xkbOptions = [
+		# 	"ctrl:nocaps"
+		# ];
 
 		# ===== using only i3 =====
 		# desktopManager.xterm.enable = false;
@@ -105,6 +108,11 @@
 		displayManager = {
 			defaultSession = "xfce+i3";
 			lightdm.enable = true;
+
+			sessionCommands = ''
+				setxkbmap -option 'caps:ctrl_modifier'
+				xcape -e 'Caps_Lock=Escape'
+		  	'';
 		};
 
 		windowManager = {
