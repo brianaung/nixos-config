@@ -4,7 +4,7 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup {
-			ensure_installed = { "go", "lua", "typescript", "markdown" },
+			ensure_installed = { "go", "lua", "python", "javascript", "typescript", "markdown", "vimdoc" },
 			highlight = {
 				enable = true,
 				disable = function(lang, buf)

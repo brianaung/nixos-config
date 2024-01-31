@@ -1,8 +1,5 @@
 local nmap = require("utils.mapper").nmap
-local imap = require("utils.mapper").imap
 local vmap = require("utils.mapper").vmap
-
--- imap("kj", "<esc>")
 
 nmap("j", "gj")
 nmap("k", "gk")
@@ -25,12 +22,8 @@ nmap("<leader>p", '"+p')
 nmap("<c-u>", "<c-u>zz")
 nmap("<c-d>", "<c-d>zz")
 
-imap("<M-j>", "<esc><cmd>m .+1<cr>==gi")
-imap("<M-k>", "<esc><cmd>m .-2<cr>==gi")
-nmap("<M-j>", "<cmd>m+<cr>==")
-nmap("<M-k>", "<cmd>m-2<cr>==")
-vmap("<M-j>", ":m '>+1<cr>gv=gv")
-vmap("<M-k>", ":m '<-2<cr>gv=gv")
+vmap("J", ":m '>+1<cr>gv=gv")
+vmap("K", ":m '<-2<cr>gv=gv")
 
 nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
 

@@ -36,4 +36,4 @@ o.formatoptions = o.formatoptions
 vim.cmd("au BufEnter * set fo-=o")
 
 o.list = true
-vim.cmd([[set listchars=tab:\|\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])
+vim.cmd([[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])

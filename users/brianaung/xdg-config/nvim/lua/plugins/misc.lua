@@ -1,17 +1,13 @@
 local nmap = require("utils.mapper").nmap
 
 return {
+	"nvim-tree/nvim-web-devicons",
 	{
 		-- "brianaung/yasl.nvim",
 		dir = "~/projects/yasl.nvim",
 		config = function()
 			require("yasl").setup {
-				sections = {
-					A = { components = { "filename", "branch" } },
-					C = { components = { "diagnostics", "gitdiff" } },
-					D = { components = { "filetype" } },
-					E = { components = { "location", "progress" } },
-				},
+				enable_icons = true,
 			}
 		end,
 	},
@@ -24,7 +20,7 @@ return {
 			require("base16-colorscheme").with_config {
 				telescope = false,
 			}
-			vim.cmd.colorscheme("base16-gruvbox-material-dark-hard")
+			vim.cmd.colorscheme("base16-kanagawa")
 			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
