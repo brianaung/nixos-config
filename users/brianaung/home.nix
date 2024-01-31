@@ -16,7 +16,7 @@
 
 	# Most programs will use colors from here, except neovim, for consistency.
 	# But it is quick to update neovim as well since I will be using base16 for both.
-	colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-hard;
+	colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
 
 	home.username = "${user}";
 	home.homeDirectory = "/home/${user}";
@@ -48,12 +48,11 @@
 		xclip
 		unzip
 		ranger
+		lsof
 
-		# todo: i don't know if it's idiomatic to install them globally.
-		# fnm
+		# todo: i'm using flake shells but i m tired setting it up for every projects lol
 		gnumake
 		gcc
-		# rustup
 	];
 
 	xdg.configFile = {

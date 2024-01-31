@@ -13,8 +13,8 @@ let
 in systemFunc rec {
 	inherit system;
 	modules = [
-		../machines/${name}.nix			# machine config
-		../users/${user}/nixos.nix	# os user config (defines user account, etc.)
+		../machines/${name}.nix			# configuration.nix for machine
+		../users/${user}/configuration.nix	# configuration.nix for user (defines user account, etc.)
 		# home-manager module
 		home-manager.home-manager {
 			home-manager.useGlobalPkgs = true;
