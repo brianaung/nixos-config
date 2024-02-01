@@ -49,11 +49,11 @@ in {
 				${ws10} = [{ class = "^Spotify$"; }];
 			};
 
-			window = {
-				commands = [
-					# { command = "fullscreen enable"; criteria = { class = "^Spotify$"; }; }
-				];
-			};
+			# window = {
+			# 	commands = [
+			# 		# { command = "fullscreen enable"; criteria = { class = "^Spotify$"; }; }
+			# 	];
+			# };
 
 			workspaceOutputAssign = [
 				{ workspace = "${ws1}"; output= ["HDMI-1" "eDP-1"]; }
