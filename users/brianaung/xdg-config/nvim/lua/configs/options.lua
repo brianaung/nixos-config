@@ -5,6 +5,8 @@ o.timeoutlen = 500
 o.number = true
 o.relativenumber = true
 
+o.scrolloff = 5
+
 -- o.cursorline = true
 
 o.tabstop = 4

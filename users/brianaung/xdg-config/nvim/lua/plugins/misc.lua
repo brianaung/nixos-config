@@ -1,7 +1,7 @@
 local nmap = require("utils.mapper").nmap
 
 return {
-	"nvim-tree/nvim-web-devicons",
+	-- "nvim-tree/nvim-web-devicons",
 	{
 		-- "brianaung/yasl.nvim",
 		dir = "~/projects/yasl.nvim",
