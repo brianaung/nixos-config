@@ -38,6 +38,7 @@
 		flameshot
 		obsidian
 		slack
+		zoom-us
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
