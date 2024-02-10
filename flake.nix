@@ -21,9 +21,8 @@
 		devShells.x86_64-linux.default = pkgs.mkShell {
 			name = "My dotfiles build environment";
 			buildInputs = with pkgs; [
-				go
-				nodejs_18
-				cargo
+				nil
+				lua-language-server
 				stylua
 			];
 			shellHook = ''

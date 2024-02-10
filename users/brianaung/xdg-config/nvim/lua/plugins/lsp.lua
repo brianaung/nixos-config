@@ -3,8 +3,8 @@ local nmap = require("utils.mapper").nmap
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		-- "williamboman/mason.nvim",
+		-- "williamboman/mason-lspconfig.nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
 		"L3MON4D3/LuaSnip",
@@ -24,6 +24,15 @@ return {
 			nil_ls = {},
 			tsserver = {},
 			tailwindcss = {},
+			phpactor = {},
+			-- NIXPKGS NAME LIST
+			-- gopls
+			-- lua-language-server
+			-- nodePackages.pyright
+			-- nil
+			-- nodePackages.typescript-language-server
+			-- tailwindcss-language-server
+			-- phpactor
 		}
 
 		local on_attach = function(_, bufnr)
@@ -51,22 +60,34 @@ return {
 			float = { border = "rounded" },
 		}
 
-		require("mason").setup()
-		require("mason-lspconfig").setup {
-			ensure_installed = vim.tbl_keys(servers),
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup {
-						capabilities = capabilities,
-						on_attach = on_attach,
-						handlers = handlers,
-						settings = servers[server_name],
-						filetypes = (servers[server_name] or {}).filetypes,
-						init_options = (servers[server_name] or {}).init_options,
-					}
-				end,
-			},
-		}
+		-- I don't use mason since I use nix flakes to install lsp packages
+		for server, opts in pairs(servers) do
+			require("lspconfig")[server].setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				handlers = handlers,
+				settings = opts,
+				filetypes = (opts or {}).filetypes,
+				init_options = (opts or {}).init_options,
+			}
+		end
+		-- Use this instead for mason setup (remember to uncomment mason plugins in the dependencies list.
+		-- require("mason").setup()
+		-- require("mason-lspconfig").setup {
+		-- 	ensure_installed = vim.tbl_keys(servers),
+		-- 	handlers = {
+		-- 		function(server_name)
+		-- 			require("lspconfig")[server_name].setup {
+		-- 				capabilities = capabilities,
+		-- 				on_attach = on_attach,
+		-- 				handlers = handlers,
+		-- 				settings = servers[server_name],
+		-- 				filetypes = (servers[server_name] or {}).filetypes,
+		-- 				init_options = (servers[server_name] or {}).init_options,
+		-- 			}
+		-- 		end,
+		-- 	},
+		-- }
 
 		-- completion
 		local cmp = require("cmp")
