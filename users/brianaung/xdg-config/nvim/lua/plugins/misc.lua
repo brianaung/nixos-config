@@ -1,86 +1,14 @@
-local nmap = require("utils.mapper").nmap
-
 return {
-	-- "nvim-tree/nvim-web-devicons",
+	"tpope/vim-surround",
+
 	{
-		-- "brianaung/yasl.nvim",
-		dir = "~/projects/yasl.nvim",
+		"brianaung/yasl.nvim",
+		-- dir = "~/projects/yasl.nvim",
 		config = function()
 			require("yasl").setup {
 				enable_icons = true,
 			}
 		end,
-	},
-
-	{
-		"RRethy/nvim-base16",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("base16-colorscheme").with_config {
-				telescope = false,
-			}
-			vim.cmd.colorscheme("base16-kanagawa")
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-			vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-			vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-			vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none" })
-			vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none" })
-		end,
-	},
-
-	{
-		"stevearc/conform.nvim",
-		config = function()
-			require("conform").setup {
-				formatters_by_ft = {
-					lua = { "stylua" },
-					go = { "gofmt" },
-					python = { "isort", "black" },
-					javascript = { { "prettierd", "prettier" } },
-					typescript = { { "prettierd", "prettier" } },
-					typescriptreact = { { "prettierd", "prettier" } },
-				},
-				format_on_save = {
-					lsp_fallback = true,
-					async = true,
-					-- timeout_ms = 500,
-				},
-			}
-		end,
-	},
-
-	{
-		"ThePrimeagen/harpoon",
-		config = function()
-			nmap("<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>")
-			nmap("<leader>h", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu{}<cr>")
-			for i = 1, 5 do
-				nmap(string.format("<leader>%s", i), string.format("<cmd>lua require 'harpoon.ui'.nav_file(%s)<cr>", i))
-			end
-		end,
-	},
-
-	{
-		"tpope/vim-fugitive",
-		config = function()
-			nmap("<leader>gs", "<cmd>G<cr>")
-		end,
-	},
-
-	"tpope/vim-surround",
-
-	{
-		"mbbill/undotree",
-		cmd = {
-			"UndotreeToggle",
-			"UndotreeShow",
-		},
-		keys = {
-			{ "<leader>u", "<cmd>UndotreeToggle | UndotreeFocus<cr>" },
-		},
 	},
 
 	{
@@ -96,6 +24,68 @@ return {
 				},
 			}
 		end,
+	},
+
+	-- Everything below is lazy loaded
+	{
+		"ThePrimeagen/harpoon",
+		keys = {
+			{ "<leader>a", "<cmd>lua require 'harpoon.mark'.add_file()<cr>" },
+			{ "<leader>h", "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>" },
+			{ "<leader>1", "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>" },
+			{ "<leader>2", "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>" },
+			{ "<leader>3", "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>" },
+			{ "<leader>4", "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>" },
+		},
+	},
+
+	{
+		"tpope/vim-fugitive",
+		config = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"fugitive",
+					"fugitiveblame",
+				},
+				command = [[
+					nnoremap <buffer><silent> <esc> :bd<cr>
+					setl bufhidden=wipe
+				]],
+			})
+		end,
+		cmd = { "G", "Git" },
+		keys = { { "<leader>gs", "<cmd>G<cr>" } },
+	},
+
+	{
+		"echasnovski/mini.files",
+		version = "*",
+		config = function()
+			require("mini.files").setup {
+				mappings = {
+					go_in = "",
+					go_in_plus = "l",
+					close = "<esc>",
+					synchronize = "<cr>",
+				},
+			}
+		end,
+		keys = { { "<leader>fe", "<cmd>lua MiniFiles.open()<cr>" } },
+	},
+
+	{
+		"mbbill/undotree",
+		config = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "undotree" },
+				command = [[ nnoremap <buffer><silent> <esc> :UndotreeHide<cr> ]],
+			})
+		end,
+		cmd = {
+			"UndotreeToggle",
+			"UndotreeShow",
+		},
+		keys = { { "<leader>u", "<cmd>UndotreeToggle | UndotreeFocus<cr>" } },
 	},
 
 	{

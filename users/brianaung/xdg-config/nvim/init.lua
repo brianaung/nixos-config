@@ -40,24 +40,12 @@ require("lazy").setup("plugins", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"help",
-		"netrw",
 		"qf",
 		"man",
 		"checkhealth",
-		"fugitive",
-		"fugitiveblame",
 	},
 	command = [[
 		nnoremap <buffer><silent> <esc> :bd<cr>
 		setl bufhidden=wipe
-	]],
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"undotree",
-	},
-	command = [[
-		nnoremap <buffer><silent> <esc> :UndotreeHide<cr>
 	]],
 })

@@ -26,5 +26,3 @@ vmap("J", ":m '>+1<cr>gv=gv")
 vmap("K", ":m '<-2<cr>gv=gv")
 
 nmap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<cr>")
-
-nmap("fe", "<cmd>Ex<cr>")
