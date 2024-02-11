@@ -12,6 +12,8 @@ function R(name)
 	return require(name)
 end
 
+require("disable_builtins")
+
 require("configs.options")
 require("configs.keymaps")
 
