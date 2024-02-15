@@ -23,6 +23,7 @@ return {
 			pyright = {},
 			nil_ls = {},
 			tsserver = {},
+			volar = {},
 			tailwindcss = {},
 			phpactor = {},
 			-- NIXPKGS NAME LIST

@@ -22,6 +22,7 @@ return {
 					topdelete = { text = "‾" },
 					changedelete = { text = "~" },
 				},
+				current_line_blame = true,
 			}
 		end,
 	},
@@ -58,19 +59,12 @@ return {
 	},
 
 	{
-		"echasnovski/mini.files",
-		version = "*",
-		config = function()
-			require("mini.files").setup {
-				mappings = {
-					go_in = "",
-					go_in_plus = "l",
-					close = "<esc>",
-					synchronize = "<cr>",
-				},
-			}
-		end,
-		keys = { { "<leader>fe", "<cmd>lua MiniFiles.open()<cr>" } },
+	  'stevearc/oil.nvim',
+			config = function()
+				require("oil").setup()
+			end,
+			cmd = { "Oil" },
+			keys = { { "<leader>fe", "<cmd>Oil<cr>" } },
 	},
 
 	{

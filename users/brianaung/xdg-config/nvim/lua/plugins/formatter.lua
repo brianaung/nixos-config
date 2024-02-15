@@ -11,11 +11,11 @@ return {
 				typescriptreact = { { "prettierd", "prettier" } },
 				php = { "php_cs_fixer" },
 			},
-			format_on_save = {
-				lsp_fallback = true,
-				async = true,
-				-- timeout_ms = 500,
-			},
+			-- format_on_save = {
+			-- 	lsp_fallback = true,
+			-- 	async = true,
+			-- 	-- timeout_ms = 500,
+			-- },
 		}
 	end,
 }
