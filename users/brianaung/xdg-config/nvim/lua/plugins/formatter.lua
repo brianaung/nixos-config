@@ -1,3 +1,4 @@
+local nmap = require("utils.mapper").nmap
 return {
 	"stevearc/conform.nvim",
 	config = function()
@@ -17,5 +18,6 @@ return {
 			-- 	-- timeout_ms = 500,
 			-- },
 		}
+		nmap("<leader>fm", "<cmd>lua require('conform').format({ bufnr = 0 })<cr>")
 	end,
 }

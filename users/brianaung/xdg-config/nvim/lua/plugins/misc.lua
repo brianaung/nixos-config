@@ -59,12 +59,16 @@ return {
 	},
 
 	{
-	  'stevearc/oil.nvim',
-			config = function()
-				require("oil").setup()
-			end,
-			cmd = { "Oil" },
-			keys = { { "<leader>fe", "<cmd>Oil<cr>" } },
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup({
+				keymaps = {
+					["<esc>"] = "actions.close",
+				}
+			})
+		end,
+		cmd = { "Oil" },
+		keys = { { "<leader>fe", "<cmd>Oil<cr>" } },
 	},
 
 	{
