@@ -4,12 +4,12 @@ let
 	tmux-sessionizer = pkgs.writeShellScriptBin "tmux-sessionizer" ''
 		#!/usr/bin/env bash
 
-		# credit to theprimeagen
+		# theprimeagen so good
 
 		if [[ $# -eq 1 ]]; then
 				selected=$1
 		else
-				selected=$(find ~/work ~/projects ~/playground -mindepth 1 -maxdepth 1 -type d | fzf)
+				selected=$(find ~/work ~/projects ~/playground ~/.config/home-manager -mindepth 0 -maxdepth 1 -type d | fzf)
 		fi
 
 		if [[ -z $selected ]]; then

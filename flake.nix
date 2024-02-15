@@ -18,6 +18,7 @@
 			inherit nixpkgs inputs;
 		};
 	in {
+		# direnv disallow(ed) atm (i.e. not in use)
 		devShells.x86_64-linux.default = pkgs.mkShell {
 			name = "My dotfiles build environment";
 			buildInputs = with pkgs; [

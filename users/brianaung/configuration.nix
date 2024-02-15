@@ -30,4 +30,10 @@
 	};
 
 	virtualisation.docker.enable = true;
+
+	networking.extraHosts =
+	''
+	192.168.56.56  cms.simonds.test
+	192.168.56.56  cyberspace-place.test
+	'';
 }

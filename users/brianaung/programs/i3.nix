@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-	mod = "Mod4";
+	mod = "Mod1";
 	ws1 = "1";
 	ws2 = "2";
 	ws3 = "3";
@@ -36,16 +36,23 @@ in {
 				# run `feh <options> <path-to-wallpaper>` first
 				{ command = "sh ~/.fehbg &"; notification = false; }
 
-				{ command = "${pkgs.brave}/bin/brave"; }
+				{ command = "${pkgs.firefox}/bin/firefox"; }
 				{ command = "${pkgs.alacritty}/bin/alacritty"; }
+				{ command = "${pkgs.brave}/bin/brave"; }
 				{ command = "${pkgs.obsidian}/bin/obsidian"; }
+
+				{ command = "${pkgs.thunderbird}/bin/thunderbird"; }
+				{ command = "${pkgs.slack}/bin/slack"; }
 				{ command = "${pkgs.spotify}/bin/spotify"; }
 			];
 
 			assigns = {
-				${ws1} = [{ class = "^Brave-browser$"; }];
+				${ws1} = [{ class = "^firefox$"; }];
 				${ws2} = [{ class = "^Alacritty$"; }];
-				${ws3} = [{ class = "^obsidian$"; }];
+				${ws3} = [{ class = "^Brave-browser$"; }];
+				${ws4} = [{ class = "^obsidian$"; }];
+
+				${ws9} = [{ class = "^thunderbird$"; } { class = "^Slack$"; }];
 				${ws10} = [{ class = "^Spotify$"; }];
 			};
 
@@ -56,16 +63,17 @@ in {
 			# };
 
 			workspaceOutputAssign = [
-				{ workspace = "${ws1}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws2}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws3}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws4}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws5}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws6}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws7}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws8}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws9}"; output= ["HDMI-1" "eDP-1"]; }
-				{ workspace = "${ws10}"; output= ["eDP-1" "HDMI-1"]; }
+				{ workspace = "${ws1}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws2}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws3}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws4}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws5}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws6}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws7}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+				{ workspace = "${ws8}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
+
+				{ workspace = "${ws9}"; output= ["eDP-1" "HDMI-1"  "DP-1"]; }
+				{ workspace = "${ws10}"; output= ["eDP-1" "HDMI-1" "DP-1"]; }
 			];
 
 			floating = {
