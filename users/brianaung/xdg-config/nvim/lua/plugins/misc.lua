@@ -1,15 +1,15 @@
 return {
 	"tpope/vim-surround",
 
-	{
-		"brianaung/yasl.nvim",
-		-- dir = "~/projects/yasl.nvim",
-		config = function()
-			require("yasl").setup {
-				enable_icons = true,
-			}
-		end,
-	},
+	-- {
+	-- 	-- "brianaung/yasl.nvim",
+	-- 	dir = "~/projects/yasl.nvim",
+	-- 	config = function()
+	-- 		require("yasl").setup {
+	-- 			enable_icons = false,
+	-- 		}
+	-- 	end,
+	-- },
 
 	{
 		"lewis6991/gitsigns.nvim",

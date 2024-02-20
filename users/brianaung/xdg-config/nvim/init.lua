@@ -16,6 +16,7 @@ require("disable_builtins")
 
 require("configs.options")
 require("configs.keymaps")
+require("configs.statusline")
 
 -- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

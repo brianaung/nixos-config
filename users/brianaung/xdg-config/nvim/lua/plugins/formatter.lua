@@ -10,6 +10,7 @@ return {
 				javascript = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
 				typescriptreact = { { "prettierd", "prettier" } },
+				vue = { { "prettierd", "prettier" } },
 				php = { "php_cs_fixer" },
 			},
 			-- format_on_save = {
