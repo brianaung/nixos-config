@@ -23,7 +23,7 @@
 					family = "JetBrainsMono Nerd Font";
 					style = "Italic";
 				};
-				size = 13;
+				size = 10;
 			};
 
 			colors = {

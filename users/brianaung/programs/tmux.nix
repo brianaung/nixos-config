@@ -19,6 +19,12 @@
 			set -sa terminal-features ",alacritty:RGB"
 			set -g focus-events on
 
+			set -g status-position top
+			set -g status-style bg=default
+			set -g status-left-length 90
+			set -g status-right-length 90
+			set -g status-justify centre
+
 			bind e send-prefix
 
 			bind c new-window -c "#{pane_current_path}"

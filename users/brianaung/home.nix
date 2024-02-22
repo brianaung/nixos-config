@@ -3,20 +3,15 @@
 {
 	imports = [
 		inputs.nix-colors.homeManagerModules.default
-
 		./programs/zsh.nix
 		./programs/git.nix
 		./programs/i3.nix
 		./programs/alacritty.nix
 		./programs/tmux.nix
 		./programs/starship.nix
-		./programs/zathura.nix
-
 		./scripts/tmux-sessionizer.nix
 	];
 
-	# Most programs will use colors from here, except neovim, for consistency.
-	# But it is quick to update neovim as well since I will be using base16 for both.
 	colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
 
 	home.username = "${user}";
@@ -32,21 +27,17 @@
 
 	# Install Nix packages into your environment.
 	home.packages = with pkgs; [
-		jetbrains.phpstorm
 		thunderbird
 		vagrant
 		brave
 		firefox
 		spotify
-		dbeaver
 		flameshot
 		obsidian
 		slack
-		zoom-us
+		zathura
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-
-		wezterm
 
 		neovim
 		fzf
@@ -55,34 +46,29 @@
 		eza
 		xclip
 		unzip
-		ranger
 		lsof
 
-		# i use flake shells sometimes but i m tired setting it up for every projects lol, and takes too long to load sometimes
+		# Usually I use either flakes or docker for dev environment, but I want them globally installed atm
 		gnumake
 		gcc
+		php83
 		nodejs_18
 		nil
 		lua-language-server
+		phpactor
 		nodePackages.typescript-language-server
 		nodePackages.volar
 		tailwindcss-language-server
 		prettierd
 		stylua
+		php83Packages.php-cs-fixer
 	];
 
 	xdg.configFile = {
-		# i want to keep this out of nix store because I edit this way too often, that I hate having to keep rebuilding for changes
+		# i like to keep these out of nix store personally since I update them way too often, dont care about reproducibility much
+		# don't use relative path, it will link to nix store (is there a better way?)
 		"nvim".source = 
-			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/nvim"; # don't use relative path, it will link to nix store
-
-		"wezterm".source = 
-			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/wezterm";
-
-		"ranger" = {
-			source = ./xdg-config/ranger;
-			recursive = true;
-		};
+			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/nvim"; 
 	};
 
 	# Let Home Manager install and manage itself.
@@ -90,8 +76,30 @@
 
 	programs.direnv.enable = true;
 
-	xsession.initExtra = ''
-		unset XDG_CURRENT_DESKTOP
-		unset DESKTOP_SESSION
-	'';
+	programs.zellij = {
+		enable = true;
+	};
+
+	# To find the desktop entries:
+	# home.packages: `ls -l /etc/profiles/per-user/brianaung/share/applications/`
+	# environment.systemPackages: `ls -l /run/current-system/sw/share/applications/`
+	# xdg.mimeApps = {
+	# 	enable = true;
+	# 	defaultApplications = {
+	# 		"text/html" = "brave-browser.desktop";
+	# 		"x-scheme-handler/http" = "brave-browser.desktop";
+	# 		"x-scheme-handler/https" = "brave-browser.desktop";
+	# 		"x-scheme-handler/about" = "brave-browser.desktop";
+	# 		"x-scheme-handler/unknown" = "brave-browser.desktop";
+
+	# 		"x-scheme-handler/mailto" = "userapp-Thunderbird-995RI2.desktop";
+	# 		"message/rfc822" = "userapp-Thunderbird-995RI2.desktop";
+	# 		"x-scheme-handler/mid" = "userapp-Thunderbird-995RI2.desktop";
+	# 	};
+
+	# 	associations.added = {
+	# 		"x-scheme-handler/mailto" = "userapp-Thunderbird-995RI2.desktop";
+	# 		"x-scheme-handler/mid" = "userapp-Thunderbird-995RI2.desktop";
+	# 	};
+	# };
 }

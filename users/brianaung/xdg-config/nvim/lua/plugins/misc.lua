@@ -1,15 +1,50 @@
 return {
 	"tpope/vim-surround",
 
-	-- {
-	-- 	-- "brianaung/yasl.nvim",
-	-- 	dir = "~/projects/yasl.nvim",
-	-- 	config = function()
-	-- 		require("yasl").setup {
-	-- 			enable_icons = false,
-	-- 		}
-	-- 	end,
-	-- },
+	{
+		"echasnovski/mini.indentscope",
+		version = false,
+		config = function()
+			require("mini.indentscope").setup()
+		end,
+	},
+
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup {
+				progress = {
+					display = {
+						done_ttl = 10,
+						skip_history = false,
+					},
+				},
+			}
+		end,
+	},
+
+	{
+		-- "brianaung/yasl.nvim",
+		dir = "~/projects/yasl.nvim",
+		config = function()
+			require("yasl").setup {
+				components = {
+					"mode",
+					" ",
+					"%<%t%h%m%r%w", -- filename
+					" ",
+					"branch",
+					"%=",
+					"diagnostics",
+					" ",
+					"filetype",
+					" ",
+					"[%-8.(%l, %c%V%) %P]", -- location, and progress
+					" ",
+				},
+			}
+		end,
+	},
 
 	{
 		"lewis6991/gitsigns.nvim",
@@ -22,12 +57,35 @@ return {
 					topdelete = { text = "‾" },
 					changedelete = { text = "~" },
 				},
-				current_line_blame = true,
+				-- current_line_blame = true,
 			}
 		end,
 	},
 
 	-- Everything below is lazy loaded
+	{
+		"echasnovski/mini.files",
+		version = false,
+		config = function()
+			require("mini.files").setup {
+				mappings = {
+					close = "<esc>",
+					go_in = "",
+					go_in_plus = "<cr>",
+					go_out = "",
+					go_out_plus = "-",
+					reset = "<BS>",
+					reveal_cwd = "@",
+					show_help = "g?",
+					synchronize = "=",
+					trim_left = "<",
+					trim_right = ">",
+				},
+			}
+		end,
+		keys = { { "<leader>fe", "<cmd>lua MiniFiles.open()<cr>" } },
+	},
+
 	{
 		"ThePrimeagen/harpoon",
 		keys = {
@@ -56,19 +114,6 @@ return {
 		end,
 		cmd = { "G", "Git" },
 		keys = { { "<leader>gs", "<cmd>G<cr>" } },
-	},
-
-	{
-		"stevearc/oil.nvim",
-		config = function()
-			require("oil").setup({
-				keymaps = {
-					["<esc>"] = "actions.close",
-				}
-			})
-		end,
-		cmd = { "Oil" },
-		keys = { { "<leader>fe", "<cmd>Oil<cr>" } },
 	},
 
 	{

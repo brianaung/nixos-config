@@ -15,11 +15,6 @@
 	nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
 	networking.hostName = "nixos"; # Define your hostname.
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 	# Enable networking
 	networking.networkmanager.enable = true;
@@ -52,31 +47,11 @@
 		brightnessctl
 		xcape
 
-		# dex
-		# xss-lock
-		# network-manager-applet
-		# dmenu
-		# i3status
+		dmenu
 	];
 
-	# Some programs need SUID wrappers, can be configured further or are
-	# started in user sessions.
-	# programs.mtr.enable = true;
-	# programs.gnupg.agent = {
-	#   enable = true;
-	#   enableSSHSupport = true;
-	# };
-
 	# i need this to be able to run non-nix executables
-	programs.nix-ld.enable = true;
-
-	# List services that you want to enable:
-
-	# Enable the OpenSSH daemon.
-	# services.openssh.enable = true;
-
-	# Enable touchpad support (enabled default in most desktopManager).
-	# services.xserver.libinput.enable = true;
+	# programs.nix-ld.enable = true;
 
 	services.xserver = {
 		enable = true;
@@ -120,16 +95,11 @@
 		};
 	};
 
-	# services.udisks2.enable = true;
+	virtualisation.docker.enable = true;
 
-	# Enable CUPS to print documents.
-	# services.printing.enable = true;
-
-	# Open ports in the firewall.
-	# networking.firewall.allowedTCPPorts = [ ... ];
-	# networking.firewall.allowedUDPPorts = [ ... ];
-	# Or disable the firewall altogether.
-	# networking.firewall.enable = false;
+	networking.extraHosts = ''
+		192.168.56.56  cms.simonds.test
+	'';
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
