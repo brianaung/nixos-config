@@ -46,8 +46,6 @@
 		pavucontrol
 		brightnessctl
 		xcape
-
-		dmenu
 	];
 
 	# i need this to be able to run non-nix executables
@@ -55,12 +53,13 @@
 
 	services.xserver = {
 		enable = true;
-
-		layout = "au";
-		xkbVariant = "";
-		# xkbOptions = [
-		# 	"ctrl:nocaps"
-		# ];
+		xkb = {
+			layout = "au";
+			variant = "";
+			# options = ''
+			# 	"ctrl:nocaps"
+			# '';
+		};
 
 		# ===== using only i3 =====
 		# desktopManager.xterm.enable = false;

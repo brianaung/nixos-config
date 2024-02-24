@@ -7,7 +7,6 @@
 		./programs/git.nix
 		./programs/i3.nix
 		./programs/alacritty.nix
-		./programs/tmux.nix
 		./programs/starship.nix
 		./scripts/tmux-sessionizer.nix
 	];
@@ -40,6 +39,8 @@
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
 		neovim
+		tmux
+
 		fzf
 		ripgrep
 		fd
@@ -67,18 +68,14 @@
 	xdg.configFile = {
 		# i like to keep these out of nix store personally since I update them way too often, dont care about reproducibility much
 		# don't use relative path, it will link to nix store (is there a better way?)
-		"nvim".source = 
-			config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/nvim"; 
+		"nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/nvim";
+		"tmux".source = config.lib.file.mkOutOfStoreSymlink "/home/${user}/.config/home-manager/users/${user}/xdg-config/tmux";
 	};
 
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
 
 	programs.direnv.enable = true;
-
-	programs.zellij = {
-		enable = true;
-	};
 
 	# To find the desktop entries:
 	# home.packages: `ls -l /etc/profiles/per-user/brianaung/share/applications/`

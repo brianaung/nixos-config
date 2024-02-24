@@ -90,13 +90,13 @@ in {
 			};
 
 			colors = {
-				background = "#${config.colorScheme.colors.base00}";
+				background = "#${config.colorScheme.palette.base00}";
 				focused = {
-					background = "#${config.colorScheme.colors.base0D}";
-					border = "#${config.colorScheme.colors.base0D}";
-					childBorder = "#${config.colorScheme.colors.base0D}";
-					indicator = "#${config.colorScheme.colors.base0D}";
-					text = "#${config.colorScheme.colors.base01}";
+					background = "#${config.colorScheme.palette.base0D}";
+					border = "#${config.colorScheme.palette.base0D}";
+					childBorder = "#${config.colorScheme.palette.base0D}";
+					indicator = "#${config.colorScheme.palette.base0D}";
+					text = "#${config.colorScheme.palette.base01}";
 				};
 			};
 
@@ -178,18 +178,18 @@ in {
 					workspaceButtons = true;
 					fonts.size = 9.0;
 					colors = {
-						background = "#${config.colorScheme.colors.base01}";
-						statusline = "#${config.colorScheme.colors.base04}";
-						separator = "#${config.colorScheme.colors.base03}";
+						background = "#${config.colorScheme.palette.base01}";
+						statusline = "#${config.colorScheme.palette.base04}";
+						separator = "#${config.colorScheme.palette.base03}";
 						focusedWorkspace = {
-							background = "#${config.colorScheme.colors.base0D}";
-							border = "#${config.colorScheme.colors.base0D}";
-							text = "#${config.colorScheme.colors.base02}";
+							background = "#${config.colorScheme.palette.base0D}";
+							border = "#${config.colorScheme.palette.base0D}";
+							text = "#${config.colorScheme.palette.base02}";
 						};
 						inactiveWorkspace = {
-							background = "#${config.colorScheme.colors.base00}";
-							border = "#${config.colorScheme.colors.base03}";
-							text = "#${config.colorScheme.colors.base05}";
+							background = "#${config.colorScheme.palette.base00}";
+							border = "#${config.colorScheme.palette.base03}";
+							text = "#${config.colorScheme.palette.base05}";
 						};
 					};
 				}
@@ -204,9 +204,9 @@ in {
 
 		general = {
 			colors = true;
-			color_good = "#${config.colorScheme.colors.base0B}";
-			color_degraded = "#${config.colorScheme.colors.base0A}";
-			color_bad = "#${config.colorScheme.colors.base08}";
+			color_good = "#${config.colorScheme.palette.base0B}";
+			color_degraded = "#${config.colorScheme.palette.base0A}";
+			color_bad = "#${config.colorScheme.palette.base08}";
 			interval = 5;
 		};
 
@@ -251,38 +251,4 @@ in {
 			};
 		};
 	};
-
-	# services.dunst = {
-	# 	enable = true;
-	# 	package = pkgs.dunst;
-
-	# 	settings = {
-	# 		global = {
-	# 			offset = "10x30";
-	# 			origin = "top-right";
-	# 			font = "JetBrains Mono Nerd Font 9";
-	# 			frame_color = "#${config.colorScheme.colors.base03}";
-	# 			timeout = 10;
-	# 		};
-
-	# 		urgency_low = {
-	# 			background = "#${config.colorScheme.colors.base02}";
-	# 			foreground = "#${config.colorScheme.colors.base05}";
-	# 		};
-
-	# 		urgency_normal = {
-	# 			background = "#${config.colorScheme.colors.base0D}";
-	# 			foreground = "#${config.colorScheme.colors.base01}";
-	# 		};
-
-	# 		urgency_critical = {
-	# 			background = "#${config.colorScheme.colors.base08}";
-	# 			foreground = "#${config.colorScheme.colors.base01}";
-	# 		};
-	# 	};
-	# };
-
-	# services.udiskie = {
-	# 	enable = true;
-	# };
 }
