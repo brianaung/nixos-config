@@ -1,1 +1,3 @@
-# I use neovim btw
+# init.lua
+
+My neovim configs. Always a WIP =)).

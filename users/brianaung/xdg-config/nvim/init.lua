@@ -1,53 +1,70 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- ==================== Keymaps ====================
+-- Important! Always set your leader key first before anything.
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.keymap.set({ 'n', 'v' }, '<leader>', '<nop>')
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<cr>', '<cmd>nohl<cr>')
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>p', '"+p')
+vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv")
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<cr>')
 
--- some globals
-function P(v)
-	vim.print(v)
-	return v
-end
+-- ==================== Options ====================
+-- See :h option-list
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 5
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = false
+vim.opt.breakindent = true
+vim.opt.showbreak = '   '
+vim.opt.linebreak = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.list = true
+vim.cmd([[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])
+vim.cmd('au BufEnter * set formatoptions-=o')
 
-function R(name)
-	package.loaded[name] = nil
-	return require(name)
-end
-
-require("disable_builtins")
-
-require("configs.options")
-require("configs.keymaps")
-
--- bootstrap lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- ==================== Plugins ====================
+local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	}
+	vim.fn.system { 'git', 'clone', '--filter=blob:none', lazyrepo, '--branch=stable', lazypath }
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
+-- See :h lazy.nvim-lazy.nvim-plugin-spec
+require('lazy').setup('plugins', {
 	change_detection = {
 		notify = false,
 	},
 })
 
--- autocmd to close on esc for certain filetypes
--- same as defining for each ft in after/ftplugin/...
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"help",
-		"qf",
-		"man",
-		"checkhealth",
-	},
-	command = [[
-		nnoremap <buffer><silent> <esc> :bd<cr>
-		setl bufhidden=wipe
-	]],
+-- ==================== Autocmds ====================
+vim.api.nvim_create_autocmd('FileType', {
+	group = vim.api.nvim_create_augroup('close_with_escape', { clear = true }),
+	pattern = { 'help', 'qf', 'man', 'checkhealth', 'fugitive', 'fugitiveblame' },
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+		vim.keymap.set('n', '<esc>', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+	end,
+})
+
+-- Resize splits if window got resized
+vim.api.nvim_create_autocmd({ 'VimResized' }, {
+	group = vim.api.nvim_create_augroup('resize_splits', { clear = true }),
+	callback = function()
+		local current_tab = vim.fn.tabpagenr()
+		vim.cmd('tabdo wincmd =')
+		vim.cmd('tabnext ' .. current_tab)
+	end,
 })
