@@ -28,7 +28,7 @@ return {
 			vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 			vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+			vim.keymap.set('n', 'sh', vim.lsp.buf.signature_help, opts)
 			vim.keymap.set('n', '<leader>se', vim.diagnostic.open_float, opts)
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
