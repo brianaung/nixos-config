@@ -23,6 +23,10 @@ return {
 				if ok and stats and stats.size > max_filesize then return true end
 			end,
 		},
+		-- experimental
+		indent = {
+			enable = true,
+		},
 		textobjects = {
 			select = {
 				enable = true,

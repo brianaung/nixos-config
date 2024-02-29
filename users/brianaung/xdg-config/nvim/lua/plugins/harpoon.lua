@@ -1,6 +1,8 @@
--- TODO: migration to harpoon 2?
+-- TODO: migration to harpoon 2?,
+-- experimenting with tabline
 return {
 	'ThePrimeagen/harpoon',
+	lazy = false, -- I want the tabline on right away
 	keys = {
 		{ '<leader>a', function() require('harpoon.mark').add_file() end },
 		{ '<leader>h', function() require('harpoon.ui').toggle_quick_menu() end },
@@ -11,4 +13,14 @@ return {
 		{ '<C-n>', function() require('harpoon.ui').nav_next() end },
 		{ '<C-p>', function() require('harpoon.ui').nav_prev() end },
 	},
+	opts = {
+		tabline = true,
+		tabline_prefix = '[',
+		tabline_suffix = '] ',
+	},
+	config = function(_, opts)
+		require('harpoon').setup(opts)
+		vim.cmd('highlight! HarpoonActive guibg=NONE guifg=yellow')
+		vim.cmd('highlight! HarpoonNumberActive guibg=NONE guifg=yellow')
+	end,
 }
