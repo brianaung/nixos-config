@@ -23,15 +23,12 @@ in {
 			terminal = "alacritty";
 
 			startup = [
-				# { command = "systemctl --user restart dunst.service"; always = true; notification = false; }
-
 				{ command = "${pkgs.dex}/bin/dex --autostart --environment i3"; notification = false; }
-				{ command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
+				# { command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
 				# { command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; notification = false; }
 				{ command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
-
-				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 				{ command = "${pkgs.picom}/bin/picom"; notification = false; }
+				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 
 				# run `feh <options> <path-to-wallpaper>` first
 				{ command = "sh ~/.fehbg &"; notification = false; }
@@ -47,9 +44,9 @@ in {
 			];
 
 			assigns = {
-				${ws1} = [{ class = "^firefox$"; }];
+				${ws1} = [{ class = "^Brave-browser$"; }];
 				${ws2} = [{ class = "^Alacritty$"; }];
-				${ws3} = [{ class = "^Brave-browser$"; }];
+				${ws3} = [{ class = "^firefox$"; }];
 				${ws4} = [{ class = "^obsidian$"; }];
 
 				${ws9} = [{ class = "^thunderbird$"; } { class = "^Slack$"; }];
@@ -69,9 +66,8 @@ in {
 				{ workspace = "${ws4}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
 				{ workspace = "${ws5}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
 				{ workspace = "${ws6}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
-				{ workspace = "${ws7}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
-				{ workspace = "${ws8}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
-
+				{ workspace = "${ws7}"; output= ["eDP-1" "HDMI-1"  "DP-1"]; }
+				{ workspace = "${ws8}"; output= ["eDP-1" "HDMI-1"  "DP-1"]; }
 				{ workspace = "${ws9}"; output= ["eDP-1" "HDMI-1"  "DP-1"]; }
 				{ workspace = "${ws10}"; output= ["eDP-1" "HDMI-1" "DP-1"]; }
 			];
@@ -109,6 +105,8 @@ in {
 			keybindings = {
 				"${mod}+Shift+c" = "reload";
 				"${mod}+Shift+r" = "restart";
+				# use `xfce4-session-logout` for xfce+i3 
+				# use `i3-msg exit` for none+i3
 				"${mod}+Shift+e" = ''
 					exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'xfce4-session-logout'"
 				'';

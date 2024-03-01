@@ -20,7 +20,9 @@ return {
 	},
 	config = function(_, opts)
 		require('harpoon').setup(opts)
-		vim.cmd('highlight! HarpoonActive guibg=NONE guifg=yellow')
-		vim.cmd('highlight! HarpoonNumberActive guibg=NONE guifg=yellow')
+		vim.cmd([[
+			highlight! HarpoonActive guibg=white guifg=black
+			highlight! HarpoonNumberActive guibg=white guifg=black
+		]])
 	end,
 }

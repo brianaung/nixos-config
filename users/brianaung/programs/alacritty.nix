@@ -6,9 +6,9 @@
 		package = pkgs.alacritty;
 
 		settings = {
-			window = {
-				opacity = 0.90;
-			};
+			# window = {
+			# 	opacity = 0.90;
+			# };
 
 			font = {
 				normal = {
@@ -28,8 +28,8 @@
 
 			colors = {
 				primary = {
-					# background = "#${config.colorScheme.colors.base00}";
-					background = "#000000";
+					# background = "#${config.colorScheme.palette.base00}";
+					background = "#12120f";
 					foreground = "#${config.colorScheme.palette.base05}";
 				};
 				cursor = {

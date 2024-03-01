@@ -40,36 +40,19 @@
 	environment.systemPackages = with pkgs; [
 		feh
 		picom
-		arandr
 		autorandr
+		xcape
 		pulseaudio
 		pavucontrol
-		brightnessctl
-		xcape
 	];
-
-	# i need this to be able to run non-nix executables
-	# programs.nix-ld.enable = true;
 
 	services.xserver = {
 		enable = true;
 		xkb = {
 			layout = "au";
 			variant = "";
-			# options = ''
-			# 	"ctrl:nocaps"
-			# '';
 		};
 
-		# ===== using only i3 =====
-		# desktopManager.xterm.enable = false;
-		# displayManager = {
-		# 	defaultSession = "none+i3";
-		# 	lightdm.enable = true;
-		# };
-		# windowManager.i3.enable = true;
-
-		# ===== using xfce+i3 =====
 		desktopManager = {
 			xterm.enable = false;
 			xfce = {
@@ -78,20 +61,15 @@
 				enableXfwm = false;
 			};
 		};
-
 		displayManager = {
 			defaultSession = "xfce+i3";
 			lightdm.enable = true;
-
 			sessionCommands = ''
 				setxkbmap -option 'caps:ctrl_modifier'
 				xcape -e 'Caps_Lock=Escape'
-		  	'';
+			'';
 		};
-
-		windowManager = {
-			i3.enable = true;
-		};
+		windowManager.i3.enable = true;
 	};
 
 	virtualisation.docker.enable = true;

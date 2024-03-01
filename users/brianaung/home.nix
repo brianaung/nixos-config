@@ -48,11 +48,15 @@
 		xclip
 		unzip
 		lsof
+		cloc
 
 		# Usually I use either flakes or docker for dev environment, but I want them globally installed atm
 		gnumake
 		gcc
+		rustc
+		cargo
 		php83
+		php83Packages.composer
 		nodejs_18
 		nil
 		lua-language-server
