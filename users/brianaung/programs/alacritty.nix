@@ -6,9 +6,9 @@
 		package = pkgs.alacritty;
 
 		settings = {
-			# window = {
-			# 	opacity = 0.90;
-			# };
+			window = {
+				opacity = 0.90;
+			};
 
 			font = {
 				normal = {
@@ -23,7 +23,7 @@
 					family = "JetBrainsMono Nerd Font";
 					style = "Italic";
 				};
-				size = 10;
+				size = 13;
 			};
 
 			colors = {

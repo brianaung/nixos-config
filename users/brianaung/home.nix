@@ -26,20 +26,20 @@
 
 	# Install Nix packages into your environment.
 	home.packages = with pkgs; [
-		thunderbird
-		vagrant
-		brave
-		firefox
-		spotify
-		flameshot
 		obsidian
-		slack
 		zathura
+		thunderbird
+		brave
+		google-chrome
+		spotify
+		slack
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
 		neovim
 		tmux
+		flameshot
+		vagrant
 
 		fzf
 		ripgrep

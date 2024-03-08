@@ -1,7 +1,12 @@
 return {
 	'tpope/vim-surround',
 
-	{ dir = '~/projects/yasl.nvim', opts = {} },
+	{
+		dir = '~/projects/yasl.nvim',
+		opts = {
+			transparent = true,
+		},
+	},
 
 	{ 'j-hui/fidget.nvim', opts = {} },
 

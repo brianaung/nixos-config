@@ -23,6 +23,12 @@ return {
 				},
 			},
 		},
+		overrides = function(colors)
+			return {
+				WinSeparator = { fg = colors.theme.ui.fg, bg = colors.theme.ui.bg_m2 },
+				TelescopeBorder = { fg = colors.theme.ui.fg, bg = colors.theme.ui.bg_m2 },
+			}
+		end,
 	},
 	config = function(_, opts)
 		require('kanagawa').setup(opts)

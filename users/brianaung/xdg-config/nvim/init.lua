@@ -8,12 +8,12 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<cr>', '<cmd>nohl<cr>')
-vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv")
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<cr>')
-vim.keymap.set('n', '<leader>fe', '<cmd>Lex<cr>')
 
 -- ==================== Options ====================
 -- See :h option-list
@@ -24,8 +24,6 @@ vim.opt.scrolloff = 5
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.splitright = true
-vim.opt.splitbelow = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
@@ -56,7 +54,7 @@ require('lazy').setup('plugins', {
 -- ==================== Autocmds ====================
 vim.api.nvim_create_autocmd('FileType', {
 	group = vim.api.nvim_create_augroup('close_with_escape', { clear = true }),
-	pattern = { 'help', 'qf', 'man', 'checkhealth', 'fugitive', 'fugitiveblame', 'netrw' },
+	pattern = { 'help', 'qf', 'man', 'checkhealth', 'fugitive', 'fugitiveblame' },
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
 		vim.keymap.set('n', '<esc>', '<cmd>close<cr>', { buffer = event.buf, silent = true })

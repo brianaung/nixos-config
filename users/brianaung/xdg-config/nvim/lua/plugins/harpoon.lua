@@ -10,19 +10,20 @@ return {
 		{ '<leader>2', function() require('harpoon.ui').nav_file(2) end },
 		{ '<leader>3', function() require('harpoon.ui').nav_file(3) end },
 		{ '<leader>4', function() require('harpoon.ui').nav_file(4) end },
+		{ '<leader>5', function() require('harpoon.ui').nav_file(5) end },
+		{ '<leader>6', function() require('harpoon.ui').nav_file(6) end },
 		{ '<C-n>', function() require('harpoon.ui').nav_next() end },
 		{ '<C-p>', function() require('harpoon.ui').nav_prev() end },
 	},
 	opts = {
 		tabline = true,
-		tabline_prefix = '[',
+		tabline_prefix = ' [',
 		tabline_suffix = '] ',
 	},
 	config = function(_, opts)
 		require('harpoon').setup(opts)
-		vim.cmd([[
-			highlight! HarpoonActive guibg=white guifg=black
-			highlight! HarpoonNumberActive guibg=white guifg=black
-		]])
+		local hl = vim.api.nvim_get_hl(0, { name = "TabLineSel" })
+		vim.api.nvim_set_hl(0, "HarpoonActive", hl)
+		vim.api.nvim_set_hl(0, "HarpoonNumberActive", hl)
 	end,
 }

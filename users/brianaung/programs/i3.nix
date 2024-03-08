@@ -31,6 +31,7 @@ in {
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 
 				# run `feh <options> <path-to-wallpaper>` first
+				{ command = "xcape"; notification = false; }
 				{ command = "sh ~/.fehbg &"; notification = false; }
 
 				{ command = "${pkgs.firefox}/bin/firefox"; }
