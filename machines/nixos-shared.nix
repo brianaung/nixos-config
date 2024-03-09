@@ -44,6 +44,8 @@
 		xcape
 		pulseaudio
 		pavucontrol
+		dex
+		xss-lock
 	];
 
 	services.xserver = {

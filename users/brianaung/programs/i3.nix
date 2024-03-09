@@ -2,16 +2,16 @@
 
 let
 	mod = "Mod1";
-	ws1 = "1";
-	ws2 = "2";
-	ws3 = "3";
+	ws1 = "1: web";
+	ws2 = "2: term";
+	ws3 = "3: note";
 	ws4 = "4";
 	ws5 = "5";
 	ws6 = "6";
 	ws7 = "7";
-	ws8 = "8";
-	ws9 = "9";
-	ws10 = "10";
+	ws8 = "8: work";
+	ws9 = "9: work";
+	ws10 = "10: music";
 in {
 	xsession.windowManager.i3 = {
 		enable = true;
@@ -24,41 +24,34 @@ in {
 
 			startup = [
 				{ command = "${pkgs.dex}/bin/dex --autostart --environment i3"; notification = false; }
-				# { command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
-				# { command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; notification = false; }
+				{ command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork"; notification = false; }
 				{ command = "${pkgs.pasystray}/bin/pasystray"; notification = false; }
 				{ command = "${pkgs.picom}/bin/picom"; notification = false; }
 				{ command = "${pkgs.autorandr}/bin/autorandr --change"; always = true; notification = false; }
 
-				# run `feh <options> <path-to-wallpaper>` first
 				{ command = "xcape"; notification = false; }
+				# run `feh <options> <path-to-wallpaper>` first
 				{ command = "sh ~/.fehbg &"; notification = false; }
 
-				{ command = "${pkgs.firefox}/bin/firefox"; }
-				{ command = "${pkgs.alacritty}/bin/alacritty"; }
 				{ command = "${pkgs.brave}/bin/brave"; }
+				{ command = "${pkgs.alacritty}/bin/alacritty"; }
 				{ command = "${pkgs.obsidian}/bin/obsidian"; }
+				{ command = "${pkgs.spotify}/bin/spotify"; }
 
+				{ command = "${pkgs.firefox}/bin/firefox"; }
 				{ command = "${pkgs.thunderbird}/bin/thunderbird"; }
 				{ command = "${pkgs.slack}/bin/slack"; }
-				{ command = "${pkgs.spotify}/bin/spotify"; }
 			];
 
 			assigns = {
 				${ws1} = [{ class = "^Brave-browser$"; }];
 				${ws2} = [{ class = "^Alacritty$"; }];
-				${ws3} = [{ class = "^firefox$"; }];
-				${ws4} = [{ class = "^obsidian$"; }];
+				${ws3} = [{ class = "^obsidian$"; }];
 
+				${ws8} = [{ class = "^firefox$"; }];
 				${ws9} = [{ class = "^thunderbird$"; } { class = "^Slack$"; }];
 				${ws10} = [{ class = "^Spotify$"; }];
 			};
-
-			# window = {
-			# 	commands = [
-			# 		# { command = "fullscreen enable"; criteria = { class = "^Spotify$"; }; }
-			# 	];
-			# };
 
 			workspaceOutputAssign = [
 				{ workspace = "${ws1}"; output= ["HDMI-1" "DP-1" "eDP-1"]; }
