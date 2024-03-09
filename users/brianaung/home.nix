@@ -31,6 +31,7 @@
 		thunderbird
 		brave
 		google-chrome
+		firefox
 		spotify
 		slack
 
