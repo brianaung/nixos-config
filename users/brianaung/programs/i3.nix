@@ -206,26 +206,33 @@ in {
 			"disk /" = {
 				position = 1;
 				settings = {
-					format = "Disk: %avail";
+					format = "Home: %avail";
+				};
+			};
+
+			"disk /data" = {
+				position = 2;
+				settings = {
+					format = "Data: %avail";
 				};
 			};
 
 			"battery all" = {
-				position = 2;
+				position = 3;
 				settings = {
 					format = "Battery: %percentage (%status)";
 				};
 			};
 
 			"load" = {
-				position = 3;
+				position = 4;
 				settings = {
 					format = "Load: %1min";
 				};
 			};
 
 			"volume master" = {
-				position = 4;
+				position = 5;
 				settings = {
 					format = "Volume: %volume";
 					format_muted = "muted (%volume)";
@@ -236,7 +243,7 @@ in {
 			};
 
 			"tztime local" = {
-				position = 5;
+				position = 6;
 				settings = {
 					format = "%d/%m/%y %I:%M%P";
 				};

@@ -9,7 +9,7 @@ let
 		if [[ $# -eq 1 ]]; then
 				selected=$1
 		else
-				selected=$(find ~/work ~/projects ~/playground ~/.config/home-manager -mindepth 0 -maxdepth 1 -type d | fzf)
+				selected=$(find /data/projects /data/playground ~/work ~/projects ~/playground ~/.config/home-manager -mindepth 0 -maxdepth 1 -type d | fzf)
 		fi
 
 		if [[ -z $selected ]]; then

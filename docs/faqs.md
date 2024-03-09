@@ -25,3 +25,25 @@ Try running `fc-cache -r` to erase and rescan font information cache.
 ## How can I clean up old generations?
 - `sudo nix-collect-garbage -d`: delete all *system* generations
 - `nix-collect-garbage -d`: delete all *user* generations
+
+## How do I partition, format, and mount a secondary drive?
+Launch shell as root user > `sudo -i`.
+
+### Partition
+*(Example using fdisk)*
+
+List the partition scheme > `fdisk -l`.
+- `/dev/sdX` is the disk
+- `/dev/sdXY` is the partition
+> X: disk name, Y: partition number
+
+Select the disk > `fdisk /dev/sdX`.
+
+**Inside the fdisk command-line utility:**
+- Delete the partition > `d <Y>`.
+- Create new partition > `n` (you can simply just choose the default values for partition number, first sector, and last sector).
+- View changes > `p`. 
+- Write changes > `w`.
+
+### Format
+Example formatting to Ext4 filesystem > `mkfs.ext4 /dev/sdXY`.
