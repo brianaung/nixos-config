@@ -2,6 +2,9 @@
 
 ## NixOS Minimal Installer Guide
 
+### Connect to internet
+https://www.linuxbabe.com/command-line/ubuntu-server-16-04-wifi-wpa-supplicant
+
 ### Bootstraping
 Lauch shell as root user > `sudo -i`.
 

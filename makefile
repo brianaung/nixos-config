@@ -20,6 +20,10 @@ bootstrap:
 		nix.settings.experimental-features = [ "nix-command" "flakes" ]; \
 		nixpkgs.config.allowUnfree = true; \
 		nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ]; \
+		networking.networkmanager.enable = true; \
+		environment.systemPackages = with pkgs; [ \
+			vim \
+		]; \
 		users.users.root.initialPassword = \"root\";\n \
 	' /mnt/etc/nixos/configuration.nix; \
 	nixos-install --no-root-passwd && reboot;
