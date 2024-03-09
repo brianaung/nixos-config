@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, name, ... }:
 
 {
 	virtualisation.virtualbox.host.enable = true;
@@ -47,6 +47,10 @@
 		dex
 		xss-lock
 	];
+
+	environment.sessionVariables = rec {
+		NIX_NAME = "${name}";
+	};
 
 	services.xserver = {
 		enable = true;

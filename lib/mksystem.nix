@@ -12,6 +12,9 @@ let
 	systemFunc = nixpkgs.lib.nixosSystem;
 in systemFunc rec {
 	inherit system;
+	specialArgs = {
+		inherit name;
+	};
 	modules = [
 		../machines/${name}.nix			# configuration.nix for machine
 		../users/${user}/configuration.nix	# configuration.nix for user (defines user account, etc.)

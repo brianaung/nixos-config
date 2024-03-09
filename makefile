@@ -1,4 +1,4 @@
-NIXNAME ?= lenovo-5-amd
+NIX_NAME ?= lenovo-5-amd
 
 bootstrap:
 	parted /dev/sda -- mklabel gpt; \
@@ -29,6 +29,6 @@ bootstrap:
 	nixos-install --no-root-passwd && reboot;
 
 system:
-	sudo nixos-rebuild switch --flake ".#${NIXNAME}"
+	sudo nixos-rebuild switch --flake ".#${NIX_NAME}"
 
 .PHONY: system
