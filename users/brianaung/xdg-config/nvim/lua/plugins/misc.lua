@@ -2,8 +2,8 @@ return {
 	'tpope/vim-surround',
 
 	{
-		-- dir = '~/projects/yasl.nvim',
-		'brianaung/yasl.nvim',
+		dir = '~/projects/yasl.nvim',
+		-- 'brianaung/yasl.nvim',
 		opts = {
 			transparent = true,
 		},

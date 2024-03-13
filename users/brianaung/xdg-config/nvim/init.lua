@@ -23,6 +23,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = '120'
 vim.opt.cursorline = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -53,11 +54,11 @@ require('lazy').setup('plugins', {
 
 -- ==================== Autocmds ====================
 vim.api.nvim_create_autocmd('FileType', {
-	group = vim.api.nvim_create_augroup('close_with_escape', { clear = true }),
+	group = vim.api.nvim_create_augroup('close_with_q', { clear = true }),
 	pattern = { 'help', 'qf', 'man', 'checkhealth', 'fugitive', 'fugitiveblame' },
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
-		vim.keymap.set('n', '<esc>', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+		vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
 	end,
 })
 

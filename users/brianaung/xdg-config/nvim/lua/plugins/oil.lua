@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	opts = {
 		keymaps = {
-			['<esc>'] = 'actions.close',
+			['q'] = 'actions.close',
 		},
 	},
 	cmd = { 'Oil', 'O' }, -- not rly necessary when lazy = false
