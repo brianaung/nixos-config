@@ -53,6 +53,7 @@
 		# Usually I use either flakes or docker for dev environment, but I want them globally installed atm
 		gnumake
 		gcc
+		elixir_1_16
 		rustc
 		cargo
 		php83

@@ -17,7 +17,7 @@ return {
 			local actions = require('telescope.actions')
 			return {
 				defaults = {
-					mappings = { i = { ['<esc>'] = actions.close } },
+					-- mappings = { i = { ['<esc>'] = actions.close } },
 					layout_strategy = 'flex',
 					layout_config = {
 						width = 0.95,

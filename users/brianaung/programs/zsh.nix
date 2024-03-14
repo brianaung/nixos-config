@@ -10,9 +10,9 @@
 
 		defaultKeymap = "viins";
 
-		localVariables = {
-			ZSH_AUTOSUGGEST_STRATEGY = [ "history" "completion" ];
-		};
+		# localVariables = {
+		# 	ZSH_AUTOSUGGEST_STRATEGY = [ "history" "completion" ];
+		# };
 
 		shellAliases = {
 				ls="${pkgs.eza}/bin/eza --classify";
@@ -27,7 +27,7 @@
 			source "$(${pkgs.fzf}/bin/fzf-share)/key-bindings.zsh"
 			source "$(${pkgs.fzf}/bin/fzf-share)/completion.zsh"
 			# zstyle ':completion:*'  matcher-list 'm:{a-z}={A-Z}'
-			zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+			# zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
 		'';
 	};
 }

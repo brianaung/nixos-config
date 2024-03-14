@@ -15,15 +15,5 @@ return {
 		{ '<C-n>', function() require('harpoon.ui').nav_next() end },
 		{ '<C-p>', function() require('harpoon.ui').nav_prev() end },
 	},
-	opts = {
-		tabline = true,
-		tabline_prefix = ' [',
-		tabline_suffix = '] ',
-	},
-	config = function(_, opts)
-		require('harpoon').setup(opts)
-		local hl = vim.api.nvim_get_hl(0, { name = "TabLineSel" })
-		vim.api.nvim_set_hl(0, "HarpoonActive", hl)
-		vim.api.nvim_set_hl(0, "HarpoonNumberActive", hl)
-	end,
+	opts = {},
 }

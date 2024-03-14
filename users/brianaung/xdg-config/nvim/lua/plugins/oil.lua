@@ -1,11 +1,7 @@
 return {
 	'stevearc/oil.nvim',
 	lazy = false,
-	opts = {
-		keymaps = {
-			['q'] = 'actions.close',
-		},
-	},
+	opts = {},
 	cmd = { 'Oil', 'O' }, -- not rly necessary when lazy = false
 	keys = {
 		{
