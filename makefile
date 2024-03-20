@@ -28,7 +28,15 @@ bootstrap:
 	' /mnt/etc/nixos/configuration.nix; \
 	nixos-install --no-root-passwd && reboot;
 
-system:
+switch:
 	sudo nixos-rebuild switch --flake ".#${NIX_NAME}"
 
-.PHONY: system
+update:
+	nix flake update
+
+upgrade: update switch
+
+clean:
+	nix-collect-garbage -d && sudo nix-collect-garbage -d
+
+.PHONY: bootstrap switch update upgrade clean
