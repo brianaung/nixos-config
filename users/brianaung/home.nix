@@ -34,7 +34,7 @@
 		spotify
 		slack
 
-		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+		(nerdfonts.override { fonts = [ "JetBrainsMono" "Terminus" ]; })
 
 		neovim
 		tmux
