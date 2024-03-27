@@ -82,6 +82,7 @@
 
 	networking.extraHosts = ''
 		192.168.56.56  cms.simonds.test
+		192.168.56.56  content.simonds.test
 	'';
 
 	# This value determines the NixOS release from which the default

@@ -33,6 +33,7 @@
 		firefox
 		spotify
 		slack
+		postman
 
 		(nerdfonts.override { fonts = [ "JetBrainsMono" "Terminus" ]; })
 

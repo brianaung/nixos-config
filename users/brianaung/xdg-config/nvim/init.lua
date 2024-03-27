@@ -8,8 +8,8 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<cr>', '<cmd>nohl<cr>')
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set('n', '<leader>Y', [["+Y]])
 vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv")
@@ -23,6 +23,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = 'yes'
 vim.opt.colorcolumn = '120'
 vim.opt.cursorline = true
 vim.opt.tabstop = 4
@@ -34,6 +35,7 @@ vim.opt.showbreak = '   '
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.list = true
+
 vim.cmd([[set listchars=tab:→\ ,eol:↲,extends:›,precedes:‹,nbsp:␣,trail:~]])
 vim.cmd('au BufEnter * set formatoptions-=o')
 
