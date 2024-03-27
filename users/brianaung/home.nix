@@ -11,7 +11,7 @@
 		./scripts/tmux-sessionizer.nix
 	];
 
-	colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
+	colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-hard;
 
 	home.username = "${user}";
 	home.homeDirectory = "/home/${user}";
@@ -35,7 +35,7 @@
 		slack
 		postman
 
-		(nerdfonts.override { fonts = [ "JetBrainsMono" "Terminus" ]; })
+		(nerdfonts.override { fonts = [ "JetBrainsMono" "Terminus" "UbuntuMono"]; })
 
 		neovim
 		tmux

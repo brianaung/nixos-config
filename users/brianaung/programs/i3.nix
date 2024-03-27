@@ -31,7 +31,7 @@ in {
 
 				{ command = "xcape"; notification = false; }
 				# run `feh <options> <path-to-wallpaper>` first
-				{ command = "sh ~/.fehbg &"; notification = false; }
+				{ command = "sh ~/.fehbg &"; always = true; notification = false; }
 
 				{ command = "${pkgs.brave}/bin/brave"; }
 				{ command = "${pkgs.alacritty}/bin/alacritty"; }

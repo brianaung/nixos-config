@@ -5,7 +5,7 @@
 		enable = true;
 		package = pkgs.zsh;
 
-		enableAutosuggestions = true;
+		autosuggestion.enable = true;
 		enableCompletion = true;
 
 		defaultKeymap = "viins";

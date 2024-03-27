@@ -12,24 +12,25 @@
 
 			font = {
 				normal = {
-					family = "Terminess Nerd Font";
+					family = "UbuntuMono Nerd Font";
 					style = "Regular";
 				};
 				bold = {
-					family = "Terminess Nerd Font";
+					family = "UbuntuMono Nerd Font";
 					style = "Bold";
 				};
 				italic = {
-					family = "Terminess Nerd Font";
+					family = "UbuntuMono Nerd Font";
 					style = "Italic";
 				};
-				size = 14.0;
+				size = 16.0;
 			};
 
 			colors = {
 				primary = {
 					# background = "#${config.colorScheme.palette.base00}";
-					background = "#12120f";
+					# background = "#12120f";
+					background = "#111111";
 					foreground = "#${config.colorScheme.palette.base05}";
 				};
 				cursor = {
