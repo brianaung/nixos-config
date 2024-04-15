@@ -1,31 +1,46 @@
-# This function creates a NixOS system based on a particular architecture and user.
-{ nixpkgs, inputs }:
-
-name:
 {
-	system,
-	user
+  nixos-hardware,
+  nixpkgs,
+  home-manager,
+  nix-colors,
 }:
 
+host:
+{
+  system,
+  user,
+  hardware ? null,
+}:
 let
-	home-manager = inputs.home-manager.nixosModules;
-	systemFunc = nixpkgs.lib.nixosSystem;
-in systemFunc rec {
-	inherit system;
-	specialArgs = {
-		inherit name;
-	};
-	modules = [
-		../machines/${name}.nix			# configuration.nix for machine
-		../users/${user}/configuration.nix	# configuration.nix for user (defines user account, etc.)
-		# home-manager module
-		home-manager.home-manager {
-			home-manager.useGlobalPkgs = true;
-			home-manager.useUserPackages = true;
-			home-manager.users.${user} = import ../users/${user}/home.nix;
-			home-manager.extraSpecialArgs = {
-				inherit inputs user;
-			};
-		}
-	];
+  hostConfig = ../host/${host}.nix;
+  homeConfig = ../home/default.nix;
+
+  systemFunc = nixpkgs.lib.nixosSystem;
+in
+systemFunc rec {
+  inherit system;
+
+  specialArgs = {
+    currentUser = user;
+    currentHost = host;
+  };
+
+  modules = [
+    # Import the host's configuration.nix.
+    hostConfig
+
+    # Hardware quirks.
+    (if !(builtins.isNull hardware) then nixos-hardware.nixosModules.${hardware} else { })
+
+    # Home manager module to manage user program configurations.
+    home-manager.nixosModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.${user} = homeConfig;
+      home-manager.extraSpecialArgs = {
+        inherit nix-colors;
+      };
+    }
+  ];
 }
