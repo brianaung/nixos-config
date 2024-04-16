@@ -30,23 +30,27 @@ in
           command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork";
           notification = false;
         }
-        { command = "xcape"; notification = false; }
+        {
+          command = "xcape";
+          notification = false;
+        }
         {
           command = "${pkgs.autorandr}/bin/autorandr --change";
           always = true;
           notification = false;
         }
-        { command = "sh ~/.fehbg &"; notification = false; }
+        {
+          command = "sh ~/.fehbg &";
+          notification = false;
+        }
         { command = "${pkgs.brave}/bin/brave"; }
         { command = "${pkgs.alacritty}/bin/alacritty"; }
-        { command = "${pkgs.obsidian}/bin/obsidian"; }
       ];
 
       assigns = {
-        ${ws1} = [{ class = "^Brave-browser$"; }];
-        ${ws2} = [{ class = "^Alacritty$"; }];
-        ${ws3} = [{ class = "^obsidian$"; }];
-	  };
+        ${ws1} = [ { class = "^Brave-browser$"; } ];
+        ${ws2} = [ { class = "^Alacritty$"; } ];
+      };
 
       fonts = {
         names = [ "JetBrainsMono Nerd Font" ];
@@ -81,7 +85,7 @@ in
         "${mod}+r" = "reload";
         "${mod}+Shift+r" = "restart";
         "${mod}+q" = "kill";
-        "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+        "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
         # Applications
         "${mod}+Return" = "exec i3-sensible-terminal";
@@ -170,16 +174,6 @@ in
         }
       ];
     };
-  };
-
-  programs.rofi = {
-    enable = true;
-    font = "JetBrainsMono Nerd Font 11";
-    # theme = {
-    #   "*" = {
-    #     background-color = "#${config.colorScheme.palette.base01}";
-    #   };
-    # };
   };
 
   programs.i3status = {

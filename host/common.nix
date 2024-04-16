@@ -36,7 +36,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # To update firmware.
-  services.fwupd.enable = true;
+  # services.fwupd.enable = true;
 
   # Use zram (instead of physical swap).
   zramSwap.enable = true;
@@ -114,7 +114,6 @@
       thunderbird
       brave
       zathura
-      obsidian
     ];
   };
   programs.zsh.enable = true;
@@ -154,9 +153,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Temporary fix for obsidian issue.
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # To load/unload configured shells based on current directory.
   programs.direnv.enable = true;

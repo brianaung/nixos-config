@@ -11,14 +11,10 @@
   '';
 
   users.users.${currentUser} = {
-    packages = with pkgs; [
-      postman
-    ];
+    packages = with pkgs; [ postman ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vagrant
-  ];
+  environment.systemPackages = with pkgs; [ vagrant ];
 
   services.xserver.displayManager = {
     sessionCommands = ''
