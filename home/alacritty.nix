@@ -4,6 +4,9 @@
     enable = true;
 
     settings = {
+      window = {
+        opacity = 0.9;
+      };
       font = {
         normal = {
           family = "JetBrainsMono Nerd Font";
@@ -17,7 +20,7 @@
           family = "JetBrainsMono Nerd Font";
           style = "Italic";
         };
-        size = 11.0;
+        size = 16.0;
       };
 
       colors = {

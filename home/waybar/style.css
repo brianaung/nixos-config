@@ -1,0 +1,78 @@
+/* ========== Global ========== */
+* {
+    border: none;
+    border-radius: 0;
+
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 16px;
+
+    background: none;
+    color: white;
+}
+
+window#waybar {}
+
+menu, tooltip {
+    background: black;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+/* General style for all modules */
+#backlight,
+#battery,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#window,
+#workspaces {
+    padding: 0.1rem 0.7rem;
+    margin: 0 0.2rem;
+    border-radius: 0.5rem;
+    background-color: black;
+}
+
+/* These modules use icons and they tend to need more space */
+#battery, #cpu, #memory, #pulseaudio {
+    padding-right: 1rem;
+}
+
+/* ========== Workspaces ========== */
+#workspaces button {
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+    border-bottom: 2px solid white;
+}
+
+/* ========== Battery ========== */
+@keyframes blink {
+    to {
+        background-color: black;
+    }
+}
+
+#battery.charging, #battery.plugged {
+    background-color: @success_color;
+}
+
+#battery.warning {
+    background-color: @warning_color;
+}
+
+#battery.critical:not(.charging) {
+    background: @error_color;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(18);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

@@ -1,4 +1,8 @@
 { config, nix-colors, ... }:
+let
+  mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
+  configPath = "${config.xdg.configHome}/nixos-config/home";
+in
 {
   imports = [
     nix-colors.homeManagerModules.default
@@ -17,6 +21,11 @@
   colorScheme = nix-colors.colorSchemes.kanagawa;
 
   # I want to manage these configs outside of nix store.
-  xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/nvim";
-  xdg.configFile.tmux.source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/tmux";
+
+  xdg.configFile = {
+    nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
+    tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
+    hypr.source = mkOutOfStoreSymlink "${configPath}/hypr";
+    waybar.source = mkOutOfStoreSymlink "${configPath}/waybar";
+  };
 }

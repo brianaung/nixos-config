@@ -44,7 +44,6 @@
   # Enable networking.
   networking.hostName = currentHost; # Define your hostname.
   networking.networkmanager.enable = true; # Enable networking
-  programs.nm-applet.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -63,37 +62,11 @@
   services.blueman.enable = true;
 
   # Setup gui, mouse, keyboard, etc.
+  # Using wayland on thorin (testing), x11 on gimli (stable)
   services.xserver.enable = true;
-  services.xserver.xkb = {
-    layout = "au";
-    variant = "";
-  };
-  # Enable scroll using modifier key.
-  services.xserver.libinput = {
-    enable = true;
-    mouse = {
-      scrollButton = 3;
-      scrollMethod = "button";
-    };
-  };
   services.xserver.desktopManager = {
     xterm.enable = false;
   };
-  services.xserver.displayManager = {
-    defaultSession = "none+i3";
-    lightdm = {
-      enable = true;
-    };
-    sessionCommands = ''
-      setxkbmap -option 'ctrl:nocaps'
-      xcape -e 'Control_L=Escape'
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-        *dpi: 150
-        Xft.dpi: 150
-      ''}
-    '';
-  };
-  services.xserver.windowManager.i3.enable = true;
 
   # Enable flakes.
   nix.settings.experimental-features = [
@@ -112,7 +85,7 @@
     ];
     packages = with pkgs; [
       thunderbird
-      brave
+      firefox
       zathura
     ];
   };
@@ -121,6 +94,7 @@
   # Set session variables.
   environment.sessionVariables = rec {
     TERMINAL = "alacritty";
+    NIXOS_OZONE_WL = "1";
   };
 
   # List packages installed in system profile. To search, run:
@@ -130,23 +104,10 @@
     ripgrep
     fd
     fzf
-    xcape
-    xclip
-    feh
-    autorandr
     xfce.thunar
-    flameshot
     neovim
     tmux
   ];
-
-  # Set gtk settings.
-  environment.etc = {
-    "xdg/gtk-3.0/settings.ini".text = ''
-      [Settings]
-      gtk-application-prefer-dark-theme=true
-    '';
-  };
 
   # Install fonts.
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];

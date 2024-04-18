@@ -1,0 +1,72 @@
+{
+    "layer": "top",
+    "margin": "5 2 0 2",
+
+    "modules-left": ["hyprland/workspaces", "hyprland/submap", "cpu", "memory", "disk" ],
+    "modules-center": ["hyprland/window" ],
+    "modules-right": [ /*"network",*/ "pulseaudio", "battery", "clock", "tray" ],
+
+    "hyprland/workspaces": {},
+    "hyprland/window": {},
+    "hyprland/submap": {},
+
+    "battery": {
+      "format": "{capacity}% {icon}",
+      "format-time": "{H}hrs, {M}mins",
+      "format-icons": ["", "", "", "", ""],
+      "states": {
+        "warning": 30,
+        "critical": 15
+      }
+    },
+
+    "clock": {
+      "tooltip": false,
+      "format": "{:%a %b %d %I:%M %p}"
+    },
+
+    "cpu": {
+      "tooltip": false,
+      "format": "{}% "
+    },
+
+    "memory": {
+      "tooltip": false,
+      "format": "{used:0.1f}G/{total:0.1f}G "
+    },
+
+    "disk": {
+      "tooltip": false,
+      "format": "{free} Remaining",
+      "path": "/"
+    },
+
+    "pulseaudio": {
+      "tooltip": false,
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "headset": "",
+        "default": ["", ""]
+      },
+      "scroll-step": 1,
+      "on-click": "pavucontrol"
+      // "ignored-sinks": ["Easy Effects Sink"]
+    },
+
+    "tray": {
+      "tooltip": false
+    },
+
+    "network": {
+      "tooltip": false,
+      "format": "{ifname}",
+      "format-wifi": "{essid} {icon}",
+      "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+      "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "format-disconnected": "Disconnected",
+      "on-click": "nmtui"
+    }
+}
