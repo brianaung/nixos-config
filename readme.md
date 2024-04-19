@@ -12,6 +12,7 @@ Always a WIP =))
 ## TODO:
 - Auto apply monitor config 
 - Lock screen manager
-- Way bar customization 
-- Test swaync
+- mako style
 - Better login manager
+- Way bar (optimization) 
+- other optimization (battery life mainly)

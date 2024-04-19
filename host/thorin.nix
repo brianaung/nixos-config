@@ -32,10 +32,7 @@
     sddm.enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  programs.hyprland.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -47,7 +44,7 @@
     networkmanagerapplet
 
     waybar # statusbar
-    swaynotificationcenter # notification
+    mako # notification
     fuzzel # menu
     swww # wallpaper
 
@@ -57,11 +54,4 @@
     grim
     slurp
   ];
-
-  environment.etc = {
-    "xdg/gtk-3.0/settings.ini".text = ''
-      [Settings]
-      gtk-application-prefer-dark-theme=true
-    '';
-  };
 }

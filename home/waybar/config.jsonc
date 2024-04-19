@@ -4,13 +4,14 @@
 
     "modules-left": ["hyprland/workspaces", "hyprland/submap", "cpu", "memory", "disk" ],
     "modules-center": ["hyprland/window" ],
-    "modules-right": [ /*"network",*/ "pulseaudio", "battery", "clock", "tray" ],
+    "modules-right": [ "pulseaudio", "battery", "clock", "tray" ],
 
     "hyprland/workspaces": {},
     "hyprland/window": {},
     "hyprland/submap": {},
 
     "battery": {
+      "interval": 60,
       "format": "{capacity}% {icon}",
       "format-time": "{H}hrs, {M}mins",
       "format-icons": ["", "", "", "", ""],
@@ -27,16 +28,19 @@
 
     "cpu": {
       "tooltip": false,
+      "interval": 60,
       "format": "{}% "
     },
 
     "memory": {
       "tooltip": false,
+      "interval": 60,
       "format": "{used:0.1f}G/{total:0.1f}G "
     },
 
     "disk": {
       "tooltip": false,
+      "interval": 60,
       "format": "{free} Remaining",
       "path": "/"
     },
