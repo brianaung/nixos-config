@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-{
+{ lib, pkgs, ... }:
+with lib; {
   imports = [
     ./common.nix
     ./hardware/framework-13-7040-amd.nix
@@ -28,7 +28,7 @@
   };
 
   services.xserver.displayManager = {
-    defaultSession = "hyprland";
+    # defaultSession = "hyprland";
     sddm.enable = true;
   };
 
@@ -53,5 +53,32 @@
     # screenshot
     grim
     slurp
+
+    dwl
   ];
+
+  # dwl testing
+  # what is mkDefault?
+  # mkDefault = mkOverride 1000; When there is a conflict in the config, it uses the priority value (1000) to determine which value to prefer. (lower = higher priority)
+  # Another useful one: mkForce = mkOverrid 50;
+
+  # enable a basic sets of fonts
+  fonts.enableDefaultPackages = mkDefault true; 
+
+  # needed to enable OpenGl support in x11 systems, and wayland compositors
+  hardware.opengl.enable = mkDefault true;
+
+  programs.dconf.enable = mkDefault true;
+  programs.xwayland.enable = mkDefault true;
+
+  # to control system wide privileges
+  security.polkit.enable = mkDefault true;
+
+  xdg.portal = {
+    enable = mkDefault true;
+    wlr.enable = mkDefault true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  services.displayManager.sessionPackages = [ pkgs.dwl ];
 }
