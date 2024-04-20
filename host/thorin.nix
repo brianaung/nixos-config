@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:
-with lib; {
+with lib;
+{
   imports = [
     ./common.nix
     ./hardware/framework-13-7040-amd.nix
@@ -27,58 +28,61 @@ with lib; {
     '';
   };
 
-  services.xserver.displayManager = {
-    # defaultSession = "hyprland";
-    sddm.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c dwl";
+      };
+    };
   };
 
-  programs.hyprland.enable = true;
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+      wev # get keyboard, mouse pressed name
+      mako # notification
+      fuzzel # menu
+      swaybg # wallpaper
+      wl-clipboard # clipboard
+      # screenshot
+      grim
+      slurp
+    ];
+  };
 
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wev # get keyboard, mouse pressed name
-
     brightnessctl # backlight
     pavucontrol
     networkmanagerapplet
 
-    waybar # statusbar
-    mako # notification
-    fuzzel # menu
-    swww # wallpaper
-
-    wl-clipboard # clipboard
-
-    # screenshot
-    grim
-    slurp
-
-    dwl
+    (dwl.override {
+      conf = ./config.h;
+    })
+    foot
   ];
 
-  # dwl testing
-  # what is mkDefault?
-  # mkDefault = mkOverride 1000; When there is a conflict in the config, it uses the priority value (1000) to determine which value to prefer. (lower = higher priority)
-  # Another useful one: mkForce = mkOverrid 50;
-
-  # enable a basic sets of fonts
-  fonts.enableDefaultPackages = mkDefault true; 
-
-  # needed to enable OpenGl support in x11 systems, and wayland compositors
-  hardware.opengl.enable = mkDefault true;
-
-  programs.dconf.enable = mkDefault true;
-  programs.xwayland.enable = mkDefault true;
-
-  # to control system wide privileges
-  security.polkit.enable = mkDefault true;
-
+  # ======================= dwl test ========================
   xdg.portal = {
     enable = mkDefault true;
     wlr.enable = mkDefault true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
   };
 
-  services.displayManager.sessionPackages = [ pkgs.dwl ];
+  services.dbus.enable = true;
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
+  programs.xwayland.enable = true;
+  hardware.opengl.enable = true;
+
+  # Enable scroll using modifier key.
+  # services.xserver.libinput = {
+  #   enable = true;
+  #   mouse = {
+  #     scrollButton = 3;
+  #     scrollMethod = "button";
+  #   };
+  # };
 }

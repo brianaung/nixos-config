@@ -6,7 +6,7 @@ in
 {
   imports = [
     nix-colors.homeManagerModules.default
-    ./i3.nix
+    # ./i3.nix
     ./alacritty.nix
     ./zsh.nix
     ./starship.nix
@@ -26,6 +26,7 @@ in
     nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
     tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
     hypr.source = mkOutOfStoreSymlink "${configPath}/hypr";
+    sway.source = mkOutOfStoreSymlink "${configPath}/sway";
     waybar.source = mkOutOfStoreSymlink "${configPath}/waybar";
   };
 }

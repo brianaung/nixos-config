@@ -9,15 +9,15 @@
       };
       font = {
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Italic";
         };
         size = 16.0;
