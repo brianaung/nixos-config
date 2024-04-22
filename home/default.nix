@@ -1,4 +1,4 @@
-{ config, nix-colors, ... }:
+{ pkgs, config, nix-colors, ... }:
 let
   mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
   configPath = "${config.xdg.configHome}/nixos-config/home";
@@ -6,7 +6,7 @@ in
 {
   imports = [
     nix-colors.homeManagerModules.default
-    # ./i3.nix
+    ./sway.nix
     ./alacritty.nix
     ./zsh.nix
     ./starship.nix
@@ -20,13 +20,27 @@ in
 
   colorScheme = nix-colors.colorSchemes.kanagawa;
 
-  # I want to manage these configs outside of nix store.
-
+  # These configs are managed outside of nix store.
   xdg.configFile = {
     nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
     tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
-    hypr.source = mkOutOfStoreSymlink "${configPath}/hypr";
     sway.source = mkOutOfStoreSymlink "${configPath}/sway";
-    waybar.source = mkOutOfStoreSymlink "${configPath}/waybar";
   };
+
+  # services.swayidle.enable = true;
+
+  # .swayidle = {
+  #   enable = true;
+  #   # systemdTarget = "sway-session.target";
+  #   # events = [
+  #   #   { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+  #   # ];
+  #   timeouts = [
+  #     {
+  #       timeout = 60;
+  #       command = "${pkgs.swaylock}/bin/swaylock -fF";
+  #     }
+  #     # { timeout = 5; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+  #   ];
+  # };
 }

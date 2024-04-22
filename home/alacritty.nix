@@ -20,7 +20,7 @@
           family = "Terminess Nerd Font";
           style = "Italic";
         };
-        size = 16.0;
+        size = 20.0;
       };
 
       colors = {

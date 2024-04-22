@@ -32,57 +32,31 @@ with lib;
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c dwl";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
       };
     };
   };
+  boot.consoleLogLevel = 3;
 
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
       wev # get keyboard, mouse pressed name
       mako # notification
-      fuzzel # menu
-      swaybg # wallpaper
       wl-clipboard # clipboard
       # screenshot
       grim
       slurp
+
+      swaylock
+      swayidle
     ];
   };
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    brightnessctl # backlight
+    brightnessctl
     pavucontrol
     networkmanagerapplet
-
-    (dwl.override {
-      conf = ./config.h;
-    })
-    foot
   ];
-
-  # ======================= dwl test ========================
-  xdg.portal = {
-    enable = mkDefault true;
-    wlr.enable = mkDefault true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "*";
-  };
-
-  services.dbus.enable = true;
-  security.polkit.enable = true;
-  programs.dconf.enable = true;
-  programs.xwayland.enable = true;
-  hardware.opengl.enable = true;
-
-  # Enable scroll using modifier key.
-  # services.xserver.libinput = {
-  #   enable = true;
-  #   mouse = {
-  #     scrollButton = 3;
-  #     scrollMethod = "button";
-  #   };
-  # };
 }

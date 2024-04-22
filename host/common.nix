@@ -105,6 +105,7 @@
     fd
     fzf
     xfce.thunar
+    btop
     neovim
     tmux
   ];
