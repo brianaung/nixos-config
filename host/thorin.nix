@@ -1,10 +1,11 @@
 { lib, pkgs, ... }:
-with lib;
 {
   imports = [
     ./common.nix
     ./hardware/framework-13-7040-amd.nix
   ];
+
+  boot.consoleLogLevel = 3;
 
   services.kanata = {
     enable = true;
@@ -36,27 +37,22 @@ with lib;
       };
     };
   };
-  boot.consoleLogLevel = 3;
 
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
       wev # get keyboard, mouse pressed name
+      brightnessctl
+      pavucontrol
+      networkmanagerapplet
       mako # notification
       wl-clipboard # clipboard
       # screenshot
       grim
       slurp
-
-      swaylock
+      # screenlock
       swayidle
+      swaylock
     ];
   };
-
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-    pavucontrol
-    networkmanagerapplet
-  ];
 }

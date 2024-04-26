@@ -26,21 +26,4 @@ in
     tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
     sway.source = mkOutOfStoreSymlink "${configPath}/sway";
   };
-
-  # services.swayidle.enable = true;
-
-  # .swayidle = {
-  #   enable = true;
-  #   # systemdTarget = "sway-session.target";
-  #   # events = [
-  #   #   { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-  #   # ];
-  #   timeouts = [
-  #     {
-  #       timeout = 60;
-  #       command = "${pkgs.swaylock}/bin/swaylock -fF";
-  #     }
-  #     # { timeout = 5; command = "${pkgs.systemd}/bin/systemctl suspend"; }
-  #   ];
-  # };
 }

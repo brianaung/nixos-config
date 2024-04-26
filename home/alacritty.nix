@@ -5,7 +5,7 @@
 
     settings = {
       window = {
-        opacity = 0.9;
+        opacity = 0.8;
       };
       font = {
         normal = {
@@ -25,7 +25,8 @@
 
       colors = {
         primary = {
-          background = "#${config.colorScheme.palette.base00}";
+          # background = "#${config.colorScheme.palette.base00}";
+          background = "#16161d";
           foreground = "#${config.colorScheme.palette.base05}";
         };
         cursor = {

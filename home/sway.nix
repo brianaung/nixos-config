@@ -1,63 +1,65 @@
 # TODO migrate sway config to nix
 { pkgs, config, ... }:
 {
-  programs.i3status-rust = {
+  programs.i3status = {
     enable = true;
-    bars = {
-      default = {
+    enableDefault = false;
+    general = {
+      colors = true;
+      color_good = "#${config.colorScheme.palette.base0B}";
+      color_degraded = "#${config.colorScheme.palette.base0A}";
+      color_bad = "#${config.colorScheme.palette.base08}";
+      interval = 5;
+    };
+    modules = {
+      "disk /" = {
+        position = 1;
         settings = {
-          theme = {
-            theme = "plain";
-            overrides = {
-              idle_bg = "#000000";
-              idle_fg = "#ffffff";
-            };
-          };
+          format = "DISK %avail";
         };
-        blocks = [
-          {
-            block = "disk_space";
-            format = " DISK $available ";
-            interval = 60;
-            path = "/";
-          }
-          {
-            block = "load";
-            format = " LOAD $1m.eng(w:2) ";
-            interval = 5;
-          }
-          {
-            block = "cpu";
-            format = " CPU $utilization ";
-            interval = 5;
-          }
-          {
-            block = "memory";
-            format = " MEM $mem_used_percents.eng(w:2) ";
-            interval = 5;
-          }
-          {
-            block = "sound";
-            format = " VOL $volume ";
-            click = [
-              {
-                button = "left";
-                cmd = "pavucontrol";
-              }
-            ];
-          }
-          {
-            block = "battery";
-            format = " BAT $percentage ($time) ";
-            charging_format = " CHR $percentage ";
-            interval = 60;
-          }
-          {
-            block = "time";
-            format = " $timestamp.datetime(f:'%a %d/%m %I:%M%p') ";
-            interval = 60;
-          }
-        ];
+      };
+      "load" = {
+        position = 2;
+        settings = {
+          format = "LOAD %1min";
+          max_threshold = "3";
+        };
+      };
+      "cpu_usage" = {
+        position = 3;
+        settings = {
+          format = "CPU %usage";
+        };
+      };
+      "memory" = {
+        position = 4;
+        settings = {
+          format = "MEM %percentage_used";
+          threshold_degraded = "20%";
+          threshold_critical = "10%";
+        };
+      };
+      "volume master" = {
+        position = 5;
+        settings = {
+          format = "VOL %volume";
+          format_muted = "MUTED %volume";
+          device = "default";
+        };
+      };
+      "battery all" = {
+        position = 6;
+        settings = {
+          format = "%status %percentage %remaining";
+          low_threshold = "30";
+          threshold_type = "percentage";
+        };
+      };
+      "time" = {
+        position = 7;
+        settings = {
+          format = "%a %d/%m %I:%M%p";
+        };
       };
     };
   };
@@ -80,4 +82,5 @@
       };
     };
   };
+
 }
