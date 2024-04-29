@@ -6,6 +6,7 @@ in
 {
   imports = [
     nix-colors.homeManagerModules.default
+    ./i3.nix
     ./sway.nix
     ./alacritty.nix
     ./zsh.nix
