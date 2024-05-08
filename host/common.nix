@@ -136,6 +136,7 @@ with lib; {
       thunderbird
       firefox
       zathura
+      obsidian
       obs-studio
       gimp
       smplayer # mpv backend
