@@ -6,8 +6,8 @@ in
 {
   imports = [
     nix-colors.homeManagerModules.default
-    ./i3.nix
-    ./sway.nix
+    ./i3status.nix
+    ./fuzzel.nix
     ./alacritty.nix
     ./zsh.nix
     ./starship.nix

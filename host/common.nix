@@ -1,10 +1,11 @@
 {
+  lib,
   pkgs,
   currentUser,
   currentHost,
   ...
 }:
-{
+with lib; {
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -35,6 +36,8 @@
   # Update kernel to latest.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.consoleLogLevel = 3;
+
   # To update firmware.
   # services.fwupd.enable = true;
 
@@ -59,7 +62,9 @@
   # Enable bluetooth support.
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
+
+  powerManagement.powertop.enable = mkForce true;
 
   # Setup gui, mouse, keyboard, etc.
   # Using wayland on thorin (testing), x11 on gimli (stable)
@@ -68,11 +73,55 @@
     xterm.enable = false;
   };
 
-  # Enable flakes.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
+      };
+    };
+    vt = 7;
+  };
+
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+      wev # get keyboard, mouse pressed name
+      brightnessctl
+      pavucontrol
+      networkmanagerapplet
+      mako # notification
+      wl-clipboard # clipboard
+      # screenshot
+      grim
+      slurp
+      # screenlock
+      swayidle
+      swaylock
+    ];
+  };
+
+  services.kanata = {
+    enable = true;
+    keyboards.default.config = ''
+      (defsrc
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+        caps a    s    d    f    g    h    j    k    l    ;    '    ret
+        lsft z    x    c    v    b    n    m    ,    .    /    rsft
+        lctl lmet lalt           spc            ralt rmet rctl)
+
+      (deflayer qwerty
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+        @cap a    s    d    f    g    h    j    k    l    ;    '    ret
+        lsft z    x    c    v    b    n    m    ,    .    /    rsft
+        lctl lmet lalt           spc            ralt rmet rctl)
+
+      (defalias
+        cap (tap-hold-press 200 200 esc lctl))
+    '';
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${currentUser} = {
@@ -87,6 +136,10 @@
       thunderbird
       firefox
       zathura
+      obs-studio
+      gimp
+      smplayer # mpv backend
+      strawberry
     ];
   };
   programs.zsh.enable = true;
@@ -108,6 +161,7 @@
     btop
     neovim
     tmux
+    imv
   ];
 
   # Install fonts.
@@ -120,15 +174,21 @@
     })
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # To load/unload configured shells based on current directory.
   programs.direnv.enable = true;
 
   # Enable docker.
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # Enable virtualbox.
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
+
+  # Enable flakes.
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 }

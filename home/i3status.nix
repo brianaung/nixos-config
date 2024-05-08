@@ -1,5 +1,4 @@
-# TODO migrate sway config to nix
-{ pkgs, config, ... }:
+{ config, ... }:
 {
   programs.i3status = {
     enable = true;
@@ -50,7 +49,7 @@
       "battery all" = {
         position = 6;
         settings = {
-          format = "%status %percentage %remaining";
+          format = "%status %percentage %consumption %remaining";
           low_threshold = "30";
           threshold_type = "percentage";
         };
@@ -63,24 +62,4 @@
       };
     };
   };
-
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = "Terminess Nerd Font:size=14";
-      };
-      colors = {
-        background = "ffffffff";
-        text = "000000ff";
-        selection = "00000022";
-        selectionText = "000000aa";
-        border = "000000ff";
-      };
-      border = {
-        radius = 0;
-      };
-    };
-  };
-
 }
