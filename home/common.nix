@@ -1,4 +1,4 @@
-{ pkgs, config, nix-colors, ... }:
+{ config, nix-colors, ... }:
 let
   mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
   configPath = "${config.xdg.configHome}/nixos-config/home";
@@ -6,8 +6,6 @@ in
 {
   imports = [
     nix-colors.homeManagerModules.default
-    ./i3status.nix
-    ./fuzzel.nix
     ./alacritty.nix
     ./zsh.nix
     ./starship.nix
@@ -25,17 +23,5 @@ in
   xdg.configFile = {
     nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
     tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
-    sway.source = mkOutOfStoreSymlink "${configPath}/sway";
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Breeze-Dark";
-      package = pkgs.libsForQt5.breeze-gtk;
-    };
-    gtk3 = {
-      extraConfig.gtk-application-prefer-dark-theme = true;
-    };
   };
 }

@@ -64,63 +64,11 @@ with lib; {
   hardware.bluetooth.powerOnBoot = true;
   # services.blueman.enable = true;
 
-  powerManagement.powertop.enable = mkForce true;
-
   # Setup gui, mouse, keyboard, etc.
   # Using wayland on thorin (testing), x11 on gimli (stable)
   services.xserver.enable = true;
   services.xserver.desktopManager = {
     xterm.enable = false;
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
-      };
-    };
-    vt = 7;
-  };
-
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-      wev # get keyboard, mouse pressed name
-      brightnessctl
-      pavucontrol
-      networkmanagerapplet
-      mako # notification
-      wl-clipboard # clipboard
-      # screenshot
-      grim
-      slurp
-      # screenlock
-      swayidle
-      swaylock
-    ];
-  };
-
-  services.kanata = {
-    enable = true;
-    keyboards.default.config = ''
-      (defsrc
-        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-        caps a    s    d    f    g    h    j    k    l    ;    '    ret
-        lsft z    x    c    v    b    n    m    ,    .    /    rsft
-        lctl lmet lalt           spc            ralt rmet rctl)
-
-      (deflayer qwerty
-        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-        @cap a    s    d    f    g    h    j    k    l    ;    '    ret
-        lsft z    x    c    v    b    n    m    ,    .    /    rsft
-        lctl lmet lalt           spc            ralt rmet rctl)
-
-      (defalias
-        cap (tap-hold-press 200 200 esc lctl))
-    '';
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -148,7 +96,6 @@ with lib; {
   # Set session variables.
   environment.sessionVariables = rec {
     TERMINAL = "alacritty";
-    NIXOS_OZONE_WL = "1";
   };
 
   # List packages installed in system profile. To search, run:
@@ -180,9 +127,6 @@ with lib; {
 
   # Enable docker.
   # virtualisation.docker.enable = true;
-
-  # Enable virtualbox.
-  # virtualisation.virtualbox.host.enable = true;
 
   # Enable flakes.
   nix.settings.experimental-features = [

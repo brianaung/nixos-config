@@ -43,12 +43,14 @@
       nixosConfigurations = {
         thorin = mkSystem "thorin" {
           system = "x86_64-linux";
+          wm = "wayland";
           user = "brianaung";
           hardware = "framework-13-7040-amd";
         };
 
         gimli = mkSystem "gimli" {
           system = "x86_64-linux";
+          wm = "x11";
           user = "brianaung";
           hardware = "lenovo-ideapad-slim-5";
         };
