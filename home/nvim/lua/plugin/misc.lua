@@ -1,6 +1,7 @@
 return {
 	'tpope/vim-sleuth',
 	'tpope/vim-surround',
+	'jwalton512/vim-blade',
 
 	{
 		'mbbill/undotree',
