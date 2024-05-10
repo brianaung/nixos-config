@@ -11,7 +11,7 @@
   };
 
   # Enable scroll using modifier key.
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     mouse = {
       scrollButton = 3;
@@ -19,18 +19,20 @@
     };
   };
 
+  services.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager = {
-    defaultSession = "none+i3";
     lightdm.enable = true;
     sessionCommands = ''
       setxkbmap -option 'ctrl:nocaps'
       xcape -e 'Control_L=Escape'
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-        *dpi: 120
-        Xft.dpi: 120
-      ''}
     '';
   };
+
+  # fractional scaling (needs to be in sessionCommands)
+  # ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
+  #   *dpi: 120
+  #   Xft.dpi: 120
+  # ''}
 
   services.xserver.windowManager.i3.enable = true;
 
@@ -65,4 +67,8 @@
     192.168.56.56  cms.simonds.test
     192.168.56.56  content.simonds.test
   '';
+
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; 
 }

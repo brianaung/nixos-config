@@ -22,6 +22,10 @@ in
 
       startup = [
         {
+          command = "${pkgs.picom}/bin/picom -b";
+          notification = false;
+        }
+        {
           command = "${pkgs.xss-lock}/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork";
           notification = false;
         }
@@ -38,24 +42,24 @@ in
           command = "sh ~/.fehbg &";
           notification = false;
         }
-        { command = "${pkgs.brave}/bin/brave"; }
+        { command = "${pkgs.firefox}/bin/firefox"; }
         { command = "${pkgs.alacritty}/bin/alacritty"; }
       ];
 
       assigns = {
-        ${ws1} = [ { class = "^Brave-browser$"; } ];
+        ${ws1} = [ { class = "^firefox$"; } ];
         ${ws2} = [ { class = "^Alacritty$"; } ];
       };
 
       fonts = {
-        names = [ "JetBrainsMono Nerd Font" ];
+        names = [ "Terminess Nerd Font" ];
         style = "Regular";
         size = 9.0;
       };
 
       gaps = {
-        inner = 8;
-        outer = 4;
+        inner = 4;
+        outer = 2;
       };
 
       window = {
@@ -84,7 +88,7 @@ in
 
         # Applications
         "${mod}+Return" = "exec i3-sensible-terminal";
-        "${mod}+b" = "exec qutebrowser";
+        "${mod}+b" = "exec ${pkgs.firefox}/bin/firefox";
 
         # Focus window
         "${mod}+h" = "focus left";
@@ -137,6 +141,8 @@ in
         "XF86AudioLowerVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
         "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
+        "Print" = "exec ${pkgs.flameshot}/bin/flameshot gui";
+
         # Brightness controls
         "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%+";
         "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
@@ -147,9 +153,9 @@ in
           position = "top";
           statusCommand = "${pkgs.i3status}/bin/i3status";
           fonts = {
-            names = [ "JetBrainsMono Nerd Font" ];
+            names = [ "Terminess Nerd Font" ];
             style = "Regular";
-            size = 9.0;
+            size = 13.0;
           };
           colors = {
             background = "#${config.colorScheme.palette.base00}";
@@ -168,65 +174,6 @@ in
           };
         }
       ];
-    };
-  };
-
-  programs.i3status = {
-    enable = true;
-    enableDefault = false;
-    general = {
-      colors = true;
-      color_good = "#${config.colorScheme.palette.base0B}";
-      color_degraded = "#${config.colorScheme.palette.base0A}";
-      color_bad = "#${config.colorScheme.palette.base08}";
-      interval = 5;
-    };
-    modules = {
-      "disk /" = {
-        position = 1;
-        settings = {
-          format = "DISK %avail";
-        };
-      };
-      "battery all" = {
-        position = 3;
-        settings = {
-          format = "%status %percentage %remaining";
-          low_threshold = "30";
-          threshold_type = "percentage";
-        };
-      };
-      "load" = {
-        position = 4;
-        settings = {
-          format = "LOAD %1min";
-          max_threshold = "1";
-        };
-      };
-      "memory" = {
-        position = 4;
-        settings = {
-          format = "MEM %percentage_used";
-          threshold_degraded = "20%";
-          threshold_critical = "10%";
-        };
-      };
-      "volume master" = {
-        position = 5;
-        settings = {
-          format = "VOL %volume";
-          format_muted = "MUTED %volume";
-          device = "default";
-          mixer = "Master";
-          mixer_idx = 0;
-        };
-      };
-      "time" = {
-        position = 6;
-        settings = {
-          format = "%d/%b/%y %I:%M%P";
-        };
-      };
     };
   };
 }

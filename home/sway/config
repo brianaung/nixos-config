@@ -1,6 +1,7 @@
 set $mod Mod1
 set $wallpaper '~/.config/nixos-config/wallpapers/0'
 set $term alacritty
+set $browser firefox
 set $menu fuzzel
 set $lock 'swaylock -fF -i $wallpaper -s fill'
 
@@ -53,6 +54,7 @@ default_border pixel 2
 # ========== Keybinds ==========
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
+bindsym $mod+b exec $browser
 bindsym $mod+q kill
 bindsym $mod+r reload
 bindsym $mod+e exec $lock
