@@ -1,9 +1,11 @@
 {
+  lib,
   pkgs,
   currentUser,
   currentHost,
   ...
 }:
+with lib;
 {
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -35,6 +37,8 @@
   # Update kernel to latest.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.consoleLogLevel = 3;
+
   # To update firmware.
   # services.fwupd.enable = true;
 
@@ -44,7 +48,6 @@
   # Enable networking.
   networking.hostName = currentHost; # Define your hostname.
   networking.networkmanager.enable = true; # Enable networking
-  programs.nm-applet.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -60,46 +63,14 @@
   # Enable bluetooth support.
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
 
   # Setup gui, mouse, keyboard, etc.
+  # Using wayland on thorin (testing), x11 on gimli (stable)
   services.xserver.enable = true;
-  services.xserver.xkb = {
-    layout = "au";
-    variant = "";
-  };
-  # Enable scroll using modifier key.
-  services.xserver.libinput = {
-    enable = true;
-    mouse = {
-      scrollButton = 3;
-      scrollMethod = "button";
-    };
-  };
   services.xserver.desktopManager = {
     xterm.enable = false;
   };
-  services.xserver.displayManager = {
-    defaultSession = "none+i3";
-    lightdm = {
-      enable = true;
-    };
-    sessionCommands = ''
-      setxkbmap -option 'ctrl:nocaps'
-      xcape -e 'Control_L=Escape'
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-        *dpi: 150
-        Xft.dpi: 150
-      ''}
-    '';
-  };
-  services.xserver.windowManager.i3.enable = true;
-
-  # Enable flakes.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${currentUser} = {
@@ -112,8 +83,13 @@
     ];
     packages = with pkgs; [
       thunderbird
-      brave
+      firefox
       zathura
+      obsidian
+      obs-studio
+      gimp
+      smplayer # mpv backend
+      strawberry
     ];
   };
   programs.zsh.enable = true;
@@ -130,36 +106,35 @@
     ripgrep
     fd
     fzf
-    xcape
-    xclip
-    feh
-    autorandr
     xfce.thunar
-    flameshot
+    btop
     neovim
     tmux
+    imv
   ];
 
-  # Set gtk settings.
-  environment.etc = {
-    "xdg/gtk-3.0/settings.ini".text = ''
-      [Settings]
-      gtk-application-prefer-dark-theme=true
-    '';
-  };
-
   # Install fonts.
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+        "Terminus"
+      ];
+    })
+  ];
 
   # To load/unload configured shells based on current directory.
   programs.direnv.enable = true;
 
   # Enable docker.
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
-  # Enable virtualbox.
-  virtualisation.virtualbox.host.enable = true;
+  # Enable flakes.
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 }

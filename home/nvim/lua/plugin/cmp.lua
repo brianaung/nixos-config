@@ -10,27 +10,27 @@ return {
 		local ls = require('luasnip')
 		return {
 			mapping = {
-				['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-				['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-				['<C-u>'] = cmp.mapping.scroll_docs(4),
-				['<C-d>'] = cmp.mapping.scroll_docs(-4),
-				['<C-e>'] = cmp.mapping.abort(),
+				['<c-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+				['<c-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+				['<c-u>'] = cmp.mapping.scroll_docs(4),
+				['<c-d>'] = cmp.mapping.scroll_docs(-4),
+				['<c-e>'] = cmp.mapping.abort(),
 				['<tab>'] = cmp.config.disable,
-				['<C-space>'] = cmp.mapping { i = cmp.mapping.complete() },
-				['<C-y>'] = cmp.mapping(
+				['<c-space>'] = cmp.mapping { i = cmp.mapping.complete() },
+				['<c-y>'] = cmp.mapping(
 					cmp.mapping.confirm {
 						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					},
 					{ 'i', 'c' }
 				),
-				['<C-k>'] = cmp.mapping(function()
+				['<c-k>'] = cmp.mapping(function()
 					if ls.expand_or_jumpable() then ls.expand_or_jump() end
 				end, { 'i', 's' }),
-				['<C-j>'] = cmp.mapping(function()
+				['<c-j>'] = cmp.mapping(function()
 					if ls.jumpable(-1) then ls.jump(-1) end
 				end, { 'i', 's' }),
-				['<C-l>'] = cmp.mapping(function()
+				['<c-l>'] = cmp.mapping(function()
 					if ls.choice_active() then ls.change_choice(1) end
 				end),
 			},

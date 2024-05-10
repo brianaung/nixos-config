@@ -4,25 +4,29 @@
     enable = true;
 
     settings = {
+      window = {
+        opacity = 0.8;
+      };
       font = {
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Terminess Nerd Font";
           style = "Italic";
         };
-        size = 11.0;
+        size = 20.0;
       };
 
       colors = {
         primary = {
-          background = "#${config.colorScheme.palette.base00}";
+          # background = "#${config.colorScheme.palette.base00}";
+          background = "#16161d";
           foreground = "#${config.colorScheme.palette.base05}";
         };
         cursor = {

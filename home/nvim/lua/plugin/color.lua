@@ -3,6 +3,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	opts = {
+		transparent = true,
 		undercurl = false, -- enable undercurls
 	},
 	config = function(_, opts)

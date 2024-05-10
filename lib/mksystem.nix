@@ -8,12 +8,13 @@
 host:
 {
   system,
+  wm,
   user,
   hardware ? null,
 }:
 let
   hostConfig = ../host/${host}.nix;
-  homeConfig = ../home/default.nix;
+  homeConfig = ../home/${wm}.nix;
 
   systemFunc = nixpkgs.lib.nixosSystem;
 in
