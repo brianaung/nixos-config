@@ -22,10 +22,10 @@
   services.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager = {
     lightdm.enable = true;
-    sessionCommands = ''
-      setxkbmap -option 'ctrl:nocaps'
-      xcape -e 'Control_L=Escape'
-    '';
+    # sessionCommands = ''
+    #   setxkbmap -option 'ctrl:nocaps'
+    #   xcape -e 'Control_L=Escape'
+    # '';
   };
 
   # fractional scaling (needs to be in sessionCommands)
@@ -67,8 +67,4 @@
     192.168.56.56  cms.simonds.test
     192.168.56.56  content.simonds.test
   '';
-
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; 
 }
