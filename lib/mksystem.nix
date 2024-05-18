@@ -1,16 +1,15 @@
-{
-  nixos-hardware,
-  nixpkgs,
-  home-manager,
-  nix-colors,
+{ nixos-hardware
+, nixpkgs
+, home-manager
+, nix-colors
+,
 }:
-
 host:
-{
-  system,
-  wm,
-  user,
-  hardware ? null,
+{ system
+, wm
+, user
+, hardware ? null
+,
 }:
 let
   hostConfig = ../host/${host}.nix;

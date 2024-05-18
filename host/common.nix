@@ -1,8 +1,7 @@
-{
-  pkgs,
-  currentUser,
-  currentHost,
-  ...
+{ pkgs
+, currentUser
+, currentHost
+, ...
 }:
 {
   # This value determines the NixOS release from which the default

@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   tmux-sessionizer = pkgs.writeShellScriptBin "tmux-sessionizer" ''
     #!/usr/bin/env bash

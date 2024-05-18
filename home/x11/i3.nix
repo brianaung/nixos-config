@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{ config
+, pkgs
+, ...
+}:
 let
   mod = "Mod1";
   ws1 = "1";
@@ -47,8 +50,8 @@ in
       ];
 
       assigns = {
-        ${ws1} = [ { class = "^firefox$"; } ];
-        ${ws2} = [ { class = "^Alacritty$"; } ];
+        ${ws1} = [{ class = "^firefox$"; }];
+        ${ws2} = [{ class = "^Alacritty$"; }];
       };
 
       fonts = {

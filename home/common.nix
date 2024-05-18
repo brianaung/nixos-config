@@ -1,4 +1,7 @@
-{ config, nix-colors, ... }:
+{ config
+, nix-colors
+, ...
+}:
 let
   mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
   configPath = "${config.xdg.configHome}/nixos-config/home";

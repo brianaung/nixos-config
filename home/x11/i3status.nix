@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   programs.i3status = {
     enable = true;
     enableDefault = false;

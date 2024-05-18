@@ -10,14 +10,13 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nixos-hardware,
-      home-manager,
-      nix-colors,
-      ...
-    }@inputs:
+    { self
+    , nixpkgs
+    , nixos-hardware
+    , home-manager
+    , nix-colors
+    , ...
+    } @ inputs:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux.pkgs;
       mkSystem = import ./lib/mksystem.nix {
@@ -34,7 +33,6 @@
         buildInputs = with pkgs; [
           nil
           lua-language-server
-          nixfmt-rfc-style
           stylua
           gnumake
         ];
@@ -55,5 +53,7 @@
           hardware = "lenovo-ideapad-slim-5";
         };
       };
+
+      formatter.x86_64-linux = pkgs.nixpkgs-fmt;
     };
 }

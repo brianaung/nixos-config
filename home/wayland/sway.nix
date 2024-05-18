@@ -1,10 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-{
+{ config
+, lib
+, pkgs
+, ...
+}: {
   wayland.windowManager.sway =
     let
       configPath = "${config.xdg.configHome}/nixos-config/home";
@@ -16,42 +14,11 @@
       enable = true;
       checkConfig = false;
       config = {
+        modifier = "Mod1";
         menu = "${pkgs.fuzzel}/bin/fuzzel";
         terminal = "${pkgs.alacritty}/bin/alacritty";
-        modifier = "Mod1";
 
-        assigns = {
-          "1" = [ { app_id = "firefox"; } ];
-          "2" = [ { app_id = "Alacritty"; } ];
-        };
-
-        bars = [ { command = "${pkgs.waybar}/bin/waybar"; } ];
-
-        window.titlebar = false;
-
-        colors = {
-          background = "#${config.colorScheme.palette.base00}";
-          focused = {
-            background = "#${config.colorScheme.palette.base0A}";
-            border = "#${config.colorScheme.palette.base0A}";
-            childBorder = "#${config.colorScheme.palette.base0A}";
-            indicator = "#${config.colorScheme.palette.base0A}";
-            text = "#${config.colorScheme.palette.base01}";
-          };
-        };
-
-        defaultWorkspace = "workspace number 1";
-
-        floating = {
-          criteria = [ { app_id = "pavucontrol"; } ];
-        };
-
-        fonts = {
-          names = [ "Terminess Nerd Font" ];
-          style = "Regular";
-          size = 13.0;
-        };
-
+        # ===== IO =====
         input = {
           "type:pointer" = {
             pointer_accel = "0.5";
@@ -81,6 +48,7 @@
           };
         };
 
+        # ===== Programs =====
         startup = [
           { command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"; }
           {
@@ -92,54 +60,58 @@
           }
         ];
 
+        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+
+        floating = {
+          criteria = [{ app_id = "pavucontrol"; }];
+        };
+
+        # ===== Workspaces =====
+        defaultWorkspace = "workspace number 1";
+
+        assigns = {
+          "1" = [{ app_id = "firefox"; }];
+          "2" = [{ app_id = "Alacritty"; }];
+        };
+
         workspaceOutputAssign = [
-          {
-            workspace = "1";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "2";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "3";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "4";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "5";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "6";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "7";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "8";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "9";
-            output = [ "DP-4" ];
-          }
-          {
-            workspace = "10";
-            output = [ "eDP-1" ];
-          }
+          { workspace = "1"; output = [ "DP-4" ]; }
+          { workspace = "2"; output = [ "DP-4" ]; }
+          { workspace = "3"; output = [ "DP-4" ]; }
+          { workspace = "4"; output = [ "DP-4" ]; }
+          { workspace = "5"; output = [ "DP-4" ]; }
+          { workspace = "6"; output = [ "DP-4" ]; }
+          { workspace = "7"; output = [ "DP-4" ]; }
+          { workspace = "8"; output = [ "DP-4" ]; }
+          { workspace = "9"; output = [ "DP-4" ]; }
+          { workspace = "10"; output = [ "eDP-1" ]; }
         ];
 
+        # ===== Appearance =====
+        window.titlebar = false;
+
+        colors = {
+          background = "#${config.colorScheme.palette.base00}";
+          focused = {
+            background = "#${config.colorScheme.palette.base0A}";
+            border = "#${config.colorScheme.palette.base0A}";
+            childBorder = "#${config.colorScheme.palette.base0A}";
+            indicator = "#${config.colorScheme.palette.base0A}";
+            text = "#${config.colorScheme.palette.base01}";
+          };
+        };
+
+        fonts = {
+          names = [ "Terminess Nerd Font" ];
+          style = "Regular";
+          size = 13.0;
+        };
+
+        # ===== Keybindings =====
         left = "h";
         right = "l";
         up = "k";
         down = "j";
-
         keybindings =
           let
             mod = swayConfig.modifier;
