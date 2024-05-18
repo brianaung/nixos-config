@@ -1,12 +1,9 @@
-{ pkgs, lib, ... }:
-with lib;
+{ pkgs, ... }:
 {
   imports = [
     ./common.nix
     ./hardware/framework-13-7040-amd.nix
   ];
-
-  # powerManagement.powertop.enable = mkForce true;
 
   # Set session variables.
   environment.sessionVariables = rec {

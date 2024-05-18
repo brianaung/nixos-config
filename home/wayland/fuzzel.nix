@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Terminess Nerd Font:size=14";
+        font = "Terminess Nerd Font:size=20";
       };
       colors = {
         background = "ffffffff";

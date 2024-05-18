@@ -9,9 +9,6 @@ update:
 
 upgrade: update switch
 
-fmt:
-	nixfmt *
-
 optimise:
 	nix-store --optimise
 

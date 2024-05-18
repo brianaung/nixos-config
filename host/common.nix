@@ -1,11 +1,9 @@
 {
-  lib,
   pkgs,
   currentUser,
   currentHost,
   ...
 }:
-with lib;
 {
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -40,7 +38,7 @@ with lib;
   boot.consoleLogLevel = 3;
 
   # To update firmware.
-  # services.fwupd.enable = true;
+  services.fwupd.enable = true;
 
   # Use zram (instead of physical swap).
   zramSwap.enable = true;
@@ -90,7 +88,7 @@ with lib;
         lctl lmet lalt           spc            ralt rmet rctl)
 
       (defalias
-        cap (tap-hold-press 200 200 esc lctl))
+        cap (multi f24 (tap-hold-press 200 200 esc lctl)))
     '';
   };
 
@@ -109,9 +107,6 @@ with lib;
       zathura
       obsidian
       obs-studio
-      gimp
-      smplayer # mpv backend
-      strawberry
     ];
   };
   programs.zsh.enable = true;
@@ -133,6 +128,7 @@ with lib;
     neovim
     tmux
     imv
+    mpv
   ];
 
   # Install fonts.
