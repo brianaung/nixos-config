@@ -13,7 +13,7 @@ host:
 }:
 let
   hostConfig = ../host/${host}.nix;
-  homeConfig = ../home/${wm}/${wm}.nix;
+  homeConfig = ../home/${wm}.nix;
 
   systemFunc = nixpkgs.lib.nixosSystem;
 in

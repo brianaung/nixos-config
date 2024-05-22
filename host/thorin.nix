@@ -24,17 +24,8 @@
     enable = true;
     extraPackages = with pkgs; [
       wev # get keyboard, mouse pressed name
-      brightnessctl
-      pavucontrol
-      networkmanagerapplet
-      mako # notification
       wl-clipboard # clipboard
-      # screenshot
-      grim
-      slurp
-      # screenlock
-      swayidle
-      swaylock
+      libnotify
     ];
   };
 }
