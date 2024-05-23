@@ -6,14 +6,13 @@
 }:
 host:
 { system
-, wm
 , user
 , hardware ? null
 ,
 }:
 let
   hostConfig = ../host/${host}.nix;
-  homeConfig = ../home/${wm}.nix;
+  homeConfig = ../home/common.nix;
 
   systemFunc = nixpkgs.lib.nixosSystem;
 in

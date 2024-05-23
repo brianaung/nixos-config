@@ -9,6 +9,7 @@ in
 {
   imports = [
     nix-colors.homeManagerModules.default
+    ./wayland.nix
     ./alacritty.nix
     ./zsh.nix
     ./starship.nix

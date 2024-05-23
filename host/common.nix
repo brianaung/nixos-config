@@ -60,13 +60,32 @@
   # Enable bluetooth support.
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  # services.blueman.enable = true;
+  services.blueman.enable = true;
 
   # Setup gui, mouse, keyboard, etc.
   # Using wayland on thorin (testing), x11 on gimli (stable)
   services.xserver.enable = true;
   services.xserver.desktopManager = {
     xterm.enable = false;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
+      };
+    };
+    vt = 7;
+  };
+
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+      wev # get keyboard, mouse pressed name
+      wl-clipboard # clipboard
+      libnotify
+    ];
   };
 
   services.kanata = {
@@ -113,6 +132,7 @@
   # Set session variables.
   environment.sessionVariables = rec {
     TERMINAL = "alacritty";
+    NIXOS_OZONE_WL = "1";
   };
 
   # List packages installed in system profile. To search, run:

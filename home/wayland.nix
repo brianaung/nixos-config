@@ -5,10 +5,6 @@ let
   swaylock = "${pkgs.swaylock}/bin/swaylock -fF -i ${wallpaper} -s fill";
 in
 {
-  imports = [
-    ./common.nix
-  ];
-
   gtk = {
     enable = true;
     theme = {
