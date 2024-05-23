@@ -122,6 +122,7 @@
     ripgrep
     fd
     fzf
+    jq
     xfce.thunar
     btop
     neovim
