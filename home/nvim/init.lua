@@ -82,11 +82,3 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.keymap.set('n', '<esc>', '<cmd>close<cr>', { buffer = event.buf, silent = true })
 	end,
 })
-
-vim.api.nvim_create_autocmd('FileType', {
-	desc = 'Set conceallevel to 2 when inside markdown files',
-	pattern = { 'markdown' },
-	group = vim.api.nvim_create_augroup('markdown_conceal', { clear = true }),
-	callback = function() vim.opt_local.conceallevel = 2 end,
-})
-

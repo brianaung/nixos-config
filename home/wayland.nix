@@ -19,8 +19,8 @@ in
   services.swayidle = {
     enable = true;
     timeouts = [
-      { timeout = 60; command = swaylock; }
-      { timeout = 120; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+      { timeout = 300; command = swaylock; }
+      { timeout = 900; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 
@@ -104,7 +104,7 @@ in
           border = "#${config.colorScheme.palette.base0A}";
           childBorder = "#${config.colorScheme.palette.base0A}";
           indicator = "#${config.colorScheme.palette.base0A}";
-          text = "#${config.colorScheme.palette.base01}";
+          text = "#${config.colorScheme.palette.base00}";
         };
       };
 
@@ -258,7 +258,7 @@ in
       }
       #workspaces button {
         padding: 0 5px;
-        background: #${config.colorScheme.palette.base01};
+        background: #${config.colorScheme.palette.base00};
         color: #${config.colorScheme.palette.base05};
       }
       #workspaces button.focused {
