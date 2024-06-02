@@ -8,15 +8,15 @@
       };
       font = {
         normal = {
-          family = "Terminess Nerd Font";
+          family = "Iosevka Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "Terminess Nerd Font";
+          family = "Iosevka Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "Terminess Nerd Font";
+          family = "Iosevka Nerd Font";
           style = "Italic";
         };
         size = 20.0;
@@ -25,7 +25,8 @@
       colors = {
         primary = {
           # background = "#${config.colorScheme.palette.base00}";
-          background = "#16161d";
+          # background = "#16161d";
+          # background = "#0d0c0c";
           foreground = "#${config.colorScheme.palette.base05}";
         };
         cursor = {

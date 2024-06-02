@@ -97,6 +97,11 @@ in
       # ===== Appearance =====
       window.titlebar = false;
 
+      gaps = {
+        inner = 8;
+        outer = 4;
+      };
+
       colors = {
         background = "#${config.colorScheme.palette.base00}";
         focused = {
@@ -109,7 +114,7 @@ in
       };
 
       fonts = {
-        names = [ "Terminess Nerd Font" ];
+        names = [ "Iosevka Nerd Font" ];
         style = "Regular";
         size = 13.0;
       };
@@ -239,7 +244,7 @@ in
       * {
         border: none;
         border-radius: 0;
-        font-family: Terminess Nerd Font;
+        font-family: Iosevka Nerd Font;
         font-size: 20px;
       }
       window#waybar {
@@ -288,7 +293,7 @@ in
     enable = true;
     settings = {
       main = {
-        font = "Terminess Nerd Font:size=20";
+        font = "Iosevka Nerd Font:size=20";
       };
       colors = {
         background = "ffffffff";

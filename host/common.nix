@@ -157,6 +157,7 @@
       fonts = [
         "JetBrainsMono"
         "Terminus"
+        "Iosevka"
       ];
     })
   ];
