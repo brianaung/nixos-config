@@ -1,5 +1,8 @@
 indent_type = "Tabs"
 column_width = 120
-quote_style = "AutoPreferSingle"
-call_parentheses = "NoSingleTable"
-collapse_simple_statement = "Always"
+quote_style = "AutoPreferDouble"
+call_parentheses = "None"
+collapse_simple_statement = "Never"
+
+[sort_requires]
+enabled = true

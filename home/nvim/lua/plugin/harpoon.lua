@@ -1,12 +1,47 @@
 return {
-	'ThePrimeagen/harpoon',
+	"ThePrimeagen/harpoon",
 	keys = {
-		{ '<leader>a', function() require('harpoon.mark').add_file() end },
-		{ '<leader>h', function() require('harpoon.ui').toggle_quick_menu() end },
-		{ '<leader>1', function() require('harpoon.ui').nav_file(1) end },
-		{ '<leader>2', function() require('harpoon.ui').nav_file(2) end },
-		{ '<leader>3', function() require('harpoon.ui').nav_file(3) end },
-		{ '<leader>4', function() require('harpoon.ui').nav_file(4) end },
-		{ '<leader>5', function() require('harpoon.ui').nav_file(5) end },
+		{
+			"<Leader>a",
+			function()
+				require("harpoon.mark").add_file()
+			end,
+		},
+		{
+			"<Leader>h",
+			function()
+				require("harpoon.ui").toggle_quick_menu()
+			end,
+		},
+		{
+			"<Leader>1",
+			function()
+				require("harpoon.ui").nav_file(1)
+			end,
+		},
+		{
+			"<Leader>2",
+			function()
+				require("harpoon.ui").nav_file(2)
+			end,
+		},
+		{
+			"<Leader>3",
+			function()
+				require("harpoon.ui").nav_file(3)
+			end,
+		},
+		{
+			"<Leader>4",
+			function()
+				require("harpoon.ui").nav_file(4)
+			end,
+		},
+		{
+			"<Leader>5",
+			function()
+				require("harpoon.ui").nav_file(5)
+			end,
+		},
 	},
 }

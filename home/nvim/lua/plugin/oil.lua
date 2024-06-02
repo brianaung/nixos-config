@@ -1,12 +1,12 @@
 return {
-	'stevearc/oil.nvim',
+	"stevearc/oil.nvim",
 	opts = {
 		keymaps = {
-			['<esc>'] = 'actions.close',
+			["<esc>"] = "actions.close",
 		},
 	},
-	cmd = { 'Oil', 'O' },
+	cmd = { "Oil", "O" },
 	keys = {
-		{ '-', '<cmd>Oil<cr>' },
+		{ "-", "<Cmd>Oil<CR>" },
 	},
 }
