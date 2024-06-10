@@ -1,10 +1,13 @@
 return {
 	-- "brianaung/autocompl.nvim",
-	dir = "~/projects/autocompl.nvim",
-	dependencies = {
-		"L3MON4D3/LuaSnip",
+	{
+		dir = "~/projects/autocompl.nvim",
+		opts = {},
 	},
-	opts = {},
+	-- {
+	-- 	dir = "~/playground/mini",
+	-- 	opts = {},
+	-- },
 }
 -- return {
 -- 	"hrsh7th/nvim-cmp",

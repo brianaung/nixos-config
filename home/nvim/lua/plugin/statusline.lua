@@ -1,15 +1,16 @@
 return {
 	"brianaung/yasl.nvim",
-	-- dir = '~/projects/yasl.nvim',
+	-- dir = "~/projects/yasl.nvim",
 	opts = {
+		transparent = true,
 		components = {
 			"mode",
 			" ",
 			"%<%t%h%m%r%w", -- filename
 			" ",
 			"branch",
-			" ",
-			"gitdiff",
+			-- " ",
+			-- "gitdiff",
 			"%=",
 			"diagnostics",
 			" ",

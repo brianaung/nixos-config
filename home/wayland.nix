@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 let
   swayconf = config.wayland.windowManager.sway.config;
-  wallpaper = "${config.xdg.configHome}/nixos-config/wallpapers/0";
+  wallpaper = "${config.xdg.configHome}/nixos-config/wallpapers/4";
   swaylock = "${pkgs.swaylock}/bin/swaylock -fF -i ${wallpaper} -s fill";
 in
 {
@@ -97,18 +97,18 @@ in
       # ===== Appearance =====
       window.titlebar = false;
 
-      gaps = {
-        inner = 8;
-        outer = 4;
-      };
+      # gaps = {
+      #   inner = 8;
+      #   outer = 4;
+      # };
 
       colors = {
         background = "#${config.colorScheme.palette.base00}";
         focused = {
-          background = "#${config.colorScheme.palette.base0A}";
-          border = "#${config.colorScheme.palette.base0A}";
-          childBorder = "#${config.colorScheme.palette.base0A}";
-          indicator = "#${config.colorScheme.palette.base0A}";
+          background = "#${config.colorScheme.palette.base05}";
+          border = "#${config.colorScheme.palette.base05}";
+          childBorder = "#${config.colorScheme.palette.base05}";
+          indicator = "#${config.colorScheme.palette.base05}";
           text = "#${config.colorScheme.palette.base00}";
         };
       };
@@ -150,7 +150,7 @@ in
           "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%+";
           "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
-          "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | wl-copy'';
+          "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | ${pkgs.swappy}/bin/swappy -f -'';
         };
     };
     extraConfig = ''
@@ -162,10 +162,10 @@ in
   services.mako = {
     enable = true;
     defaultTimeout = 10000;
-    backgroundColor = "#${config.colorScheme.palette.base0A}";
+    backgroundColor = "#${config.colorScheme.palette.base05}";
     borderColor = "#${config.colorScheme.palette.base02}";
     textColor = "#${config.colorScheme.palette.base02}";
-    font = "JetBrainsMono Nerd Font 13";
+    font = "Iosevka Nerd Font 13";
   };
 
   programs.waybar = {
@@ -267,7 +267,7 @@ in
         color: #${config.colorScheme.palette.base05};
       }
       #workspaces button.focused {
-        background: #${config.colorScheme.palette.base0A};
+        background: #${config.colorScheme.palette.base05};
         color: #${config.colorScheme.palette.base02};
       }
       #pulseaudio.muted {
