@@ -4,6 +4,34 @@ return {
 	"tpope/vim-surround",
 
 	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+		config = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				desc = "Close dbui buffer with the escape key",
+				pattern = { "dbui" },
+				group = vim.api.nvim_create_augroup("dbui_close_with_escape", { clear = true }),
+				callback = function(event)
+					vim.keymap.set("n", "<esc>", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
+				end,
+			})
+		end,
+	},
+
+	{
 		"mbbill/undotree",
 		cmd = { "UndotreeShow", "UndotreeToggle" },
 		keys = {

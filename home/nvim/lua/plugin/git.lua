@@ -8,7 +8,7 @@ return {
 		config = function()
 			vim.api.nvim_create_autocmd("FileType", {
 				desc = "Close fugitive buffer with the escape key",
-				group = vim.api.nvim_create_augroup("close_with_escape", { clear = true }),
+				group = vim.api.nvim_create_augroup("fugitive_close_with_escape", { clear = true }),
 				pattern = { "fugitive", "fugitiveblame" },
 				callback = function(event)
 					vim.bo[event.buf].buflisted = false
