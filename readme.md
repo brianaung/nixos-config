@@ -4,6 +4,8 @@ These are my configuration files. Feel free to take anything you think is cool, 
 
 Always a WIP =))
 
+> Requires >= Neovim v10.0.0
+
 ## Important Change Logs
 - [c62ae47](https://github.com/brianaung/home-manager/commit/c62ae474e9959e3e9d61adb7622ec956dfbb36f3) migrate from old [repo](https://github.com/brianaung/.dotfiles)
 - [4b18876](https://github.com/brianaung/nixos-config/commit/4b18876179fc3bc112cfbb6918ae403066bddeb3) full commit to nixos

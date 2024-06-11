@@ -5,6 +5,7 @@ return {
 	opts = {
 		ensure_installed = {
 			"go",
+			"rust",
 			"lua",
 			"nix",
 			"markdown",

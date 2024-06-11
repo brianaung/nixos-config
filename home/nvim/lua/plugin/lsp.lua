@@ -1,10 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-	dependencies = {
-		-- "hrsh7th/cmp-nvim-lsp",
-		"nvim-telescope/telescope.nvim",
-	},
 	opts = {
 		servers = {
 			lua_ls = {
@@ -21,11 +17,10 @@ return {
 		on_attach = function(_, bufnr)
 			local opts = { buffer = bufnr }
 			local set = vim.keymap.set
-			set("n", "<Leader>gd", require("telescope.builtin").lsp_definitions, opts)
-			set("n", "<Leader>gr", require("telescope.builtin").lsp_references, opts)
-			set("n", "<Leader>gi", require("telescope.builtin").lsp_implementations, opts)
-			set("n", "<Leader>gt", require("telescope.builtin").lsp_type_definitions, opts)
-			set("n", "<Leader>le", require("telescope.builtin").diagnostics, opts)
+			set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
+			set("n", "<Leader>gr", vim.lsp.buf.references, opts)
+			set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
+			set("n", "<Leader>gt", vim.lsp.buf.type_definition, opts)
 			set("n", "<Leader>ca", vim.lsp.buf.code_action, opts)
 			set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
 			set("n", "K", vim.lsp.buf.hover, opts)
@@ -37,7 +32,6 @@ return {
 		capabilities = vim.lsp.protocol.make_client_capabilities(),
 	},
 	config = function(_, opts)
-		-- opts.capabilities = require("cmp_nvim_lsp").default_capabilities(opts.capabilities)
 		for server, server_opts in pairs(opts.servers) do
 			require("lspconfig")[server].setup {
 				capabilities = opts.capabilities,

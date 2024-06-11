@@ -18,12 +18,12 @@ return {
 		},
 		overrides = function(colors)
 			return {
-				NormalFloat = { link = "Pmenu" },
+				-- NormalFloat = { link = "Pmenu" },
 				LineNr = { bg = "none" },
 				SignColumn = { bg = "none" },
-				TelescopePromptBorder = { fg = colors.palette.fujiWhite, bg = "none" },
-				TelescopeResultsBorder = { fg = colors.palette.fujiWhite, bg = "none" },
-				TelescopePreviewBorder = { fg = colors.palette.fujiWhite, bg = "none" },
+				-- TelescopePromptBorder = { fg = colors.palette.fujiWhite, bg = "none" },
+				-- TelescopeResultsBorder = { fg = colors.palette.fujiWhite, bg = "none" },
+				-- TelescopePreviewBorder = { fg = colors.palette.fujiWhite, bg = "none" },
 			}
 		end,
 	},
