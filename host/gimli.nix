@@ -15,6 +15,7 @@
 
   # Enable virtualbox.
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.package = pkgs.unstable.virtualbox;
 
   networking.extraHosts = ''
     192.168.56.56  cms.simonds.test

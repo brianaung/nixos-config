@@ -13,10 +13,10 @@ return {
 			vue = { { "prettierd", "prettier" } },
 			php = { "php_cs_fixer" },
 		},
-		format_on_save = {
-			lsp_fallback = true,
-			timeout_ms = 500,
-		},
+		-- format_on_save = {
+		-- 	lsp_fallback = true,
+		-- 	timeout_ms = 500,
+		-- },
 	},
 	keys = {
 		{

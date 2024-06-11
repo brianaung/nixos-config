@@ -60,6 +60,11 @@ in
           pos = "2256 0";
           scale = "0.8";
         };
+        DP-1 = {
+          # mode = "1920x1080@144.000Hz"; # TODO: finish setting up
+          pos = "2256 0";
+          scale = "1";
+        };
       };
 
       # ===== Programs =====
@@ -82,15 +87,15 @@ in
       };
 
       workspaceOutputAssign = [
-        { workspace = "1"; output = [ "DP-4" "eDP-1" ]; }
-        { workspace = "2"; output = [ "DP-4" ]; }
-        { workspace = "3"; output = [ "DP-4" ]; }
-        { workspace = "4"; output = [ "DP-4" ]; }
-        { workspace = "5"; output = [ "DP-4" ]; }
-        { workspace = "6"; output = [ "DP-4" ]; }
-        { workspace = "7"; output = [ "DP-4" ]; }
-        { workspace = "8"; output = [ "DP-4" ]; }
-        { workspace = "9"; output = [ "DP-4" ]; }
+        { workspace = "1"; output = [ "DP-4" "DP-1" "eDP-1" ]; }
+        { workspace = "2"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "3"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "4"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "5"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "6"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "7"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "8"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "9"; output = [ "DP-4" "DP-1" ]; }
         { workspace = "10"; output = [ "eDP-1" ]; }
       ];
 

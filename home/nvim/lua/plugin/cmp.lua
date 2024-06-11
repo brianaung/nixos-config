@@ -1,13 +1,9 @@
 return {
-	-- "brianaung/autocompl.nvim",
 	{
-		dir = "~/projects/autocompl.nvim",
+		"brianaung/autocompl.nvim",
+		-- dir = "~/projects/autocompl.nvim",
 		opts = {},
 	},
-	-- {
-	-- 	dir = "~/playground/mini",
-	-- 	opts = {},
-	-- },
 }
 -- return {
 -- 	"hrsh7th/nvim-cmp",
