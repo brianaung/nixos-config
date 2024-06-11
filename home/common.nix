@@ -1,5 +1,5 @@
 { config
-, nix-colors
+, inputs
 , ...
 }:
 let
@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     ./wayland.nix
     ./alacritty.nix
     ./zsh.nix

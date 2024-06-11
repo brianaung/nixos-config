@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./common.nix
@@ -6,4 +6,6 @@
   ];
 
   programs.steam.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
 }

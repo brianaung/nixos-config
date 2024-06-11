@@ -145,7 +145,7 @@
     jq
     xfce.thunar
     btop
-    neovim
+    unstable.neovim
     tmux
     imv
     mpv

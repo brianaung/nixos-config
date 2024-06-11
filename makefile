@@ -2,7 +2,7 @@ switch:
 	sudo nixos-rebuild switch --flake .
 
 test:
-	sudo nixos-rebuild test --flake .
+	sudo nixos-rebuild test --flake . --show-trace
 
 update:
 	nix flake update

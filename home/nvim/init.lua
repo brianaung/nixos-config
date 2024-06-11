@@ -1,5 +1,5 @@
 -- Always set your leader key before anything else.
-vim.g.mapleader = vim.keycode "<Space>"
+vim.g.mapleader = vim.api.nvim_replace_termcodes("<Space>", true, true, true)
 
 -- Setup Lazy.
 local lazyrepo = "https://github.com/folke/lazy.nvim.git"
