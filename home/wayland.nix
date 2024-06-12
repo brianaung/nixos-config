@@ -61,7 +61,7 @@ in
           scale = "0.8";
         };
         DP-1 = {
-          # mode = "1920x1080@144.000Hz"; # TODO: finish setting up
+          mode = "2560x1440@59.951Hz";
           pos = "2256 0";
           scale = "1";
         };
