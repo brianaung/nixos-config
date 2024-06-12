@@ -3,28 +3,6 @@ return {
 	"tpope/vim-surround",
 
 	{
-		"echasnovski/mini.pick",
-		version = "*",
-		opts = {
-			mappings = {
-				choose_marked = "<C-q>",
-			},
-			-- TODO make a PR
-			source = {
-				choose_marked = function()
-					MiniPick.default_choose_marked(MiniPick.get_picker_matches().all, {})
-				end,
-			},
-		},
-		keys = {
-			{ "<Leader>fd", "<cmd>Pick files<CR>" },
-			{ "<Leader>fg", "<cmd>Pick grep_live<CR>" },
-			{ "<Leader>fb", "<cmd>Pick buffers<CR>" },
-			{ "<Leader>fh", "<cmd>Pick help<CR>" },
-		},
-	},
-
-	{
 		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {
 			{ "tpope/vim-dadbod", lazy = true },
