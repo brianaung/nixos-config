@@ -6,7 +6,7 @@
   ];
 
   users.users.${currentUser} = {
-    packages = with pkgs; [ postman slack ];
+    packages = with pkgs; [ slack ];
   };
 
   environment.systemPackages = with pkgs; [

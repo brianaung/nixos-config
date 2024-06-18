@@ -125,6 +125,7 @@
       zathura
       obsidian
       obs-studio
+      postman
     ];
   };
   programs.zsh.enable = true;
