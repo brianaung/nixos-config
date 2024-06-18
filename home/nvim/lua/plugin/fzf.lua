@@ -1,11 +1,11 @@
 return {
 	"ibhagwan/fzf-lua",
 	opts = {
-		-- winopts = {
-		-- 	preview = {
-		-- 		hidden = "hidden",
-		-- 	},
-		-- },
+		winopts = {
+			preview = {
+				hidden = "hidden",
+			},
+		},
 		keymap = {
 			builtin = {
 				-- using builtin previewer, define these inside fzf if using bat
@@ -16,6 +16,9 @@ return {
 			fzf = {
 				["ctrl-q"] = "select-all+accept",
 			},
+		},
+		files = {
+			formatter = { "path.filename_first", 2 },
 		},
 	},
 	keys = {
