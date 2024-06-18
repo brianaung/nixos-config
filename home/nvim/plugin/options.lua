@@ -8,6 +8,8 @@ opt.termguicolors = true
 
 opt.scrolloff = 5
 
+opt.foldenable = false
+
 opt.number = true
 opt.relativenumber = true
 
