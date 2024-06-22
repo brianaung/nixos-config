@@ -142,7 +142,6 @@
     git
     ripgrep
     fd
-    fzf
     jq
     xfce.thunar
     btop

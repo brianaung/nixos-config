@@ -170,7 +170,7 @@ in
     backgroundColor = "#${config.colorScheme.palette.base05}";
     borderColor = "#${config.colorScheme.palette.base02}";
     textColor = "#${config.colorScheme.palette.base02}";
-    font = "Iosevka Nerd Font 13";
+    font = "Iosevka Nerd Font 14";
   };
 
   programs.waybar = {
@@ -301,11 +301,13 @@ in
         font = "Iosevka Nerd Font:size=20";
       };
       colors = {
-        background = "ffffffff";
-        text = "000000ff";
-        selection = "00000022";
-        selectionText = "000000aa";
-        border = "000000ff";
+        background = "${config.colorScheme.palette.base05}ff";
+        text = "${config.colorScheme.palette.base00}ff";
+        match = "${config.colorScheme.palette.base08}ff";
+        selection = "${config.colorScheme.palette.base00}ff";
+        "selection-text" = "${config.colorScheme.palette.base05}ff";
+        "selection-match" = "${config.colorScheme.palette.base08}ff";
+        border = "${config.colorScheme.palette.base00}ff";
       };
       border = {
         radius = 0;

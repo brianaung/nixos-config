@@ -3,9 +3,9 @@
     enable = true;
 
     settings = {
-      window = {
-        opacity = 0.9;
-      };
+      # window = {
+      #   opacity = 0.9;
+      # };
       font = {
         normal = {
           family = "Iosevka Nerd Font";
@@ -24,9 +24,7 @@
 
       colors = {
         primary = {
-          # background = "#${config.colorScheme.palette.base00}";
-          # background = "#16161d";
-          background = "#0d0c0c";
+          background = "#${config.colorScheme.palette.base00}";
           foreground = "#${config.colorScheme.palette.base05}";
         };
         cursor = {
