@@ -12,6 +12,7 @@ opt.foldenable = false
 
 opt.number = true
 opt.relativenumber = true
+opt.cursorline = true
 
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -29,10 +30,10 @@ opt.smartcase = true
 -- Display hidden characters.
 opt.list = true
 opt.listchars = {
-	tab = "→ ",
-	eol = "↲",
-	extends = "›",
-	precedes = "‹",
-	nbsp = "␣",
-	trail = "~",
+  tab = "→ ",
+  eol = "↲",
+  extends = "›",
+  precedes = "‹",
+  nbsp = "␣",
+  trail = "~",
 }

@@ -25,6 +25,4 @@ set("n", "<C-n>", "<Cmd>cnext<CR>")
 set("n", "<C-f>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Use <CR> to clear hlsearch when active.
-set("n", "<CR>", function()
-	return vim.v.hlsearch == 1 and "<Cmd>nohl<CR>" or "<CR>"
-end, { expr = true })
+set("n", "<CR>", function() return vim.v.hlsearch == 1 and "<Cmd>nohl<CR>" or "<CR>" end, { expr = true })

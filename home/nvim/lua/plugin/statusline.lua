@@ -1,5 +1,5 @@
 return {
-	"brianaung/yasl.nvim",
-	-- dir = "~/projects/yasl.nvim",
-	opts = {},
+  -- "brianaung/yasl.nvim",
+  dir = "~/projects/yasl.nvim",
+  opts = {},
 }
