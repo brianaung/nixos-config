@@ -65,6 +65,11 @@ in
           pos = "2256 0";
           scale = "1";
         };
+        HDMI-A-1 = {
+          mode = "1920x1080@120.000Hz";
+          pos = "2256 0";
+          scale = "1";
+        };
       };
 
       # ===== Programs =====
@@ -87,15 +92,15 @@ in
       };
 
       workspaceOutputAssign = [
-        { workspace = "1"; output = [ "DP-4" "DP-1" "eDP-1" ]; }
-        { workspace = "2"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "3"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "4"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "5"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "6"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "7"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "8"; output = [ "DP-4" "DP-1" ]; }
-        { workspace = "9"; output = [ "DP-4" "DP-1" ]; }
+        { workspace = "1"; output = [ "DP-4" "DP-1" "HDMI-A-1" "eDP-1" ]; }
+        { workspace = "2"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "3"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "4"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "5"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "6"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "7"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "8"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
+        { workspace = "9"; output = [ "DP-4" "DP-1" "HDMI-A-1" ]; }
         { workspace = "10"; output = [ "eDP-1" ]; }
       ];
 
