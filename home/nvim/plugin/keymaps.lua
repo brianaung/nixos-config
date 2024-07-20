@@ -26,3 +26,24 @@ set("n", "<C-f>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Use <CR> to clear hlsearch when active.
 set("n", "<CR>", function() return vim.v.hlsearch == 1 and "<Cmd>nohl<CR>" or "<CR>" end, { expr = true })
+
+-- Ins-completion keymaps
+set("i", "<C-y>", function()
+  if vim.fn.complete_info()["selected"] ~= -1 then return "<C-y>" end
+  if vim.fn.pumvisible() ~= 0 then return "<C-n><C-y>" end
+  return "<C-y>"
+end, { expr = true })
+
+set("i", "<CR>", function()
+  if vim.fn.complete_info()["selected"] ~= -1 then return "<C-y>" end
+  if vim.fn.pumvisible() ~= 0 then return "<C-e><CR>" end
+  return "<CR>"
+end, { expr = true })
+
+set({ "i", "s" }, "<C-k>", function()
+  if vim.snippet.active { direction = 1 } then return "<cmd>lua vim.snippet.jump(1)<cr>" end
+end, { expr = true })
+
+set({ "i", "s" }, "<C-j>", function()
+  if vim.snippet.active { direction = -1 } then return "<cmd>lua vim.snippet.jump(-1)<cr>" end
+end, { expr = true })

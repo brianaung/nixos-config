@@ -1,6 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+  -- dependencies = {
+  --   "hrsh7th/cmp-nvim-lsp",
+  -- },
   opts = {
     servers = {
       lua_ls = {
@@ -17,6 +20,7 @@ return {
     on_attach = function(_, bufnr)
       local opts = { buffer = bufnr }
       local set = vim.keymap.set
+      -- vim.lsp.completion.enable(true, 1, 0, { autotrigger = true })
       set("n", "<Leader>gd", vim.lsp.buf.definition, opts)
       set("n", "<Leader>gr", vim.lsp.buf.references, opts)
       set("n", "<Leader>gi", vim.lsp.buf.implementation, opts)
@@ -33,6 +37,7 @@ return {
   },
   config = function(_, opts)
     for server, server_opts in pairs(opts.servers) do
+      -- opts.capabilities = require("cmp_nvim_lsp").default_capabilities(opts.capabilities)
       require("lspconfig")[server].setup {
         capabilities = opts.capabilities,
         on_attach = opts.on_attach,

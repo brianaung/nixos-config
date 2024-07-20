@@ -27,6 +27,10 @@ opt.inccommand = "split"
 opt.ignorecase = true
 opt.smartcase = true
 
+-- Better ins-completion experience
+opt.completeopt = { "menuone", "noselect", "noinsert" }
+opt.shortmess:append "c"
+
 -- Display hidden characters.
 opt.list = true
 opt.listchars = {
