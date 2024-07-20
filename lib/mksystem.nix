@@ -21,7 +21,7 @@ systemFunc rec {
   };
 
   modules = [
-    { nixpkgs.overlays = [ overlays.unstable-pkgs ]; }
+    { nixpkgs.overlays = [ overlays ]; }
 
     # Import the host's configuration.nix.
     hostConfig
