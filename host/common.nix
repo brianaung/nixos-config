@@ -153,6 +153,7 @@
 
   # Install fonts.
   fonts.packages = with pkgs; [
+    apple-fonts
     (nerdfonts.override {
       fonts = [
         "JetBrainsMono"

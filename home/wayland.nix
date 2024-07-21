@@ -119,7 +119,7 @@ in
       };
 
       fonts = {
-        names = [ "Iosevka Nerd Font" ];
+        names = [ "SF Pro" ];
         style = "Regular";
         size = 13.0;
       };
@@ -170,7 +170,7 @@ in
     backgroundColor = "#${config.colorScheme.palette.base05}";
     borderColor = "#${config.colorScheme.palette.base02}";
     textColor = "#${config.colorScheme.palette.base02}";
-    font = "Iosevka Nerd Font 14";
+    font = "SF Pro 16";
   };
 
   programs.waybar = {
@@ -249,8 +249,8 @@ in
       * {
         border: none;
         border-radius: 0;
-        font-family: Iosevka Nerd Font;
-        font-size: 20px;
+        font-family: SF Pro;
+        font-size: 16px;
       }
       window#waybar {
         background: #${config.colorScheme.palette.base00};
@@ -298,7 +298,7 @@ in
     enable = true;
     settings = {
       main = {
-        font = "Iosevka Nerd Font:size=20";
+        font = "SF Pro:size=16";
       };
       colors = {
         background = "${config.colorScheme.palette.base05}ff";

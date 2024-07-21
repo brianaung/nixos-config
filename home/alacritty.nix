@@ -8,18 +8,18 @@
       # };
       font = {
         normal = {
-          family = "Iosevka Nerd Font";
+          family = "SF Mono";
           style = "Regular";
         };
         bold = {
-          family = "Iosevka Nerd Font";
-          style = "Bold";
+          family = "SF Mono";
+          style = "Semibold";
         };
         italic = {
-          family = "Iosevka Nerd Font";
-          style = "Italic";
+          family = "SF Mono";
+          style = "Regular Italic";
         };
-        size = 20.0;
+        size = 16.0;
       };
 
       colors = {

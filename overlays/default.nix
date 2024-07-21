@@ -4,4 +4,6 @@ final: prev: {
     system = final.system;
     config.allowUnfree = true;
   };
+
+  apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
 }
