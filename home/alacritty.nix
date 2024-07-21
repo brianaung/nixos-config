@@ -24,32 +24,32 @@
 
       colors = {
         primary = {
-          background = "#${config.colorScheme.palette.base00}";
-          foreground = "#${config.colorScheme.palette.base05}";
+          background = "#${config.colors.Black}";
+          foreground = "#${config.colors.White}";
         };
         cursor = {
-          text = "#${config.colorScheme.palette.base00}";
-          cursor = "#${config.colorScheme.palette.base05}";
+          text = "#${config.colors.Black}";
+          cursor = "#${config.colors.White}";
         };
         normal = {
-          black = "#${config.colorScheme.palette.base00}";
-          red = "#${config.colorScheme.palette.base08}";
-          green = "#${config.colorScheme.palette.base0B}";
-          yellow = "#${config.colorScheme.palette.base0A}";
-          blue = "#${config.colorScheme.palette.base0D}";
-          magenta = "#${config.colorScheme.palette.base0E}";
-          cyan = "#${config.colorScheme.palette.base0C}";
-          white = "#${config.colorScheme.palette.base05}";
+          black = "#${config.colors.Black}";
+          red = "#${config.colors.Red}";
+          green = "#${config.colors.Green}";
+          yellow = "#${config.colors.Yellow}";
+          blue = "#${config.colors.Blue}";
+          magenta = "#${config.colors.Magenta}";
+          cyan = "#${config.colors.Cyan}";
+          white = "#${config.colors.White}";
         };
         bright = {
-          black = "#${config.colorScheme.palette.base03}";
-          red = "#${config.colorScheme.palette.base08}";
-          green = "#${config.colorScheme.palette.base0B}";
-          yellow = "#${config.colorScheme.palette.base0A}";
-          blue = "#${config.colorScheme.palette.base0D}";
-          magenta = "#${config.colorScheme.palette.base0E}";
-          cyan = "#${config.colorScheme.palette.base0C}";
-          white = "#${config.colorScheme.palette.base07}";
+          black = "#${config.colors.BrightBlack}";
+          red = "#${config.colors.BrightRed}";
+          green = "#${config.colors.BrightGreen}";
+          yellow = "#${config.colors.BrightYellow}";
+          blue = "#${config.colors.BrightBlue}";
+          magenta = "#${config.colors.BrightMagenta}";
+          cyan = "#${config.colors.BrightCyan}";
+          white = "#${config.colors.BrightWhite}";
         };
       };
     };
