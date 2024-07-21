@@ -1,6 +1,7 @@
 return {
-  -- "brianaung/autocompl.nvim",
-  dir = "~/projects/compl-v2.nvim",
+  "brianaung/autocompl.nvim",
+  branch = "v2",
+  -- dir = "~/projects/compl-v2.nvim",
   opts = {
     fuzzy = true,
   },
