@@ -2,7 +2,7 @@
 {
   imports = [
     ./common.nix
-    ./hardware/lenovo-ideapad-slim-5.nix
+    ./hardwares/lenovo-ideapad-slim-5.nix
   ];
 
   users.users.${currentUser} = {

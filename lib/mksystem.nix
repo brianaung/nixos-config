@@ -6,7 +6,7 @@ host:
 ,
 }:
 let
-  hostConfig = ../host/${host}.nix;
+  hostConfig = ../hosts/${host}.nix;
   homeConfig = ../home/common.nix;
 
   systemFunc = inputs.nixpkgs.lib.nixosSystem;
