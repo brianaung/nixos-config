@@ -11,7 +11,12 @@
 
   environment.systemPackages = with pkgs; [
     vagrant
+    dbeaver-bin
   ];
+
+  environment.sessionVariables = {
+    ESLINT_USE_FLAT_CONFIG = "true";
+  };
 
   # Enable virtualbox.
   virtualisation.virtualbox.host.enable = true;
@@ -20,5 +25,6 @@
   networking.extraHosts = ''
     192.168.56.56  cms.simonds.test
     192.168.56.56  content.simonds.test
+    192.168.56.56  product.simonds.test
   '';
 }

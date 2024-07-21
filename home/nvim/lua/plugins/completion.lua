@@ -5,8 +5,7 @@ return {
   opts = {
     fuzzy = true,
   },
-  init = function()
-  end,
+  init = function() end,
 }
 -- return {
 --   -- 'hrsh7th/nvim-cmp',
