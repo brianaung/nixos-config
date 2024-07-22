@@ -1,8 +1,9 @@
 { lib, pkgs, config, ... }:
 let
   swayconf = config.wayland.windowManager.sway.config;
-  wallpaper = "${config.xdg.configHome}/nixos-config/wallpapers/4";
-  swaylock = "${pkgs.swaylock}/bin/swaylock -fF -i ${wallpaper} -s fill";
+  # wallpaper = "${config.xdg.configHome}/nixos-config/wallpapers/4";
+  # swaylock = "${pkgs.swaylock}/bin/swaylock -fF -i ${wallpaper} -s fill";
+  swaylock = "${pkgs.swaylock}/bin/swaylock -fF -c ${config.colors.Black} -s fill";
 in
 {
   gtk = {
@@ -48,7 +49,7 @@ in
 
       output = {
         "*" = {
-          bg = "${wallpaper} fill";
+          bg = "#${config.colors.Black} solid_color";
         };
         eDP-1 = {
           mode = "2256x1504@59.999Hz";
@@ -113,18 +114,18 @@ in
       # };
 
       colors = {
-        background = "#${config.colorScheme.palette.base00}";
+        background = "#${config.colors.Black}";
         focused = {
-          background = "#${config.colorScheme.palette.base05}";
-          border = "#${config.colorScheme.palette.base05}";
-          childBorder = "#${config.colorScheme.palette.base05}";
-          indicator = "#${config.colorScheme.palette.base05}";
-          text = "#${config.colorScheme.palette.base00}";
+          background = "#${config.colors.Magenta}";
+          border = "#${config.colors.Magenta}";
+          childBorder = "#${config.colors.Magenta}";
+          indicator = "#${config.colors.Magenta}";
+          text = "#${config.colors.Black}";
         };
       };
 
       fonts = {
-        names = [ "SF Pro" ];
+        names = [ "SF Mono" ];
         style = "Regular";
         size = 13.0;
       };
@@ -172,10 +173,12 @@ in
   services.mako = {
     enable = true;
     defaultTimeout = 10000;
-    backgroundColor = "#${config.colorScheme.palette.base05}";
-    borderColor = "#${config.colorScheme.palette.base02}";
-    textColor = "#${config.colorScheme.palette.base02}";
-    font = "SF Pro 16";
+    backgroundColor = "#${config.colors.White}";
+    borderColor = "#${config.colors.Black}";
+    textColor = "#${config.colors.Black}";
+    font = "SF Mono 13";
+    height = 200;
+    width = 500;
   };
 
   programs.waybar = {
@@ -254,12 +257,12 @@ in
       * {
         border: none;
         border-radius: 0;
-        font-family: SF Pro;
-        font-size: 16px;
+        font-family: SF Mono;
+        font-size: 18px;
       }
       window#waybar {
-        background: #${config.colorScheme.palette.base00};
-        color: #${config.colorScheme.palette.base05};
+        background: #${config.colors.Black};
+        color: #${config.colors.White};
       }
       #battery,
       #clock,
@@ -267,34 +270,34 @@ in
       #disk,
       #memory,
       #pulseaudio {
-        background: #${config.colorScheme.palette.base00};
-        color: #${config.colorScheme.palette.base05};
+        background: #${config.colors.Black};
+        color: #${config.colors.White};
         padding: 0 0.2rem;
       }
       #workspaces button {
         padding: 0 5px;
-        background: #${config.colorScheme.palette.base00};
-        color: #${config.colorScheme.palette.base05};
+        background: #${config.colors.Black};
+        color: #${config.colors.Magenta};
       }
       #workspaces button.focused {
-        background: #${config.colorScheme.palette.base05};
-        color: #${config.colorScheme.palette.base02};
+        background: #${config.colors.Magenta};
+        color: #${config.colors.Black};
       }
       #pulseaudio.muted {
-        color: #${config.colorScheme.palette.base0A};
+        color: #${config.colors.Yellow};
       }
       #battery.charging, #battery.plugged {
-        color: #${config.colorScheme.palette.base0B};
+        color: #${config.colors.Green};
       }
       #battery.warning:not(.charging),
       #cpu.warning,
       #memory.warning {
-        color: #${config.colorScheme.palette.base0A};
+        color: #${config.colors.Yellow};
       }
       #battery.critical:not(.charging),
       #cpu.critical,
       #memory.critical {
-        color: #${config.colorScheme.palette.base08};
+        color: #${config.colors.Red};
       }
     '';
   };
@@ -303,16 +306,16 @@ in
     enable = true;
     settings = {
       main = {
-        font = "SF Pro:size=16";
+        font = "SF Mono:size=18";
       };
       colors = {
-        background = "${config.colorScheme.palette.base05}ff";
-        text = "${config.colorScheme.palette.base00}ff";
-        match = "${config.colorScheme.palette.base08}ff";
-        selection = "${config.colorScheme.palette.base00}ff";
-        "selection-text" = "${config.colorScheme.palette.base05}ff";
-        "selection-match" = "${config.colorScheme.palette.base08}ff";
-        border = "${config.colorScheme.palette.base00}ff";
+        background = "${config.colors.White}ff";
+        text = "${config.colors.Black}ff";
+        match = "${config.colors.BrightBlack}ff";
+        selection = "${config.colors.Black}ff";
+        "selection-text" = "${config.colors.White}ff";
+        "selection-match" = "${config.colors.BrightBlack}ff";
+        border = "${config.colors.Black}ff";
       };
       border = {
         radius = 0;
