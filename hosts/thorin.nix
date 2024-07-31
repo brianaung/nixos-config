@@ -14,6 +14,7 @@
     dwl
     dwlb
     somebar
+    someblocks
   ];
 
   # xdg.portal = {

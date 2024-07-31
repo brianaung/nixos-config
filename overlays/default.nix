@@ -8,4 +8,6 @@ final: prev: {
   apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
 
   dwlb = final.callPackage ../pkgs/dwlb.nix { };
+
+  someblocks = final.callPackage ../pkgs/someblocks.nix { };
 }
