@@ -73,7 +73,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c dwl";
       };
     };
     vt = 7;
