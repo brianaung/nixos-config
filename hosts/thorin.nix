@@ -12,6 +12,7 @@
       conf = ../home/dwl/config.h;
     })
     dwl
+    dwlb
     somebar
   ];
 
