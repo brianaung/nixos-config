@@ -2,7 +2,8 @@
 , stdenv
 , fetchFromSourcehut
 , writeText
-, patches ? [ ], conf ? null 
+, patches ? [ ]
+, conf ? null
 }:
 stdenv.mkDerivation rec {
   pname = "someblocks";

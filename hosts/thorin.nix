@@ -8,13 +8,14 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
-    (dwl.override {
-      conf = ../home/dwl/config.h;
-    })
     dwl
     dwlb
     somebar
-    someblocks
+    (someblocks.override {
+      conf = ../home/someblocks/blocks.h;
+    })
+
+    acpi
   ];
 
   # xdg.portal = {

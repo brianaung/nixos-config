@@ -10,4 +10,11 @@ final: prev: {
   dwlb = final.callPackage ../pkgs/dwlb.nix { };
 
   someblocks = final.callPackage ../pkgs/someblocks.nix { };
+
+  dwl = (prev.dwl.overrideAttrs (oldAttrs: rec {
+    version = "0.7-rc1";
+    patches = [
+      ../home/dwl/autostart.patch
+    ];
+  })).override{ conf = ../home/dwl/config.h; };
 }
