@@ -1,20 +1,24 @@
-{ config
-, inputs
-, ...
-}:
+{ config, ... }:
 let
   mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
   configPath = "${config.xdg.configHome}/nixos-config/home";
 in
 {
   imports = [
+    # wayland
     ./wayland.nix
+    ./kanshi.nix
+
+    # x11
+
     ./alacritty.nix
     ./zsh.nix
     ./starship.nix
     ./git.nix
     ./fzf.nix
+
     ./tmux-sessionizer.nix
+
     ../modules/colors.nix
   ];
 
@@ -22,32 +26,12 @@ in
 
   programs.home-manager.enable = true;
 
-  # These configs are managed outside of nix store.
   xdg.configFile = {
     nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
-    nvimColors = {
-      target = "${configPath}/nvim/lua/modules/colors.lua";
-      text = ''
-        local M = {}
-        M.Black = "#${config.colors.Black}"
-        M.BrightBlack = "#${config.colors.BrightBlack}"
-        M.Red = "#${config.colors.Red}"
-        M.BrightRed = "#${config.colors.BrightRed}"
-        M.Green = "#${config.colors.Green}"
-        M.BrightGreen = "#${config.colors.BrightGreen}"
-        M.Yellow = "#${config.colors.Yellow}"
-        M.BrightYellow = "#${config.colors.BrightYellow}"
-        M.Blue = "#${config.colors.Blue}"
-        M.BrightBlue = "#${config.colors.BrightBlue}"
-        M.Magenta = "#${config.colors.Magenta}"
-        M.BrightMagenta = "#${config.colors.BrightMagenta}"
-        M.Cyan = "#${config.colors.Cyan}"
-        M.BrightCyan = "#${config.colors.BrightCyan}"
-        M.White = "#${config.colors.White}"
-        M.BrightWhite = "#${config.colors.BrightWhite}"
-        return M
-      '';
-    };
     tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
+    "river/init" = {
+      text = builtins.readFile ./river/init;
+      executable = true;
+    };
   };
 }

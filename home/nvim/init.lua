@@ -10,3 +10,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- See :h lazy.nvim-lazy.nvim-plugin-spec.
 require("lazy").setup("plugins", { change_detection = { notify = false } })
+
+vim.cmd "colorscheme habamax"
