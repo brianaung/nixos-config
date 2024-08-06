@@ -19,7 +19,7 @@
           family = "SF Mono";
           style = "Regular Italic";
         };
-        size = 16.0;
+        size = 11.0;
       };
 
       colors = {

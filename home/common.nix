@@ -5,9 +5,8 @@ let
 in
 {
   imports = [
-    # wayland
-    ./wayland.nix
-    ./kanshi.nix
+    # ./wayland.nix
+    # ./kanshi.nix
 
     # x11
 
@@ -27,6 +26,7 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile = {
+    awesome.source = mkOutOfStoreSymlink "${configPath}/awesome";
     nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
     tmux.source = mkOutOfStoreSymlink "${configPath}/tmux";
     "river/init" = {

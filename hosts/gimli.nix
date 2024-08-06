@@ -2,6 +2,7 @@
 {
   imports = [
     ./common.nix
+    ./wayland.nix
     ./hardwares/lenovo-ideapad-slim-5.nix
   ];
 
