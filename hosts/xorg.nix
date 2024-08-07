@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
-  services.xserver.windowManager.awesome.enable = true;
+  services.xserver.windowManager.awesome = with pkgs; {
+    enable = true;
+    luaModules = [
+      luaPackages.vicious
+    ];
+  };
 
   services.xserver.displayManager = {
     lightdm.enable = true;
@@ -32,6 +37,8 @@
     flameshot
     xclip
     brightnessctl
+    pavucontrol
+    pasystray
   ];
 
   programs.nm-applet.enable = true;

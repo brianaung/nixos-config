@@ -2,10 +2,22 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+local awesome = awesome
+local client = client
+local root = root
+local screen = screen
+local globalkeys = globalkeys
+local clientkeys = clientkeys
+local clientbuttons = clientbuttons
+
+require("awful.autofocus")
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -14,11 +26,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
-
-local battery_widget = require("battery-widget")
+-- Widgets library
+local vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -51,18 +60,22 @@ do
 end
 -- }}}
 
+-- {{{ Autostart
+awful.spawn("autorandr -c")
+awful.spawn.once("pasystray")
+-- }}}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "mytheme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
+local terminal = "alacritty"
+local editor = os.getenv("EDITOR") or "nvim"
+local editor_cmd = terminal .. " -e " .. editor
 
-modkey = "Mod1"
-
-awful.spawn("autorandr -c")
+local modkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -87,7 +100,7 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
+local myawesomemenu = {
 	{
 		"hotkeys",
 		function()
@@ -105,26 +118,76 @@ myawesomemenu = {
 	},
 }
 
-mymainmenu = awful.menu({
+local mymainmenu = awful.menu({
 	items = {
 		{ "awesome", myawesomemenu, beautiful.awesome_icon },
 		{ "open terminal", terminal },
 	},
 })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- {{{ Vicious widgets
+local memwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.mem)
+vicious.register(memwidget, vicious.widgets.mem, "Mem: $1%", 30)
+
+local cpuwidget = awful.widget.graph()
+cpuwidget:set_width(50)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color({
+	type = "linear",
+	from = { 0, 0 },
+	to = { 50, 0 },
+	stops = {
+		{ 0, "#FF5656" },
+		{ 0.5, "#88A175" },
+		{ 1, "#AECF96" },
+	},
+})
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 30)
+
+local batwidget = wibox.widget.textbox()
+local battooltip = awful.tooltip({ objects = { batwidget } })
+vicious.cache(vicious.widgets.bat)
+vicious.register(batwidget, vicious.widgets.bat, function(_, args)
+	battooltip:set_text("Remaining " .. args[3] .. " hours")
+	return "Bat: " .. args[2] .. args[1]
+end, 60, "BAT1")
+
+local diskwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.fs)
+vicious.register(diskwidget, vicious.widgets.fs, "${/ avail_gb}GB", 60)
+
+local weatherwidget = wibox.widget.textbox()
+local weathertooltip = awful.tooltip({ objects = { weatherwidget } })
+vicious.cache(vicious.widgets.weather)
+vicious.register(weatherwidget, vicious.widgets.weather, function(widget, args)
+	weathertooltip:set_text(
+		"City: "
+			.. args["{city}"]
+			.. "\nWind: "
+			.. args["{windkmh}"]
+			.. "km/h "
+			.. args["{wind}"]
+			.. "\nSky: "
+			.. args["{sky}"]
+			.. "\nHumidity: "
+			.. args["{humid}"]
+			.. "%"
+	)
+	return " Weather: " .. args["{tempc}"] .. "°C"
+end, 300, "YMML")
+-- }}}
+
+-- Attach calendar to textclock
+local mytextclock = wibox.widget.textclock()
+local mycalendar = awful.widget.calendar_popup.month()
+mycalendar:attach(mytextclock, "tr")
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
 	awful.button({}, 1, function(t)
@@ -188,7 +251,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+	awful.tag({ "www", "main", "3", "4", "5", "6", "7", "8", "misc" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -231,15 +294,24 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			mylauncher,
+			awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu }),
 			s.mytaglist,
 			s.mypromptbox,
 		},
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
-			battery_widget({}),
+			wibox.widget.textbox(" "),
+			weatherwidget,
+			wibox.widget.textbox(" | "),
+			diskwidget,
+			wibox.widget.textbox(" "),
+			cpuwidget,
+			wibox.widget.textbox(" "),
+			memwidget,
+			wibox.widget.textbox(" | "),
+			batwidget,
+			wibox.widget.textbox(" | "),
 			mytextclock,
 			wibox.widget.systray(),
 			s.mylayoutbox,
@@ -312,6 +384,9 @@ globalkeys = gears.table.join(
 	awful.key({}, "XF86AudioLowerVolume", function()
 		awful.spawn("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-")
 	end, { description = "decrease volume", group = "launcher" }),
+	awful.key({}, "XF86AudioMute", function()
+		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+	end, { description = "mute volume", group = "launcher" }),
 
 	-- brightness controls
 	awful.key({}, "XF86MonBrightnessUp", function()
@@ -390,6 +465,7 @@ clientkeys = gears.table.join(
 		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
+
 	awful.key({ modkey }, "q", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
@@ -400,6 +476,7 @@ clientkeys = gears.table.join(
 		awful.client.floating.toggle,
 		{ description = "toggle floating", group = "client" }
 	),
+
 	awful.key({ modkey, "Control" }, "Return", function(c)
 		c:swap(awful.client.getmaster())
 	end, { description = "move to master", group = "client" }),
@@ -439,16 +516,16 @@ for i = 1, 9 do
 		globalkeys,
 		-- View tag only.
 		awful.key({ modkey }, "#" .. i + 9, function()
-			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
+			local focused = awful.screen.focused()
+			local tag = focused.tags[i]
 			if tag then
 				tag:view_only()
 			end
 		end, { description = "view tag #" .. i, group = "tag" }),
 		-- Toggle tag display.
 		awful.key({ modkey, "Control" }, "#" .. i + 9, function()
-			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
+			local focused = awful.screen.focused()
+			local tag = focused.tags[i]
 			if tag then
 				awful.tag.viewtoggle(tag)
 			end
@@ -520,7 +597,8 @@ awful.rules.rules = {
 			},
 			class = {
 				"Arandr",
-				"Blueman-manager",
+				"Pavucontrol",
+				".blueman-manager-wrapped",
 				"Gpick",
 				"Kruler",
 				"MessageWin", -- kalarm.
