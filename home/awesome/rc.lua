@@ -62,6 +62,8 @@ editor_cmd = terminal .. " -e " .. editor
 
 modkey = "Mod1"
 
+awful.spawn("autorandr -c")
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 	awful.layout.suit.tile,

@@ -2,7 +2,7 @@
 {
   imports = [
     ./common.nix
-    ./x11.nix
+    ./xorg.nix
     ./hardwares/framework-13-7040-amd.nix
   ];
 
