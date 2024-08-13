@@ -10,10 +10,7 @@
   services.xserver.displayManager = {
     lightdm.enable = true;
     sessionCommands = ''
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-        *dpi: 125
-        Xft.dpi: 125
-      ''}
+      ${pkgs.autorandr}/bin/autorandr -c
     '';
   };
 
@@ -81,6 +78,24 @@
             rate = "60.00";
           };
         };
+      };
+    };
+    hooks = {
+      postswitch = {
+        "change-dpi" = ''
+          case "$AUTORANDR_CURRENT_PROFILE" in
+            docked)
+              DPI=100
+              ;;
+            undocked)
+              DPI=144
+              ;;
+            *)
+              echo "Unknow profile: $AUTORANDR_CURRENT_PROFILE"
+              exit 1
+          esac
+          echo "Xft.dpi: $DPI" | ${pkgs.xorg.xrdb}/bin/xrdb -merge
+        '';
       };
     };
   };
