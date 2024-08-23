@@ -151,30 +151,6 @@ vicious.register(batwidget, vicious.widgets.bat, function(_, args)
 	battooltip:set_text("Remaining " .. args[3] .. " hours")
 	return "Bat: " .. args[2] .. args[1]
 end, 60, "BAT1")
-
-local diskwidget = wibox.widget.textbox()
-vicious.cache(vicious.widgets.fs)
-vicious.register(diskwidget, vicious.widgets.fs, "${/ avail_gb}GB", 60)
-
-local weatherwidget = wibox.widget.textbox()
-local weathertooltip = awful.tooltip({ objects = { weatherwidget } })
-vicious.cache(vicious.widgets.weather)
-vicious.register(weatherwidget, vicious.widgets.weather, function(widget, args)
-	weathertooltip:set_text(
-		"City: "
-			.. args["{city}"]
-			.. "\nWind: "
-			.. args["{windkmh}"]
-			.. "km/h "
-			.. args["{wind}"]
-			.. "\nSky: "
-			.. args["{sky}"]
-			.. "\nHumidity: "
-			.. args["{humid}"]
-			.. "%"
-	)
-	return " Weather: " .. args["{tempc}"] .. "°C"
-end, 300, "YMML")
 -- }}}
 
 -- Attach calendar to textclock
@@ -296,11 +272,6 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			wibox.widget.textbox(" "),
-			weatherwidget,
-			wibox.widget.textbox(" | "),
-			diskwidget,
-			wibox.widget.textbox(" "),
 			cpuwidget,
 			wibox.widget.textbox(" "),
 			memwidget,

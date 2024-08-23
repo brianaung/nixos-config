@@ -2,9 +2,9 @@
 {
   services.xserver.windowManager.awesome = with pkgs; {
     enable = true;
-    luaModules = [
-      luaPackages.vicious
-    ];
+    # luaModules = [
+    #   luaPackages.vicious
+    # ];
   };
 
   services.xserver.displayManager = {
