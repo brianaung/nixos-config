@@ -39,5 +39,7 @@ systemFunc rec {
         inherit inputs;
       };
     }
+
+    inputs.nixos-cosmic.nixosModules.default
   ];
 }

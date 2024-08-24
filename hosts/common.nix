@@ -100,6 +100,7 @@
       "docker"
     ];
     packages = with pkgs; [
+      # xfce.thunar
       thunderbird
       firefox
       zathura
@@ -123,7 +124,6 @@
     ripgrep
     fd
     jq
-    xfce.thunar
     btop
     unstable.neovim
     tmux
