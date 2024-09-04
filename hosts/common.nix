@@ -1,8 +1,4 @@
-{ pkgs
-, currentUser
-, currentHost
-, ...
-}:
+{ pkgs , ... }:
 {
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -43,7 +39,6 @@
   zramSwap.enable = true;
 
   # Enable networking.
-  networking.hostName = currentHost; # Define your hostname.
   networking.networkmanager.enable = true; # Enable networking
 
   # Enable sound with pipewire.
@@ -91,25 +86,25 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${currentUser} = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-    ];
-    packages = with pkgs; [
-      # xfce.thunar
-      thunderbird
-      firefox
-      zathura
-      obsidian
-      obs-studio
-      postman
-    ];
-  };
-  programs.zsh.enable = true;
+  # users.users.${currentUser} = {
+  #   isNormalUser = true;
+  #   shell = pkgs.zsh;
+  #   extraGroups = [
+  #     "networkmanager"
+  #     "wheel"
+  #     "docker"
+  #   ];
+  #   packages = with pkgs; [
+  #     thunderbird
+  #     # firefox
+  #     brave
+  #     zathura
+  #     obsidian
+  #     obs-studio
+  #     postman
+  #   ];
+  # };
+  # programs.zsh.enable = true;
 
   # Set session variables.
   environment.sessionVariables = rec {
@@ -134,6 +129,7 @@
   # Install fonts.
   fonts.packages = with pkgs; [
     apple-fonts
+    font-awesome
     (nerdfonts.override {
       fonts = [
         "JetBrainsMono"
