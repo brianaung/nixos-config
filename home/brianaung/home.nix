@@ -1,10 +1,10 @@
 { config, ... }:
 let
   mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
-  configPath = "${config.xdg.configHome}/nixos-config/home/brianaung";
 in
 {
   imports = [
+    ./programs/hyprland.nix
     ./programs/zsh.nix
     ./programs/starship.nix
     ./programs/git.nix
@@ -15,6 +15,7 @@ in
     ./programs/swaync.nix
     ./programs/fuzzel.nix
     ./scripts/tmux-sessionizer.nix
+    ./scripts/hyprmonitor.nix
     ./misc/gtk.nix
   ];
 
@@ -22,8 +23,5 @@ in
 
   programs.home-manager.enable = true;
 
-  xdg.configFile = {
-    nvim.source = mkOutOfStoreSymlink "${configPath}/nvim";
-    hypr.source = mkOutOfStoreSymlink "${configPath}/hypr";
-  };
+  xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/nvim";
 }

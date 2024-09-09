@@ -32,7 +32,7 @@ in
         grim
         slurp
         swappy
-        # pavucontrol
+        swww
       ];
 
       services.greetd = {
@@ -46,6 +46,8 @@ in
       };
 
       programs.hyprland.enable = true;
+
+      security.pam.services.hyprlock = { };
     })
 
     (lib.mkIf (cfg.session == "cosmic") {

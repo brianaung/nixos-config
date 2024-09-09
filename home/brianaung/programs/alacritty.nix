@@ -3,9 +3,9 @@
     enable = true;
 
     settings = {
-      # window = {
-      #   opacity = 0.9;
-      # };
+      window = {
+        opacity = 0.8;
+      };
       font = {
         normal = {
           family = "JetBrainsMono Nerd Font";

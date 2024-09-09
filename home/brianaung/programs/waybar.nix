@@ -5,23 +5,37 @@
       mainBar = {
         layer = "top";
         position = "top";
-        modules-left = [
-          "hyprland/workspaces"
-        ];
+        modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [
           "pulseaudio"
-          # "network"
+          "network"
           "battery"
           "tray"
           "custom/notification"
         ];
         "hyprland/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            default = "";
+            active = "";
+          };
           disable-scroll = true;
         };
         "clock" = {
-          tooltip = false;
           format = "{:%a %b %d %I:%M%p}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "month";
+            format = {
+              today = "<span color='#${config.colors.Blue}'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+            on-click = "shift_reset";
+          };
         };
         "pulseaudio" = {
           tooltip = false;
@@ -37,11 +51,14 @@
           scroll-step = 5;
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
-        # "network" = {
-        #   format = "{icon}";
-        #   format-disconnected = "󰤭";
-        #   format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
-        # };
+        "network" = {
+          format = "{icon}";
+          format-disconnected = "󰤭";
+          format-disabled = "󰤭";
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          tooltip-format = "{ifname} via {gwaddr}";
+          on-click = "${pkgs.iwgtk}/bin/iwgtk";
+        };
         "battery" = {
           interval = 60;
           format = "{capacity}% {icon}";
@@ -52,6 +69,7 @@
             critical = "";
           };
           format-time = "{H}hrs, {M}mins";
+          tooltip-format = "{timeTo}";
           states = {
             warning = 30;
             critical = 15;
@@ -69,7 +87,7 @@
     };
     style = ''
       * {
-        font-family: Fira sans;
+        font-family: Fira Sans, "Font Awesome 6 Free";
         font-size: 14px;
         border-radius: 5px;
         padding: 0;
@@ -89,24 +107,23 @@
       }
       .modules-center {
         margin: 5px 0 0 0;
-        padding: 0 5px;
       }
       .modules-right {
         margin: 5px 5px 0 0;
-        padding: 0 5px;
+        padding: 0 2px;
       }
+      #workspaces button,
+      #clock,
       #pulseaudio,
+      #network,
       #battery,
       #tray,
       #custom-notification {
-        padding: 0 10px;
-      }
-      #workspaces button {
-        padding: 0 5px;
+        padding: 0 8px;
       }
       #workspaces button.active {
-        background: #${config.colors.White};
-        color: #${config.colors.Black};
+        color: #${config.colors.Blue};
+        font-weight: 900;
       }
     '';
   };

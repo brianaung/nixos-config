@@ -12,4 +12,4 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false } })
 
 vim.cmd "colorscheme habamax"
--- vim.api.nvim_set_hl(0, "StatusLine", {})
+vim.api.nvim_set_hl(0, "Normal", {})
