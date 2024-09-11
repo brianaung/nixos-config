@@ -11,18 +11,19 @@
     users.brianaung = {
       enable = true;
       email = "brian@psdesignstudio.com";
-      extraGroups = [
-        "networkmanager"
-        "docker"
-      ];
+      extraGroups = [ "docker" ];
       packages = with pkgs; [
         slack
         dbeaver-bin
         postman
+	pandoc
       ];
     };
-    networking.networkmanager.enable = true;
-    displayServer.x11.enable = true;
+    networking.iwd.enable = true;
+    displayServer.wayland = {
+      enable = true;
+      session = "hyprland";
+    };
   };
 
   environment.systemPackages = with pkgs; [
