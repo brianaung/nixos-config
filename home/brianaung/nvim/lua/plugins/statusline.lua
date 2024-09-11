@@ -1,7 +1,7 @@
 return {
-  -- "brianaung/yasl.nvim",
+  "brianaung/yasl.nvim",
   branch = "v2",
-  dir = "~/projects/yasl.nvim",
+  -- dir = "~/projects/yasl.nvim",
   config = function()
     require("yasl").setup {
       components = {

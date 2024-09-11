@@ -1,5 +1,5 @@
 return {
-  "brianaung/autocompl.nvim",
+  "brianaung/compl.nvim",
   -- dir = "~/projects/compl.nvim",
   opts = {},
 }
