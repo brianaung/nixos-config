@@ -28,11 +28,12 @@ in
         cosmic-files
         waybar
         swaynotificationcenter
-        networkmanagerapplet
+        iwgtk
         grim
         slurp
         swappy
         swww
+        socat
       ];
 
       services.greetd = {

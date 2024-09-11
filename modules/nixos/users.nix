@@ -10,6 +10,10 @@ in
         type = lib.types.str;
         default = "brianaung16@gmail.com";
       };
+      extraGroups = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ ];
+      };
       packages = lib.mkOption {
         type = lib.types.listOf lib.types.package;
         default = [ ];
@@ -23,11 +27,9 @@ in
       users.users.brianaung = {
         isNormalUser = true;
         shell = pkgs.zsh;
-        extraGroups = [
-          "networkmanager"
+        extraGroups = lib.lists.unique [
           "wheel"
-          "docker"
-        ];
+        ] ++ cfg.brianaung.extraGroups;
         packages = with pkgs; [
           firefox
           brave

@@ -43,8 +43,6 @@ in
       pasystray
     ];
 
-    programs.nm-applet.enable = true;
-
     # reload autorandr profile when there is a change in DRM subsystem,
     # does not work with home manager autorandr module
     services.udev.extraRules = ''

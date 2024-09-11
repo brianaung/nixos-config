@@ -38,9 +38,6 @@
   # Use zram (instead of physical swap).
   zramSwap.enable = true;
 
-  # Enable networking.
-  networking.networkmanager.enable = true; # Enable networking
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -85,29 +82,8 @@
     '';
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.${currentUser} = {
-  #   isNormalUser = true;
-  #   shell = pkgs.zsh;
-  #   extraGroups = [
-  #     "networkmanager"
-  #     "wheel"
-  #     "docker"
-  #   ];
-  #   packages = with pkgs; [
-  #     thunderbird
-  #     # firefox
-  #     brave
-  #     zathura
-  #     obsidian
-  #     obs-studio
-  #     postman
-  #   ];
-  # };
-  # programs.zsh.enable = true;
-
   # Set session variables.
-  environment.sessionVariables = rec {
+  environment.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "alacritty";
   };
@@ -124,7 +100,6 @@
     tmux
     imv
     mpv
-    socat
   ];
 
   # Install fonts.
@@ -142,9 +117,6 @@
 
   # To load/unload configured shells based on current directory.
   programs.direnv.enable = true;
-
-  # Enable docker.
-  # virtualisation.docker.enable = true;
 
   # Enable flakes.
   nix.settings.experimental-features = [

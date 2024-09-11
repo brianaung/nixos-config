@@ -16,6 +16,7 @@
         steam
       ];
     };
+    networking.iwd.enable = true;
     displayServer.wayland = {
       enable = true;
       session = "hyprland";
