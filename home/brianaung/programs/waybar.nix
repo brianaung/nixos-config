@@ -112,7 +112,6 @@
         margin: 5px 5px 0 0;
         padding: 0 2px;
       }
-      #workspaces button,
       #clock,
       #pulseaudio,
       #network,
@@ -121,8 +120,13 @@
       #custom-notification {
         padding: 0 8px;
       }
+      #workspaces button {
+        color: #${config.colors.BrightBlack};
+        font-weight: 900;
+        padding: 0 4px;
+      }
       #workspaces button.active {
-        color: #${config.colors.Blue};
+        color: #${config.colors.Green};
         font-weight: 900;
       }
     '';

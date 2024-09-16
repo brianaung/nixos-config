@@ -9,7 +9,7 @@ return {
       nil_ls = {},
       gopls = {},
       pyright = {},
-      tsserver = {},
+      ts_ls = {},
       tailwindcss = {},
       phpactor = {},
       volar = {},

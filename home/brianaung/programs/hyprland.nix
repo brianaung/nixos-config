@@ -32,7 +32,6 @@
       exec-once = waybar &
       exec-once = swaync &
       exec-once = swww-daemon &
-      exec-once = hyprmonitor &
 
 
       #############################
@@ -59,7 +58,7 @@
           border_size = 2
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          col.active_border = rgba(${config.colors.Blue}ee) rgba(${config.colors.Green}ee) 45deg
+          col.active_border = rgba(${config.colors.Green}ff) rgba(${config.colors.Blue}ff) 45deg
           col.inactive_border = rgba(${config.colors.Black}aa)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -244,6 +243,17 @@
       windowrule = float, ^(.blueman-manager-wrapped)$
 
       windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
+
+      workspace = 1, monitor:DP-1, monitor:DP-4
+      workspace = 2, monitor:DP-1, monitor:DP-4
+      workspace = 3, monitor:DP-1, monitor:DP-4
+      workspace = 4, monitor:DP-1, monitor:DP-4
+      workspace = 5, monitor:DP-1, monitor:DP-4
+      workspace = 6, monitor:eDP-1
+      workspace = 7, monitor:eDP-1
+      workspace = 8, monitor:eDP-1
+      workspace = 9, monitor:eDP-1
+      workspace = 10, monitor:DP-1, monitor:DP-4
     '';
   };
 

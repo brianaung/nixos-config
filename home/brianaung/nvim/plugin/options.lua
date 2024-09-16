@@ -12,7 +12,7 @@ opt.foldenable = false
 
 opt.number = true
 opt.relativenumber = true
-opt.cursorline = true
+-- opt.cursorline = true
 
 opt.tabstop = 4
 opt.shiftwidth = 4
