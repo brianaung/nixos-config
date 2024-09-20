@@ -184,6 +184,7 @@
       # Move focus
       bind = $MODKEY, J, layoutmsg, cyclenext
       bind = $MODKEY, K, layoutmsg, cycleprev
+      bind = $MODKEY, RETURN, layoutmsg, swapwithmaster
       binde = $MODKEY, L, resizeactive, 50 0
       binde = $MODKEY, H, resizeactive, -50 0
 
