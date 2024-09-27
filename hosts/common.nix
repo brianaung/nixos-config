@@ -51,8 +51,8 @@
 
   # Enable bluetooth support.
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
 
   # Setup gui, mouse, keyboard, etc.
   services.xserver.enable = true;

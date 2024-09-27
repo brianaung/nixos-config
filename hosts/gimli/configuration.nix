@@ -16,7 +16,8 @@
         slack
         dbeaver-bin
         postman
-	pandoc
+        pandoc
+        firefox
       ];
     };
     networking.iwd.enable = true;

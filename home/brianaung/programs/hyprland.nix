@@ -164,7 +164,7 @@
       ####################
 
       # See https://wiki.hyprland.org/Configuring/Keywords/
-      $MODKEY = Alt # Sets "Windows" key as main modifier
+      $MODKEY = SUPER
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $MODKEY SHIFT, RETURN, exec, $terminal
@@ -244,17 +244,6 @@
       windowrule = float, ^(.blueman-manager-wrapped)$
 
       windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
-
-      workspace = 1, monitor:DP-1, monitor:DP-4
-      workspace = 2, monitor:DP-1, monitor:DP-4
-      workspace = 3, monitor:DP-1, monitor:DP-4
-      workspace = 4, monitor:DP-1, monitor:DP-4
-      workspace = 5, monitor:DP-1, monitor:DP-4
-      workspace = 6, monitor:eDP-1
-      workspace = 7, monitor:eDP-1
-      workspace = 8, monitor:eDP-1
-      workspace = 9, monitor:eDP-1
-      workspace = 10, monitor:DP-1, monitor:DP-4
     '';
   };
 

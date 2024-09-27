@@ -31,8 +31,6 @@ in
           "wheel"
         ] ++ cfg.brianaung.extraGroups;
         packages = with pkgs; [
-          firefox
-          brave
           zathura
           obsidian
         ] ++ cfg.brianaung.packages;
