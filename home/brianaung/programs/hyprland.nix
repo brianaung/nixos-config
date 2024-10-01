@@ -32,6 +32,7 @@
       exec-once = waybar &
       exec-once = swaync &
       exec-once = swww-daemon &
+      exec-once = hyprmonitor &
 
 
       #############################
@@ -164,7 +165,7 @@
       ####################
 
       # See https://wiki.hyprland.org/Configuring/Keywords/
-      $MODKEY = SUPER
+      $MODKEY = Alt
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = $MODKEY SHIFT, RETURN, exec, $terminal

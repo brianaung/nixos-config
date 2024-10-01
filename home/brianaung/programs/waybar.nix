@@ -15,11 +15,11 @@
           "custom/notification"
         ];
         "hyprland/workspaces" = {
-          format = "{icon}";
-          format-icons = {
-            default = "";
-            active = "";
-          };
+          # format = "{icon}";
+          # format-icons = {
+          #   default = "";
+          #   active = "";
+          # };
           disable-scroll = true;
         };
         "clock" = {
@@ -121,13 +121,12 @@
         padding: 0 8px;
       }
       #workspaces button {
-        color: #${config.colors.BrightBlack};
-        font-weight: 900;
+        color: #${config.colors.White};
         padding: 0 4px;
       }
       #workspaces button.active {
-        color: #${config.colors.Green};
-        font-weight: 900;
+        color: #${config.colors.Black};
+        background: #${config.colors.Green};
       }
     '';
   };
