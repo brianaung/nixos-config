@@ -97,6 +97,7 @@
     jq
     btop
     unstable.neovim
+    strawberry
     tmux
     imv
     mpv

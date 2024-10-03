@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  umpv = pkgs.writers.writePython3Bin "umpv" {} ''
+  umpv = pkgs.writers.writePython3Bin "umpv" { } ''
     import sys
     import os
     import socket
