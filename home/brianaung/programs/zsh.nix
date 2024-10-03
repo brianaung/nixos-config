@@ -14,9 +14,7 @@
       ];
     };
 
-    shellAliases = {
-      oil = "nvim +Oil";
-    };
+    shellAliases = {};
 
     initExtra = ''
       KEYTIMEOUT=1

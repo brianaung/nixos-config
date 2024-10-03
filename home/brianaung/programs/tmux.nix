@@ -45,6 +45,11 @@
       bind-key -n 'c-j' if-shell "$is_vim" 'send-keys c-j'  'select-pane -D'
       bind-key -n 'c-k' if-shell "$is_vim" 'send-keys c-k'  'select-pane -U'
       bind-key -n 'c-l' if-shell "$is_vim" 'send-keys c-l'  'select-pane -R'
+
+      # yazi image preview
+      set -g allow-passthrough all
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
     '';
   };
 }

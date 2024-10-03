@@ -3,6 +3,14 @@ return {
   "tpope/vim-surround",
 
   {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "-", "<Cmd>Yazi<CR>" },
+    },
+  },
+
+  {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
       { "tpope/vim-dadbod", lazy = true },

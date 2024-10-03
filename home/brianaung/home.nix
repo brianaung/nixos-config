@@ -11,13 +11,17 @@ in
     ./programs/fzf.nix
     ./programs/tmux.nix
     ./programs/alacritty.nix
+    ./programs/kitty.nix
+    ./programs/yazi.nix
     ./programs/waybar.nix
     ./programs/swaync.nix
     ./programs/fuzzel.nix
     ./programs/qutebrowser.nix
+
     ./scripts/tmux-sessionizer.nix
     ./scripts/hyprmonitor.nix
     ./scripts/umpv.nix
+
     ./misc/gtk.nix
   ];
 

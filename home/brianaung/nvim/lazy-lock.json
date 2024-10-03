@@ -8,7 +8,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "46ce5fd8c081f179a509da423077f8372e63ffc4" },
   "nvim-treesitter": { "branch": "master", "commit": "b9002f6fe679e2b8025a46116081c0da629a6b8c" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "bf8d2ad35d1d1a687eae6c065c3d524f7ab61b23" },
-  "oil.nvim": { "branch": "master", "commit": "f60bb7f793477d99ef1acf39e920bf2ca4e644de" },
+  "oil.nvim": { "branch": "master", "commit": "9e6fb844fe4cce13d9e3f6a7c970cbc669bb1629" },
   "plenary.nvim": { "branch": "master", "commit": "ec289423a1693aeae6cd0d503bac2856af74edaa" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
   "vim-dadbod": { "branch": "master", "commit": "7888cb7164d69783d3dce4e0283decd26b82538b" },
@@ -18,5 +18,6 @@
   "vim-sleuth": { "branch": "master", "commit": "cd9d382e33bb817abe7f10cdc3a606bf1d491d75" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-tmux-navigator": { "branch": "master", "commit": "a9b52e7d36114d40350099f254b5f299a35df978" },
-  "yasl.nvim": { "branch": "v2", "commit": "2313b70d3c282fbd3768acbf075f67d1591f5896" }
+  "yasl.nvim": { "branch": "v2", "commit": "2313b70d3c282fbd3768acbf075f67d1591f5896" },
+  "yazi.nvim": { "branch": "main", "commit": "b6ac040a9c9671c1a546992f8449d903259e2249" }
 }
