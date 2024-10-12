@@ -10,8 +10,7 @@ in
     ./programs/git.nix
     ./programs/fzf.nix
     ./programs/tmux.nix
-    ./programs/alacritty.nix
-    ./programs/kitty.nix
+    ./programs/foot.nix
     ./programs/yazi.nix
     ./programs/waybar.nix
     ./programs/swaync.nix

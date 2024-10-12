@@ -19,7 +19,7 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/
 
       # Set programs that you use
-      $terminal = ${pkgs.alacritty}/bin/alacritty
+      $terminal = ${pkgs.foot}/bin/foot
       $menu = ${pkgs.fuzzel}/bin/fuzzel
 
       #################
@@ -53,8 +53,8 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general { 
-          gaps_in = 5
-          gaps_out = 10
+          gaps_in = 3
+          gaps_out = 6
 
           border_size = 2
 

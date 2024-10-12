@@ -88,7 +88,7 @@
     style = ''
       * {
         font-family: Fira Sans, "Font Awesome 6 Free";
-        font-size: 14px;
+        font-size: 11px;
         border-radius: 5px;
         padding: 0;
       }
@@ -103,13 +103,13 @@
         color: #${config.colors.White};
       }
       .modules-left {
-        margin: 5px 0 0 5px;
+        margin: 3px 0 0 5px;
       }
       .modules-center {
-        margin: 5px 0 0 0;
+        margin: 3px 0 0 0;
       }
       .modules-right {
-        margin: 5px 5px 0 0;
+        margin: 3px 5px 0 0;
         padding: 0 2px;
       }
       #clock,

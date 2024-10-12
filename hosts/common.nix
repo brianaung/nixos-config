@@ -85,7 +85,7 @@
   # Set session variables.
   environment.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "alacritty";
+    TERMINAL = "foot";
   };
 
   # List packages installed in system profile. To search, run:
