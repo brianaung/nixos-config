@@ -86,6 +86,7 @@
   environment.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "foot";
+    QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
   };
 
   # List packages installed in system profile. To search, run:

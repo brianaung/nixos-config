@@ -18,6 +18,7 @@
         postman
         pandoc
         firefox
+        thunderbird
       ];
     };
     networking.iwd.enable = true;
@@ -44,5 +45,6 @@
     192.168.56.56  cms.simonds.test
     192.168.56.56  content.simonds.test
     192.168.56.56  product.simonds.test
+    192.168.56.56  trunk.test
   '';
 }
