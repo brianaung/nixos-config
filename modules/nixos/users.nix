@@ -26,7 +26,7 @@ in
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.brianaung = {
         isNormalUser = true;
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         extraGroups = lib.lists.unique [
           "wheel"
         ] ++ cfg.brianaung.extraGroups;
@@ -35,7 +35,7 @@ in
           obsidian
         ] ++ cfg.brianaung.packages;
       };
-      programs.zsh.enable = true;
+      programs.fish.enable = true;
 
       home-manager.users.brianaung = { pkgs, ... }: {
         programs.git.userName = "brianaung";

@@ -5,8 +5,7 @@ in
 {
   imports = [
     ./programs/hyprland.nix
-    ./programs/zsh.nix
-    ./programs/starship.nix
+    ./programs/fish.nix
     ./programs/git.nix
     ./programs/fzf.nix
     ./programs/tmux.nix
