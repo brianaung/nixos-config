@@ -3,6 +3,12 @@ return {
   "tpope/vim-surround",
 
   {
+    "noahfrederick/vim-noctu",
+    priority = 1000,
+    config = function() vim.cmd "colorscheme noctu" end,
+  },
+
+  {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",
     keys = {

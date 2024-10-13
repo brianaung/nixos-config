@@ -4,7 +4,7 @@ local opt = vim.opt
 opt.updatetime = 250
 opt.timeoutlen = 300
 
-opt.termguicolors = true
+opt.termguicolors = false
 
 opt.scrolloff = 5
 
