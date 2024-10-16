@@ -7,6 +7,7 @@
         start_pages = "https://google.com";
       };
       auto_save.session = true;
+      content.javascript.clipboard = "access-paste";
     };
     keyBindings = {
       normal = {
