@@ -18,6 +18,10 @@ let
     "BrightMagenta"
     "BrightCyan"
     "BrightWhite"
+
+    "Background"
+    "Foreground"
+
   ];
 in
 {
@@ -28,24 +32,27 @@ in
     })
     colornames);
 
-  config.colors = {
-    Black = "1C1C1C"; # 0
-    Red = "D75F5F"; # 1
-    Green = "87AF87"; # 2
-    Yellow = "AFAF87"; # 3
-    Blue = "658594"; # 4
-    Magenta = "AF87AF"; # 5
-    Cyan = "5F8787"; # 6
-    White = "DCD7BA"; # 7
+  config.colors = rec {
+    Black = "000000"; # 0
+    Red = "800000"; # 1
+    Green = "008000"; # 2
+    Yellow = "808000"; # 3
+    Blue = "000080"; # 4
+    Magenta = "800080"; # 5
+    Cyan = "008080"; # 6
+    White = "c0c0c0"; # 7
 
-    BrightBlack = "767676"; # 8
-    BrightRed = "D7875F"; # 9
-    BrightGreen = "AFD7AF"; # 10
-    BrightYellow = "D7D787"; # 11
-    BrightBlue = "87AFD7"; # 12
-    BrightMagenta = "D7AFD7"; # 13
-    BrightCyan = "87AFAF"; # 14
-    BrightWhite = "BCBCBC"; # 15
+    BrightBlack = "808080"; # 8
+    BrightRed = "ff0000"; # 9
+    BrightGreen = "00ff00"; # 10
+    BrightYellow = "ffff00"; # 11
+    BrightBlue = "0000ff"; # 12
+    BrightMagenta = "ff00ff"; # 13
+    BrightCyan = "00ffff"; # 14
+    BrightWhite = "ffffff"; # 15
+
+    Background = BrightWhite;
+    Foreground = Black;
   };
 
   # 232 - 255 (grayscale: darkest -> lightest)

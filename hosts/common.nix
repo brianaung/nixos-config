@@ -101,6 +101,8 @@
     tmux
     imv
     mpv
+
+    markdown-oxide
   ];
 
   # Install fonts.

@@ -21,7 +21,6 @@ return {
     files = {
       formatter = { "path.filename_first", 2 },
     },
-    fzf_colors = true,
   },
   keys = {
     { "<Leader>fd", "<cmd>lua require('fzf-lua').files()<CR>" },

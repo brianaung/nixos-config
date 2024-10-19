@@ -4,11 +4,14 @@ local opt = vim.opt
 opt.updatetime = 250
 opt.timeoutlen = 300
 
+opt.background = "light"
 opt.termguicolors = false
 
 opt.scrolloff = 5
 
 opt.foldenable = false
+
+opt.conceallevel = 2
 
 opt.number = true
 opt.relativenumber = true
@@ -40,4 +43,13 @@ opt.listchars = {
   precedes = "‹",
   nbsp = "␣",
   trail = "~",
+}
+
+opt.guicursor = {
+  "n-v-c:block",
+  "i-ci-ve:ver25",
+  "r-cr:hor20",
+  "o:hor50",
+  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+  "sm:block-blinkwait175-blinkoff150-blinkon175",
 }
