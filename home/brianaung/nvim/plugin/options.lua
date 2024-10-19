@@ -10,6 +10,8 @@ opt.scrolloff = 5
 
 opt.foldenable = false
 
+opt.conceallevel = 2
+
 opt.number = true
 opt.relativenumber = true
 -- opt.cursorline = true

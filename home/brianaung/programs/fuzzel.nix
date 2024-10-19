@@ -11,7 +11,7 @@
         match = "${config.colors.BrightWhite}ff";
         selection = "${config.colors.White}ff";
         "selection-text" = "${config.colors.Black}ff";
-        "selection-match" = "${config.colors.BrightWhite}ff";
+        "selection-match" = "${config.colors.BrightBlack}ff";
         border = "${config.colors.Black}ff";
       };
     };

@@ -3,8 +3,8 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono Nerd Font:size=10";
-        dpi-aware = "yes";
+        font = "JetBrainsMono Nerd Font:size=13";
+        dpi-aware = "no";
       };
       colors = {
         background = "${config.colors.Black}";
