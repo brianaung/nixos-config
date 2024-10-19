@@ -2,11 +2,10 @@ return {
   "tpope/vim-sleuth",
   "tpope/vim-surround",
 
-  {
-    "noahfrederick/vim-noctu",
-    priority = 1000,
-    config = function() vim.cmd "colorscheme noctu" end,
-  },
+  -- {
+  --   "norcalli/nvim-colorizer.lua",
+  --   opts = {},
+  -- },
 
   {
     "mikavilpas/yazi.nvim",

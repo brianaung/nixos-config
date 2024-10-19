@@ -5,6 +5,7 @@ return {
       preview = {
         hidden = "hidden",
       },
+      backdrop = 100,
     },
     keymap = {
       builtin = {
