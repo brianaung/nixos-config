@@ -14,7 +14,7 @@ create_autocmd({ "VimResized" }, {
 create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text.",
   group = creat_augroup("highlight_yank", { clear = true }),
-  callback = function() vim.highlight.on_yank() end,
+  callback = function() vim.highlight.on_yank { higroup = "Visual" } end,
 })
 
 create_autocmd("BufEnter", {

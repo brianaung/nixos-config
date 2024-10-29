@@ -8,7 +8,6 @@
       ################
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      # monitor=eDP-1,highrr,0x0,1.566667
       monitor=eDP-1,highrr,0x0,1.6
       monitor=DP-4,highrr,auto,1
       monitor=DP-1,2560x1440@59.951,auto,1

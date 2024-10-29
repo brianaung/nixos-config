@@ -3,12 +3,12 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono Nerd Font:size=10";
-        dpi-aware = "yes";
+        font = "Iosevka Nerd Font Mono:size=13";
+        dpi-aware = "no";
       };
       colors = {
-        background = "${config.colors.Black}";
-        foreground = "${config.colors.White}";
+        background = "${config.colors.Background}";
+        foreground = "${config.colors.Foreground}";
 
         # Black
         regular0 = "${config.colors.Black}";

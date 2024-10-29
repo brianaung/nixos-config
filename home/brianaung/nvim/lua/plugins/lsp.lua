@@ -13,6 +13,7 @@ return {
       tailwindcss = {},
       phpactor = {},
       volar = {},
+      markdown_oxide = {},
     },
     on_attach = function(_, bufnr)
       local opts = { buffer = bufnr }

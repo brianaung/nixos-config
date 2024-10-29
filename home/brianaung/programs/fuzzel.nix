@@ -6,13 +6,13 @@
         font = "Fira sans:size=14";
       };
       colors = {
-        background = "${config.colors.Black}ff";
-        text = "${config.colors.White}ff";
-        match = "${config.colors.BrightWhite}ff";
-        selection = "${config.colors.White}ff";
-        "selection-text" = "${config.colors.Black}ff";
-        "selection-match" = "${config.colors.BrightWhite}ff";
-        border = "${config.colors.Black}ff";
+        background = "${config.colors.Background}ff";
+        text = "${config.colors.Foreground}ff";
+        match = "${config.colors.Foreground}aa";
+        selection = "${config.colors.Foreground}aa";
+        "selection-text" = "${config.colors.Background}ff";
+        "selection-match" = "${config.colors.Background}aa";
+        border = "${config.colors.Foreground}ff";
       };
     };
   };

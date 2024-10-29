@@ -1,201 +1,159 @@
 if vim.g.colors_name ~= nil then vim.cmd "highlight clear" end
 vim.g.colors_name = "theme"
 
+local mode = vim.api.nvim_get_option_value("background", {})
+
 -- Highlight groups
 local hi = vim.api.nvim_set_hl
 
-hi(0, "@attribute", { link = "Constant" })
-hi(0, "@comment.error", { ctermbg = 1, ctermfg = 0, bold = true })
-hi(0, "@comment.note", { ctermbg = 2, ctermfg = 0, bold = true })
-hi(0, "@comment.warning", { ctermbg = 3, ctermfg = 0, bold = true })
-hi(0, "@comment.todo", { ctermbg = 5, ctermfg = 0, bold = true })
-hi(0, "@constructor", { ctermfg = 6 })
-hi(0, "@constructor.lua", { ctermfg = 4 })
-hi(0, "@diff.delta", { ctermfg = 12 })
-hi(0, "@diff.minus", { ctermfg = 9 })
-hi(0, "@diff.plus", { ctermfg = 10 })
-hi(0, "@keyword.exception", { bold = true, ctermfg = 1 })
-hi(0, "@keyword.import", { link = "PreProc" })
-hi(0, "@keyword.luap", { link = "@string.regex" })
-hi(0, "@keyword.operator", { bold = true, ctermfg = 1 })
-hi(0, "@keyword.return", { ctermfg = 1, italic = true })
-hi(0, "@lsp.mod.readonly", { link = "Constant" })
-hi(0, "@lsp.mod.typeHint", { link = "Type" })
-hi(0, "@lsp.type.builtinConstant", { link = "@constant.builtin" })
--- hi(0, "@lsp.type.comment", {})
-hi(0, "@lsp.type.macro", { link = "Macro" })
-hi(0, "@lsp.type.magicFunction", { link = "@function.builtin" })
-hi(0, "@lsp.type.method", { link = "@function.method" })
-hi(0, "@lsp.type.namespace", { link = "@module" })
-hi(0, "@lsp.type.parameter", { link = "@variable.parameter" })
-hi(0, "@lsp.type.selfParameter", { link = "@variable.builtin" })
--- hi(0, "@lsp.type.variable", {})
-hi(0, "@lsp.typemod.function.builtin", { link = "@function.builtin" })
-hi(0, "@lsp.typemod.function.defaultLibrary", { link = "@function.builtin" })
-hi(0, "@lsp.typemod.function.readonly", { bold = true, ctermfg = 6 })
-hi(0, "@lsp.typemod.keyword.documentation", { link = "Special" })
-hi(0, "@lsp.typemod.method.defaultLibrary", { link = "@function.builtin" })
-hi(0, "@lsp.typemod.operator.controlFlow", { link = "@keyword.exception" })
-hi(0, "@lsp.typemod.operator.injected", { link = "Operator" })
-hi(0, "@lsp.typemod.string.injected", { link = "String" })
-hi(0, "@lsp.typemod.variable.defaultLibrary", { link = "Special" })
-hi(0, "@lsp.typemod.variable.global", { link = "Constant" })
-hi(0, "@lsp.typemod.variable.injected", { link = "@variable" })
-hi(0, "@lsp.typemod.variable.static", { link = "Constant" })
-hi(0, "@markup.environment", { link = "Keyword" })
-hi(0, "@markup.heading", { link = "Function" })
-hi(0, "@markup.link.url", { link = "@string.special.url" })
-hi(0, "@markup.math", { link = "Constant" })
-hi(0, "@markup.quote", { link = "@variable.parameter" })
-hi(0, "@markup.raw", { link = "String" })
-hi(0, "@punctuation.bracket", { link = "Delimiter" })
-hi(0, "@punctuation.delimiter", { link = "Delimiter" })
-hi(0, "@punctuation.special", { ctermfg = 4 })
-hi(0, "@string.escape", { bold = true, ctermfg = 1 })
-hi(0, "@string.regexp", { ctermfg = 1 })
-hi(0, "@string.special.symbol", { ctermfg = 3 })
-hi(0, "@string.special.url", { ctermfg = 4, undercurl = true })
-hi(0, "@tag.attribute", { ctermfg = 3 })
-hi(0, "@tag.delimiter", { link = "Delimiter" })
-hi(0, "@variable", { ctermfg = 6 })
-hi(0, "@variable.builtin", { ctermfg = 1, italic = true })
-hi(0, "@variable.member", { ctermfg = 3 })
-hi(0, "@variable.parameter", { ctermfg = 6 })
+local black = 0
+local red = 1
+local green = 2
+local yellow = 3
+local blue = 4
+local magenta = 5
+local cyan = 6
+local white = 7
+local bright_black = 8
+local bright_red = 9
+local bright_green = 10
+local bright_yellow = 11
+local bright_blue = 12
+local bright_magenta = 13
+local bright_cyan = 14
+local bright_white = 15
 
-hi(0, "Added", { link = "DiffAdd" })
-hi(0, "Bold", { bold = true })
-hi(0, "Boolean", { bold = true, ctermfg = 1 })
-hi(0, "Changed", { link = "DiffChange" })
-hi(0, "Character", { link = "String" })
-hi(0, "ColorColumn", { ctermbg = 235 })
-hi(0, "Comment", { ctermfg = 8, italic = true })
-hi(0, "Conceal", { bold = true, ctermfg = 15 })
-hi(0, "Constant", { ctermfg = 1 })
-hi(0, "CurSearch", { ctermbg = 11, ctermfg = 240, bold = true })
-hi(0, "Cursor", { ctermbg = 7, ctermfg = 0 })
+local bg, fg = black, white
+local grey_1, grey_2 = 235, 240
+if mode == "light" then
+  bg, fg = bright_white, black
+  grey_1, grey_2 = 254, 244
+end
+
+-- Builtin highlighting groups. See :h highlight-groups
+
+hi(0, "ColorColumn", { link = "CursorLine" })
+hi(0, "Conceal", { bold = true })
+hi(0, "CurSearch", { ctermbg = bright_yellow })
+hi(0, "Cursor", { ctermfg = bg, ctermbg = fg }) -- no effect, handled by terminal
+hi(0, "lCursor", { link = "Cursor" })
+hi(0, "CursorIM", { link = "Cursor" })
 hi(0, "CursorColumn", { link = "CursorLine" })
-hi(0, "CursorLine", { ctermbg = 235 })
-hi(0, "CursorLineNr", { ctermbg = 235, bold = true, ctermfg = 15 })
-hi(0, "Delimiter", { ctermfg = 15 })
-
-hi(0, "DiagnosticError", { ctermfg = 9 })
-hi(0, "DiagnosticFloatingError", { ctermfg = 9 })
-hi(0, "DiagnosticFloatingHint", { ctermfg = 14 })
-hi(0, "DiagnosticFloatingInfo", { ctermfg = 12 })
-hi(0, "DiagnosticFloatingOk", { ctermfg = 10 })
-hi(0, "DiagnosticFloatingWarn", { ctermfg = 11 })
-hi(0, "DiagnosticHint", { ctermfg = 14 })
-hi(0, "DiagnosticInfo", { ctermfg = 12 })
-hi(0, "DiagnosticOk", { ctermfg = 10 })
-hi(0, "DiagnosticSignError", { ctermbg = 235, ctermfg = 9 })
-hi(0, "DiagnosticSignHint", { ctermbg = 235, ctermfg = 14 })
-hi(0, "DiagnosticSignInfo", { ctermbg = 235, ctermfg = 12 })
-hi(0, "DiagnosticSignWarn", { ctermbg = 235, ctermfg = 11 })
--- hi(0, "DiagnosticUnderlineError", { sp = "#e82424", undercurl = true })
--- hi(0, "DiagnosticUnderlineHint", { sp = "#6a9589", undercurl = true })
--- hi(0, "DiagnosticUnderlineInfo", { sp = "#658594", undercurl = true })
--- hi(0, "DiagnosticUnderlineWarn", { sp = "#ff9e3b", undercurl = true })
-hi(0, "DiagnosticWarn", { ctermfg = 11 })
-
-hi(0, "DiffAdd", { ctermbg = 2, ctermfg = 0 })
-hi(0, "DiffChange", { ctermbg = 4, ctermfg = 0 })
-hi(0, "DiffDelete", { ctermbg = 1, ctermfg = 0 })
-hi(0, "DiffText", { ctermbg = 12, ctermfg = 0 })
-
--- hi(0, "Directory", { fg = "#8ba4b0" })
--- hi(0, "EndOfBuffer", { fg = "#181616" })
-hi(0, "Error", { ctermfg = 9 })
-hi(0, "ErrorMsg", { ctermfg = 9 })
--- hi(0, "Exception", { fg = "#c4746e" })
--- hi(0, "FloatBorder", { bg = "#0d0c0c", fg = "#54546d" })
--- hi(0, "FloatFooter", { bg = "#0d0c0c", fg = "#625e5a" })
--- hi(0, "FloatTitle", { bg = "#0d0c0c", bold = true, fg = "#7a8382" })
--- hi(0, "FloatermBorder", { bg = "#181616", fg = "#54546d" })
--- hi(0, "FoldColumn", { bg = "#282727", fg = "#625e5a" })
--- hi(0, "Folded", { bg = "#282727", fg = "#7a8382" })
-hi(0, "Function", { ctermfg = 4 })
-hi(0, "Identifier", { ctermfg = 3 })
-hi(0, "Ignore", { link = "NonText" })
+hi(0, "CursorLine", { ctermbg = grey_1 })
+hi(0, "Directory", { ctermfg = blue }) -- TODO confirm color
+hi(0, "DiffAdd", { ctermfg = bg, ctermbg = green, bold = true })
+hi(0, "DiffChange", { ctermfg = bg, ctermbg = blue, bold = true })
+hi(0, "DiffDelete", { ctermfg = bg, ctermbg = red, bold = true })
+hi(0, "DiffText", { ctermfg = bg, ctermbg = bright_blue, bold = true })
+hi(0, "EndOfBuffer", { link = "NonText" })
+hi(0, "TermCursor", { link = "Cursor" })
+hi(0, "TermCursorNC", { link = "TermCursor" })
+hi(0, "ErrorMsg", { ctermfg = bright_red })
+hi(0, "WinSeparator", {}) -- cleared
+hi(0, "Folded", {}) -- TODO find color
+hi(0, "FoldColumn", { link = "LineNr" })
+hi(0, "SignColumn", { link = "LineNr" })
 hi(0, "IncSearch", { link = "Search" })
-hi(0, "Italic", { italic = true })
-hi(0, "Keyword", { ctermfg = 4, italic = true })
-hi(0, "LineNr", { ctermbg = 0, ctermfg = 8 })
---
--- hi(0, "LspCodeLens", { fg = "#737c73" })
--- hi(0, "LspReferenceText", { bg = "#49443c" })
--- hi(0, "LspReferenceWrite", { bg = "#49443c", underline = true })
--- hi(0, "LspSignatureActiveParameter", { fg = "#ff9e3b" })
---
-hi(0, "MatchParen", { bold = true, ctermbg = 8 })
--- hi(0, "ModeMsg", { bold = true, fg = "#ff9e3b" })
--- hi(0, "MoreMsg", { fg = "#658594" })
--- hi(0, "MsgArea", { fg = "#c8c093" })
--- hi(0, "MsgSeparator", { bg = "#0d0c0c" })
-hi(0, "NonText", { link = "Whitespace" })
-hi(0, "Normal", { ctermbg = 0, ctermfg = 7 })
-hi(0, "NormalFloat", { ctermbg = 235, ctermfg = 15 })
+hi(0, "Substitute", { link = "Search" })
+hi(0, "LineNr", { ctermfg = fg })
+hi(0, "LineNrAbove", { link = "LineNr" })
+hi(0, "LineNrBelow", { link = "LineNr" })
+hi(0, "CursorLineNr", { link = "CursorLine" })
+hi(0, "CursorLineFold", { link = "CursorLine" })
+hi(0, "CursorLineSign", { link = "CursorLine" })
+hi(0, "MatchParen", { ctermbg = grey_2, underline = true })
+hi(0, "ModeMsg", { bold = true })
+hi(0, "MsgArea", {}) -- cleared
+hi(0, "MsgSeparator", {}) -- cleared
+hi(0, "MoreMsg", { ctermfg = green }) -- TODO confirm color
+hi(0, "NonText", { ctermfg = grey_2 }) -- TODO confirm color
+hi(0, "Normal", { ctermfg = fg, ctermbg = bg })
+hi(0, "NormalFloat", { link = "Pmenu" })
+-- TODO find color
+hi(0, "FloatBorder", {})
+hi(0, "FloatTitle", {})
+hi(0, "FloatFooter", {})
+-- **********
 hi(0, "NormalNC", { link = "Normal" })
-hi(0, "Number", { ctermfg = 5 })
-hi(0, "Operator", { ctermfg = 1 })
-hi(0, "Pmenu", { ctermbg = 5, ctermfg = 0 })
--- hi(0, "PmenuExtra", { bg = "#223249", fg = "#7a8382" })
--- hi(0, "PmenuExtraSel", { bg = "#2d4f67", fg = "#7a8382" })
--- hi(0, "PmenuKind", { bg = "#223249", fg = "#c8c093" })
--- hi(0, "PmenuKindSel", { bg = "#2d4f67", fg = "#c8c093" })
--- hi(0, "PmenuSbar", { bg = "#223249" })
-hi(0, "PmenuSel", { ctermbg = 0, ctermfg = 5 })
--- hi(0, "PmenuThumb", { bg = "#2d4f67" })
--- hi(0, "PreProc", { fg = "#c4746e" })
-hi(0, "Question", { link = "MoreMsg" })
--- hi(0, "QuickFixLine", { bg = "#282727" })
-hi(0, "Removed", { link = "DiffDelete" })
-hi(0, "Search", { ctermbg = 12, ctermfg = 0 })
--- hi(0, "SignColumn", { bg = "#282727", fg = "#7a8382" })
--- hi(0, "Special", { fg = "#949fb5" })
-hi(0, "SpecialKey", { link = "Whitespace" })
--- hi(0, "SpellBad", { sp = "#e82424", undercurl = true })
--- hi(0, "SpellCap", { sp = "#ff9e3b", undercurl = true })
--- hi(0, "SpellLocal", { sp = "#ff9e3b", undercurl = true })
--- hi(0, "SpellRare", { sp = "#ff9e3b", undercurl = true })
--- hi(0, "Statement", { bold = true, fg = "#8992a7" })
-hi(0, "StatusLine", { ctermbg = 8, ctermfg = 0 })
-hi(0, "StatusLineNC", { ctermbg = 235, ctermfg = 250 })
-hi(0, "String", { ctermfg = 2 })
--- hi(0, "Substitute", { bg = "#c34043", fg = "#c5c9c5" })
--- hi(0, "TabLine", { bg = "#0d0c0c", fg = "#7a8382" })
--- hi(0, "TabLineFill", { bg = "#181616" })
--- hi(0, "TabLineSel", { bg = "#282727", fg = "#c8c093" })
--- hi(0, "Title", { bold = true, fg = "#8ba4b0" })
--- hi(0, "Todo", { bg = "#658594", bold = true, fg = "#223249" })
-hi(0, "TreesitterContext", { link = "Folded" })
--- hi(0, "TreesitterContextLineNumber", { bg = "#282727", fg = "#7a8382" })
-hi(0, "Type", { ctermfg = 6 })
--- hi(0, "Underlined", { fg = "#949fb5", underline = true })
-hi(0, "Visual", { reverse = true })
-hi(0, "WarningMsg", { ctermfg = 11 })
-hi(0, "Whitespace", { ctermfg = 8 })
+hi(0, "Pmenu", { ctermbg = grey_1 })
+hi(0, "PmenuSel", { reverse = true })
+hi(0, "PmenuKind", { link = "Pmenu" })
+hi(0, "PmenuKindSel", { link = "PmenuSel" })
+hi(0, "PmenuExtra", { link = "Pmenu" })
+hi(0, "PmenuExtraSel", { link = "PmenuSel" })
+hi(0, "PmenuSbar", { link = "Pmenu" })
+hi(0, "PmenuThumb", { link = "PmenuSel" })
+hi(0, "Question", { ctermfg = green }) -- TODO confirm color
+hi(0, "QuickFixLine", { link = "Search" }) -- TODO confirm color
+hi(0, "Search", { ctermbg = grey_2 }) -- TODO better contrast with comment
+hi(0, "SnippetTabstop", {})
+hi(0, "SpecialKey", { link = "NonText" })
+-- TODO fix undercurl and sp color
+hi(0, "SpellBad", { undercurl = true })
+hi(0, "SpellCap", { undercurl = true })
+hi(0, "SpellLocal", { undercurl = true })
+hi(0, "SpellRare", { undercurl = true })
+-- **********
+hi(0, "StatusLine", { ctermbg = grey_1 })
+hi(0, "StatusLineNC", {})
+hi(0, "TabLine", { link = "StatusLine" })
+hi(0, "TabLineFill", { link = "TabLine" })
+hi(0, "TabLineSel", { reverse = true })
+hi(0, "Title", { ctermfg = magenta, bold = true }) -- TODO confirm color
+hi(0, "Visual", { ctermbg = bright_black })
+hi(0, "VisualNOS", { link = "Visual" })
+hi(0, "WarningMsg", { ctermfg = bright_yellow })
+hi(0, "Whitespace", { link = "NonText" })
 hi(0, "WildMenu", { link = "Pmenu" })
 hi(0, "WinBar", { link = "StatusLine" })
 hi(0, "WinBarNC", { link = "StatusLineNC" })
-hi(0, "WinSeparator", { ctermfg = 235 })
---
--- hi(0, "debugBreakpoint", { bg = "#282727", fg = "#949fb5" })
--- hi(0, "debugPC", { bg = "#43242b" })
-hi(0, "diffAdded", { link = "DiffAdd" })
-hi(0, "diffChanged", { link = "DiffChange" })
-hi(0, "diffDeleted", { link = "DiffDelete" })
--- hi(0, "diffNewFile", { fg = "#76946a" })
--- hi(0, "diffOldFile", { fg = "#c34043" })
-hi(0, "diffRemoved", { link = "DiffDelete" })
-hi(0, "healthError", { ctermfg = 9 })
-hi(0, "healthSuccess", { ctermfg = 10 })
-hi(0, "healthWarning", { ctermfg = 11 })
-hi(0, "lCursor", { link = "Cursor" })
--- hi(0, "markdownCode", { fg = "#8a9a7b" })
--- hi(0, "markdownCodeBlock", { fg = "#8a9a7b" })
-hi(0, "qfFileName", { link = "Directory" })
-hi(0, "qfLineNr", { link = "LineNr" })
 
-hi(0, "GitSignsStagedAdd", { link = "DiffAdd" })
-hi(0, "GitSignsStagedChange", { link = "DiffChange" })
-hi(0, "GitSignsStagedDelete", { link = "DiffDelete" })
+hi(0, "Comment", { ctermfg = bright_black, italic = true })
+
+hi(0, "Constant", { ctermfg = green }) -- TODO confirm color
+hi(0, "String", { link = "Constant" })
+hi(0, "Character", { link = "Constant" })
+hi(0, "Number", { link = "Constant" })
+hi(0, "Boolean", { link = "Constant" })
+hi(0, "Float", { link = "Constant" })
+
+hi(0, "Identifier", { ctermfg = cyan }) -- TODO confirm color
+hi(0, "Function", { link = "Identifier" })
+
+hi(0, "Statement", { ctermfg = red, bold = true }) -- TODO confirm color (red?)
+hi(0, "Conditional", { link = "Statement" })
+hi(0, "Repeat", { link = "Statement" })
+hi(0, "Label", { link = "Statement" })
+hi(0, "Operator", { link = "Statement" })
+hi(0, "Keyword", { link = "Statement" })
+hi(0, "Exception", { link = "Statement" })
+
+hi(0, "PreProc", { ctermfg = magenta }) -- TODO confirm color
+hi(0, "Include", { link = "PreProc" })
+hi(0, "Define", { link = "PreProc" })
+hi(0, "Macro", { link = "PreProc" })
+hi(0, "PreCondit", { link = "PreProc" })
+
+hi(0, "Type", { ctermfg = yellow, bold = true }) -- TODO confirm color
+hi(0, "StorageClass", { link = "Type" })
+hi(0, "Structure", { link = "Type" })
+hi(0, "Typedef", { link = "Type" })
+
+hi(0, "Special", {}) -- cleared
+hi(0, "SpecialChar", { link = "Special" })
+hi(0, "Tag", { link = "Special" })
+hi(0, "Delimiter", { link = "Special" })
+hi(0, "SpecialComment", { link = "Special" })
+hi(0, "Debug", { link = "Special" })
+
+hi(0, "Underlined", { underline = true })
+
+hi(0, "Ignore", { link = "Normal" })
+
+hi(0, "Error", { ctermfg = bright_white, ctermbg = bright_red })
+
+hi(0, "Todo", { ctermfg = grey_2, bold = true })
+
+hi(0, "Added", { link = "DiffAdd" })
+hi(0, "Changed", { link = "DiffChange" })
+hi(0, "Removed", { link = "DiffDelete" })

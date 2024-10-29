@@ -45,11 +45,6 @@ return {
     },
   },
 
-  -- {
-  --   "norcalli/nvim-colorizer.lua",
-  --   opts = {},
-  -- },
-
   {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",
