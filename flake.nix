@@ -14,6 +14,7 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -24,15 +25,15 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      forAllSystems = function: nixpkgs.lib.genAttrs systems (system: function nixpkgs.legacyPackages.${system});
+      forAllSystems = function: nixpkgs.lib.genAttrs systems (system: function system);
 
       overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 
-      mkSystem = host: { user, hardware }:
+      mkSystem = host: { user, hardware, system }:
         nixpkgs.lib.nixosSystem {
-          # specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; };
           modules = [
             # Overlays
             { nixpkgs.overlays = [ overlays ]; }
@@ -64,24 +65,30 @@
         thorin = mkSystem "thorin" {
           user = "brianaung";
           hardware = "framework-13-7040-amd";
+          system = "x86_64-linux";
         };
         gimli = mkSystem "gimli" {
           user = "brianaung";
           hardware = "lenovo-ideapad-slim-5";
+          system = "x86_64-linux";
         };
       };
 
-      devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nil
-            lua-language-server
-            stylua
-            gnumake
-          ];
-        };
-      });
+      devShells = forAllSystems (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nil
+              lua-language-server
+              stylua
+              gnumake
+            ];
+          };
+        });
 
-      formatter = forAllSystems (pkgs: pkgs.nixpkgs-fmt);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 }
