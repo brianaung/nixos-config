@@ -1,5 +1,14 @@
 return {
   "brianaung/compl.nvim",
   -- dir = "~/projects/compl.nvim",
-  opts = {},
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+  },
+  opts = {
+    snippet = {
+      paths = {
+        vim.fn.stdpath "data" .. "/lazy/friendly-snippets",
+      },
+    },
+  },
 }

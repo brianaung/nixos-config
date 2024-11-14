@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -55,7 +50,6 @@
             }
 
             # Others
-            inputs.nixos-cosmic.nixosModules.default
             inputs.nixos-hardware.nixosModules.${hardware}
           ];
         };

@@ -8,9 +8,9 @@
       ################
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      monitor=eDP-1,highrr,0x0,1.6
-      monitor=DP-4,highrr,auto,1
-      monitor=DP-1,2560x1440@59.951,auto,1
+      # monitor=eDP-1,highrr,0x0,1.6
+      # monitor=DP-4,highrr,auto,1
+      # monitor=DP-1,2560x1440@59.951,auto,1
 
       ###################
       ### MY PROGRAMS ###
@@ -30,10 +30,8 @@
       # Or execute your favorite apps at launch like this:
 
       exec-once = waybar &
-      exec-once = swaync &
       exec-once = swww-daemon &
-      exec-once = hyprmonitor &
-
+      # exec-once = hyprmonitor &
 
       #############################
       ### ENVIRONMENT VARIABLES ###
@@ -53,8 +51,8 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general { 
-          gaps_in = 3
-          gaps_out = 6
+          gaps_in = 0
+          gaps_out = 0
 
           border_size = 2
 
@@ -73,7 +71,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
       decoration {
-          rounding = 5
+          rounding = 0
 
           # Change transparency of focused and unfocused windows
           active_opacity = 1.0
@@ -111,7 +109,7 @@
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
       master {
-          new_is_master = true
+          new_status = master
           new_on_top = true
       }
 
@@ -172,6 +170,9 @@
       bind = $MODKEY, Q, killactive,
       bind = $MODKEY SHIFT, E, exit,
       bind = $MODKEY, P, exec, $menu
+
+      bind = $MODKEY, R, exec, hyprctl reload
+      bind = $MODKEY SHIFT, R, exec, kanshictl reload
 
       bind = $MODKEY, SPACE, togglefloating,
       bind = $MODKEY, F, fullscreen,

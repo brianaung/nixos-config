@@ -21,7 +21,7 @@
       # set -g status-position top
       set -g status-left-length 200
       set -g status-right-length 200
-      set -g status-style bg=white,fg=black
+      # set -g status-style bg=white,fg=black
 
       bind-key r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
 

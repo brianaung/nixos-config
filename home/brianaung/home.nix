@@ -12,9 +12,10 @@ in
     ./programs/foot.nix
     ./programs/yazi.nix
     ./programs/waybar.nix
-    ./programs/swaync.nix
     ./programs/fuzzel.nix
     ./programs/qutebrowser.nix
+
+    ./services/kanshi.nix
 
     ./scripts/tmux-sessionizer.nix
     ./scripts/hyprmonitor.nix

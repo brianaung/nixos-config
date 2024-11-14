@@ -15,6 +15,7 @@
       packages = with pkgs; [
         obs-studio
         steam
+        brave
       ];
     };
     networking.iwd.enable = true;

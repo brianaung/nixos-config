@@ -33,23 +33,23 @@ in
     colornames);
 
   config.colors = rec {
-    Black = "1c1c1c"; # 0
-    Red = "D75F5F"; # 1
-    Green = "87AF87"; # 2
-    Yellow = "AFAF87"; # 3
-    Blue = "5F87AF"; # 4
-    Magenta = "AF87AF"; # 5
-    Cyan = "5F8787"; # 6
-    White = "9E9E9E"; # 7
+    Black = "000000"; # 0
+    Red = "b4637a"; # 1
+    Green = "286983"; # 2
+    Yellow = "f6c177"; # 3
+    Blue = "56949f"; # 4
+    Magenta = "907aa9"; # 5
+    Cyan = "d7827e"; # 6
+    White = "faf4ed"; # 7
 
-    BrightBlack = "767676"; # 8
-    BrightRed = "D7875F"; # 9
-    BrightGreen = "AFD7AF"; # 10
-    BrightYellow = "D7D787"; # 11
-    BrightBlue = "87AFD7"; # 12
-    BrightMagenta = "D7AFD7"; # 13
-    BrightCyan = "87AFAF"; # 14
-    BrightWhite = "BCBCBC"; # 15
+    BrightBlack = "6e6a86"; # 8
+    BrightRed = "eb6f92"; # 9
+    BrightGreen = "31748f"; # 10
+    BrightYellow = "ea9d34"; # 11
+    BrightBlue = "9ccfd8"; # 12
+    BrightMagenta = "907aa9"; # 13
+    BrightCyan = "d7827e"; # 14
+    BrightWhite = "ffffff"; # 15
 
     Background = Black;
     Foreground = White;

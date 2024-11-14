@@ -7,6 +7,17 @@ final: prev: {
 
   apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
 
+  # dwl-custom = (final.unstable.dwl.overrideAttrs (oldAttrs: {
+  #   patches = [
+  #     ../patches/dwl/autostart.patch
+  #   ];
+
+  #   buildInputs = with final.unstable; [
+  #     fcft
+  #     libdrm
+  #   ] ++ oldAttrs.buildInputs;
+  # })).override{ configH = ./config.h; };
+
   # wip
   # strawberry = final.unstable.strawberry.overrideAttrs (oldAttrs: rec {
   #   version = "1.1.3";

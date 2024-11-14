@@ -6,24 +6,19 @@
         layer = "top";
         position = "top";
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
+        modules-center = [ ];
         modules-right = [
-          "pulseaudio"
           "network"
+          "pulseaudio"
           "battery"
+          "clock"
           "tray"
-          "custom/notification"
         ];
         "hyprland/workspaces" = {
-          # format = "{icon}";
-          # format-icons = {
-          #   default = "";
-          #   active = "";
-          # };
           disable-scroll = true;
         };
         "clock" = {
-          format = "{:%a %b %d %I:%M%p}";
+          format = "{:%b %d (%a) %I:%M%p}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "month";
@@ -39,35 +34,19 @@
         };
         "pulseaudio" = {
           tooltip = false;
-          format = "{icon}";
-          format-muted = "";
-          format-icons = {
-            default = [ "" "" "" ];
-            headphone = "";
-            headset = "";
-            phone = "";
-            phone-muted = "";
-          };
+          format = "[VOL {volume}%]";
+          format-muted = "MUT {volume}%";
           scroll-step = 5;
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
         "network" = {
-          format = "{icon}";
-          format-disconnected = "󰤭";
-          format-disabled = "󰤭";
-          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          format = "{ifname}";
           tooltip-format = "{ifname} via {gwaddr}";
           on-click = "${pkgs.iwgtk}/bin/iwgtk";
         };
         "battery" = {
           interval = 60;
-          format = "{capacity}% {icon}";
-          format-icons = {
-            default = [ "" "" "" "" "" ];
-            charging = "";
-            plugged = "";
-            critical = "";
-          };
+          format = "[BAT {capacity}%]";
           format-time = "{H}hrs, {M}mins";
           tooltip-format = "{timeTo}";
           states = {
@@ -75,51 +54,24 @@
             critical = 15;
           };
         };
-        "custom/notification" = {
-          tooltip = false;
-          format = "";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "swaync-client -t -sw";
-          excape = true;
-        };
       };
     };
     style = ''
       * {
-        font-family: Fira Sans, "Font Awesome 6 Free";
-        font-size: 11px;
-        border-radius: 5px;
+        font-family: Terminess Nerd Font;
+        font-size: 14px;
         padding: 0;
+        border-radius: 0;
       }
       window#waybar {
-        background: transparent;
-        color: #${config.colors.White};
-      }
-      .modules-right,
-      .modules-center,
-      .modules-left {
         background: #${config.colors.Black};
         color: #${config.colors.White};
-      }
-      .modules-left {
-        margin: 3px 0 0 5px;
-      }
-      .modules-center {
-        margin: 3px 0 0 0;
-      }
-      .modules-right {
-        margin: 3px 5px 0 0;
-        padding: 0 2px;
       }
       #clock,
       #pulseaudio,
       #network,
       #battery,
       #tray,
-      #custom-notification {
-        padding: 0 8px;
-      }
       #workspaces button {
         color: #${config.colors.White};
         padding: 0 4px;

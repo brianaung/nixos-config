@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Iosevka Nerd Font Mono:size=13";
+        font = "Terminess Nerd Font:size=14";
         dpi-aware = "no";
       };
       colors = {

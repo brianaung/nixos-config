@@ -3,7 +3,8 @@
     enable = true;
     settings = {
       main = {
-        font = "Fira sans:size=14";
+        font = "Terminess Nerd Font:size=14";
+        "border-radius" = 0;
       };
       colors = {
         background = "${config.colors.Background}ff";

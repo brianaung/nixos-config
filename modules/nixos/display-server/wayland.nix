@@ -6,7 +6,8 @@ in
   options.modules.displayServer.wayland = {
     enable = lib.mkEnableOption "enable wayland and related modules";
     session = lib.mkOption {
-      type = lib.types.enum [ "hyprland" "cosmic" ];
+      # type = lib.types.enum [ "hyprland" "cosmic" ];
+      type = lib.types.enum [ "hyprland" ];
       default = "hyprland";
     };
   };
@@ -27,7 +28,6 @@ in
         fuzzel
         cosmic-files
         waybar
-        swaynotificationcenter
         iwgtk
         grim
         slurp
@@ -51,14 +51,14 @@ in
       security.pam.services.hyprlock = { };
     })
 
-    (lib.mkIf (cfg.session == "cosmic") {
-      services.desktopManager.cosmic.enable = true;
-      services.displayManager.cosmic-greeter.enable = true;
+    # (lib.mkIf (cfg.session == "cosmic") {
+    #   services.desktopManager.cosmic.enable = true;
+    #   services.displayManager.cosmic-greeter.enable = true;
 
-      nix.settings = {
-        substituters = [ "https://cosmic.cachix.org/" ];
-        trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-      };
-    })
+    #   nix.settings = {
+    #     substituters = [ "https://cosmic.cachix.org/" ];
+    #     trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+    #   };
+    # })
   ]);
 }

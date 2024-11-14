@@ -24,10 +24,10 @@ local bright_cyan = 14
 local bright_white = 15
 
 local bg, fg = black, white
-local grey_1, grey_2 = 235, 240
+local grey_1, grey_2 = 237, 242
 if mode == "light" then
-  bg, fg = bright_white, black
-  grey_1, grey_2 = 254, 244
+  bg, fg = white, black
+  grey_1, grey_2 = 253, 250
 end
 
 -- Builtin highlighting groups. See :h highlight-groups
@@ -100,7 +100,7 @@ hi(0, "TabLine", { link = "StatusLine" })
 hi(0, "TabLineFill", { link = "TabLine" })
 hi(0, "TabLineSel", { reverse = true })
 hi(0, "Title", { ctermfg = magenta, bold = true }) -- TODO confirm color
-hi(0, "Visual", { ctermbg = bright_black })
+hi(0, "Visual", { ctermbg = grey_1 })
 hi(0, "VisualNOS", { link = "Visual" })
 hi(0, "WarningMsg", { ctermfg = bright_yellow })
 hi(0, "Whitespace", { link = "NonText" })
@@ -117,7 +117,7 @@ hi(0, "Number", { link = "Constant" })
 hi(0, "Boolean", { link = "Constant" })
 hi(0, "Float", { link = "Constant" })
 
-hi(0, "Identifier", { ctermfg = cyan }) -- TODO confirm color
+hi(0, "Identifier", { ctermfg = mode == "light" and blue or cyan }) -- TODO confirm color
 hi(0, "Function", { link = "Identifier" })
 
 hi(0, "Statement", { ctermfg = red, bold = true }) -- TODO confirm color (red?)
