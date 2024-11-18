@@ -23,11 +23,9 @@ local bright_magenta = 13
 local bright_cyan = 14
 local bright_white = 15
 
-local bg, fg = black, white
-local grey_1, grey_2 = 237, 242
+local bg, fg, contrast = black, white, bright_black
 if mode == "light" then
-  bg, fg = white, black
-  grey_1, grey_2 = 253, 250
+  bg, fg, contrast = white, black, bright_white
 end
 
 -- Builtin highlighting groups. See :h highlight-groups
@@ -39,7 +37,7 @@ hi(0, "Cursor", { ctermfg = bg, ctermbg = fg }) -- no effect, handled by termina
 hi(0, "lCursor", { link = "Cursor" })
 hi(0, "CursorIM", { link = "Cursor" })
 hi(0, "CursorColumn", { link = "CursorLine" })
-hi(0, "CursorLine", { ctermbg = grey_1 })
+hi(0, "CursorLine", { bold = true, underline = true })
 hi(0, "Directory", { ctermfg = blue }) -- TODO confirm color
 hi(0, "DiffAdd", { ctermfg = bg, ctermbg = green, bold = true })
 hi(0, "DiffChange", { ctermfg = bg, ctermbg = blue, bold = true })
@@ -61,12 +59,12 @@ hi(0, "LineNrBelow", { link = "LineNr" })
 hi(0, "CursorLineNr", { link = "CursorLine" })
 hi(0, "CursorLineFold", { link = "CursorLine" })
 hi(0, "CursorLineSign", { link = "CursorLine" })
-hi(0, "MatchParen", { ctermbg = grey_2, underline = true })
+hi(0, "MatchParen", { ctermbg = contrast, bold = true, underline = true })
 hi(0, "ModeMsg", { bold = true })
 hi(0, "MsgArea", {}) -- cleared
 hi(0, "MsgSeparator", {}) -- cleared
 hi(0, "MoreMsg", { ctermfg = green }) -- TODO confirm color
-hi(0, "NonText", { ctermfg = grey_2 }) -- TODO confirm color
+hi(0, "NonText", { ctermfg = contrast }) -- TODO confirm color
 hi(0, "Normal", { ctermfg = fg, ctermbg = bg })
 hi(0, "NormalFloat", { link = "Pmenu" })
 -- TODO find color
@@ -75,7 +73,7 @@ hi(0, "FloatTitle", {})
 hi(0, "FloatFooter", {})
 -- **********
 hi(0, "NormalNC", { link = "Normal" })
-hi(0, "Pmenu", { ctermbg = grey_1 })
+hi(0, "Pmenu", { ctermbg = contrast })
 hi(0, "PmenuSel", { reverse = true })
 hi(0, "PmenuKind", { link = "Pmenu" })
 hi(0, "PmenuKindSel", { link = "PmenuSel" })
@@ -85,7 +83,7 @@ hi(0, "PmenuSbar", { link = "Pmenu" })
 hi(0, "PmenuThumb", { link = "PmenuSel" })
 hi(0, "Question", { ctermfg = green }) -- TODO confirm color
 hi(0, "QuickFixLine", { link = "Search" }) -- TODO confirm color
-hi(0, "Search", { ctermbg = grey_2 }) -- TODO better contrast with comment
+hi(0, "Search", { ctermbg = contrast }) -- TODO better contrast with comment
 hi(0, "SnippetTabstop", {})
 hi(0, "SpecialKey", { link = "NonText" })
 -- TODO fix undercurl and sp color
@@ -94,13 +92,13 @@ hi(0, "SpellCap", { undercurl = true })
 hi(0, "SpellLocal", { undercurl = true })
 hi(0, "SpellRare", { undercurl = true })
 -- **********
-hi(0, "StatusLine", { ctermbg = grey_1 })
+hi(0, "StatusLine", { ctermbg = contrast })
 hi(0, "StatusLineNC", {})
 hi(0, "TabLine", { link = "StatusLine" })
 hi(0, "TabLineFill", { link = "TabLine" })
 hi(0, "TabLineSel", { reverse = true })
 hi(0, "Title", { ctermfg = magenta, bold = true }) -- TODO confirm color
-hi(0, "Visual", { ctermbg = grey_1 })
+hi(0, "Visual", { reverse = true })
 hi(0, "VisualNOS", { link = "Visual" })
 hi(0, "WarningMsg", { ctermfg = bright_yellow })
 hi(0, "Whitespace", { link = "NonText" })
@@ -108,19 +106,19 @@ hi(0, "WildMenu", { link = "Pmenu" })
 hi(0, "WinBar", { link = "StatusLine" })
 hi(0, "WinBarNC", { link = "StatusLineNC" })
 
-hi(0, "Comment", { ctermfg = bright_black, italic = true })
+hi(0, "Comment", { ctermfg = contrast, italic = true }) -- TODO find solution for multiple bg shades
 
-hi(0, "Constant", { ctermfg = green }) -- TODO confirm color
+hi(0, "Constant", { ctermfg = green })
 hi(0, "String", { link = "Constant" })
 hi(0, "Character", { link = "Constant" })
-hi(0, "Number", { link = "Constant" })
-hi(0, "Boolean", { link = "Constant" })
-hi(0, "Float", { link = "Constant" })
+hi(0, "Number", { ctermfg = yellow })
+hi(0, "Boolean", { link = "Number" })
+hi(0, "Float", { link = "Number" })
 
-hi(0, "Identifier", { ctermfg = mode == "light" and blue or cyan }) -- TODO confirm color
+hi(0, "Identifier", { ctermfg = blue }) -- TODO confirm color
 hi(0, "Function", { link = "Identifier" })
 
-hi(0, "Statement", { ctermfg = red, bold = true }) -- TODO confirm color (red?)
+hi(0, "Statement", { ctermfg = magenta, bold = true }) -- TODO confirm color
 hi(0, "Conditional", { link = "Statement" })
 hi(0, "Repeat", { link = "Statement" })
 hi(0, "Label", { link = "Statement" })
@@ -128,13 +126,13 @@ hi(0, "Operator", { link = "Statement" })
 hi(0, "Keyword", { link = "Statement" })
 hi(0, "Exception", { link = "Statement" })
 
-hi(0, "PreProc", { ctermfg = magenta }) -- TODO confirm color
+hi(0, "PreProc", { ctermfg = red }) -- TODO confirm color
 hi(0, "Include", { link = "PreProc" })
 hi(0, "Define", { link = "PreProc" })
 hi(0, "Macro", { link = "PreProc" })
 hi(0, "PreCondit", { link = "PreProc" })
 
-hi(0, "Type", { ctermfg = yellow, bold = true }) -- TODO confirm color
+hi(0, "Type", { ctermfg = cyan, bold = true }) -- TODO confirm color
 hi(0, "StorageClass", { link = "Type" })
 hi(0, "Structure", { link = "Type" })
 hi(0, "Typedef", { link = "Type" })
@@ -150,10 +148,16 @@ hi(0, "Underlined", { underline = true })
 
 hi(0, "Ignore", { link = "Normal" })
 
-hi(0, "Error", { ctermfg = bright_white, ctermbg = bright_red })
+hi(0, "Error", { ctermfg = contrast, ctermbg = bright_red })
 
-hi(0, "Todo", { ctermfg = grey_2, bold = true })
+hi(0, "Todo", { ctermfg = contrast, bold = true })
 
 hi(0, "Added", { link = "DiffAdd" })
 hi(0, "Changed", { link = "DiffChange" })
 hi(0, "Removed", { link = "DiffDelete" })
+
+-- TODO treesitter hl groups
+hi(0, "@variable", { link = "Identifier" })
+hi(0, "@tag", { ctermfg = cyan })
+hi(0, "@tag.attribute", { ctermfg = magenta })
+hi(0, "@tag.delimiter", { link = "Delimiter" })

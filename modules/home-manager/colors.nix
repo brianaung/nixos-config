@@ -21,7 +21,6 @@ let
 
     "Background"
     "Foreground"
-
   ];
 in
 {
@@ -33,23 +32,41 @@ in
     colornames);
 
   config.colors = rec {
-    Black = "000000"; # 0
-    Red = "b4637a"; # 1
-    Green = "286983"; # 2
-    Yellow = "f6c177"; # 3
-    Blue = "56949f"; # 4
-    Magenta = "907aa9"; # 5
-    Cyan = "d7827e"; # 6
-    White = "faf4ed"; # 7
+    # Black = "000000"; # 0
+    # Red = "f7768e";
+    # Green = "9ece6a";
+    # Yellow = "e0af68";
+    # Blue = "7aa2f7";
+    # Magenta = "bb9af7";
+    # Cyan = "7dcfff";
+    # White = "a9b1d6";
+    #
+    # BrightBlack = "414868";
+    # BrightRed = "f7768e";
+    # BrightGreen = "9ece6a";
+    # BrightYellow = "e0af68";
+    # BrightBlue = "7aa2f7";
+    # BrightMagenta = "bb9af7";
+    # BrightCyan = "7dcfff";
+    # BrightWhite = "c0caf5";
 
-    BrightBlack = "6e6a86"; # 8
-    BrightRed = "eb6f92"; # 9
-    BrightGreen = "31748f"; # 10
-    BrightYellow = "ea9d34"; # 11
-    BrightBlue = "9ccfd8"; # 12
-    BrightMagenta = "907aa9"; # 13
-    BrightCyan = "d7827e"; # 14
-    BrightWhite = "ffffff"; # 15
+    Black = "2e3440";
+    Red = "bf616a";
+    Green = "a3be8c";
+    Yellow = "ebcb8b";
+    Blue = "81a1c1";
+    Magenta = "b48ead";
+    Cyan = "88c0d0";
+    White = "e5e9f0";
+
+    BrightBlack = "4c566a";
+    BrightRed = "bf616a";
+    BrightGreen = "a3be8c";
+    BrightYellow = "ebcb8b";
+    BrightBlue = "81a1c1";
+    BrightMagenta = "b48ead";
+    BrightCyan = "8fbcbb";
+    BrightWhite = "eceff4";
 
     Background = Black;
     Foreground = White;
