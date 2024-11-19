@@ -32,24 +32,7 @@ in
     colornames);
 
   config.colors = rec {
-    # Black = "000000"; # 0
-    # Red = "f7768e";
-    # Green = "9ece6a";
-    # Yellow = "e0af68";
-    # Blue = "7aa2f7";
-    # Magenta = "bb9af7";
-    # Cyan = "7dcfff";
-    # White = "a9b1d6";
-    #
-    # BrightBlack = "414868";
-    # BrightRed = "f7768e";
-    # BrightGreen = "9ece6a";
-    # BrightYellow = "e0af68";
-    # BrightBlue = "7aa2f7";
-    # BrightMagenta = "bb9af7";
-    # BrightCyan = "7dcfff";
-    # BrightWhite = "c0caf5";
-
+    # Nord
     Black = "242931";
     Red = "bf616a";
     Green = "a3be8c";
@@ -58,7 +41,6 @@ in
     Magenta = "b48ead";
     Cyan = "88c0d0";
     White = "e5e9f0";
-
     BrightBlack = "4c566a";
     BrightRed = "bf616a";
     BrightGreen = "a3be8c";
@@ -67,6 +49,24 @@ in
     BrightMagenta = "b48ead";
     BrightCyan = "8fbcbb";
     BrightWhite = "eceff4";
+
+    # Kanagawa Dragon
+    # Black = "181616";
+    # Red = "c4746e";
+    # Green = "8a9a7b";
+    # Yellow = "c4b28a";
+    # Blue = "8ba4b0";
+    # Magenta = "a292a3";
+    # Cyan = "8ea4a2";
+    # White = "c5c9c5";
+    # BrightBlack = "aba69c";
+    # BrightRed = "E46876";
+    # BrightGreen = "87a987";
+    # BrightYellow = "E6C384";
+    # BrightBlue = "7FB4CA";
+    # BrightMagenta = "938AA9";
+    # BrightCyan = "7AA89F";
+    # BrightWhite = "c8c093";
 
     Background = Black;
     Foreground = White;
