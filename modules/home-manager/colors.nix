@@ -50,7 +50,7 @@ in
     # BrightCyan = "7dcfff";
     # BrightWhite = "c0caf5";
 
-    Black = "2e3440";
+    Black = "242931";
     Red = "bf616a";
     Green = "a3be8c";
     Yellow = "ebcb8b";
