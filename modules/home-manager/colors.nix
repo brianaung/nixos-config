@@ -21,7 +21,6 @@ let
 
     "Background"
     "Foreground"
-
   ];
 in
 {
@@ -33,23 +32,41 @@ in
     colornames);
 
   config.colors = rec {
-    Black = "000000"; # 0
-    Red = "b4637a"; # 1
-    Green = "286983"; # 2
-    Yellow = "f6c177"; # 3
-    Blue = "56949f"; # 4
-    Magenta = "907aa9"; # 5
-    Cyan = "d7827e"; # 6
-    White = "faf4ed"; # 7
+    # Nord
+    Black = "242931";
+    Red = "bf616a";
+    Green = "a3be8c";
+    Yellow = "ebcb8b";
+    Blue = "81a1c1";
+    Magenta = "b48ead";
+    Cyan = "88c0d0";
+    White = "e5e9f0";
+    BrightBlack = "4c566a";
+    BrightRed = "bf616a";
+    BrightGreen = "a3be8c";
+    BrightYellow = "ebcb8b";
+    BrightBlue = "81a1c1";
+    BrightMagenta = "b48ead";
+    BrightCyan = "8fbcbb";
+    BrightWhite = "eceff4";
 
-    BrightBlack = "6e6a86"; # 8
-    BrightRed = "eb6f92"; # 9
-    BrightGreen = "31748f"; # 10
-    BrightYellow = "ea9d34"; # 11
-    BrightBlue = "9ccfd8"; # 12
-    BrightMagenta = "907aa9"; # 13
-    BrightCyan = "d7827e"; # 14
-    BrightWhite = "ffffff"; # 15
+    # Kanagawa Dragon
+    # Black = "181616";
+    # Red = "c4746e";
+    # Green = "8a9a7b";
+    # Yellow = "c4b28a";
+    # Blue = "8ba4b0";
+    # Magenta = "a292a3";
+    # Cyan = "8ea4a2";
+    # White = "c5c9c5";
+    # BrightBlack = "aba69c";
+    # BrightRed = "E46876";
+    # BrightGreen = "87a987";
+    # BrightYellow = "E6C384";
+    # BrightBlue = "7FB4CA";
+    # BrightMagenta = "938AA9";
+    # BrightCyan = "7AA89F";
+    # BrightWhite = "c8c093";
 
     Background = Black;
     Foreground = White;

@@ -57,7 +57,8 @@
           border_size = 2
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          col.active_border = rgba(${config.colors.Green}ff) rgba(${config.colors.Blue}ff) 45deg
+          # col.active_border = rgba(${config.colors.Green}ff) rgba(${config.colors.Blue}ff) 45deg
+          col.active_border = rgba(${config.colors.Blue}ff)
           col.inactive_border = rgba(${config.colors.Black}aa)
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps

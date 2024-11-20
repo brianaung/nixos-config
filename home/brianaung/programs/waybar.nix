@@ -59,7 +59,7 @@
     style = ''
       * {
         font-family: Terminess Nerd Font;
-        font-size: 14px;
+        font-size: 13px;
         padding: 0;
         border-radius: 0;
       }
@@ -78,7 +78,7 @@
       }
       #workspaces button.active {
         color: #${config.colors.Black};
-        background: #${config.colors.Green};
+        background: #${config.colors.Blue};
       }
     '';
   };

@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Terminess Nerd Font:size=14";
+        font = "Terminess Nerd Font:size=13";
         "border-radius" = 0;
       };
       colors = {
