@@ -8,8 +8,11 @@ in
     ./programs/waybar.nix
     ./programs/fuzzel.nix
     ./programs/foot.nix
+    ./services/kanshi.nix
 
     ./programs/awesome/theme.nix
+
+    ./programs/kitty.nix
 
     ./programs/fish.nix
     ./programs/git.nix
@@ -18,7 +21,6 @@ in
     ./programs/yazi/yazi.nix
     ./programs/qutebrowser.nix
 
-    ./services/kanshi.nix
 
     ./scripts/tmux-sessionizer.nix
     ./scripts/hyprmonitor.nix

@@ -12,4 +12,4 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false } })
 
 vim.opt.background = "dark"
-vim.cmd "colorscheme habamax"
+vim.cmd "colorscheme theme"

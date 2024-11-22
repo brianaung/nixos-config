@@ -16,7 +16,6 @@
         obs-studio
         steam
         brave
-        wezterm
       ];
     };
     networking.iwd.enable = true;
