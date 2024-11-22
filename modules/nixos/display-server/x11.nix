@@ -41,6 +41,7 @@ in
       brightnessctl
       pavucontrol
       pasystray
+      acpi
     ];
 
     # reload autorandr profile when there is a change in DRM subsystem,

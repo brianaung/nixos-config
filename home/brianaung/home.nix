@@ -5,14 +5,17 @@ in
 {
   imports = [
     ./programs/hyprland.nix
+    ./programs/waybar.nix
+    ./programs/fuzzel.nix
+    ./programs/foot.nix
+
+    ./programs/awesome/theme.nix
+
     ./programs/fish.nix
     ./programs/git.nix
     ./programs/fzf.nix
     ./programs/tmux.nix
-    ./programs/foot.nix
-    ./programs/yazi.nix
-    ./programs/waybar.nix
-    ./programs/fuzzel.nix
+    ./programs/yazi/yazi.nix
     ./programs/qutebrowser.nix
 
     ./services/kanshi.nix
@@ -28,5 +31,6 @@ in
 
   programs.home-manager.enable = true;
 
-  xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/nvim";
+  xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/programs/nvim";
+  xdg.configFile."awesome/rc.lua".source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/programs/awesome/rc.lua";
 }

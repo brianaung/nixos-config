@@ -16,12 +16,12 @@
         obs-studio
         steam
         brave
+        wezterm
       ];
     };
     networking.iwd.enable = true;
-    displayServer.wayland = {
+    displayServer.x11 = {
       enable = true;
-      session = "hyprland";
     };
   };
 
