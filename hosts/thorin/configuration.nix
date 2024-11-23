@@ -18,10 +18,9 @@
         brave
       ];
     };
-    networking.iwd.enable = true;
-    displayServer.wayland = {
+    networking.networkmanager.enable = true;
+    displayServer.x11 = {
       enable = true;
-      session = "hyprland";
     };
   };
 

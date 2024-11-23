@@ -9,9 +9,9 @@
         { on = [ "<Enter>" ]; run = "plugin --sync smart-enter"; }
       ];
     };
-    # TODO package the plugins
     plugins = {
       smart-enter = ./smart-enter.yazi;
     };
   };
 }
+
