@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, config, ... }: 
 {
   xdg.configFile."awesome/rc.lua".source = pkgs.writers.writeLua "rc.lua" { } /*lua*/ ''
     -- luacheck: push ignore
@@ -66,6 +66,20 @@
       awful.layout.suit.tile,
       awful.layout.suit.floating,
     }
+    -- }}}
+
+    -- {{{ Wallpaper
+    local function set_wallpaper(s)
+        if beautiful.wallpaper then
+            local wallpaper = beautiful.wallpaper
+            if type(wallpaper) == "function" then
+                wallpaper = wallpaper(s)
+            end
+            gears.wallpaper.maximized(wallpaper, s, true)
+        end
+    end
+    -- reset wallpaper when screen's geometry changes (e.g. different resolution)
+    screen.connect_signal("property::geometry", set_wallpaper)
     -- }}}
 
     -- {{{ Menu
@@ -138,6 +152,9 @@
     -- Create a wibox for each screen and add it
     -- @DOC_FOR_EACH_SCREEN@
     awful.screen.connect_for_each_screen(function(s)
+      -- Wallpaper
+      set_wallpaper(s)
+
       -- Each screen has its own tag table.
       awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
