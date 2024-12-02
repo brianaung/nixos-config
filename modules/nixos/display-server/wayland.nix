@@ -26,7 +26,6 @@ in
         libnotify
         brightnessctl
         fuzzel
-        cosmic-files
         waybar
         iwgtk
         grim

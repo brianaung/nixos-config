@@ -23,7 +23,7 @@ local bright_magenta = 13
 local bright_cyan = 14
 local bright_white = 15
 
-local bg, fg, contrast = black, white, bright_black
+local bg, fg, contrast = black, bright_white, bright_black
 if mode == "light" then
   bg, fg, contrast = white, black, bright_white
 end

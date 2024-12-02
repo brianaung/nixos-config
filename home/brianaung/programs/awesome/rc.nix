@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: 
+{ pkgs, config, ... }:
 {
   xdg.configFile."awesome/rc.lua".source = pkgs.writers.writeLua "rc.lua" { } /*lua*/ ''
     -- luacheck: push ignore
@@ -114,9 +114,9 @@
       autostart = true,
       callback = function()
         awful.spawn.easy_async_with_shell("acpi -b", function(stdout)
-          local status, percentage = string.match(stdout, "Battery 0: (.*), (%d+%%)")
+          local status, percentage = string.match(stdout, "Battery %d+: (.*), (%d+%%)")
           -- Update text based on charging status
-          if status:find "Charging" then
+          if status and status:find "Charging" then
             battery_widget.text = "CHR(" .. percentage .. ")"
           else
             battery_widget.text = "BAT(" .. percentage .. ")"

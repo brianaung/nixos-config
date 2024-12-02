@@ -49,6 +49,7 @@ in
     # does not work with home manager autorandr module
     services.udev.extraRules = ''
       ACTION=="change", SUBSYSTEM=="drm", RUN+="${pkgs.autorandr}/bin/autorandr -c"
+      ACTION=="change", SUBSYSTEM=="usb", RUN+="${pkgs.autorandr}/bin/autorandr -c"
     '';
 
     services.autorandr = {

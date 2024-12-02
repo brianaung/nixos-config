@@ -103,6 +103,8 @@
     mpv
 
     markdown-oxide
+    xfce.thunar
+    xfce.thunar-volman
   ];
 
   # Install fonts.

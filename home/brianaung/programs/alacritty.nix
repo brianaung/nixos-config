@@ -24,8 +24,8 @@
 
       colors = {
         primary = {
-          background = "#${config.colors.Black}";
-          foreground = "#${config.colors.White}";
+          background = "#${config.colors.Background}";
+          foreground = "#${config.colors.Foreground}";
         };
         cursor = {
           text = "#${config.colors.Black}";
