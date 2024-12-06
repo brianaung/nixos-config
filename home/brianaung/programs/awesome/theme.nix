@@ -14,7 +14,7 @@
 
     local theme = {}
 
-    theme.font = "Terminess Nerd Font 10"
+    theme.font = "JetBrainsMono Nerd Font 10"
 
     theme.bg_normal = "#${config.colors.Black}"
     theme.bg_focus = "#${config.colors.BrightBlack}"

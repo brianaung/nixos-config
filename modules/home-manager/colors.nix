@@ -32,6 +32,23 @@ in
     colornames);
 
   config.colors = rec {
+    Black = "1d1f21";
+    Red = "cc6666";
+    Green = "b5bd68";
+    Yellow = "f0c674";
+    Blue = "81a2be";
+    Magenta = "b294bb";
+    Cyan = "8abeb7";
+    White = "c5c8c6";
+    BrightBlack = "4C4D4E";
+    BrightRed = "d54e53";
+    BrightGreen = "b9ca4a";
+    BrightYellow = "e7c547";
+    BrightBlue = "7aa6da";
+    BrightMagenta = "c397d8";
+    BrightCyan = "70c0b1";
+    BrightWhite = "eaeaea";
+
     # Nord
     # Black = "242931";
     # Red = "bf616a";
@@ -69,22 +86,22 @@ in
     # BrightWhite = "c8d3f5";
 
     # Rose Pine
-    Black = "191724";
-    Red = "eb6f92";
-    Green = "9ccfd8";
-    Yellow = "f6c177";
-    Blue = "31748f";
-    Magenta = "c4a7e7";
-    Cyan = "ebbcba";
-    White = "e0def4";
-    BrightBlack = "47435d";
-    BrightRed = "ff98ba";
-    BrightGreen = "c5f9ff";
-    BrightYellow = "ffeb9e";
-    BrightBlue = "5b9ab7";
-    BrightMagenta = "eed0ff";
-    BrightCyan = "ffe5e3";
-    BrightWhite = "fefcff";
+    # Black = "191724";
+    # Red = "eb6f92";
+    # Green = "9ccfd8";
+    # Yellow = "f6c177";
+    # Blue = "31748f";
+    # Magenta = "c4a7e7";
+    # Cyan = "ebbcba";
+    # White = "e0def4";
+    # BrightBlack = "47435d";
+    # BrightRed = "ff98ba";
+    # BrightGreen = "c5f9ff";
+    # BrightYellow = "ffeb9e";
+    # BrightBlue = "5b9ab7";
+    # BrightMagenta = "eed0ff";
+    # BrightCyan = "ffe5e3";
+    # BrightWhite = "fefcff";
 
     Background = Black;
     Foreground = BrightWhite;

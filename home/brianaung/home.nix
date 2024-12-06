@@ -14,7 +14,8 @@ in
     ./programs/awesome/theme.nix
 
     # ./programs/kitty.nix
-    ./programs/alacritty.nix
+    # ./programs/alacritty.nix
+    ./programs/ghostty.nix
 
     ./programs/fish.nix
     ./programs/git.nix
@@ -36,5 +37,4 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/programs/nvim";
-  # xdg.configFile."awesome/rc.lua".source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/programs/awesome/rc.lua";
 }

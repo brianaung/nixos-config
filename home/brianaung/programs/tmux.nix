@@ -4,7 +4,6 @@
     # TODO too lazy to move them to nix options for now
     extraConfig = ''
       set -g default-terminal "tmux-256color"
-      set -sa terminal-features ",foot:RGB"
 
       set -g history-limit 10000
       set -s escape-time 0
