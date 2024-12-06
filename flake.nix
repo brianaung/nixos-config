@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -51,6 +52,11 @@
 
             # Others
             inputs.nixos-hardware.nixosModules.${hardware}
+            {
+              environment.systemPackages = [
+                inputs.ghostty.packages.x86_64-linux.default
+              ];
+            }
           ];
         };
     in
