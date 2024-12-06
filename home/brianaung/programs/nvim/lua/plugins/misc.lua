@@ -2,48 +2,48 @@ return {
   "tpope/vim-sleuth",
   "tpope/vim-surround",
 
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*",
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "personal",
-          path = "~/vaults/personal",
-        },
-        {
-          name = "work",
-          path = "~/vaults/work",
-        },
-        {
-          name = "zettlekasten",
-          path = "~/vaults/zettlekasten",
-        },
-        {
-          name = "project",
-          path = "~/vaults/project",
-        },
-      },
-      daily_notes = {
-        folder = "dailies",
-        date_format = "%Y-%m-%d",
-        alias_format = "%B %-d, %Y",
-        default_tags = { "daily-notes" },
-        template = nil,
-      },
-    },
-    keys = {
-      { "<leader>on", "<Cmd>ObsidianNew<CR>" },
-      { "<leader>od", "<Cmd>ObsidianDailies<CR>" },
-      { "<leader>ow", "<Cmd>ObsidianWorkspace<CR>" },
-      { "<leader>os", "<Cmd>ObsidianSearch<CR>" },
-    },
-  },
+  -- {
+  --   "epwalsh/obsidian.nvim",
+  --   version = "*",
+  --   lazy = true,
+  --   ft = "markdown",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   opts = {
+  --     workspaces = {
+  --       {
+  --         name = "personal",
+  --         path = "~/vaults/personal",
+  --       },
+  --       {
+  --         name = "work",
+  --         path = "~/vaults/work",
+  --       },
+  --       {
+  --         name = "zettlekasten",
+  --         path = "~/vaults/zettlekasten",
+  --       },
+  --       {
+  --         name = "project",
+  --         path = "~/vaults/project",
+  --       },
+  --     },
+  --     daily_notes = {
+  --       folder = "dailies",
+  --       date_format = "%Y-%m-%d",
+  --       alias_format = "%B %-d, %Y",
+  --       default_tags = { "daily-notes" },
+  --       template = nil,
+  --     },
+  --   },
+  --   keys = {
+  --     { "<leader>on", "<Cmd>ObsidianNew<CR>" },
+  --     { "<leader>od", "<Cmd>ObsidianDailies<CR>" },
+  --     { "<leader>ow", "<Cmd>ObsidianWorkspace<CR>" },
+  --     { "<leader>os", "<Cmd>ObsidianSearch<CR>" },
+  --   },
+  -- },
 
   {
     "mikavilpas/yazi.nvim",

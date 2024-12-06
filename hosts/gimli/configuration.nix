@@ -10,7 +10,7 @@
   modules = {
     users.brianaung = {
       enable = true;
-      email = "brian@psdesignstudio.com";
+      email = "brianaung16@gmail.com";
       extraGroups = [ "docker" ];
       packages = with pkgs; [
         slack
@@ -21,10 +21,10 @@
         thunderbird
       ];
     };
-    networking.iwd.enable = true;
-    displayServer.wayland = {
+    networking.networkmanager.enable = true;
+    displayServer.x11 = {
       enable = true;
-      session = "hyprland";
+      # session = "hyprland";
     };
   };
 
