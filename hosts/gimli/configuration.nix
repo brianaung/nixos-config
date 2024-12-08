@@ -24,12 +24,11 @@
     networking.networkmanager.enable = true;
     displayServer.x11 = {
       enable = true;
-      # session = "hyprland";
     };
   };
 
   environment.systemPackages = with pkgs; [
-    vagrant
+    (vagrant.override { withLibvirt = false; })
   ];
 
   environment.sessionVariables = {

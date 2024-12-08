@@ -29,6 +29,9 @@
       merge = {
         tool = "nvimdiff2";
       };
+      diff = {
+        tool = "nvimdiff";
+      };
       mergetool = {
         keepBackup = false;
       };

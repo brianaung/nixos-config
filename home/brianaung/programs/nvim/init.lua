@@ -12,9 +12,8 @@ opt.updatetime = 250
 opt.timeoutlen = 300
 
 opt.termguicolors = false
-
+opt.splitright = true
 opt.scrolloff = 5
-
 opt.foldenable = false
 
 opt.number = true

@@ -3,6 +3,7 @@ return {
   opts = {
     keymaps = {
       ["<Esc>"] = "actions.close",
+      ["<Tab>"] = "actions.preview",
     },
   },
   cmd = { "Oil", "O" },
