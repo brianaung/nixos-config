@@ -100,17 +100,14 @@
     tmux
     imv
     mpv
-
-    markdown-oxide
     xfce.thunar
     xfce.thunar-volman
+    syncthing
   ];
 
   # Install fonts.
   fonts.packages = with pkgs; [
     apple-fonts
-    uni-vga
-    font-awesome
     (nerdfonts.override {
       fonts = [
         "JetBrainsMono"
