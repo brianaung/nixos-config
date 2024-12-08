@@ -20,7 +20,7 @@ return {
   },
   keys = {
     {
-      "<leader>fmt",
+      "<Leader>fmt",
       function() require("conform").format { bufnr = 0, lsp_fallback = true } end,
     },
   },

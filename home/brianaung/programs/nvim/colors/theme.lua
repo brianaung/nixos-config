@@ -91,7 +91,7 @@ hi(0, "SpecialKey", { link = "NonText" })
 -- hi(0, "SpellLocal", { undercurl = true })
 -- hi(0, "SpellRare", { undercurl = true })
 -- **********
-hi(0, "StatusLine", { ctermfg = bg, ctermbg = fg })
+hi(0, "StatusLine", { ctermfg = fg, ctermbg = contrast })
 hi(0, "StatusLineNC", {})
 hi(0, "TabLine", { link = "StatusLine" })
 hi(0, "TabLineFill", { link = "TabLine" })

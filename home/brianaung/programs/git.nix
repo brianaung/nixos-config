@@ -3,7 +3,7 @@
     enable = true;
 
     aliases = {
-      ci = "commit";
+      ci = "commit -v";
       co = "checkout";
       st = "status";
       br = "branch";
@@ -25,6 +25,12 @@
       };
       pull = {
         default = "current";
+      };
+      merge = {
+        tool = "nvimdiff2";
+      };
+      mergetool = {
+        keepBackup = false;
       };
     };
   };

@@ -21,7 +21,6 @@ in
     ./programs/git.nix
     ./programs/fzf.nix
     ./programs/tmux.nix
-    ./programs/yazi/yazi.nix
     ./programs/qutebrowser.nix
 
 
