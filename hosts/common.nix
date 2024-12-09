@@ -95,7 +95,7 @@
     fd
     jq
     btop
-    unstable.neovim
+    # unstable.neovim
     strawberry
     tmux
     imv

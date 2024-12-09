@@ -10,6 +10,7 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -54,6 +55,7 @@
             {
               environment.systemPackages = [
                 inputs.ghostty.packages.x86_64-linux.default
+                inputs.neovim-nightly-overlay.packages.${system}.default
               ];
             }
           ];

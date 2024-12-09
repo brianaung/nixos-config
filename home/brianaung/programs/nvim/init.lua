@@ -127,10 +127,10 @@ autocmd("BufEnter", {
 autocmd("FileType", {
   desc = "Close certain windows with the escape key.",
   group = augroup("close_with_escape", {}),
-  pattern = { "help", "qf", "man", "checkhealth" },
+  pattern = { "help", "qf", "man", "checkhealth", "codecompanion", "netrw" },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "<Esc>", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "<Esc>", "<Cmd>bd<CR>", { buffer = event.buf, silent = true })
   end,
 })
 -- }}}
@@ -143,4 +143,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false } })
+-- }}}
+
+-- {{{ Netrw
+vim.g.netrw_altfile = 1
+set("n", "-", "<Cmd>Ex<CR>")
 -- }}}
