@@ -50,7 +50,6 @@ opt.listchars = {
 
 -- {{{ Keymaps
 set({ "n", "v" }, "<Leader>", "<nop>")
-
 set("n", "j", "gj")
 set("n", "k", "gk")
 
@@ -67,35 +66,10 @@ set("n", "<Leader>p", [["+p]])
 set("v", "J", [[:m '>+1<CR>gv=gv]])
 set("v", "K", [[:m '<-2<CR>gv=gv]])
 
--- Navigate through the quickfix list.
-set("n", "<C-p>", "<Cmd>cprev<CR>")
-set("n", "<C-n>", "<Cmd>cnext<CR>")
-
 set("n", "<C-f>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Use <CR> to clear hlsearch when active.
 set("n", "<CR>", function() return vim.v.hlsearch == 1 and "<Cmd>nohl<CR>" or "<CR>" end, { expr = true })
-
--- Ins-completion keymaps
-set("i", "<C-y>", function()
-  if vim.fn.complete_info()["selected"] ~= -1 then return "<C-y>" end
-  if vim.fn.pumvisible() ~= 0 then return "<C-n><C-y>" end
-  return "<C-y>"
-end, { expr = true })
-
-set("i", "<CR>", function()
-  if vim.fn.complete_info()["selected"] ~= -1 then return "<C-y>" end
-  if vim.fn.pumvisible() ~= 0 then return "<C-e><CR>" end
-  return "<CR>"
-end, { expr = true })
-
-set({ "i", "s" }, "<C-k>", function()
-  if vim.snippet.active { direction = 1 } then return "<Cmd>lua vim.snippet.jump(1)<CR>" end
-end, { expr = true })
-
-set({ "i", "s" }, "<C-j>", function()
-  if vim.snippet.active { direction = -1 } then return "<Cmd>lua vim.snippet.jump(-1)<CR>" end
-end, { expr = true })
 --- }}}
 
 -- {{{ Autocmds
@@ -120,7 +94,7 @@ autocmd("BufEnter", {
   group = augroup("set_formatoptions", {}),
   callback = function()
     -- -o: Don't add comment leader when I press 'o' or 'O'.
-    vim.opt.formatoptions:remove { "o" }
+    opt.formatoptions:remove { "o" }
   end,
 })
 
@@ -130,22 +104,35 @@ autocmd("FileType", {
   pattern = { "help", "qf", "man", "checkhealth", "codecompanion", "netrw" },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "<Esc>", "<Cmd>bd<CR>", { buffer = event.buf, silent = true })
+    set("n", "<Esc>", "<Cmd>bd<CR>", { buffer = event.buf, silent = true })
   end,
 })
 -- }}}
 
 -- {{{ Plugins
-local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system { "git", "clone", "--filter=blob:none", lazyrepo, "--branch=stable", lazypath }
-end
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins", { change_detection = { notify = false } })
--- }}}
+-- opt.runtimepath:append '~/projects/compl.nvim'
+-- opt.runtimepath:append '~/projects/yasl.nvim'
 
--- {{{ Netrw
-vim.g.netrw_altfile = 1
-set("n", "-", "<Cmd>Ex<CR>")
+local paq_path = vim.fn.stdpath "data" .. "/site/pack/paqs/start/paq-nvim"
+local is_installed = vim.fn.empty(vim.fn.glob(paq_path)) == 0
+if not is_installed then
+  vim.fn.system { "git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", paq_path }
+end
+vim.cmd.packadd "paq-nvim"
+require "paq" {
+  "savq/paq-nvim",
+  "nvim-lua/plenary.nvim",
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  "ibhagwan/fzf-lua",
+  "neovim/nvim-lspconfig",
+  "brianaung/compl.nvim",
+  { "brianaung/yasl.nvim", branch = "v2" },
+  "stevearc/conform.nvim",
+  "tpope/vim-sleuth",
+  "tpope/vim-surround",
+  "mbbill/undotree",
+  "christoomey/vim-tmux-navigator",
+  "olimorris/codecompanion.nvim",
+}
 -- }}}
