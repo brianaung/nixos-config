@@ -93,6 +93,7 @@
   environment.systemPackages = with pkgs; [
     ripgrep
     fd
+    bat
     jq
     btop
     # unstable.neovim

@@ -124,7 +124,6 @@ require "paq" {
   "nvim-lua/plenary.nvim",
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-textobjects",
-  "ibhagwan/fzf-lua",
   "neovim/nvim-lspconfig",
   "brianaung/compl.nvim",
   { "brianaung/yasl.nvim", branch = "v2" },

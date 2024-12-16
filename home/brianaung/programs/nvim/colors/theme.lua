@@ -65,7 +65,7 @@ hi(0, "MsgSeparator", {})
 hi(0, "MoreMsg", { ctermfg = green })
 hi(0, "NonText", { ctermfg = contrast })
 hi(0, "Normal", { ctermfg = fg, ctermbg = bg })
-hi(0, "NormalFloat", { link = "Pmenu" })
+hi(0, "NormalFloat", { ctermbg = bg })
 -- TODO: find color
 -- hi(0, "FloatBorder", {})
 -- hi(0, "FloatTitle", {})
