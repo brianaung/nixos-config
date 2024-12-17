@@ -46,17 +46,17 @@ local function fuzzy(cmd, on_choice)
 end
 
 vim.keymap.set("n", "<Leader>fd", function()
-  fuzzy("fd --type file | fzf", function(choice)
+  local files_cmd =
+    "fd --type=file | fzf --preview='bat --number --theme=base16 --color=always {}' --preview-window='+{2}/2,<60(up)' --bind='tab:toggle-preview,ctrl-d:preview-down,ctrl-u:preview-up'"
+  fuzzy(files_cmd, function(choice)
     if choice and vim.trim(choice) ~= "" then vim.cmd("e " .. choice) end
   end)
 end)
 
 vim.keymap.set("n", "<Leader>fl", function()
-  local rg_cmd = "rg --column --color=always --smart-case ''"
-  local fzf_cmd =
-    "fzf --ansi --delimiter : --nth 4.. --preview 'bat --color=always --number --highlight-line {2} {1}' --preview-window '+{2}/2,<80(up)' --bind='Tab:toggle-preview'"
-
-  fuzzy(string.format("%s | %s", rg_cmd, fzf_cmd), function(choice)
+  local grep_cmd =
+    "rg --color=always --column --smart-case '' | fzf --exact --ansi --delimiter=: --nth=4.. --preview='bat --number --theme=base16 --color=always --highlight-line={2} {1}' --preview-window='+{2}/2,<60(up)' --bind='tab:toggle-preview,ctrl-d:preview-down,ctrl-u:preview-up'"
+  fuzzy(grep_cmd, function(choice)
     choice = string.match(choice, ".+:%d+:.+")
     if choice then
       local parts = vim.split(choice, ":")
