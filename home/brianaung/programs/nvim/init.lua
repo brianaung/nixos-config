@@ -101,7 +101,7 @@ autocmd("BufEnter", {
 autocmd("FileType", {
   desc = "Close certain windows with the escape key.",
   group = augroup("close_with_escape", {}),
-  pattern = { "help", "qf", "man", "checkhealth", "codecompanion", "netrw" },
+  pattern = { "help", "qf", "man", "checkhealth", "codecompanion" },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     set("n", "<Esc>", "<Cmd>bd<CR>", { buffer = event.buf, silent = true })
@@ -128,6 +128,7 @@ require "paq" {
   "brianaung/compl.nvim",
   { "brianaung/yasl.nvim", branch = "v2" },
   "stevearc/conform.nvim",
+  "stevearc/oil.nvim",
   "tpope/vim-sleuth",
   "tpope/vim-surround",
   "mbbill/undotree",
