@@ -16,9 +16,6 @@
         slack
         dbeaver-bin
         postman
-        pandoc
-        firefox
-        thunderbird
       ];
     };
     networking.networkmanager.enable = true;

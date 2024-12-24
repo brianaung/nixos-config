@@ -97,12 +97,9 @@
     jq
     btop
     # unstable.neovim
-    strawberry
     tmux
     imv
     mpv
-    xfce.thunar
-    xfce.thunar-volman
     syncthing
   ];
 

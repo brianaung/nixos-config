@@ -11,11 +11,12 @@
     users.brianaung = {
       enable = true;
       email = "brianaung16@gmail.com";
-      # extraGroups = [ "docker" ];
+      extraGroups = [ "gamemode" ];
       packages = with pkgs; [
         obs-studio
         steam
-        brave
+        discord
+        gamemode
       ];
     };
     networking.networkmanager.enable = true;

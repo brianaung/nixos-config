@@ -28,6 +28,7 @@ in
     services.libinput = {
       enable = true;
       mouse = {
+        accelProfile = "flat";
         scrollButton = 3;
         scrollMethod = "button";
       };

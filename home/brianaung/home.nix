@@ -7,14 +7,11 @@ in
     ./programs/hyprland.nix
     ./programs/waybar.nix
     ./programs/fuzzel.nix
-    ./programs/foot.nix
     ./services/kanshi.nix
 
     ./programs/awesome/rc.nix
     ./programs/awesome/theme.nix
 
-    # ./programs/kitty.nix
-    # ./programs/alacritty.nix
     ./programs/ghostty.nix
 
     ./programs/fish.nix
@@ -22,7 +19,6 @@ in
     ./programs/fzf.nix
     ./programs/tmux.nix
     ./programs/qutebrowser.nix
-
 
     ./scripts/tmux-sessionizer.nix
     ./scripts/hyprmonitor.nix

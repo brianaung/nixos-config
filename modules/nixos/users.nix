@@ -33,6 +33,12 @@ in
         packages = with pkgs; [
           zathura
           obsidian
+          librewolf
+          pandoc
+          thunderbird
+          xfce.thunar
+          xfce.thunar-volman
+          strawberry
         ] ++ cfg.brianaung.packages;
       };
       programs.fish.enable = true;
