@@ -178,6 +178,7 @@
     imv
     mpv
     syncthing
+    wl-clipboard
   ];
 
   # To load/unload configured shells based on current directory.
