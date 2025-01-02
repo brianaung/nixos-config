@@ -1,7 +1,6 @@
 { ... }: {
   programs.tmux = {
     enable = true;
-    # TODO too lazy to move them to nix options for now
     extraConfig = ''
       set -g default-terminal "tmux-256color"
 

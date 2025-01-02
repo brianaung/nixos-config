@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, user, ... }:
 {
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -6,10 +6,22 @@
   # this value at the release version of the first install of this system.
   system.stateVersion = "23.11";
 
-  # Set your time zone.
-  time.timeZone = "Australia/Melbourne";
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # Select internationalisation properties.
+  # Kernel and firmware
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  services.fwupd.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  # Timezone and locale
+  time.timeZone = "Australia/Melbourne";
   i18n.defaultLocale = "en_AU.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_AU.UTF-8";
@@ -22,18 +34,6 @@
     LC_TELEPHONE = "en_AU.UTF-8";
     LC_TIME = "en_AU.UTF-8";
   };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Update kernel to latest.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.consoleLogLevel = 3;
-
-  # To update firmware.
-  services.fwupd.enable = true;
 
   # Use zram (instead of physical swap).
   zramSwap.enable = true;
@@ -50,13 +50,91 @@
 
   # Enable bluetooth support.
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
-  # Setup gui, mouse, keyboard, etc.
-  services.xserver.enable = true;
-  services.xserver.desktopManager = {
-    xterm.enable = false;
+  programs.fish.enable = true;
+  users.users.${user} = {
+    isNormalUser = true;
+    shell = pkgs.fish;
+    extraGroups = [ "wheel" ];
+    packages = with pkgs; [
+      librewolf
+      zathura
+      obsidian
+      pandoc
+      thunderbird
+      strawberry
+    ];
+  };
+
+  # Desktop environment
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      gnome.enable = true;
+    };
+    displayManager.gdm.enable = true;
+  };
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/wm/keybindings" = {
+            switch-to-workspace-1 = [ "<Super>1" ];
+            switch-to-workspace-2 = [ "<Super>2" ];
+            switch-to-workspace-3 = [ "<Super>3" ];
+            switch-to-workspace-4 = [ "<Super>4" ];
+            move-to-workspace-1 = [ "<Super><Shift>1" ];
+            move-to-workspace-2 = [ "<Super><Shift>2" ];
+            move-to-workspace-3 = [ "<Super><Shift>3" ];
+            move-to-workspace-4 = [ "<Super><Shift>4" ];
+            close = [ "<Super>q" ];
+            minimize = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+            toggle-maximized = [ "<Super>m" ];
+            toggle-fullscreen = [ "<Super>f" ];
+          };
+          "org/gnome/shell/keybindings" = {
+            switch-to-application-1 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+            switch-to-application-2 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+            switch-to-application-3 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+            switch-to-application-4 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+            toggle-message-tray = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+          };
+          "org/gnome/shell/app-switcher" = {
+            current-workspace-only = true;
+          };
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+            show-battery-percentage = true;
+          };
+          "org/gnome/desktop/peripherals/mouse" = {
+            accel-profile = "flat";
+          };
+          "org/gnome/mutter" = {
+            experimental-features = [ "scale-monitor-framebuffer" ];
+          };
+          "org/gnome/mutter/keybindings" = {
+            toggle-tiled-left = [ "<Super>h" ];
+            toggle-tiled-right = [ "<Super>l" ];
+            switch-monitor = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
+          };
+          "org/gnome/settings-daemon/plugins/power" = {
+            ambient-enabled = false;
+          };
+          "org/gnome/settings-daemon/plugins/media-keys" = {
+            screensaver = [ "<Super>e" ];
+            logout = [ "<Super><Shift>e" ];
+          };
+          "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+            name = "Launch terminal";
+            command = "ghostty";
+            binding = "<Super><Shift>Return";
+          };
+        };
+      }
+    ];
   };
 
   services.kanata = {
@@ -96,12 +174,14 @@
     bat
     jq
     btop
-    # unstable.neovim
     tmux
     imv
     mpv
     syncthing
   ];
+
+  # To load/unload configured shells based on current directory.
+  programs.direnv.enable = true;
 
   # Install fonts.
   fonts.packages = with pkgs; [
@@ -114,18 +194,4 @@
       ];
     })
   ];
-
-  programs.dconf.enable = true;
-
-  # To load/unload configured shells based on current directory.
-  programs.direnv.enable = true;
-
-  # Enable flakes.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 }

@@ -29,7 +29,7 @@
 
       mkSystem = host: { user, hardware, system }:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs user; };
           modules = [
             # Overlays
             { nixpkgs.overlays = [ overlays ]; }
@@ -46,7 +46,9 @@
                 useUserPackages = true;
                 users.${user} = import ./home/${user}/home.nix;
                 sharedModules = [ homeManagerModules ];
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { 
+                  inherit inputs; 
+                };
               };
             }
 

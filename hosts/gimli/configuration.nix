@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,21 +7,13 @@
 
   networking.hostName = "gimli"; # Define your hostname.
 
-  modules = {
-    users.brianaung = {
-      enable = true;
-      email = "brianaung16@gmail.com";
-      extraGroups = [ "docker" ];
-      packages = with pkgs; [
-        slack
-        dbeaver-bin
-        postman
-      ];
-    };
-    networking.networkmanager.enable = true;
-    displayServer.x11 = {
-      enable = true;
-    };
+  users.users.${user} = {
+    extraGroups = [ "docker" ];
+    packages = with pkgs; [
+      slack
+      dbeaver-bin
+      postman
+    ];
   };
 
   environment.systemPackages = with pkgs; [

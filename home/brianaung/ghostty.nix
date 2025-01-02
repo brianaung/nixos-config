@@ -2,9 +2,9 @@
 {
   xdg.configFile."ghostty/config".source = pkgs.writeText "config" /*sh*/ ''
     font-family = JetBrainsMono Nerd Font
-    font-size = 12
+    font-size = 11
 
-    window-decoration = false
+    window-decoration = true
     shell-integration-features = no-cursor,no-sudo,title
     confirm-close-surface = false
     cursor-style-blink = false

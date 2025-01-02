@@ -2,6 +2,9 @@
   programs.git = {
     enable = true;
 
+    userName = "brianaung";
+    userEmail = "brianaung16@gmail.com";
+
     aliases = {
       ci = "commit -v";
       co = "checkout";
