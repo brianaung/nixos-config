@@ -112,7 +112,7 @@ autocmd("FileType", {
 -- {{{ Plugins
 -- opt.runtimepath:append "~/projects/compl.nvim"
 -- opt.runtimepath:append "~/projects/yasl.nvim"
-opt.runtimepath:append "~/projects/fzf.nvim"
+-- opt.runtimepath:append "~/projects/fzf.nvim"
 
 local paq_path = vim.fn.stdpath "data" .. "/site/pack/paqs/start/paq-nvim"
 local is_installed = vim.fn.empty(vim.fn.glob(paq_path)) == 0
@@ -127,7 +127,7 @@ require "paq" {
   "nvim-treesitter/nvim-treesitter-textobjects",
   "neovim/nvim-lspconfig",
   "brianaung/compl.nvim",
-  -- "brianaung/fzf.nvim",
+  "brianaung/fzf.nvim",
   { "brianaung/yasl.nvim", branch = "v2" },
   "stevearc/conform.nvim",
   "stevearc/oil.nvim",
