@@ -4,7 +4,6 @@ let
 in
 {
   imports = [
-    ./ghostty.nix
     ./fish.nix
     ./git.nix
     ./fzf.nix
