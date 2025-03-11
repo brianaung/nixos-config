@@ -67,82 +67,39 @@
     ];
   };
 
-  # Desktop environment
-  services.xserver = {
+  services.xserver.enable = true;
+  services.xserver.desktopManager.xterm.enable = false;
+
+  programs.sway = {
     enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      gnome.enable = true;
-    };
-    displayManager.gdm.enable = true;
-  };
-  programs.dconf = {
-    enable = true;
-    profiles.user.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-            show-battery-percentage = true;
-          };
-          "org/gnome/desktop/peripherals/mouse" = {
-            accel-profile = "flat";
-          };
-          "org/gnome/desktop/wm/keybindings" = {
-            switch-to-workspace-1 = [ "<Super>1" ];
-            switch-to-workspace-2 = [ "<Super>2" ];
-            switch-to-workspace-3 = [ "<Super>3" ];
-            switch-to-workspace-4 = [ "<Super>4" ];
-            move-to-workspace-1 = [ "<Super><Shift>1" ];
-            move-to-workspace-2 = [ "<Super><Shift>2" ];
-            move-to-workspace-3 = [ "<Super><Shift>3" ];
-            move-to-workspace-4 = [ "<Super><Shift>4" ];
-            switch-windows = [ "<Super>Tab" ];
-            switch-windows-backward = [ "<Super><Shift>Tab" ];
-            switch-applications = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-            switch-applications-backward = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-            close = [ "<Super>q" ];
-            minimize = [ "<Super>minus" ];
-            toggle-maximized = [ "<Super>m" ];
-            toggle-fullscreen = [ "<Super>f" ];
-          };
-          "org/gnome/desktop/wm/preferences" = {
-            focus-mode = "sloppy";
-          };
-          "org/gnome/shell/app-switcher" = {
-            current-workspace-only = true;
-          };
-          "org/gnome/shell/keybindings" = {
-            switch-to-application-1 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-            switch-to-application-2 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-            switch-to-application-3 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-            switch-to-application-4 = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-            toggle-message-tray = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-          };
-          "org/gnome/mutter" = {
-            experimental-features = [ "scale-monitor-framebuffer" ];
-          };
-          "org/gnome/mutter/keybindings" = {
-            toggle-tiled-left = [ "<Super>h" ];
-            toggle-tiled-right = [ "<Super>l" ];
-            switch-monitor = lib.gvariant.mkEmptyArray lib.gvariant.type.string;
-          };
-          "org/gnome/settings-daemon/plugins/power" = {
-            ambient-enabled = false;
-          };
-          "org/gnome/settings-daemon/plugins/media-keys" = {
-            screensaver = [ "<Super>e" ];
-            logout = [ "<Super><Shift>e" ];
-          };
-          "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-            name = "Launch terminal";
-            command = "ghostty";
-            binding = "<Super><Shift>Return";
-          };
-        };
-      }
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      i3status
+      wl-clipboard
+      brightnessctl
+      foot
+      grim
+      swappy
+      slurp
+      pulseaudio
+      swayidle
+      swaylock
+      tofi
+      mako
     ];
   };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
+      };
+    };
+    vt = 7;
+  };
+
+  networking.networkmanager.enable = true;
 
   services.kanata = {
     enable = true;
@@ -185,7 +142,6 @@
     imv
     mpv
     syncthing
-    wl-clipboard
   ];
 
   # To load/unload configured shells based on current directory.
@@ -202,4 +158,6 @@
       ];
     })
   ];
+
+  programs.nix-ld.enable = true;
 }
