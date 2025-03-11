@@ -16,4 +16,5 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/nvim";
+  xdg.configFile.sway.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/sway";
 }
