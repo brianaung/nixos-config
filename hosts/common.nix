@@ -50,7 +50,7 @@
 
   # Enable bluetooth support.
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+  hardware.bluetooth.powerOnBoot = true;
 
   programs.fish.enable = true;
   users.users.${user} = {
@@ -58,6 +58,7 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
+      vivaldi
       librewolf
       zathura
       obsidian
@@ -86,6 +87,7 @@
       swaylock
       tofi
       mako
+      pavucontrol
     ];
   };
 
