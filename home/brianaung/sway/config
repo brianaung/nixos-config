@@ -50,7 +50,7 @@ font JetBrainsMono Nerd Font 8
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output eDP-1 mode 2256x1504@59.999Hz scale 1.5
+output eDP-1 mode 2256x1504@59.999Hz scale 1.75
 output DP-3 mode 2560x1440@60.000Hz scale 1
 
 ### Idle configuration

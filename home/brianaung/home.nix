@@ -7,7 +7,6 @@ in
     ./fish.nix
     ./git.nix
     ./fzf.nix
-    ./tmux.nix
     ./tmux-sessionizer.nix
   ];
 
@@ -17,4 +16,5 @@ in
 
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/nvim";
   xdg.configFile.sway.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/sway";
+  xdg.configFile.tmux.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/tmux";
 }

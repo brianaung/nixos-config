@@ -58,6 +58,7 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
+      vim
       vivaldi
       librewolf
       zathura
@@ -103,27 +104,32 @@
 
   networking.networkmanager.enable = true;
 
-  # services.kanata = {
-  #   enable = true;
-  #   keyboards.default.config = ''
-  #     (defsrc
-  #       grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  #       tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  #       caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  #       lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  #       lctl lmet lalt           spc            ralt rctl)
+  services.kanata = {
+    enable = true;
+    keyboards.default = {
+      config = ''
+      (defsrc
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+        caps a    s    d    f    g    h    j    k    l    ;    '    ret
+        lsft z    x    c    v    b    n    m    ,    .    /    rsft
+        lctl lmet lalt           spc            ralt rctl)
 
-  #     (deflayer qwerty
-  #       grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  #       tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  #       @cap a    s    d    f    g    h    j    k    l    ;    '    ret
-  #       lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  #       lctl lmet lalt           spc            ralt rctl)
+      (deflayer qwerty
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+        @cap a    s    d    f    g    h    j    k    l    ;    '    ret
+        lsft z    x    c    v    b    n    m    ,    .    /    rsft
+        lctl lalt lmet           spc            ralt rctl)
 
-  #     (defalias
-  #       cap (multi f24 (tap-hold-press 200 200 esc lctl)))
-  #   '';
-  # };
+      (defalias
+        cap (multi f24 (tap-hold-press 200 200 esc lctl)))
+      '';
+      devices = [
+        "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+      ];
+    };
+  };
 
   # Set session variables.
   environment.sessionVariables = {
@@ -144,6 +150,7 @@
     imv
     mpv
     syncthing
+    devenv
   ];
 
   # To load/unload configured shells based on current directory.
@@ -152,13 +159,8 @@
   # Install fonts.
   fonts.packages = with pkgs; [
     apple-fonts
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "Terminus"
-        "Iosevka"
-      ];
-    })
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.iosevka
   ];
 
   programs.nix-ld.enable = true;
