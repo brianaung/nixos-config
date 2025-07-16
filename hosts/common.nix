@@ -151,6 +151,9 @@
     mpv
     syncthing
     devenv
+    claude-code
+    gh
+    bitbucket-cli
   ];
 
   # To load/unload configured shells based on current directory.
