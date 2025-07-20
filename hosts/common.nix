@@ -58,84 +58,55 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      vim
       vivaldi
-      librewolf
       zathura
       obsidian
       pandoc
-      thunderbird
-      strawberry
+      obs-studio
     ];
   };
 
-  services.xserver.enable = true;
-  services.xserver.desktopManager.xterm.enable = false;
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; [
-      i3status
-      wl-clipboard
-      brightnessctl
-      foot
-      grim
-      swappy
-      slurp
-      pulseaudio
-      swayidle
-      swaylock
-      tofi
-      mako
-      pavucontrol
-    ];
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks -c sway";
-      };
-    };
-    vt = 7;
-  };
+  # Cosmic
+  services.desktopManager.cosmic.enable = true;
+  # cosmic-greeter (greetd) having "unable to start greetd" issues
+  # services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.gdm.enable = true;
 
   networking.networkmanager.enable = true;
 
-  services.kanata = {
-    enable = true;
-    keyboards.default = {
-      config = ''
-      (defsrc
-        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-        caps a    s    d    f    g    h    j    k    l    ;    '    ret
-        lsft z    x    c    v    b    n    m    ,    .    /    rsft
-        lctl lmet lalt           spc            ralt rctl)
+  # services.kanata = {
+  #   enable = true;
+  #   keyboards.default = {
+  #     config = ''
+  #     (defsrc
+  #       grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  #       tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  #       caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  #       lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  #       lctl lmet lalt           spc            ralt rctl)
 
-      (deflayer qwerty
-        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-        @cap a    s    d    f    g    h    j    k    l    ;    '    ret
-        lsft z    x    c    v    b    n    m    ,    .    /    rsft
-        lctl lalt lmet           spc            ralt rctl)
+  #     (deflayer qwerty
+  #       grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  #       tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  #       @cap a    s    d    f    g    h    j    k    l    ;    '    ret
+  #       lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  #       lctl lmet lalt           spc            ralt rctl)
 
-      (defalias
-        cap (multi f24 (tap-hold-press 200 200 esc lctl)))
-      '';
-      devices = [
-        "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-      ];
-    };
-  };
+  #     (defalias
+  #       cap (multi f24 (tap-hold-press 200 200 esc lctl)))
+  #     '';
+  #     devices = [
+  #       "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+  #     ];
+  #   };
+  # };
 
   # Set session variables.
   environment.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "foot";
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+    NIXOS_OZONE_WL = 1;
   };
 
   # List packages installed in system profile. To search, run:

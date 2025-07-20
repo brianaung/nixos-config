@@ -9,7 +9,6 @@
 
   users.users.${user} = {
     packages = with pkgs; [
-      obs-studio
       slack
       dbeaver-bin
       postman

@@ -2,12 +2,13 @@
   description = "Brian's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
@@ -50,8 +51,19 @@
               };
             }
 
-            # Others
+            # Hardware
             inputs.nixos-hardware.nixosModules.${hardware}
+
+            # Cosmic
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            inputs.nixos-cosmic.nixosModules.default
+
+            # Neovim
             {
               environment.systemPackages = [
                 inputs.neovim-nightly-overlay.packages.${system}.default
