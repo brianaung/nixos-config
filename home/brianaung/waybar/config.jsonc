@@ -1,0 +1,30 @@
+{
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "battery",
+        "clock",
+        "tray"
+    ],
+    "network": {
+        "interval": 60,
+        "format": "[{ifname} {ipaddr}]"
+    },
+    "pulseaudio": {
+        "format": "[VOL {volume}]"
+    },
+    "battery": {
+        "interval": 60,
+        "format": "[BAT {capacity}]"
+    },
+    "clock": {
+        "interval": 60,
+        "format": "[{:%b %d %Y %H:%M}]"
+    }
+}

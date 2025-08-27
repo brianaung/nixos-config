@@ -1,6 +1,7 @@
 { config, ... }:
 let
   mkOutOfStoreSymlink = config.lib.file.mkOutOfStoreSymlink;
+  xdgHome = "${config.xdg.configHome}/nixos-config/home/brianaung";
 in
 {
   imports = [
@@ -8,13 +9,17 @@ in
     ./git.nix
     ./fzf.nix
     ./tmux-sessionizer.nix
+    ./git-wt.nix
   ];
 
   home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
 
-  xdg.configFile.nvim.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/nvim";
-  xdg.configFile.sway.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/sway";
-  xdg.configFile.tmux.source = mkOutOfStoreSymlink "${config.xdg.configHome}/nixos-config/home/brianaung/tmux";
+  xdg.configFile = {
+    hypr.source = mkOutOfStoreSymlink "${xdgHome}/hypr";
+    waybar.source = mkOutOfStoreSymlink "${xdgHome}/waybar";
+    nvim.source = mkOutOfStoreSymlink "${xdgHome}/nvim";
+    tmux.source = mkOutOfStoreSymlink "${xdgHome}/tmux";
+  };
 }

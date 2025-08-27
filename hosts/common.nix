@@ -39,6 +39,7 @@
   zramSwap.enable = true;
 
   # Enable sound with pipewire.
+  # services.pulseaudio.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -58,19 +59,23 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
+      zed-editor
+      ripgrep
+      fd
+      bat
+      jq
+      btop
+      tmux
+      pandoc
+      syncthing
       vivaldi
       zathura
       obsidian
-      pandoc
       obs-studio
+      gimp
+      geary
     ];
   };
-
-  # Cosmic
-  services.desktopManager.cosmic.enable = true;
-  # cosmic-greeter (greetd) having "unable to start greetd" issues
-  # services.displayManager.cosmic-greeter.enable = true;
-  services.displayManager.gdm.enable = true;
 
   networking.networkmanager.enable = true;
 
@@ -109,32 +114,48 @@
     NIXOS_OZONE_WL = 1;
   };
 
+  # Cosmic
+  # services.desktopManager.cosmic.enable = true;
+  # # cosmic-greeter (greetd) having "unable to start greetd" issues
+  # # services.displayManager.cosmic-greeter.enable = true;
+  # services.displayManager.gdm.enable = true;
+
+  services.displayManager.ly.enable = true;
+  programs.hyprland.enable = true;
+  programs.waybar.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    ripgrep
-    fd
-    bat
-    jq
-    btop
-    tmux
-    imv
-    mpv
-    syncthing
-    devenv
-    claude-code
-    gh
-    bitbucket-cli
+    wl-clipboard
+    bemenu
+    playerctl
+    brightnessctl
+    hyprpaper
+    grimblast
   ];
 
   # To load/unload configured shells based on current directory.
   programs.direnv.enable = true;
 
+  programs.foot = {
+    enable = true;
+    theme = "rose-pine";
+    settings = {
+      main = {
+        font = "JetBrains Mono Nerd Font:size=11";
+      };
+      colors = {
+        # alpha = 0.95;
+      };
+    };
+  };
+
   # Install fonts.
   fonts.packages = with pkgs; [
     apple-fonts
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
   ];
 
   programs.nix-ld.enable = true;
