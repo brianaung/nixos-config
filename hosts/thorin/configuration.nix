@@ -12,7 +12,8 @@
     packages = with pkgs; [
       unstable.devenv
       localstack
-      terraform
+      unstable.terraform
+      unstable.awscli2
       terraform-local
       unstable.claude-code
       gh
