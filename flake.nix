@@ -3,15 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    # nixpkgs.follows = "nixos-cosmic/nixpkgs-stable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
@@ -58,15 +55,6 @@
 
             # Hardware
             inputs.nixos-hardware.nixosModules.${hardware}
-
-            # Cosmic
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
-            inputs.nixos-cosmic.nixosModules.default
 
             {
               environment.systemPackages = [

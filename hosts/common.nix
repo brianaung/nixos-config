@@ -40,7 +40,7 @@
 
   # Enable sound with pipewire.
   # services.pulseaudio.enable = false;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -59,7 +59,7 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      zed-editor
+      unstable.strawberry
       ripgrep
       fd
       bat
@@ -67,44 +67,44 @@
       btop
       tmux
       pandoc
+      zk
       syncthing
       vivaldi
       zathura
       obsidian
       obs-studio
       gimp
-      geary
     ];
   };
 
   networking.networkmanager.enable = true;
 
-  # services.kanata = {
-  #   enable = true;
-  #   keyboards.default = {
-  #     config = ''
-  #     (defsrc
-  #       grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  #       tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  #       caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  #       lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  #       lctl lmet lalt           spc            ralt rctl)
+  services.kanata = {
+    enable = true;
+    keyboards.default = {
+      config = ''
+      (defsrc
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+        caps a    s    d    f    g    h    j    k    l    ;    '    ret
+        lsft z    x    c    v    b    n    m    ,    .    /    rsft
+        lctl lmet lalt           spc            ralt rctl)
 
-  #     (deflayer qwerty
-  #       grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  #       tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  #       @cap a    s    d    f    g    h    j    k    l    ;    '    ret
-  #       lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  #       lctl lmet lalt           spc            ralt rctl)
+      (deflayer qwerty
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+        lctl a    s    d    f    g    h    j    k    l    ;    '    ret
+        lsft z    x    c    v    b    n    m    ,    .    /    rsft
+        lctl lmet lalt           spc            ralt rctl)
 
-  #     (defalias
-  #       cap (multi f24 (tap-hold-press 200 200 esc lctl)))
-  #     '';
-  #     devices = [
-  #       "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-  #     ];
-  #   };
-  # };
+      (defalias
+        cap (multi f24 (tap-hold-press 200 200 esc lctl)))
+      '';
+      devices = [
+        "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+      ];
+    };
+  };
 
   # Set session variables.
   environment.sessionVariables = {
@@ -114,25 +114,13 @@
     NIXOS_OZONE_WL = 1;
   };
 
-  # Cosmic
-  # services.desktopManager.cosmic.enable = true;
-  # # cosmic-greeter (greetd) having "unable to start greetd" issues
-  # # services.displayManager.cosmic-greeter.enable = true;
-  # services.displayManager.gdm.enable = true;
-
-  services.displayManager.ly.enable = true;
-  programs.hyprland.enable = true;
-  programs.waybar.enable = true;
+  services.desktopManager.cosmic.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wl-clipboard
-    bemenu
-    playerctl
-    brightnessctl
-    hyprpaper
-    grimblast
   ];
 
   # To load/unload configured shells based on current directory.
@@ -143,7 +131,7 @@
     theme = "rose-pine";
     settings = {
       main = {
-        font = "JetBrains Mono Nerd Font:size=11";
+        font = "Terminess Nerd Font Mono:size=11";
       };
       colors = {
         # alpha = 0.95;
@@ -156,6 +144,7 @@
     apple-fonts
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
+    nerd-fonts.terminess-ttf
   ];
 
   programs.nix-ld.enable = true;

@@ -14,8 +14,10 @@
       localstack
       unstable.terraform
       unstable.awscli2
+      unstable.ssm-session-manager-plugin
       terraform-local
-      unstable.claude-code
+      terraform-ls
+      nightly-claude-code
       gh
       bitbucket-cli
       docker-compose
@@ -34,6 +36,7 @@
   networking.extraHosts = ''
     13.55.136.84 simonds-cms
     54.66.87.15 simonds-product
+    3.24.159.248 simonds-staging
     127.0.0.1 mysimonds.simonds.test
     127.0.0.1 gallery.simonds.test
     127.0.0.1 local.simonds.test

@@ -7,6 +7,24 @@ final: prev: {
 
   apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
 
+  nightly-claude-code = prev.claude-code.overrideAttrs (old: rec {
+    version = "2.0.0";
+    src = prev.fetchzip {
+        url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
+        hash = "sha256-uHU9SZso0OZkbcroaVqqVoDvpn28rZVc6drHBrElt5M=";
+    };
+  });
+
+  # nightly-awesome = prev.awesome.overrideAttrs (old: rec {
+  #   src = prev.fetchFromGitHub {
+  #     owner = "awesomeWM";
+  #     repo = "awesome";
+  #     rev = "f009815cb75139acf4d8ba3c1090bf2844d13f4c";
+  #     sha256 = "Tw5OZNe+FdqRvPdaWviDFHDCJ7KFvsBi12WryZt+PEs=";
+  #   };
+  #   patches = [];
+  # });
+
   # dwl-custom = (final.unstable.dwl.overrideAttrs (oldAttrs: {
   #   patches = [
   #     ../patches/dwl/autostart.patch

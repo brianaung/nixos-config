@@ -17,8 +17,6 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile = {
-    hypr.source = mkOutOfStoreSymlink "${xdgHome}/hypr";
-    waybar.source = mkOutOfStoreSymlink "${xdgHome}/waybar";
     nvim.source = mkOutOfStoreSymlink "${xdgHome}/nvim";
     tmux.source = mkOutOfStoreSymlink "${xdgHome}/tmux";
   };
