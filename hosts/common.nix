@@ -59,23 +59,24 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      unstable.strawberry
       ripgrep
       fd
       bat
       jq
       btop
-      tmux
       pandoc
-      zk
       syncthing
       vivaldi
       zathura
       obsidian
       obs-studio
       gimp
+      fzf-preview
     ];
   };
+
+  programs.zoxide.enable = true;
+  programs.zoxide.flags = [ "--no-cmd" "--cmd cd" ];
 
   networking.networkmanager.enable = true;
 
@@ -109,35 +110,24 @@
   # Set session variables.
   environment.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "foot";
-    QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
-    NIXOS_OZONE_WL = 1;
+    TERMINAL = "alacritty";
   };
 
-  services.desktopManager.cosmic.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.enable = true;
+  services.xserver.windowManager.awesome.enable = true;
+  services.displayManager.ly.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wl-clipboard
+    wezterm
+    xclip
+    flameshot
+    brightnessctl
   ];
 
   # To load/unload configured shells based on current directory.
   programs.direnv.enable = true;
-
-  programs.foot = {
-    enable = true;
-    theme = "rose-pine";
-    settings = {
-      main = {
-        font = "Terminess Nerd Font Mono:size=11";
-      };
-      colors = {
-        # alpha = 0.95;
-      };
-    };
-  };
 
   # Install fonts.
   fonts.packages = with pkgs; [

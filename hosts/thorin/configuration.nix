@@ -10,14 +10,14 @@
   users.users.${user} = {
     extraGroups = [ "docker" ];
     packages = with pkgs; [
-      unstable.devenv
+      devenv
       localstack
-      unstable.terraform
-      unstable.awscli2
-      unstable.ssm-session-manager-plugin
+      terraform
+      awscli2
+      ssm-session-manager-plugin
       terraform-local
       terraform-ls
-      nightly-claude-code
+      claude-code
       gh
       bitbucket-cli
       docker-compose

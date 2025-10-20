@@ -7,13 +7,13 @@ final: prev: {
 
   apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
 
-  nightly-claude-code = prev.claude-code.overrideAttrs (old: rec {
-    version = "2.0.0";
-    src = prev.fetchzip {
-        url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-        hash = "sha256-uHU9SZso0OZkbcroaVqqVoDvpn28rZVc6drHBrElt5M=";
-    };
-  });
+  # nightly-claude-code = prev.claude-code.overrideAttrs (old: rec {
+  #   version = "2.0.0";
+  #   src = prev.fetchzip {
+  #       url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
+  #       hash = "sha256-uHU9SZso0OZkbcroaVqqVoDvpn28rZVc6drHBrElt5M=";
+  #   };
+  # });
 
   # nightly-awesome = prev.awesome.overrideAttrs (old: rec {
   #   src = prev.fetchFromGitHub {
@@ -25,18 +25,17 @@ final: prev: {
   #   patches = [];
   # });
 
+  # apply patch first: patch -p1 < hosts/<patch-to-patch>
   # dwl-custom = (final.unstable.dwl.overrideAttrs (oldAttrs: {
   #   patches = [
   #     ../patches/dwl/autostart.patch
   #   ];
-
   #   buildInputs = with final.unstable; [
   #     fcft
   #     libdrm
   #   ] ++ oldAttrs.buildInputs;
   # })).override{ configH = ./config.h; };
 
-  # wip
   # strawberry = final.unstable.strawberry.overrideAttrs (oldAttrs: rec {
   #   version = "1.1.3";
   #   src = oldAttrs.src.override {

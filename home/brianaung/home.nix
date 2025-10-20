@@ -8,7 +8,6 @@ in
     ./fish.nix
     ./git.nix
     ./fzf.nix
-    ./tmux-sessionizer.nix
     ./git-wt.nix
   ];
 
@@ -17,7 +16,8 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile = {
+    awesome.source = mkOutOfStoreSymlink "${xdgHome}/awesome";
+    wezterm.source = mkOutOfStoreSymlink "${xdgHome}/wezterm";
     nvim.source = mkOutOfStoreSymlink "${xdgHome}/nvim";
-    tmux.source = mkOutOfStoreSymlink "${xdgHome}/tmux";
   };
 }
