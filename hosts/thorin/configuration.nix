@@ -5,29 +5,16 @@
     ../common.nix
   ];
 
-  networking.hostName = "thorin"; # Define your hostname.
+  networking.hostName = "thorin";
 
   users.users.${user} = {
-    extraGroups = [ "docker" ];
     packages = with pkgs; [
-      devenv
-      localstack
-      terraform
-      awscli2
-      ssm-session-manager-plugin
-      terraform-local
-      terraform-ls
+      slack
       claude-code
       gh
       bitbucket-cli
-      docker-compose
-      slack
-      dbeaver-bin
-      postman
     ];
   };
-
-  virtualisation.docker.enable = true;
 
   environment.sessionVariables = {
     ESLINT_USE_FLAT_CONFIG = "true";

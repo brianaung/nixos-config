@@ -39,8 +39,6 @@
   zramSwap.enable = true;
 
   # Enable sound with pipewire.
-  # services.pulseaudio.enable = false;
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -53,32 +51,84 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  programs.fish.enable = true;
+  networking.wireless.iwd.enable = true;
+
+  services.xserver.enable = true;
+  services.xserver.windowManager.awesome.enable = true;
+  services.displayManager.ly.enable = true;
+
+  # Set session variables.
+  environment.sessionVariables = {
+    EDITOR = "nvim";
+    TERMINAL = "wezterm";
+  };
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    xclip
+    flameshot
+    brightnessctl
+  ];
+
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
+      wezterm
+
       ripgrep
       fd
+      fzf-preview
       bat
       jq
-      btop
       pandoc
-      syncthing
-      vivaldi
-      zathura
+      fastfetch
+      imv
+      mpv
+
+      postman
+      devenv
+      terraform
+      awscli2
+      ssm-session-manager-plugin
+      terraform-ls
+      docker-compose
+
+      # tui
+      btop
+      lazygit
+      lazydocker
+      rainfrog
+      impala
+
+      # gui
       obsidian
       obs-studio
       gimp
-      fzf-preview
+      libreoffice
     ];
   };
+
+  programs.fish.enable = true;
+
+  programs.direnv.enable = true;
+
+  programs.nix-ld.enable = true;
 
   programs.zoxide.enable = true;
   programs.zoxide.flags = [ "--no-cmd" "--cmd cd" ];
 
-  networking.networkmanager.enable = true;
+  virtualisation.docker.enable = true;
+
+  # Install fonts.
+  fonts.packages = with pkgs; [
+    apple-fonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    nerd-fonts.terminess-ttf
+  ];
 
   services.kanata = {
     enable = true;
@@ -106,36 +156,4 @@
       ];
     };
   };
-
-  # Set session variables.
-  environment.sessionVariables = {
-    EDITOR = "nvim";
-    TERMINAL = "alacritty";
-  };
-
-  services.xserver.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
-  services.displayManager.ly.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wezterm
-    xclip
-    flameshot
-    brightnessctl
-  ];
-
-  # To load/unload configured shells based on current directory.
-  programs.direnv.enable = true;
-
-  # Install fonts.
-  fonts.packages = with pkgs; [
-    apple-fonts
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
-    nerd-fonts.terminess-ttf
-  ];
-
-  programs.nix-ld.enable = true;
 }

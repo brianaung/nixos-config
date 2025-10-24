@@ -5,14 +5,11 @@
     ../common.nix
   ];
 
-  networking.hostName = "gimli"; # Define your hostname.
+  networking.hostName = "gimli";
 
   users.users.${user} = {
-    extraGroups = [ "docker" ];
     packages = with pkgs; [
       slack
-      dbeaver-bin
-      postman
     ];
   };
 
@@ -25,8 +22,6 @@
   };
 
   virtualisation.virtualbox.host.enable = true;
-
-  virtualisation.docker.enable = true;
 
   networking.extraHosts = ''
     192.168.56.56  cms.simonds.test
