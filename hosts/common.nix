@@ -69,6 +69,7 @@
     xclip
     flameshot
     brightnessctl
+    acpi
   ];
 
   users.users.${user} = {
