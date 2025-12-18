@@ -9,8 +9,6 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -58,7 +56,6 @@
             {
               environment.systemPackages = [
                 inputs.neovim-nightly-overlay.packages.${system}.default
-                inputs.zen-browser.packages.${system}.default
               ];
             }
           ];
