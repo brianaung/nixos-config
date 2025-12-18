@@ -15,15 +15,20 @@ final: prev: {
   #   };
   # });
 
-  # nightly-awesome = prev.awesome.overrideAttrs (old: rec {
-  #   src = prev.fetchFromGitHub {
-  #     owner = "awesomeWM";
-  #     repo = "awesome";
-  #     rev = "f009815cb75139acf4d8ba3c1090bf2844d13f4c";
-  #     sha256 = "Tw5OZNe+FdqRvPdaWviDFHDCJ7KFvsBi12WryZt+PEs=";
-  #   };
-  #   patches = [];
-  # });
+  awesome-git = prev.awesome.overrideAttrs (old: rec {
+    version = "f009815cb75139acf4d8ba3c1090bf2844d13f4c";
+    src = prev.fetchFromGitHub {
+      owner = "awesomeWM";
+      repo = "awesome";
+      rev = "f009815cb75139acf4d8ba3c1090bf2844d13f4c";
+      sha256 = "Tw5OZNe+FdqRvPdaWviDFHDCJ7KFvsBi12WryZt+PEs=";
+    };
+    patches = [];
+    cmakeFlags = (old.cmakeFlags or []) ++ ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"];
+    postPatch = ''
+      patchShebangs tests/examples/_postprocess.lua
+    '';
+  });
 
   # apply patch first: patch -p1 < hosts/<patch-to-patch>
   # dwl-custom = (final.unstable.dwl.overrideAttrs (oldAttrs: {
