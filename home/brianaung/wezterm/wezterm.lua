@@ -11,7 +11,7 @@ config.font_size = 13
 config.command_palette_font = wezterm.font "Terminess Nerd Font Mono"
 config.command_palette_font_size = 13
 
-config.color_scheme = "Everforest Dark Hard (Gogh)"
+config.color_scheme = "Gruvbox Material (Gogh)"
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.inactive_pane_hsb = { saturation = 0.24, brightness = 0.5 }

@@ -16,8 +16,8 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile = {
-    awesome.source = mkOutOfStoreSymlink "${xdgHome}/awesome";
-    wezterm.source = mkOutOfStoreSymlink "${xdgHome}/wezterm";
+    sway.source = mkOutOfStoreSymlink "${xdgHome}/sway";
     nvim.source = mkOutOfStoreSymlink "${xdgHome}/nvim";
+    wezterm.source = mkOutOfStoreSymlink "${xdgHome}/wezterm";
   };
 }

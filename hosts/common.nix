@@ -53,24 +53,27 @@
 
   networking.wireless.iwd.enable = true;
 
-  services.xserver.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
   services.displayManager.ly.enable = true;
+  programs.sway.enable = true;
+  programs.sway.extraPackages = with pkgs; [
+    brightnessctl
+    grim
+    swayidle
+    swaylock
+    wmenu
+    mako
+    i3status
+    wl-clipboard
+  ];
 
   # Set session variables.
   environment.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "wezterm";
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    xclip
-    flameshot
-    brightnessctl
-    acpi
-  ];
+  environment.systemPackages = with pkgs; [ iwgtk ];
 
   users.users.${user} = {
     isNormalUser = true;
@@ -81,34 +84,21 @@
 
       ripgrep
       fd
-      fzf-preview
       bat
       jq
       pandoc
-      fastfetch
-      imv
-      mpv
-
-      postman
-      devenv
-      terraform
-      awscli2
-      ssm-session-manager-plugin
-      terraform-ls
-      docker-compose
 
       # tui
       btop
       lazygit
       lazydocker
-      rainfrog
-      impala
 
       # gui
       obsidian
       obs-studio
       gimp
       libreoffice
+      brave
     ];
   };
 
@@ -119,7 +109,9 @@
   programs.nix-ld.enable = true;
 
   programs.zoxide.enable = true;
-  programs.zoxide.flags = [ "--no-cmd" "--cmd cd" ];
+  programs.zoxide.flags = [ "--cmd cd" ];
+
+  programs.geary.enable = true;
 
   virtualisation.docker.enable = true;
 

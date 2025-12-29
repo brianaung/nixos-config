@@ -9,10 +9,19 @@
 
   users.users.${user} = {
     packages = with pkgs; [
+      dbeaver-bin
       slack
+
       claude-code
       gh
       bitbucket-cli
+      devenv
+      terraform
+      awscli2
+      ssm-session-manager-plugin
+      terraform-ls
+      docker-compose
+      pulumi
     ];
   };
 
