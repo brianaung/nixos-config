@@ -2,6 +2,11 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
+      if status is-interactive
+      and not set -q TMUX
+        exec tmux new-session -A -s main
+      end
+
       fish_vi_key_bindings
       bind -M insert \cy accept-autosuggestion
 

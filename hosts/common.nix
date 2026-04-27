@@ -53,16 +53,20 @@
 
   networking.wireless.iwd.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   services.displayManager.ly.enable = true;
   programs.sway.enable = true;
   programs.sway.extraPackages = with pkgs; [
     brightnessctl
     grim
+    slurp
+    satty
     swayidle
     swaylock
     wmenu
     mako
-    i3status
+    i3status-rust
     wl-clipboard
   ];
 
@@ -80,13 +84,20 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
-      wezterm
+      protonmail-bridge
+      protonmail-bridge-gui
+      thunderbird
 
+      tmux
+      sesh
       ripgrep
       fd
       bat
       jq
       pandoc
+      imv
+      mpv
+      unzip
 
       # tui
       btop
@@ -94,11 +105,14 @@
       lazydocker
 
       # gui
+      ghostty
       obsidian
       obs-studio
       gimp
       libreoffice
+      pcmanfm
       brave
+      google-chrome
     ];
   };
 
@@ -110,8 +124,6 @@
 
   programs.zoxide.enable = true;
   programs.zoxide.flags = [ "--cmd cd" ];
-
-  programs.geary.enable = true;
 
   virtualisation.docker.enable = true;
 

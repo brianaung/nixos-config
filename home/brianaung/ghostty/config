@@ -1,0 +1,3 @@
+theme = "Gruvbox Material Dark"
+font-family = "Iosevka Nerd Font Mono"
+confirm-close-surface = false

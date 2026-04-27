@@ -8,6 +8,8 @@ in
     ./fish.nix
     ./git.nix
     ./fzf.nix
+    ./mako.nix
+    ./starship.nix
     ./git-wt.nix
   ];
 
@@ -18,6 +20,8 @@ in
   xdg.configFile = {
     sway.source = mkOutOfStoreSymlink "${xdgHome}/sway";
     nvim.source = mkOutOfStoreSymlink "${xdgHome}/nvim";
-    wezterm.source = mkOutOfStoreSymlink "${xdgHome}/wezterm";
+    tmux.source = mkOutOfStoreSymlink "${xdgHome}/tmux";
+    ghostty.source = mkOutOfStoreSymlink "${xdgHome}/ghostty";
+    i3status-rust.source = mkOutOfStoreSymlink "${xdgHome}/i3status-rust";
   };
 }

@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term wezterm
+set $term ghostty
 # Your preferred application launcher
 set $menu wmenu-run
 
@@ -21,6 +21,8 @@ set $menu wmenu-run
 output eDP-1 scale 1.5
 # output DP-7 resolution 2560x1440@239.998Hz
 output 'GIGA-BYTE TECHNOLOGY CO., LTD. M27Q X 24300B004186' resolution 2560x1440@239.998Hz position 2256,0
+output 'LG Electronics LG HDR 4K 0x00008487' resolution 3840x2160@59.997Hz position 2256,0 scale 1.5
+output 'LG Electronics LG ULTRAFINE 112NTLEHV696' resolution 3840x2160@59.997Hz position 2256,0 scale 1.5
 #
 # Example configuration:
 #
@@ -32,10 +34,10 @@ output 'GIGA-BYTE TECHNOLOGY CO., LTD. M27Q X 24300B004186' resolution 2560x1440
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -49,6 +51,7 @@ input type:touchpad {
     dwt enabled
     tap enabled
     middle_emulation enabled
+    drag_lock disabled
 }
 #
 #   input type:keyboard {
@@ -82,7 +85,8 @@ input type:touchpad {
     bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Escape exec swaymsg exit
+    bindsym $mod+Shift+e exec swaymsg exit
+    bindsym $mod+Escape exec swaylock
 #
 # Moving around:
 #
@@ -207,7 +211,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec grim -g "$(slurp)" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
 
 #
 # Status Bar:
@@ -215,10 +219,11 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
+    font Terminess Nerd Font Mono 12
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command i3status
+    status_command i3status-rs
 }
 
 include /etc/sway/config.d/*
