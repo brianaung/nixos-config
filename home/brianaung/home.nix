@@ -5,7 +5,6 @@ let
 in
 {
   imports = [
-    ./fish.nix
     ./git.nix
     ./fzf.nix
     ./mako.nix
