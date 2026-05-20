@@ -133,6 +133,8 @@
       set -g __fish_git_prompt_showcolorhints true
 
       alias vi=nvim
+
+      fzf --fish | source
     '';
   };
 
