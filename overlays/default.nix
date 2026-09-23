@@ -5,15 +5,7 @@ final: prev: {
     config.allowUnfree = true;
   };
 
-  apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
-
-  # nightly-claude-code = prev.claude-code.overrideAttrs (old: rec {
-  #   version = "2.0.0";
-  #   src = prev.fetchzip {
-  #       url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-  #       hash = "sha256-uHU9SZso0OZkbcroaVqqVoDvpn28rZVc6drHBrElt5M=";
-  #   };
-  # });
+  # apple-fonts = final.callPackage ../pkgs/apple-fonts.nix { };
 
   awesome-git = prev.awesome.overrideAttrs (old: rec {
     version = "f009815cb75139acf4d8ba3c1090bf2844d13f4c";

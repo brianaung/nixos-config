@@ -113,6 +113,8 @@
       pcmanfm
       brave
       google-chrome
+
+      stremio-linux-shell
     ];
   };
 
@@ -149,7 +151,7 @@
 
   # Install fonts.
   fonts.packages = with pkgs; [
-    apple-fonts
+    # apple-fonts
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
     nerd-fonts.terminess-ttf

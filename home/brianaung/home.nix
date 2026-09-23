@@ -16,6 +16,8 @@ in
 
   programs.home-manager.enable = true;
 
+  services.kairos.enable = true;
+
   xdg.configFile = {
     sway.source = mkOutOfStoreSymlink "${xdgHome}/sway";
     nvim.source = mkOutOfStoreSymlink "${xdgHome}/nvim";

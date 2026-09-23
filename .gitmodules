@@ -1,3 +1,6 @@
 [submodule "home/brianaung/nvim"]
 	path = home/brianaung/nvim
 	url = git@github.com:brianaung/neovim-config.git
+[submodule "home/brianaung/emacs"]
+	path = home/brianaung/emacs
+	url = https://github.com/doomemacs/core

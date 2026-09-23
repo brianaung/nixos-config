@@ -9,6 +9,12 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    claude-code.url = "github:sadjow/claude-code-nix";
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
+    kairos = {
+      url = "path:/home/brianaung/work/kairos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -43,7 +49,10 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.${user} = import ./home/${user}/home.nix;
-                sharedModules = [ homeManagerModules ];
+                sharedModules = [
+                  homeManagerModules
+                  inputs.kairos.homeManagerModules.default
+                ];
                 extraSpecialArgs = { 
                   inherit inputs; 
                 };
@@ -56,6 +65,8 @@
             {
               environment.systemPackages = [
                 inputs.neovim-nightly-overlay.packages.${system}.default
+                inputs.codex-cli-nix.packages.${system}.default
+                inputs.claude-code.packages.${system}.default
               ];
             }
           ];
