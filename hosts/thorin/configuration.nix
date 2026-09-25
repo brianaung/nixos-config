@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common.nix
+    ../linux.nix
   ];
 
   networking.hostName = "thorin";

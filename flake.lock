@@ -107,14 +107,17 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1789085223,
-        "narHash": "sha256-tTojLmC8iS1ALAIe8hg/VWy5L1Q2n1dSvI1M4M2pIFo=",
-        "path": "/home/brianaung/work/kairos",
-        "type": "path"
+        "lastModified": 1789019727,
+        "narHash": "sha256-zcpLCfppCIjIxoL2XPphczc080WG7UHZhvRd1ioho64=",
+        "ref": "refs/heads/main",
+        "rev": "4d4eac50a43dc3b838c65de01444846d8d99240f",
+        "revCount": 204,
+        "type": "git",
+        "url": "ssh://git@github.com/PSDesign/kairos"
       },
       "original": {
-        "path": "/home/brianaung/work/kairos",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@github.com/PSDesign/kairos"
       }
     },
     "neovim-nightly-overlay": {
@@ -150,6 +153,27 @@
       "original": {
         "owner": "neovim",
         "repo": "neovim",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786845137,
+        "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "ref": "master",
+        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -306,6 +330,7 @@
         "home-manager": "home-manager",
         "kairos": "kairos",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5"
       }

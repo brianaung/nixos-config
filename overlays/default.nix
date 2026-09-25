@@ -15,8 +15,8 @@ final: prev: {
       rev = "f009815cb75139acf4d8ba3c1090bf2844d13f4c";
       sha256 = "Tw5OZNe+FdqRvPdaWviDFHDCJ7KFvsBi12WryZt+PEs=";
     };
-    patches = [];
-    cmakeFlags = (old.cmakeFlags or []) ++ ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"];
+    patches = [ ];
+    cmakeFlags = (old.cmakeFlags or [ ]) ++ [ "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" ];
     postPatch = ''
       patchShebangs tests/examples/_postprocess.lua
     '';
